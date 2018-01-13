@@ -40,6 +40,7 @@
             <div class="col-12">
                 <h3>Wähl ein Turnier aus</h3>
                 <div class="input-group">
+                    
                     <select>
                         <option selected>---</option>
                         <option>GPS 500 Köln 27.-28. Januar</option>
@@ -52,11 +53,16 @@
             <div class="col-md-6 col-sm-12">
                 <h3>Kategorie</h3>
                 <div class="input-group">
-                    <input type="radio" name="gender" value="female" id="gender-female"/><label for="gender-female">Damen</label>
-                    <input type="radio" name="gender" value="male" id="gender-male"/><label
-                        for="gender-male">Herren</label>
-                    <input type="radio" name="gender" value="senior" id="gender-senior"/><label for="gender-senior">Senioren</label>
-                    <input type="radio" name="gender" value="junior" id="gender-junior"/><label for="gender-junior">Junioren</label>
+                    <input type="radio" name="gender" value="female" id="gender-female"/>
+                    <label for="gender-female">Damen</label>
+                    <input type="radio" name="gender" value="male" id="gender-male"/>
+                    <label for="gender-male">Herren</label>
+                    <input type="radio" name="gender" value="senior" id="gender-senior"/>
+                    <label for="gender-senior">Senioren</label>
+                    <input type="radio" name="gender" value="junior" id="gender-junior"/>
+                    <label for="gender-junior">Junioren</label>
+
+                    {{form.category}}
                 </div>
             </div>
 

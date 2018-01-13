@@ -18,16 +18,16 @@ class Tournament(models.Model):
 
 class Registration(models.Model):
     # tournament_name = models.ForeignKey(Tournament)
-    # category = models.CharField(choices=CATEGORY_GERMANY, max_length=32)
     # player = models.CharField(choices=PLAYER, max_length=32)
+    category = models.CharField(choices=CATEGORY_GERMANY, max_length=16)
     forename = models.CharField(max_length=24, verbose_name='First Name')
     surname = models.CharField(max_length=24, verbose_name='Last Name')
     email = models.EmailField(verbose_name='Email')
     phone = models.CharField(max_length=64, verbose_name='Phone')
     city = models.CharField(max_length=32, verbose_name='City')
     club = models.CharField(max_length=32, verbose_name='Club')
-    birthplace = models.CharField(max_length=32, verbose_name='Birthday')
-    birthdate = models.DateTimeField()
+    birthplace = models.CharField(max_length=32, verbose_name='Birth place')
+    birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
     policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
 
