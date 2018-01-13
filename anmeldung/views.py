@@ -19,7 +19,6 @@ class RegistrationForm(forms.ModelForm):
             'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
             'ranking_points': forms.TextInput(attrs={'placeholder': 'Trag deine Punkte ein'}),
             'birthdate': forms.TextInput(attrs={'placeholder': 'TT/MM/JJJJ'}),
-
         }
 
 

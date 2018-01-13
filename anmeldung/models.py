@@ -1,5 +1,5 @@
 from django.db import models
-from anmeldung.validators import birthdate_validator
+from anmeldung.validators import birthdate_validator, policy_read_validator
 
 
 SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'), ('GPS-1200', 'GPS-1200'))
@@ -29,5 +29,7 @@ class Registration(models.Model):
     birthplace = models.CharField(max_length=32, verbose_name='Birthday')
     birthdate = models.DateTimeField()
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
+    policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
+
 
 
