@@ -101,10 +101,9 @@
                     </div>
 
                     <h3>Geburtsdatum</h3>
-                    <div class="input-group">
-                        <div class="col-third"><input type="text" placeholder="TT"/></div>
-                        <div class="col-third"><input type="text" placeholder="MM"/></div>
-                        <div class="col-third"><input type="text" placeholder="JJJJ"/></div>
+                    <div class="input-group input-group-icon">
+                        <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                        {{form.birthdate}}
                     </div>
 
                     <h3>DPV-Punkte</h3>
@@ -190,4 +189,20 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+
+{% block js%}
+<script type="text/javascript">
+  $( function() {
+    $("#id_birthdate").datepicker(
+    {
+      dateFormat: 'dd/mm/yy',
+      firstDay: 1,
+      minDate: "-90y",
+      maxDate: "-5y",
+      defaultDate: "-30y"
+    });
+  });
+</script>
 {% endblock %}

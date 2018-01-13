@@ -1,4 +1,6 @@
 from django.db import models
+from anmeldung.validators import birthdate_validator
+
 
 SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'), ('GPS-1200', 'GPS-1200'))
 CATEGORY_GERMANY = (('Herren A', 'Herren A'), ('Herren B', 'Herren B'), ('Damen', 'Damen'), ('Mixed', 'Mixed'), ('Senioren', 'Senioren'), ('Junioren', 'Junioren'))
@@ -25,7 +27,7 @@ class Registration(models.Model):
     city = models.CharField(max_length=32, verbose_name='City')
     club = models.CharField(max_length=32, verbose_name='Club')
     birthplace = models.CharField(max_length=32, verbose_name='Birthday')
-    #birthdate = forms.CharField(initial=arrival_initial_date, validators=[arrival_date_validator])
-    ranking_points = models.PositiveIntegerField(max_length=32, verbose_name='Ranking Points')
+    birthdate = models.DateTimeField()
+    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
 
 
