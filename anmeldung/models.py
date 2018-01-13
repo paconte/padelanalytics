@@ -10,14 +10,14 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 class Tournament(models.Model):
     category = models.CharField(choices=SERIE_GERMANY, max_length=20)
     city = models.CharField(max_length=20)
-    date = models.DateTimeField()
+    date = models.DateField()
 
     def __str__(self):
-        return " ".join([str(self.date) + str(self.category) + str(self.city)])
+        return " ".join([str(self.category), str(self.city), str(self.date)])
 
 
 class Registration(models.Model):
-    # tournament_name = models.ForeignKey(Tournament)
+    tournament_name = models.ForeignKey(Tournament)
     # player = models.CharField(choices=PLAYER, max_length=32)
     category = models.CharField(choices=CATEGORY_GERMANY, max_length=16)
     forename = models.CharField(max_length=24, verbose_name='First Name')
