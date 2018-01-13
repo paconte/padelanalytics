@@ -14,6 +14,10 @@ class RegistrationForm(forms.ModelForm):
             'surname': forms.TextInput(attrs={'placeholder': 'Familienname'}),
             'forename': forms.TextInput(attrs={'placeholder': 'Vorname'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Telefonnummer'}),
+            'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
+            'club': forms.TextInput(attrs={'placeholder': 'Verein'}),
+            'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
+            'ranking_points': forms.TextInput(attrs={'placeholder': 'Trag deine Punkte ein'}),
         }
 
 
