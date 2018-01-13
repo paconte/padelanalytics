@@ -1,0 +1,68 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Fixed top navbar example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+        <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar-top-fixed.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/skeleton.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}"/>
+    {% block css %}
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+<nav class="navbar-expand-md navbar-dark fixed-top bg-white">
+  <div class="container_12"> <a href="{% url 'index' %}"><img src="{% static "images/Logo01.png" %}" class="navbar-brand" alt="Padel Analytics">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    </a> </div>
+  <div class="topnav" style="width: 100%">
+    <div class="container_12">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"> <a class="nav-link" href="{% url 'anmeldung' %}">Anmeldung <span class="sr-only">(current)</span></a> </li>
+          <li class="nav-item active"> <a class="nav-link" href="{% url 'turnierliste' %}">Turnierliste <span class="sr-only"></span></a> </li>
+          <li class="nav-item active"> <a class="nav-link" href="#">Vereine <span class="sr-only"></span></a> </li>
+        </ul>
+        <div> <a href="#" class="logo-fed"><img src="{% static "images/federations/germany.png" %}" alt="DPV"/></a> </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="topnav2">
+  <div class="container_12">
+    <div> <a href="news_germany.html" class="logo-fed"><img src="images/federations/germany.png" alt="Deutscher Padel Verband"></a> </div>
+  </div>
+</div>
+
+{% block content %}{% endblock %}
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://use.fontawesome.com/7cf8bc3e18.js"></script>
+{% block js %}
+
+{% endblock %}
+</body>
+</html>

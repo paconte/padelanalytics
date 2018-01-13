@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 50px" class="container_12">
+    <div class="card">
+        <h1>German Padel Series 2018</h1>
+        <h2>Anmeldungsformular</h2>
+    </div>
+
+    <div class="card">
+        <div sclass="box">
+            <div class="col-xs-12 col-sm-9" style="float: right">
+                <div style="float: right">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps100.jpg' %}" alt="GPS-100">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps250.jpg' %}" alt="GPS-250">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps1000.jpg' %}" alt="GPS-1000">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps1200.jpg' %}" alt="GPS-1200">
+                    <img class="col_1 category" src="{% static 'images/kategorien/w-gps.jpg' %}" alt="GPS-Women">
+                </div>
+            </div>
+            <a href="#">
+                <button class="col-sm-3 col-xl-2">
+                    <div>
+                        <i class="col-3 fa fa-long-arrow-left"></i>
+                        <ul class="col-9" style="float: right">TURNIERLISTE</ul>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <br>
+
+        <form style="min-height: 500px" method="post" action="{% url 'anmeldung' %}">
+            {% csrf_token %}
+            <div class="col-12">
+                <h3>Wähl ein Turnier aus</h3>
+                <div class="input-group">
+                    <select>
+                        <option selected>---</option>
+                        <option>GPS 500 Köln 27.-28. Januar</option>
+                        <option>GPS 500 Essen 27.-28. Februar</option>
+                        <option>GPS 500 Herne 27.-28. März</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <h3>Kategorie</h3>
+                <div class="input-group">
+                    <input type="radio" name="gender" value="female" id="gender-female"/><label for="gender-female">Damen</label>
+                    <input type="radio" name="gender" value="male" id="gender-male"/><label
+                        for="gender-male">Herren</label>
+                    <input type="radio" name="gender" value="senior" id="gender-senior"/><label for="gender-senior">Senioren</label>
+                    <input type="radio" name="gender" value="junior" id="gender-junior"/><label for="gender-junior">Junioren</label>
+                </div>
+            </div>
+
+            <div clas="box">
+                <div class="col-xs-12 col-md-6" style="float: left">
+                    <h3>Spieler 1</h3>
+                    <div class="input-group input-group-icon">
+                        <div class="input-icon"><i class="fa fa-question"></i></div>
+                        <input type="text" placeholder="Hast du bereits ein GPS-Turnier gespielt? Such dich!"/>
+                    </div>
+
+                    <div class="input-group input-group-icon" style="float: right; width:50%">
+                        <div class="input-icon"><i class="fa fa-user"></i></div>
+                        {{form.forename}}
+                    </div>
+                    <div class="input-group input-group-icon col-half" style="width:50%">
+                        <div class="input-icon"><i class="fa fa-user-o"></i></div>
+                        {{form.surname}}
+                    </div>
+                    <br>
+                    <div class="input-group input-group-icon" style="margin-top: 0px">
+                        <div class="input-icon" style="margin-top: 15px"><i class="fa fa-envelope"></i></div>
+                        {{form.email}}
+                    </div>
+                    <div class="input-group input-group-icon">
+                        <div class="input-icon"><i class="fa fa-phone"></i></div>
+                        {{form.phone}}
+                    </div>
+                    <div class="input-group input-group-icon">
+                        <div class="input-icon"><i class="fa fa-shield"></i></div>
+                        {{form.club}}
+                    </div>
+                    <div class="input-group input-group-icon "
+                         style="float: right; margin-left: 0px; margin-right: 0px; width:50%">
+                        <div class="input-icon"><i class="fa fa-vcard-o"></i></div>
+                        {{form.birthplace}}
+                    </div>
+                    <div class="input-group input-group-icon col-half"
+                         style="float: right; margin-left: 0px; margin-right: 0px; width:50%">
+                        <div class="input-icon"><i class="fa fa-home"></i></div>
+                        {{form.city}}
+                        <input class="" type="text" placeholder="Wohnort"/>
+                    </div>
+
+
+                    <h3>Geburtsdatum</h3>
+                    <div class="input-group">
+                        <div class="col-third"><input type="text" placeholder="TT"/></div>
+                        <div class="col-third"><input type="text" placeholder="MM"/></div>
+                        <div class="col-third"><input type="text" placeholder="JJJJ"/></div>
+                    </div>
+
+                    <h3>DPV-Punkte</h3>
+                    <div class="input-group input-group-icon col-half">
+                        <div class="input-icon"><i class="fa fa-trophy"></i></div>
+                        <input type="text" placeholder="Trag deine Punkte ein"/>
+                    </div>
+                </div>
+
+                <div clas="box">
+                    <div class="col-xs-12 col-md-6" style="float: left">
+                        <h3>Spieler 2</h3>
+                        <div class="input-group input-group-icon">
+                            <div class="input-icon"><i class="fa fa-question"></i></div>
+                            <input type="text" placeholder="Hast du bereits ein GPS-Turnier gespielt? Such dich!"/>
+                        </div>
+
+                        <div class="input-group input-group-icon" style="float: right; width:50%">
+                            <div class="input-icon"><i class="fa fa-user"></i></div>
+                            <input type="text" placeholder="Verein"/>
+                        </div>
+                        <div class="input-group input-group-icon col-half" style="width:50%">
+                            <div class="input-icon"><i class="fa fa-user-o"></i></div>
+                            <input type="text" placeholder="Verein"/>
+                        </div>
+                        <br>
+                        <div class="input-group input-group-icon" style="margin-top: 0px">
+                            <div class="input-icon" style="margin-top: 15px"><i class="fa fa-envelope"></i></div>
+                            <input type="text" placeholder="Verein"/>
+                        </div>
+                        <div class="input-group input-group-icon">
+                            <div class="input-icon"><i class="fa fa-phone"></i></div>
+                            <input type="text" placeholder="Verein"/>
+                        </div>
+                        <div class="input-group input-group-icon">
+                            <div class="input-icon"><i class="fa fa-shield"></i></div>
+                            <input type="text" placeholder="Verein"/>
+                        </div>
+                        <div class="input-group input-group-icon "
+                             style="float: right; margin-left: 0px; margin-right: 0px; width:50%">
+                            <div class="input-icon"><i class="fa fa-vcard-o"></i></div>
+                            <input type="text" placeholder="Geburtsort"/>
+                        </div>
+                        <div class="input-group input-group-icon col-half"
+                             style="float: right; margin-left: 0px; margin-right: 0px; width:50%">
+                            <div class="input-icon"><i class="fa fa-home"></i></div>
+                            <input class="" type="text" placeholder="Wohnort"/>
+                        </div>
+
+                        <h3>Geburtsdatum</h3>
+                        <div class="input-group">
+                            <div class="col-third"><input type="text" placeholder="TT"/></div>
+                            <div class="col-third"><input type="text" placeholder="MM"/></div>
+                            <div class="col-third"><input type="text" placeholder="JJJJ"/></div>
+                        </div>
+
+                        <h3>DPV-Punkte</h3>
+                        <div class="input-group input-group-icon col-half">
+                            <div class="input-icon"><i class="fa fa-trophy"></i></div>
+                            <input type="text" placeholder="Trag deine Punkte ein"/>
+                        </div>
+                    </div>
+                    <br>
+
+                    <h3 style="margin-top: 50px">Bestätigung</h3>
+                    <div class="input-group">
+                        <input type="checkbox" id="terms"/>
+                        <label for="terms">Hiermit akzeptieren wir die Anmelde- und Teilnahmebedingungen des DPV / Check
+                            here if you accept these terms.</label>
+                    </div>
+
+                    <div class="box">
+                        <a href="#">
+                            <button class="col-sm-2 col-xl-2">
+                                <div>
+                                    <ul class="col-12" style="float: right">OK</ul>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

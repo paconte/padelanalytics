@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 50px" class="container_12">
+  <div class="card">
+    <h1>German Padel Series 2018</h1>
+    <h2>Turnierliste</h2>
+  </div>
+  <div class="card">
+  <div class="box" style="margin-bottom: 10px">
+    <div style="float: right">
+      <div style="float: right">
+          <img class="col_1 category" src="{% static "images/Kategorien/gps100.jpg" %}" alt="GPS-100">
+          <img class="col_1 category" src="{% static "images/Kategorien/gps250.jpg" %}" alt="GPS-250">
+          <img class="col_1 category" src="{% static "images/Kategorien/gps500.jpg" %}" alt="GPS-500">
+          <img class="col_1 category" src="{% static "images/Kategorien/gps1000.jpg" %}" alt="GPS-1000">
+          <img class="col_1 category" src="{% static "images/Kategorien/gps1200.jpg" %}" alt="GPS-1200">
+          <img class="col_1 category" src="{% static "images/Kategorien/w-gps.jpg" %}" alt="GPS-Women">
+      </div>
+  </div>
+  <button class="accordion">Januar</button>
+  <div class="panel">
+  <ul>
+	<li class="col-xs-12 col-md-6 tournament-list" style="float: left"> <img class="col-4" style="float: right; margin-top: 16px; margin-bottom: 15px" src="{% static "images/germany/gps_2018/Posters 2018_Seite_1.jpg" %}">
+      <div><img style="display:inline; width: 87px" class="col-2" src="{% static "images/germany/clubs/condor.png" %}">
+        <h2 class="col-6" style="width: 47%; float:right; text-align: center; margin-top: 16px">_club_</h2>
+        <hr>
+        <a style="font-size: 24px" class="col-4" style="">GPS XXX _ciudad_</a><img class="col-1" src="{% static "images/germany/gps_2017/gps1200_list.png" %}" style="float:right">
+		<br>
+        <div class="box" style="margin-top: 15px">
+			<a style="font-size: 18px" class="col-4" >_fecha (XX.XX.XXX)_</a><span class="col-1 label men" style="float:right">H</span><span class="col-1 label men" style="float:right">H</span>
+		</div>
+        <div style="width: 65%; margin-left: 8px">
+			<div class="box col-12" style="margin-top: 32px">
+			<a href="index_tournament.html">
+				<button style="background-color: #C9C9C9; width: 47%; border:none">
+					<ul style="text-align: center"><strong style="color: black" class="title">ZUM TURNIER</strong></ul>
+				</button>
+            </a>
+			<a href="Anmeldung.html">
+				<button style="background-color: red; width: 47%; float: right; right: 10px; border:none">
+					<ul style="text-align: center"><strong class="title">SICH ANMELDEN</strong></ul>
+				</button>
+          	</a>
+      		</div>
+    	</div>
+	</div>
+    </li>
+
+	<li class="col-xs-12 col-md-6 tournament-list" style="float: left"> <img class="col-4" style="float: right; margin-top: 16px; margin-bottom: 15px" src="{% static "images/germany/gps_2018/Posters 2018_Seite_1.jpg" %}">
+      <div><img style="display:inline; width: 87px" class="col-2" src="{% static "images/germany/clubs/condor.png" %}">
+        <h2 class="col-6" style="width: 47%; float:right; text-align: center; margin-top: 16px">_club_</h2>
+        <hr>
+        <a style="font-size: 24px" class="col-4" style="">GPS XXX _ciudad_</a><img class="col-1" src="{% static "images/germany/gps_2017/gps1200_list.png" %}" style="float:right">
+		<br>
+        <div class="box" style="margin-top: 15px">
+			<a style="font-size: 18px" class="col-4" >_fecha (XX.XX.XXX)_</a><span class="col-1 label men" style="float:right">H</span><span class="col-1 label men" style="float:right">H</span>
+		</div>
+        <div style="width: 65%; margin-left: 8px">
+			<div class="box col-12" style="margin-top: 32px">
+			<a href="index_tournament.html">
+				<button style="background-color: #C9C9C9; width: 47%; border:none">
+					<ul style="text-align: center"><strong style="color: black" class="title">ZUM TURNIER</strong></ul>
+				</button>
+            </a>
+			<a href="Anmeldung.html">
+				<button style="background-color: red; width: 47%; float: right; right: 10px; border:none">
+					<ul style="text-align: center"><strong class="title">SICH ANMELDEN</strong></ul>
+				</button>
+          	</a>
+      		</div>
+    	</div>
+	</div>
+    </li>
+
+	<li class="col-xs-12 col-md-6 tournament-list" style="float: left"> <img class="col-4" style="float: right; margin-top: 16px; margin-bottom: 15px" src="{% static "images/germany/gps_2018/Posters 2018_Seite_1.jpg" %}">
+      <div><img style="display:inline; width: 87px" class="col-2" src="{% static "images/germany/clubs/condor.png" %}">
+        <h2 class="col-6" style="width: 47%; float:right; text-align: center; margin-top: 16px">_club_</h2>
+        <hr>
+        <a style="font-size: 24px" class="col-4" style="">GPS XXX _ciudad_</a><img class="col-1" src="{% static "images/germany/gps_2017/gps1200_list.png" %}" style="float:right">
+		<br>
+        <div class="box" style="margin-top: 15px">
+			<a style="font-size: 18px" class="col-4" >_fecha (XX.XX.XXX)_</a><span class="col-1 label men" style="float:right">H</span><span class="col-1 label men" style="float:right">H</span>
+		</div>
+        <div style="width: 65%; margin-left: 8px">
+			<div class="box col-12" style="margin-top: 32px">
+			<a href="index_tournament.html">
+				<button style="background-color: #C9C9C9; width: 47%; border:none">
+					<ul style="text-align: center"><strong style="color: black" class="title">ZUM TURNIER</strong></ul>
+				</button>
+            </a>
+			<a href="Anmeldung.html">
+				<button style="background-color: red; width: 47%; float: right; right: 10px; border:none">
+					<ul style="text-align: center"><strong class="title">SICH ANMELDEN</strong></ul>
+				</button>
+          	</a>
+      		</div>
+    	</div>
+	</div>
+    </li>
+
+</div>
+<div><button class="accordion">Februar</button></div>
+	<div class="panel"></div>
+<div><button class="accordion">März</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">April</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">Mai</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">Juni</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">Juli</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">August</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">September</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">Oktober</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">November</button></div>
+	  <div class="panel"></div>
+<div><button class="accordion">Dezember</button></div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,702 @@
+@charset "utf-8";
+/* CSS Document */
+
+body 						{background-color: #fdfdfd; font-family: Arial Narrow}
+
+
+
+
+
+.card 						{box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.2); transition: 0.3s; margin-top: 20px; padding: 16px}
+.card:hover 				{box-shadow: 3px 3px 12px 0 rgba(0,0,0,0.2);}
+
+.card button 				{background-color: #ccc; float: left; border:none; color: white; height: 50px; padding: 12px; }	
+.card button ul 			{text-align: center}
+
+.card .category				{width: 50px; margin: 0 5px}
+
+.tournament-list {background: rgba(241,241,241,0.7); border-right: thick solid #fff; margin-top: 5px;}
+.tournament-list:hover { background: white; cursor: pointer; }
+.tournament-list .title { margin-top: 16px; }
+
+.form {
+	padding-top: 2px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
+font-size: 16px;
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+input:focus {
+  outline: 0;
+  border-color: #aaa;
+}
+input:focus + .input-icon i {
+  color: red;
+}
+input:focus + .input-icon:after {
+  border-right-color: #DDDDDD;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"] + label,
+select {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+  background-color: #ddd;
+  color: #000;
+  border-color: #eee;
+}
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  position: relative;
+  display: block;
+  padding-left: 1.6em;
+}
+input[type="checkbox"] + label:before {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  content: "";
+}
+input[type="checkbox"] + label:after {
+  position: absolute;
+  top: 0.45em;
+  left: 0.2em;
+  font-size: 18px;
+  color: #000;
+  opacity: 0;
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+input:checked + label:after {
+  opacity: 1;
+}
+select {
+  height: 3.4em;
+  line-height: 2;
+}
+select:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+select:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+input:hover{
+	background-color: #ccc;
+}
+select:focus,
+select:active {
+  outline: 0;
+}
+select option {
+  background-color: #eee;
+  color: #000;
+}
+
+/* Campos Formulario */
+
+.input-group 							{ margin-bottom: 1em; zoom: 1;}
+.input-group:before, .input-group:after { content: ""; display: table;}
+.input-radio:hover 						{ background-color: #ccc;}
+.input-group-icon input 				{ padding-left: 4.4em;}
+.input-group-icon .input-icon 			{ position: absolute; width: 3.4em; height: 3.4em; text-align: center; cursor: pointer; margin-top: 15px;}
+
+.input-group-icon .input-icon i 		{ -webkit-transition: 0.35s ease-in-out; -moz-transition: 0.35s ease-in-out; -o-transition: 0.35s ease-in-out; 
+										transition: 0.35s ease-in-out; transition: all 0.35s ease-in-out;}
+
+/* Tamanos Formulario 1/2 y 1/3 */
+.col-half 								{ padding-right: 10px; float: left; width: 50%;}
+.col-half:last-of-type 					{ padding-right: 0;}
+.col-third 								{ padding-right: 10px; float: left; width: 33.33333333%;}
+.col-third:last-of-type 				{ padding-right: 0;}
+
+
+.row {
+  zoom: 1;
+}
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+
+
+@media only screen and (max-width: 540px) {
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+	
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.card_box .active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+#form {
+	padding-top: 2px;
+}
+
+#form input {
+	border: 1px solid #dddddd;
+	background: none;
+	font-size:13px;
+	color:#676767;
+	line-height: 18px;
+	padding: 7px 18px 8px;
+	outline: medium none;
+	background: url(../images/form_Bg.png) 0 0 repeat;
+	width: 100%;
+	height: 39px;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; /*Firefox 1-3*/
+	-webkit-box-sizing: border-box; /* Safari */
+}
+
+#form textarea {
+	border: 1px solid #dddddd;
+	background: url(../images/form_Bg.png.) 0 0 repeat;
+	font-size:13px;
+	color:#676767;
+	height: 279px;
+	outline: medium none;
+	overflow: auto;
+	padding: 10px 18px 8px;
+	width: 100%;
+	position: relative;
+	resize:none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; /*Firefox 1-3*/
+	-webkit-box-sizing: border-box; /* Safari */
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	
+}	
+	
+
+#tournament-cat {
+	background: rgba(230,230,230,0.9);
+	width: 18.5%;
+	height: 14.5%;
+	vertical-align: middle;
+	position: absolute;
+	border-right: thick solid #fff;
+	right: 5px;
+}
+#tournament-club:hover {
+	background: white;
+	cursor: pointer;
+}
+#tournament-main {
+	width: 60%;
+	float: left;
+	margin-right: 3px;
+	max-height: 300px;
+	height: 290px;
+}
+#tournament-poster {
+	width: 20%;
+	float: left;
+	margin-right: 3px;
+	max-height: 300px;
+	height: 290px;
+	border: none;
+}
+#tournament-data {
+	background: rgba(230,230,230,0.9);
+	width: 18.5%;
+	height: 55%;
+	vertical-align: middle;
+	position: absolute;
+	border-right: thick solid #fff;
+	right: 5px;
+	margin-top: 4.5%;
+}
+#tournament-data .logo-cat {
+	margin-left: 15%;
+}
+#tournament-data .logo-cat2 {
+	margin-left: 10%;
+}
+#tournament-club {
+	background: rgba(241,241,241,0.7);
+	width: 18.5%;
+	height: 25%;
+	vertical-align: middle;
+	position: absolute;
+	border-right: thick solid #fff;
+	right: 5px;
+	top: 72%;
+}
+#tournament-list {
+	background: rgba(241,241,241,0.7);
+	position: absolute;
+	border-right: thick solid #fff;
+}
+	
+	#tournament-list2 {
+	background: rgba(241,241,241,0.7);
+	position: absolute;
+	border-right: thick solid #fff;
+}
+#tournament-list:hover {
+	background: white;
+	cursor: pointer;
+}
+#tournament-list .title {
+	margin-top: 16px;
+}
+#tournament-club:hover {
+	background: white;
+	cursor: pointer;
+}
+#tournament-club .logo-club {
+	background: rgba(241,241,241,0.7);
+	width: 18%;
+	vertical-align: middle;
+	position: absolute;
+	right: 41%;
+	margin-top: -50px;
+}
+#tournament-club h1 {
+	margin-top: 60px;
+}
+#tournament-main img {
+	opacity: 0.5;
+}
+#tournament-main img.logo-club {
+	opacity: 1;
+	border: thick black;
+	z-index: 10;
+	position: absolute;
+	background-color: white;
+	margin-left: 70%;
+	margin-top: 30px;
+}
+#tournament-main ul {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-height: 334px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+#tournament-main li {
+	width: 100%;
+	max-height: 334px;
+	display: none;
+	position: relative;
+}
+#tournament-main li.active {
+	display: block !important;
+	max-height: 334px;
+}
+#tournament-main li span.opacity {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 99%;
+	height: 60%;
+	background: #000;
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	z-index: 2;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000', GradientType=0 ); /* IE6-9 */
+}
+#tournament-main li span.title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 70px;
+	z-index: 3;
+}
+#tournament-main li span.title h1 {
+	font-size: 36px;
+	margin: -10px 0 0 0;
+	padding: 0 20px;
+	color: white;
+	font-family: arial narrow, serif;
+}
+#tournament-main li span.title p {
+	font-size: 24px;
+	margin: 18px 0;
+	padding: 0 20px;
+	color: #ddd;
+}
+#slideshow-carousel {
+	float: right;
+	width: 19%;
+	position: relative;
+}
+#slideshow-carousel ul {
+	padding: 0;
+	list-style: none;
+}
+#slideshow-carousel li {
+	background: #fff;
+	height: 122.5px;
+	position: relative;
+}
+#slideshow-carousel li .arrow {
+	left: 3px;
+	top: 35px;
+	position: absolute;
+	width: 20px;
+	height: 40px;
+	background: url(images/arrow_white.png) no-repeat 0 0;
+	display: block;
+}
+#slideshow-carousel li a {
+	background: rgba(255, 255, 255);
+	display: block;
+	width: 100%;
+	height: 140px;
+}
+#slideshow-carousel .active {
+	filter: alpha(opacity=100);
+	-moz-opacity: 1.0;
+	-khtml-opacity: 1.0;
+	opacity: 1.0;
+}
+#slideshow-carousel .faded {
+	filter: alpha(opacity=20);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+#slideshow-carousel li span.opacity-small {
+	position: absolute;
+	bottom: 3px;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 32px;
+	background: #000;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	z-index: 2;
+}
+#slideshow-carousel li span.title-small {
+	position: absolute;
+	bottom: 0;
+	left: 8px;
+	display: block;
+	width: 100%;
+	height: 30px;
+	z-index: 3;
+	font-size: 12px;
+	color: white;
+}
+#slideshow-carousel li span .title-small h1 {
+	font-size: 7px;
+	margin: -40px 0 10px 10px;
+	padding: -40px 0 10px 10px;
+	font-family: arial narrow, serif;
+	vertical-align: middle;
+	z-index: 50;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h4 {
+  ;
+font-size: 16px;
+}
+
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
+font-size: 16px;
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+input:focus {
+  outline: 0;
+  border-color: #aaa;
+}
+input:focus + .input-icon i {
+  color: red;
+}
+input:focus + .input-icon:after {
+  border-right-color: #DDDDDD;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"] + label,
+select {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+  background-color: #ddd;
+  color: #000;
+  border-color: #eee;
+}
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  position: relative;
+  display: block;
+  padding-left: 1.6em;
+}
+input[type="checkbox"] + label:before {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  content: "";
+}
+input[type="checkbox"] + label:after {
+  position: absolute;
+  top: 0.45em;
+  left: 0.2em;
+  font-size: 18px;
+  color: #000;
+  opacity: 0;
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+input:checked + label:after {
+  opacity: 1;
+}
+select {
+  height: 3.4em;
+  line-height: 2;
+}
+select:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+select:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+input:hover{
+	background-color: #ccc;
+}
+select:focus,
+select:active {
+  outline: 0;
+}
+select option {
+  background-color: #eee;
+  color: #000;
+}
+.input-group {
+  margin-bottom: 1em;
+  zoom: 1;
+}
+.input-group:before,
+.input-group:after {
+  content: "";
+  display: table;
+}
+.input-group:after {
+  clear: both;
+}
+.input-radio:hover {
+  background-color: #ccc;
+}
+.input-group-icon {
+  position: relative;
+}
+.input-group-icon input {
+  padding-left: 4.4em;
+}
+.input-group-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4em;
+  height: 3.4em;
+  text-align: center;
+  pointer-events: none;
+margin-top: 20px;
+}
+.input-group-icon .input-icon:after {
+  position: absolute;
+  top: 0.6em;
+  bottom: 0.6em;
+  left: 3.4em;
+  display: block;
+  border-right: 1px solid #red;
+  content: "";
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.input-group-icon .input-icon i {
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.container {
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #fff;
+  border-radius: 0.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+.row {
+  zoom: 1;
+}
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.col-half {
+  padding-right: 2px;
+  float: left;
+  width: 50%;
+}
+.col-half:last-of-type {
+  padding-right: 0;
+}
+.col-third {
+  padding-right: 10px;
+  float: left;
+  width: 33.33333333%;
+}
+.col-third:last-of-type {
+  padding-right: 0;
+}
+@media only screen and (max-width: 540px) {
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
