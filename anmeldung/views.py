@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django import forms
-from anmeldung.models import Registration
+from anmeldung.models import Registration, CATEGORY_GERMANY
 
 
 class RegistrationForm(forms.ModelForm):
+    category = forms.ChoiceField(choices=CATEGORY_GERMANY, widget=forms.RadioSelect)
 
     class Meta:
         model = Registration
@@ -23,7 +24,6 @@ class RegistrationForm(forms.ModelForm):
 
 
 def index(request):
-    print("Hola Landing")
     return render(request, 'landing.html')
 
 
@@ -31,17 +31,14 @@ def anmeldung(request):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         if registration_form.is_valid():
-            print("Form is valid :)")
             return render(request, 'turnierliste.html')
         else:
-            print("Form is invalid :(")
             return render(request, 'anmeldung.html', {'form': registration_form})
     else:
         return render(request, 'anmeldung.html', {'form': RegistrationForm()})
 
 
 def turnierliste(request):
-    print("Hola Turnierliste")
     return render(request, 'turnierliste.html')
 
 
