@@ -12,7 +12,8 @@
 .women {background-color: #FF9292}/* pink */
 .senior {background-color: #e7e7e7} /* grey */
 .junior {background-color: #ff9800} /* blue */
-.mixed {background-color: #ccc} /* blue */
+.mixed {background-color: #ccc} /* grey */
+.info {background-color: #bbb} /* grey */
 
 button.accordion {
     background-color: #ddd;
