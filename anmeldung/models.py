@@ -36,10 +36,10 @@ class Player(models.Model):
 
 class Registration(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
-    tournament = models.ForeignKey(Tournament)
+    tournament = models.ForeignKey(Tournament, on_delete=models.DO_NOTHING)
     policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
-    player_a = models.ForeignKey(Player, related_name="player_a")
-    player_b = models.ForeignKey(Player, related_name="player_b")
+    player_a = models.ForeignKey(Player, related_name="player_a", on_delete=models.DO_NOTHING)
+    player_b = models.ForeignKey(Player, related_name="player_b", on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return " - ".join([str(self.player_a), str(self.player_b)])
