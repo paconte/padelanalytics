@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from anmeldung.forms import FullRegistrationForm
+from anmeldung.models import get_tournaments
 
 
 def index(request):
@@ -8,7 +9,6 @@ def index(request):
 
 def anmeldung(request):
     if request.method == 'POST':
-        # registration_form = RegistrationForm(request.POST)
         registration_form = FullRegistrationForm(request.POST)
         if registration_form.is_valid():
             registration_form.save()
@@ -18,11 +18,12 @@ def anmeldung(request):
             print(registration_form.errors)
             return render(request, 'anmeldung.html', {'form': registration_form})
     else:
-        # return render(request, 'anmeldung.html', {'form': RegistrationForm()})
         return render(request, 'anmeldung.html', {'form': FullRegistrationForm()})
 
 
 def turnierliste(request):
-    return render(request, 'turnierliste.html')
+    tournaments = get_tournaments()
+    print(tournaments)
+    return render(request, 'turnierliste.html', {'tournaments': tournaments})
 
 
