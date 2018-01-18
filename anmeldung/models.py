@@ -17,6 +17,9 @@ class Tournament(models.Model):
     def __str__(self):
         return " ".join([str(self.serie), str(self.city), str(self.category), str(self.date)])
 
+    def turnierliste_key(self):
+        return " ".join([str(self.serie), str(self.city), str(self.date)])
+
 
 class Player(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
@@ -44,6 +47,21 @@ class Registration(models.Model):
     def __str__(self):
         return " - ".join([str(self.player_a), str(self.player_b)])
 
+
+def get_tournaments():
+    tournaments = Tournament.objects.order_by('date', 'city')
+    result = dict()
+    for t in tournaments:
+        value = result.get(t.turnierliste_key(), None)
+        if value:
+            categories = value['categories']
+            categories[t.category] = t.id
+            value['categories'] = categories
+            result[t.turnierliste_key()] = value
+        else:
+            result[t.turnierliste_key()] = \
+                {'id': t.id, 'date': t.date, 'serie': t.serie, 'city': t.city, 'categories': {t.category: t.id}}
+    return result
 
 
 
