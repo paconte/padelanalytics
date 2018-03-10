@@ -13,11 +13,9 @@ body 						{background-color: #fdfdfd; font-family: Arial Narrow}
 .card button 				{background-color: #ccc; float: left; border:none; color: white; height: 50px; padding: 12px; }	
 .card button ul 			{text-align: center}
 
-.card .category				{width: 50px; margin: 0 5px}
+.card .category				{width: 40px; margin: 0 5px}
 
-.tournament-list {background: rgba(241,241,241,0.7); border-right: thick solid #fff; margin-top: 5px;}
-.tournament-list:hover { background: white; cursor: pointer; }
-.tournament-list .title { margin-top: 16px; }
+
 
 .form {
 	padding-top: 2px;
@@ -310,7 +308,7 @@ select option {
 	position: absolute;
 	border-right: thick solid #fff;
 }
-	
+
 	#tournament-list2 {
 	background: rgba(241,241,241,0.7);
 	position: absolute;

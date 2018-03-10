@@ -7,15 +7,52 @@
 {% endblock %}
 
 {% block content %}
-<div style="margin-top: 100px" class="container_12">
-{% for key, value in tournaments.items %}
-    {{value.date}}
-    {{value.serie}}
-    {{value.city}}
-    {% for category, value in value.categories.items %}
-    {{category}} {{value}}
-    {% endfor %}
-    <br>
-{% endfor %}
+
+    </div>
+<div style="margin-top: 50px" class="container_12">
+    <div class="card">
+        <h1>German Padel Series 2018</h1>
+        <h2>Turnierliste</h2>
+    </div>
+
+    <div class="card">
+        <div class="box">
+            <div class="col-xs-12 col-sm-9" style="float: right">
+                <div style="float: right; margin-right: 15px">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps100.jpg' %}" alt="GPS-100">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps250.jpg' %}" alt="GPS-250">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps1000.jpg' %}" alt="GPS-1000">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps1200.jpg' %}" alt="GPS-1200">
+                    <img class="col_1 category" src="{% static 'images/kategorien/w-gps.jpg' %}" alt="GPS-Women">
+                </div>
+            </div>
+        </div>
+            <div class="panel active">
+              <ul>
+                  {% for key, value in tournaments.items %}
+                <li class="col-xs-12 tournament-list" style="float: left">
+                  <div>
+                    <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">{{value.serie}}</h2>
+                    <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">{{value.city}}</h2>
+                    <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">{{value.date}}</h2>
+                    <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">{{value.club}}</h2>
+                        {% for category, value in value.categories.items %}
+                        {% if category == "Herren A" or category == "Herren B" %}
+                            <span href="turnier.html" class="col-sm-1 label men" style="float:right; margin-top:5px">{{category}}</span>
+                        {% elif category == "Damen" %}
+                            <span href="turnier.html" class="col-sm-1 label women" style="float:right; margin-top:5px">{{category}}</span>
+                        {% endif %}
+                        {% endfor %}
+                  </div>
+                </li>
+                  {% endfor %}
+              </ul>
+            </div>
+
+
+
+
+
 </div>
 {% endblock %}

@@ -1,12 +1,42 @@
 @charset "utf-8";
 /* CSS Document */
 
+/* Fondo radial */
+
+.module {
+  background: white;
+  border: 1px solid #ccc;
+  margin: 3%;
+  > h2 {
+    padding: 1rem;
+    margin: 0 0 0.5rem 0;
+  }
+  > p {
+    padding: 0 1rem;
+  }
+}
+
+.stripe-7 {
+  color: white;
+  background: repeating-radial-gradient(
+    circle,
+    purple,
+    purple 10px,
+    #4b026f 10px,
+    #4b026f 20px
+  );
+}
+
+/* Etiquetas de categorías */
+
 .label {
     color: white;
-    padding: 5px 0px;
+    padding: 4px 0px;
 	margin-right: 8px;
 	text-align: center;
+	font-size: 12px;
 }
+
 
 .men {background-color: #2196F3} /* blue */
 .women {background-color: #FF9292}/* pink */
@@ -29,6 +59,8 @@ button.accordion {
 	text-transform: uppercase;
 	
 }
+
+
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 button.accordion.active, button.accordion:hover {
@@ -399,9 +431,33 @@ height: 100%;
 	text-transform: none;
 	top: 12px;
 	position: absolute;
-
-
 }
+
+/* Lista de Torneos */
+
+.text_tournament{
+	color: grey;
+	font-weight: 200;
+	font-size-adjust: auto;
+	font-size: 14px;
+	margin: auto;
+	vertical: middle;
+}
+.tournament-list {
+    background: rgba(241,241,241,0.7);
+    border-right: thick solid #fff;
+    margin-top: 8px;
+}
+.tournament-list:hover {
+    background: white;
+    cursor: pointer;
+}
+.tournament-list .title {
+    margin-top: 16px;
+}
+
+
+
 
 .hr{
  margin-top: 0px;
