@@ -61,7 +61,7 @@ def get_tournaments():
             result[t.turnierliste_key()] = value
         else:
             result[t.turnierliste_key()] = \
-                {'id': t.id, 'signup': t.open, 'date': t.date, 'serie': t.serie, 'city': t.city, 'categories': {t.category: t.id}}
+                {'id': t.id, 'signup': t.signup, 'date': t.date, 'serie': t.serie, 'city': t.city, 'categories': {t.category: t.id}}
     return result
 
 
