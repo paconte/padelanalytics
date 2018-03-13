@@ -3,4 +3,13 @@
 
 {% block content %}
 <h1>HOLA MUNDO!!!!</h1>
+
+<ul>
+    {% for team in teams %}
+    <li>{{team}}<br>
+    {{team.player_a}} {{team.player_a.club}}</li>
+    <li>{{team.player_b}}</li>
+    {% endfor %}
+
+</ul>
 {% endblock %}

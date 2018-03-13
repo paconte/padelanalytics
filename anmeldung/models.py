@@ -65,4 +65,6 @@ def get_tournaments():
     return result
 
 
-
+def get_tournament_teams(tournament_id):
+    teams = Registration.objects.filter(tournament=tournament_id)
+    return teams
