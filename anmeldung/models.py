@@ -13,6 +13,7 @@ class Tournament(models.Model):
     category = models.CharField(choices=CATEGORY_GERMANY, max_length=20, default='Herren A')
     city = models.CharField(max_length=20)
     date = models.DateField()
+    signup = models.BooleanField(default=False)
 
     def __str__(self):
         return " ".join([str(self.serie), str(self.city), str(self.category), str(self.date)])
@@ -60,8 +61,10 @@ def get_tournaments():
             result[t.turnierliste_key()] = value
         else:
             result[t.turnierliste_key()] = \
-                {'id': t.id, 'date': t.date, 'serie': t.serie, 'city': t.city, 'categories': {t.category: t.id}}
+                {'id': t.id, 'signup': t.signup, 'date': t.date, 'serie': t.serie, 'city': t.city, 'categories': {t.category: t.id}}
     return result
 
 
-
+def get_tournament_teams(tournament_id):
+    teams = Registration.objects.filter(tournament=tournament_id)
+    return teams
