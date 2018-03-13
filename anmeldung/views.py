@@ -27,3 +27,8 @@ def turnierliste(request):
     return render(request, 'turnierliste.html', {'tournaments': tournaments})
 
 
+def tournament(request, id):
+    print(id)
+    return render(request, 'tournament.html')
+
+
