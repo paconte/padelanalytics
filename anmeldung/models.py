@@ -64,6 +64,10 @@ class Registration(models.Model):
         return " - ".join([str(self.player_a), str(self.player_b)])
 
 
+def get_tournament(id):
+    return Tournament.objects.get(pk=id)
+
+
 def get_tournaments():
     tournaments = Tournament.objects.order_by('date', 'city')
     result = dict()
