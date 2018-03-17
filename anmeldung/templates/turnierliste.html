@@ -44,7 +44,7 @@
                         {% for category, value in tournament.categories.items %}
                         {% if category == "Herren A" or category == "Herren B" %}
                         <a href="{% url 'tournament' tournament.id %}" class="col-sm-1 label men"
-                              style="float:right; margin-top:5px">{{category}} {{tournament.id}}</a>
+                              style="float:right; margin-top:5px">{{category}}</a>
                         {% elif category == "Damen" %}
                         <a href="{% url 'tournament' tournament.id %}" class="col-sm-1 label women"
                               style="float:right; margin-top:5px">{{category}}</a>
