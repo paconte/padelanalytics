@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from anmeldung.forms import FullRegistrationForm
-from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs
+from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs, \
+    get_similar_tournaments
 
 
 def index(request):
@@ -29,7 +30,10 @@ def turnierliste(request):
 def tournament(request, id):
     teams = get_tournament_teams_by_ranking(id)
     tournament = get_tournament(id)
-    return render(request, 'tournament.html', {'tournament': tournament, 'teams': teams})
+    similar_tournaments = get_similar_tournaments(id)
+    print(tournament, similar_tournaments)
+    return render(request, 'tournament.html',
+                  {'tournament': tournament, 'teams': teams, 'similar_tournamentes': similar_tournaments})
 
 
 def clubs(request):
