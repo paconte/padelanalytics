@@ -78,8 +78,7 @@ def get_similar_tournaments(t_id):
     similars = Tournament.objects.filter(date=tournament.date, city=tournament.city, club=tournament.club)
     for t in similars:
         if t.id != tournament.id:
-            result['category'] = t.category
-            result['id'] = t.id
+            result[t.category] = t.id
     return result
 
 
