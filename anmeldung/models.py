@@ -84,6 +84,11 @@ def get_tournaments():
     return result
 
 
-def get_tournament_teams(tournament_id):
+def get_tournament_teams_by_ranking(tournament_id):
     teams = Registration.objects.filter(tournament=tournament_id)
-    return teams
+    result = list()
+
+    for team in teams:
+        ranking = team.player_a.ranking_points + team.player_b.ranking_points
+        result.append((team, ranking))
+    return sorted(result, key=lambda x: x[1], reverse=True)
