@@ -7,8 +7,22 @@ CATEGORY_GERMANY = (('Herren A', 'Herren A'), ('Herren B', 'Herren B'), ('Damen'
 PLAYER = (('A', 'A'), ('B', 'B'))
 
 
+class Club(models.Model):
+    name = models.CharField(max_length=40)
+    city = models.CharField(max_length=30)
+    email = models.EmailField()
+    phone = models.CharField(max_length=24)
+    address = models.CharField(max_length=120, blank=True)
+    indoor_courts = models.PositiveIntegerField()
+    outdoor_courts = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.name
+
+
 class Tournament(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
+    club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     serie = models.CharField(choices=SERIE_GERMANY, max_length=20, default='GPS-500')
     category = models.CharField(choices=CATEGORY_GERMANY, max_length=20, default='Herren A')
     city = models.CharField(max_length=20)
@@ -26,10 +40,11 @@ class Player(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
     forename = models.CharField(max_length=24, verbose_name='First Name')
     surname = models.CharField(max_length=24, verbose_name='Last Name')
+    surname2 = models.CharField(max_length=24, blank=True)
     email = models.EmailField(verbose_name='Email')
     phone = models.CharField(max_length=64, verbose_name='Phone')
     city = models.CharField(max_length=32, verbose_name='City')
-    club = models.CharField(max_length=32, verbose_name='Club')
+    club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
@@ -47,6 +62,10 @@ class Registration(models.Model):
 
     def __str__(self):
         return " - ".join([str(self.player_a), str(self.player_b)])
+
+
+def get_tournament(id):
+    return Tournament.objects.get(pk=id)
 
 
 def get_tournaments():
