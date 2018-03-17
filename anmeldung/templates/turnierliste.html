@@ -37,8 +37,10 @@
                             {{tournament.serie}}</h2>
                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
                             {{tournament.city}}</h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">{{tournament.date}}</h2>
-                        <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">{{tournament.club}}</h2>
+                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
+                            {{tournament.date}}</h2>
+                        <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
+                            {{tournament.club}}</h2>
                         {% for category, value in tournament.categories.items %}
                         {% if category == "Herren A" or category == "Herren B" %}
                         <a href="{% url 'tournament' tournament.id %}" class="col-sm-1 label men"
