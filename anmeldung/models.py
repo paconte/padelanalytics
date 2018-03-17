@@ -40,6 +40,7 @@ class Player(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
     forename = models.CharField(max_length=24, verbose_name='First Name')
     surname = models.CharField(max_length=24, verbose_name='Last Name')
+    surname2 = models.CharField(max_length=24, blank=True)
     email = models.EmailField(verbose_name='Email')
     phone = models.CharField(max_length=64, verbose_name='Phone')
     city = models.CharField(max_length=32, verbose_name='City')
