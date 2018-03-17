@@ -64,6 +64,10 @@ class Registration(models.Model):
         return " - ".join([str(self.player_a), str(self.player_b)])
 
 
+def get_clubs():
+    return Club.objects.all()
+
+
 def get_tournament(id):
     return Tournament.objects.get(pk=id)
 
@@ -87,7 +91,6 @@ def get_tournaments():
 def get_tournament_teams_by_ranking(tournament_id):
     teams = Registration.objects.filter(tournament=tournament_id)
     result = list()
-
     for team in teams:
         ranking = team.player_a.ranking_points + team.player_b.ranking_points
         result.append((team, ranking))

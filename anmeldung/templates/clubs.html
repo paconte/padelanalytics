@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<h1>HOLA MUNDO</h1>
+
+{{clubs}}
+<br>
+
+{% for club in clubs %}
+{{club.name}} {{club.city}}<br>
+{% endfor %}
+
+
+{% for club in clubs %}
+{{club}}
+{% endfor %}
+
+{% endblock %}

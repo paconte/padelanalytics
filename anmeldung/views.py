@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from anmeldung.forms import FullRegistrationForm
-from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking
+from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs
 
 
 def index(request):
@@ -30,3 +30,10 @@ def tournament(request, id):
     teams = get_tournament_teams_by_ranking(id)
     tournament = get_tournament(id)
     return render(request, 'tournament.html', {'tournament': tournament, 'teams': teams})
+
+
+def clubs(request):
+    clubs = get_clubs()
+    print(clubs)
+    return render(request, 'clubs.html', {'clubs': clubs})
+
