@@ -33,7 +33,7 @@ def tournament(request, id):
     similar_tournaments = get_similar_tournaments(id)
     print(tournament, similar_tournaments)
     return render(request, 'tournament.html',
-                  {'tournament': tournament, 'teams': teams, 'similar_tournamentes': similar_tournaments})
+                  {'tournament': tournament, 'teams': teams, 'similar_tournaments': similar_tournaments})
 
 
 def clubs(request):
