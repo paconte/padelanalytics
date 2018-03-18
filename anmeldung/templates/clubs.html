@@ -4,22 +4,83 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
+
 {% endblock %}
 
 {% block content %}
 
-<h1>HOLA MUNDO</h1>
+<div style="margin-top: 50px" class="container_12">
+    <div class="card">
+        <h1>Deutschland</h1>
+        <h2>Standorte (Stand 03.2018)</h2>
+    </div>
+    <div class="card">
+        <div class="box" style="display:flex">
+            {% for club in clubs %}
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-container">
+                    <div class="card clubs">
+                        <div class="front">
+                            <div class="cover">
+                                <img src="{% static 'images/pista.jpg' %}">
+                            </div>
+                            <div class="user">
+                                <img class="img-circle"
+                                     src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}"/>
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h2 class="name">{{club.name}}</h2>
+                                    <h4><i class="fa fa-map-marker fa-fw text-muted"></i> {{club.city}}, Deutschland</h4>
+                                    <a><i class="fa fa-window-close a-fw text-muted"></i> {{club.indoor_courts}} Indoor </a><a><i class="fa fa-square a-fw text-muted"></i> {{club.outdoor_courts}} Outdoor </a>
+                                    <h4><i class="fa fa-envelope-o fa-fw text-muted"></i> {{club.email}}</h4>
+                                </div>
+                            </div>
+                        </div> <!-- end front panel -->
+                        <div class="back">
+                            <div class="content">
+                                <div class="main">
+                                    <h4 class="text-center">Adresse</h4>
+                                    <p>{{club.adress}}</p>
+                                    <p>13407 {{club.city}}, Deutschland</p>
+                                    <p>{{club.phone}}</p>
+                                    <h4 class="text-center">weitere Angebote</h4>
+                                    <p>Tennis</p>
+                                    <p>Beach-Volley</p>
+                                    <p>Fußball</p>
+                                    <p>Handball</p>
+                                    <p>Gastro</p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div class="social-links text-center">
+                                    <a href="http://cretive-tim.com" class="facebook"><i
+                                            class="fa fa-facebook fa-fw"></i></a>
+                                    <a href="http://cretive-tim.com" class="google"><i
+                                            class="fa fa-google-plus fa-fw"></i></a>
+                                    <a href="http://cretive-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                                </div>
+                            </div>
+                        </div> <!-- end back panel -->
+                    </div> <!-- end card -->
+                </div> <!-- end card-container -->
+            </div>
+            {% endfor %}
 
-{{clubs}}
-<br>
 
-{% for club in clubs %}
-{{club.name}} {{club.city}}<br>
-{% endfor %}
+        </div>
+    </div>
 
 
-{% for club in clubs %}
-{{club}}
-{% endfor %}
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
 
-{% endblock %}
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+    {% endblock %}
