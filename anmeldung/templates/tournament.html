@@ -23,7 +23,7 @@
                 </div>
             <!-- Serie y Categoria -->
                 <div class="col-xs-12 col-sm-1" style="float: right">
-                    <a class="text_tournament_title">{{tournament.category}}</a>
+                    <a class="text_tournament_title">{{tournament.category}}</a><br>
                     <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
                 </div>
             <!-- Menú desplegable Categorias -->
@@ -33,23 +33,27 @@
                         Kategorie
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {% for category, id in similar_tournaments.items %}
-                        <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
-                          {% endfor %}
+                            {% for category, id in similar_tournaments.items %}
+                            <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
+                            {% endfor %}
                       </div>
                     </div>
                 {% endif %}
             <!-- 1 Espacio libre -->
                 <div class="col-sm-1" style="float: right"></div>
-            <!-- Anmeldung -->
-                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: right; margin-bottom: 8px">Anmeldung</button>
             <!-- Ciudad y Club Arriba -->
-                <div class="col-xs-12 col-sm-5" style="left: 0px">
-                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} // {{tournament.club}}</a>
-                </div>
-            <!-- Fecha Abajo -->
-                <div class="col-xs-12 col-sm-5" style="left: 0px">
+                <div class="col-xs-12 col-sm-4" style="float: left">
+                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} // {{tournament.club}}</a><br>
                     <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
+                </div>
+            <!-- 1 Espacio libre -->
+                <div class="col-sm-1" style="float: left"></div>
+
+            <!-- Anmeldung -->
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">Anmeldung</button>
+
+            <!-- Fecha Abajo -->
+                <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
             <!-- Lista de equipos apuntados */-->
                 {% if teams|length != 0 %}
@@ -110,6 +114,12 @@
 
                     <!-- Aquí termina el html importado de Dreamweaver */-->
 
+                </div>
+                {% else %}
+
+                <div class="panel" style="max-height:inherit"><hr>
+                <h2>Kein Team hat sich für das Turnier angemeldet.</h2>
+                <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
                 </div>
                 {% endif %}
         </div>
