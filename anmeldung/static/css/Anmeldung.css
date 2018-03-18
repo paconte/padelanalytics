@@ -10,7 +10,7 @@ body 						{background-color: #fdfdfd; font-family: Arial Narrow}
 .card 						{box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.2); transition: 0.3s; margin-top: 20px; padding: 16px}
 .card:hover 				{box-shadow: 3px 3px 12px 0 rgba(0,0,0,0.2);}
 
-.card button 				{background-color: #ccc; float: left; border:none; color: white; height: 50px; padding: 12px; }	
+.card button 				{background-color: #DC4C46; float: left; border:none; color: white; height: 50px; padding: 12px; }
 .card button ul 			{text-align: center}
 
 .card .category				{width: 40px; margin: 0 5px}

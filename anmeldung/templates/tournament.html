@@ -15,87 +15,103 @@
 
     <div class="card">
         <div class="box">
-
-            <div class="col-xs-12 col-sm-1" style="float: right">
-                <div style="float: right; margin-bottom: 8px">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
+            <!-- Logo Serie -->
+                <div class="col-xs-12 col-sm-1" style="float: right">
+                    <div style="float: right; margin-bottom: 8px">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-1" style="float: right">
-                <a class="text_tournament_title">{{tournament.category}}</a>
-                <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-9" style="left: 0px">
-                <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} // {{tournament.club}}</a>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-9" style="left: 0px">
-                <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
-            </div>
-
-            <!-- Aquí comienza el html importado de Dreamweaver */-->
-
-            <button class="accordion active">Teams</button>
-            <div class="panel" style="max-height:inherit">
-                <div class="teams_title">
-                    <div class="th col-sm-1"></div>
-                    <div class="th col-sm-2"> Spieler 1</div>
-                    <div class="th col-sm-2"> Verein</div>
-
-                    <div class="th col-sm-1"></div>
-                    <div class="th col-sm-2"> Spieler 2</div>
-                    <div class="th col-sm-2"> Verein</div>
-
-                    <!--<div class="th col-sm-1"> KOPF</div>-->
-                    <div class="th col-sm-1"> DPV</div>
+            <!-- Serie y Categoria -->
+                <div class="col-xs-12 col-sm-1" style="float: right">
+                    <a class="text_tournament_title">{{tournament.category}}</a>
+                    <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
                 </div>
-                {% for team in teams %}
-                <ul class="teams">
+            <!-- Menú desplegable Categorias -->
+                {% if similar_tournaments|length != 0 %}
+                    <div class="dropdown col-xs-12 col-sm-2" style="float: right; opacity: 0,5">
+                      <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Kategorie
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for category, id in similar_tournaments.items %}
+                        <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
+                          {% endfor %}
+                      </div>
+                    </div>
+                {% endif %}
+            <!-- 1 Espacio libre -->
+                <div class="col-sm-1" style="float: right"></div>
+            <!-- Anmeldung -->
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: right; margin-bottom: 8px">Anmeldung</button>
+            <!-- Ciudad y Club Arriba -->
+                <div class="col-xs-12 col-sm-5" style="left: 0px">
+                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} // {{tournament.club}}</a>
+                </div>
+            <!-- Fecha Abajo -->
+                <div class="col-xs-12 col-sm-5" style="left: 0px">
+                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
+                </div>
+            <!-- Lista de equipos apuntados */-->
+                {% if teams|length != 0 %}
+                <button class="accordion active">Teams</button>
+                <div class="panel" style="max-height:inherit">
+                    <div class="teams_title">
+                        <div class="th col-sm-1"></div>
+                        <div class="th col-sm-2"> Spieler 1</div>
+                        <div class="th col-sm-2"> Verein</div>
 
-                    <hr class="hr">
-                    <ul class="th col-sm-1">
+                        <div class="th col-sm-1"></div>
+                        <div class="th col-sm-2"> Spieler 2</div>
+                        <div class="th col-sm-2"> Verein</div>
 
-                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                        <!--<div class="th col-sm-1"> KOPF</div>-->
+                        <div class="th col-sm-1"> DPV</div>
+                    </div>
+                    {% for team in teams %}
+                    <ul class="teams">
+
+                        <hr class="hr">
+                        <ul class="th col-sm-1">
+
+                            <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
+                            <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
+                            </div>
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club">{{team.0.player_a.club}}</a></div>
+                        </ul>
+
+                        <ul class="th col-sm-1">
+                            <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
+                            <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
+                            </div>
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club">{{team.0.player_b.club}}</a></div>
+                        </ul>
+
+                        <!--<ul class="th col-sm-1">
+                            <div><a class="text_club"
+                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
+                        </ul>-->
+                        <ul class="th col-sm-1">
+                            <div><a class="text_club">{{team.1}} Pkt.</a></div>
+                        </ul>
                     </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
-                        </div>
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club">{{team.0.player_a.club}}</a></div>
-                    </ul>
 
-                    <ul class="th col-sm-1">
-                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
-                        </div>
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club">{{team.0.player_b.club}}</a></div>
-                    </ul>
-
-                    <!--<ul class="th col-sm-1">
-                        <div><a class="text_club"
-                                style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                    </ul>-->
-                    <ul class="th col-sm-1">
-                        <div><a class="text_club">{{team.1}} Pkt.</a></div>
-                    </ul>
-                </ul>
-
-                {% endfor %}
+                    {% endfor %}
 
 
-                <!-- Aquí termina el html importado de Dreamweaver */-->
+                    <!-- Aquí termina el html importado de Dreamweaver */-->
 
-            </div>
+                </div>
+                {% endif %}
         </div>
     </div>
 </div>
