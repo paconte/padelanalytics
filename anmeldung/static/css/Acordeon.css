@@ -440,9 +440,10 @@ height: 100%;
 	color: grey;
 	font-weight: 200;
 	font-size-adjust: auto;
-	font-size: 14px;
+	font-size: 16px;
 	margin: auto;
 	vertical: middle;
+	margin-top: 5px;
 }
 .tournament-list {
     background: rgba(241,241,241,0.7);

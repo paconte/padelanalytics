@@ -33,21 +33,21 @@
                 {% for key, tournament in tournaments.items %}
                 <li class="col-xs-12 tournament-list" style="float: left">
                     <div>
+                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
+                            {{tournament.date}}</h2>
                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
                             {{tournament.serie}}</h2>
                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
                             {{tournament.city}}</h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
-                            {{tournament.date}}</h2>
                         <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
                             {{tournament.club}}</h2>
                         {% for category, value in tournament.categories.items %}
                         {% if category == "Herren A" or category == "Herren B" %}
                         <a href="{% url 'tournament' value %}" class="col-sm-1 label men"
-                              style="float:right; margin-top:5px">{{category}}</a>
+                              style="float:right; margin-top:7px">{{category}}</a>
                         {% elif category == "Damen" %}
                         <a href="{% url 'tournament' value %}" class="col-sm-1 label women"
-                              style="float:right; margin-top:5px">{{category}}</a>
+                              style="float:right; margin-top:7px">{{category}}</a>
                         {% endif %}
                         {% endfor %}
                     </div>
