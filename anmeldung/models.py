@@ -8,7 +8,7 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 
 
 class Club(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=50)
     city = models.CharField(max_length=30)
     email = models.EmailField()
     phone = models.CharField(max_length=24)
@@ -30,7 +30,7 @@ class Tournament(models.Model):
     signup = models.BooleanField(default=False)
 
     def __str__(self):
-        return " ".join([str(self.serie), str(self.city), str(self.category), str(self.date)])
+        return " ".join([str(self.date), str(self.serie), str(self.city), str(self.category)])
 
     def turnierliste_key(self):
         return " ".join([str(self.serie), str(self.city), str(self.date)])
