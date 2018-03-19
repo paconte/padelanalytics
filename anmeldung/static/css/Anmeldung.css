@@ -106,9 +106,9 @@ input[type="checkbox"] + label:before {
 }
 input[type="checkbox"] + label:after {
   position: absolute;
-  top: 0.45em;
-  left: 0.2em;
-  font-size: 18px;
+  top: -0.15em;
+  left: 0.1em;
+  font-size: 16px;
   color: #000;
   opacity: 0;
   font-family: FontAwesome;
@@ -148,7 +148,7 @@ select option {
 .input-group:before, .input-group:after { content: ""; display: table;}
 .input-radio:hover 						{ background-color: #ccc;}
 .input-group-icon input 				{ padding-left: 4.4em;}
-.input-group-icon .input-icon 			{ position: absolute; width: 3.4em; height: 3.4em; text-align: center; cursor: pointer; margin-top: 15px;}
+.input-group-icon .input-icon 			{ position: absolute; width: 3.4em; height: 3.4em; text-align: center; cursor: pointer; margin-top: 20px;}
 
 .input-group-icon .input-icon i 		{ -webkit-transition: 0.35s ease-in-out; -moz-transition: 0.35s ease-in-out; -o-transition: 0.35s ease-in-out; 
 										transition: 0.35s ease-in-out; transition: all 0.35s ease-in-out;}
@@ -619,6 +619,7 @@ select option {
 }
 .input-radio:hover {
   background-color: #ccc;
+  color:red;
 }
 .input-group-icon {
   position: relative;
@@ -634,7 +635,7 @@ select option {
   height: 3.4em;
   text-align: center;
   pointer-events: none;
-margin-top: 20px;
+    margin-top: 20px;
 }
 .input-group-icon .input-icon:after {
   position: absolute;
@@ -697,4 +698,7 @@ margin-top: 20px;
     width: 100%;
     padding-right: 0;
   }
+}
+input:focus + .input-icon i {
+  color: red;
 }
