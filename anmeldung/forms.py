@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.db import DataError
-from anmeldung.models import CATEGORY_GERMANY, Tournament, Player, Registration
+from anmeldung.models import CATEGORY_GERMANY, Club, Tournament, Player, Registration
 from anmeldung.validators import policy_read_validator, DATE_FORMAT, convert_date
 
 
@@ -26,10 +26,6 @@ class RegistrationForm(forms.ModelForm):
 
 
 class FullRegistrationForm(forms.Form):
-    #if id:
-    #    tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True), initial=id)
-    #else:
-    #    tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True))
     tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True))
 
     policy_read = forms.BooleanField(initial=True, validators=[policy_read_validator])
@@ -56,10 +52,7 @@ class FullRegistrationForm(forms.Form):
         max_length=32,
         widget=forms.TextInput(attrs={'placeholder': 'Wohnort'})
     )
-    club_a = forms.CharField(
-        max_length=32,
-        widget=forms.TextInput(attrs={'placeholder': 'Verein'})
-    )
+    club_a = forms.ModelChoiceField(queryset=Club.objects.all())
     birthplace_a = forms.CharField(
         max_length=32,
         widget=forms.TextInput(attrs={'placeholder': 'Geburtsort'})
@@ -91,10 +84,7 @@ class FullRegistrationForm(forms.Form):
         max_length=32,
         widget=forms.TextInput(attrs={'placeholder': 'Wohnort'})
     )
-    club_b = forms.CharField(
-        max_length=32,
-        widget=forms.TextInput(attrs={'placeholder': 'Verein'})
-    )
+    club_b = forms.ModelChoiceField(queryset=Club.objects.all())
     birthplace_b = forms.CharField(
         max_length=32,
         widget=forms.TextInput(attrs={'placeholder': 'Geburtsort'})
