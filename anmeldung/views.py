@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'landing.html')
 
 
-def anmeldung(request):
+def tournament_signup(request, id=None):
     if request.method == 'POST':
         registration_form = FullRegistrationForm(request.POST)
         if registration_form.is_valid():
@@ -19,7 +19,11 @@ def anmeldung(request):
             print(registration_form.errors)
             return render(request, 'anmeldung.html', {'form': registration_form})
     else:
-        return render(request, 'anmeldung.html', {'form': FullRegistrationForm()})
+        if id:
+            form = FullRegistrationForm(initial={'tournament_name': id})
+        else:
+            form = FullRegistrationForm()
+        return render(request, 'anmeldung.html', {'form': form})
 
 
 def turnierliste(request):
