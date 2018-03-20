@@ -26,7 +26,12 @@ class RegistrationForm(forms.ModelForm):
 
 
 class FullRegistrationForm(forms.Form):
+    #if id:
+    #    tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True), initial=id)
+    #else:
+    #    tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True))
     tournament_name = forms.ModelChoiceField(queryset=Tournament.objects.filter(signup=True))
+
     policy_read = forms.BooleanField(initial=True, validators=[policy_read_validator])
     # playerA = forms.ModelChoiceField(queryset=Player.objects.all())
     # playerB = forms.ModelChoiceField(queryset=Player.objects.all())
