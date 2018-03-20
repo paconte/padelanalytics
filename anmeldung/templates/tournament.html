@@ -52,9 +52,11 @@
             <div class="col-sm-1" style="float: left"></div>
 
             <!-- Anmeldung -->
+            {% if tournament.signup %}
             <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
                 <a href="{% url 'tournament_signup' tournament.id %}">Anmeldung</a>
             </button>
+            {% endif %}
 
             <!-- Fecha Abajo -->
             <div class="col-xs-12 col-sm-4" style="left: 0px">
