@@ -16,112 +16,477 @@
     <div class="card">
         <div class="box">
             <!-- Logo Serie -->
-                <div class="col-xs-12 col-sm-1" style="float: right">
-                    <div style="float: right; margin-bottom: 8px">
-                        <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
-                    </div>
+            <div class="col-xs-12 col-sm-1" style="float: right">
+                <div style="float: right; margin-bottom: 8px">
+                    <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
                 </div>
+            </div>
             <!-- Serie y Categoria -->
-                <div class="col-xs-12 col-sm-1" style="float: right">
-                    <a class="text_tournament_title">{{tournament.category}}</a><br>
-                    <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
-                </div>
+            <div class="col-xs-12 col-sm-1" style="float: right">
+                <a class="text_tournament_title">{{tournament.category}}</a><br>
+                <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
+            </div>
             <!-- Menú desplegable Categorias -->
-                {% if similar_tournaments|length != 0 %}
-                    <div class="dropdown col-xs-12 col-sm-2" style="float: right; opacity: 0,5">
-                      <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Kategorie
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for category, id in similar_tournaments.items %}
-                            <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
-                            {% endfor %}
-                      </div>
-                    </div>
-                {% endif %}
-            <!-- 1 Espacio libre -->
-                <div class="col-sm-1" style="float: right"></div>
-            <!-- Ciudad y Club Arriba -->
-                <div class="col-xs-12 col-sm-4" style="float: left">
-                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} // {{tournament.club}}</a><br>
-                    <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
+            {% if similar_tournaments|length != 0 %}
+            <div class="dropdown col-xs-12 col-sm-2" style="float: right; opacity: 0,5">
+                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Kategorie
+                </button>
+                <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
+                    {% for category, id in similar_tournaments.items %}
+                    <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
+                    {% endfor %}
                 </div>
+            </div>
+            {% endif %}
             <!-- 1 Espacio libre -->
-                <div class="col-sm-1" style="float: left"></div>
+            <div class="col-sm-1" style="float: right"></div>
+            <!-- Ciudad y Club Arriba -->
+            <div class="col-xs-12 col-sm-4" style="float: left">
+                <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} //
+                    {{tournament.club}}</a><br>
+                <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
+            </div>
+            <!-- 1 Espacio libre -->
+            <div class="col-sm-1" style="float: left"></div>
 
             <!-- Anmeldung -->
-                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">Anmeldung</button>
+            <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
+                Anmeldung
+            </button>
 
             <!-- Fecha Abajo -->
-                <div class="col-xs-12 col-sm-4" style="left: 0px">
-                </div>
+            <div class="col-xs-12 col-sm-4" style="left: 0px">
+            </div>
             <!-- Lista de equipos apuntados */-->
-                {% if teams|length != 0 %}
-                <button class="accordion active">Teams</button>
-                <div class="panel" style="max-height:inherit">
-                    <div class="teams_title">
-                        <div class="th col-sm-1"></div>
-                        <div class="th col-sm-2"> Spieler 1</div>
-                        <div class="th col-sm-2"> Verein</div>
+            {% if teams|length != 0 %}
+            <button class="accordion active">Teams</button>
+            <div class="panel" style="max-height:inherit">
+                <div class="teams_title">
+                    <div class="th col-sm-1"></div>
+                    <div class="th col-sm-2"> Spieler 1</div>
+                    <div class="th col-sm-2"> Verein</div>
 
-                        <div class="th col-sm-1"></div>
-                        <div class="th col-sm-2"> Spieler 2</div>
-                        <div class="th col-sm-2"> Verein</div>
+                    <div class="th col-sm-1"></div>
+                    <div class="th col-sm-2"> Spieler 2</div>
+                    <div class="th col-sm-2"> Verein</div>
 
-                        <!--<div class="th col-sm-1"> KOPF</div>-->
-                        <div class="th col-sm-1"> DPV</div>
-                    </div>
-                    {% for team in teams %}
-                    <ul class="teams">
+                    <!--<div class="th col-sm-1"> KOPF</div>-->
+                    <div class="th col-sm-1"> DPV</div>
+                </div>
+                {% for team in teams %}
+                <ul class="teams">
 
-                        <hr class="hr">
-                        <ul class="th col-sm-1">
+                    <hr class="hr">
+                    <ul class="th col-sm-1">
 
-                            <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                            <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
-                            </div>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club">{{team.0.player_a.club}}</a></div>
-                        </ul>
-
-                        <ul class="th col-sm-1">
-                            <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                            <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
-                            </div>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club">{{team.0.player_b.club}}</a></div>
-                        </ul>
-
-                        <!--<ul class="th col-sm-1">
-                            <div><a class="text_club"
-                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                        </ul>-->
-                        <ul class="th col-sm-1">
-                            <div><a class="text_club">{{team.1}} Pkt.</a></div>
-                        </ul>
+                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
+                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                    </ul>
+                    <ul class="th col-sm-2">
+                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
+                        </div>
+                    </ul>
+                    <ul class="th col-sm-2">
+                        <div><a class="text_club">{{team.0.player_a.club}}</a></div>
                     </ul>
 
-                    {% endfor %}
+                    <ul class="th col-sm-1">
+                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
+                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                    </ul>
+                    <ul class="th col-sm-2">
+                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
+                        </div>
+                    </ul>
+                    <ul class="th col-sm-2">
+                        <div><a class="text_club">{{team.0.player_b.club}}</a></div>
+                    </ul>
+
+                    <!--<ul class="th col-sm-1">
+                        <div><a class="text_club"
+                                style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
+                    </ul>-->
+                    <ul class="th col-sm-1">
+                        <div><a class="text_club">{{team.1}} Pkt.</a></div>
+                    </ul>
+                </ul>
+
+                {% endfor %}
 
 
-                    <!-- Aquí termina el html importado de Dreamweaver */-->
+                <!-- Aquí termina el html importado de Dreamweaver */-->
 
-                </div>
-                {% else %}
+            </div>
+            {% else %}
 
-                <div class="panel" style="max-height:inherit"><hr>
+            <div class="panel" style="max-height:inherit">
+                <hr>
                 <h2>Kein Team hat sich für das Turnier angemeldet.</h2>
                 <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
+            </div>
+            {% endif %}
+
+            <button class="accordion active" style="margin-top: 20px">Gruppe A</button>
+            <div class="panel" style="max-height:inherit">
+                <div style="width: 55%; float: left">
+                        <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A1</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="col1_matches_nac">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <div class="matches_nac">
+                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Álvaro Lázaro</a> <br>
+                            <a class="text_player">Isaac San Frutos</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                    </ul>
+                    <hr class="hr">
+                    <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A2</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Jan Mayer</a> <br>
+                            <a class="text_player">Stefan Kross</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Marc Snellink</a> <br>
+                            <a class="text_player">Jon Smith</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                    </ul>
+                    <hr class="hr">
+                    </hr>
+                    <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A3</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="col1_matches_nac">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <div class="matches_nac">
+                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Jan Mayer</a> <br>
+                            <a class="text_player">Stefan Kross</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                    </ul>
+                    <hr class="hr">
+                    </hr>
+                    <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A4</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Álvaro Lázaro</a> <br>
+                            <a class="text_player">Isaac San Frutos</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Marc Snellink</a> <br>
+                            <a class="text_player">Jon Smith</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                    </ul>
+                    <hr class="hr">
+                    </hr>
+                    <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A5</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="col1_matches_nac">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <div class="matches_nac">
+                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <div class="matches_nac">
+                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Marc Snellink</a> <br>
+                            <a class="text_player">Jon Smith</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                    </ul>
+                    <hr class="hr">
+                    </hr>
+                    <ul class="teams_groups">
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A6</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Álvaro Lázaro</a> <br>
+                            <a class="text_player">Isaac San Frutos</a>
+                        </ul>
+                        <ul class="th col1 vertical_match_defeats">
+                            <span class="label matches">Vs</span>
+                        </ul>
+                        <ul class="th col1">
+                            <div class="matches_nac">
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                            <br>
+                            <div class="matches_nac">
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                        </ul>
+                        <ul class="th col2" style="width: 30%">
+                            <a class="text_player">Jan Mayer</a> <br>
+                            <a class="text_player">Stefan Kross</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 6%">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col1_matches_score" style="width: 7%">
+                            <a class="text_score">0 10</a>
+                        </ul>
                 </div>
-                {% endif %}
+                <div class="card_groups" style="width: 42%; float: right">
+                    <div class="teams_title" style="color:black; float:right; text-align:center">
+                        <div class="th col-sm-6"></div>
+                        <div class="th col-sm-2"> Punkte</div>
+                        <div class="th col-sm-2"> Sätze</div>
+                        <div class="th col-sm-2"> Spiele</div>
+                    </div>
+                    <div class="teams_title" style="float:right; margin-top: -5px; text-align:center">
+                        <div class="th col-sm-8"></div>
+                        <div class="th col-sm-1"> G</div>
+                        <div class="th col-sm-1"> V</div>
+                        <div class="th col-sm-1"> G</div>
+                        <div class="th col-sm-1"> V</div>
+                    </div>
+
+                    <ul class="teams_groups">
+                        <ul class="col-2"><hr>
+                            <ul class="th col1 vertical_match">
+                                <span class="label matches" style="max-height: 10px">1.</span>
+                            </ul>
+                            <ul class="th col1">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                            </ul>
+                        </ul>
+                        <ul class="th col-5">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <div style="margin-right:15px">
+                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                        </div>
+                        <br>
+                    </ul>
+                    <ul class="teams_groups">
+                        <ul class="col-2"><hr>
+                            <ul class="th col1 vertical_match">
+                                <span class="label matches" style="max-height: 10px">2.</span>
+                            </ul>
+                            <ul class="th col1">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                            </ul>
+                        </ul>
+                        <ul class="th col-5">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <div style="margin-right:15px">
+                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                        </div>
+                        <br>
+                    </ul>
+                    <ul class="teams_groups">
+                        <ul class="col-2"><hr>
+                            <ul class="th col1 vertical_match">
+                                <span class="label matches" style="max-height: 10px">3.</span>
+                            </ul>
+                            <ul class="th col1">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                            </ul>
+                        </ul>
+                        <ul class="th col-5">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <div style="margin-right:15px">
+                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                        </div>
+                        <br>
+                    </ul>
+                    <ul class="teams_groups">
+                        <ul class="col-2">
+                            <ul class="th col1 vertical_match">
+                                <span class="label matches" style="max-height: 10px">4.</span>
+                            </ul>
+                            <ul class="th col1">
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                            </ul>
+                        </ul>
+                        <ul class="th col-5">
+                            <a class="text_player">Paco Revilla</a> <br>
+                            <a class="text_player">Fran González</a>
+                        </ul>
+                        <div style="margin-right:15px">
+                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                        </div>
+                        <br>
+                    </ul>
+                </div>
+
+            </div>
+
+
         </div>
     </div>
 </div>

@@ -46,6 +46,14 @@
 .mixed {background-color: #ccc} /* grey */
 .info {background-color: #bbb} /* grey */
 
+.label.matches {
+    color: grey;
+	margin: 8px;
+	text-align: center;
+	font-size: 12px;
+	cursor:pointer;
+}
+
 button.accordion {
     background-color: #ddd;
     color: black;
@@ -280,7 +288,7 @@ ul { padding: 0; margin: 0; list-style: none;
 	background-color: rgba(213,212,217,1.00);
 	margin-left: 2px;
 	margin-top: 8px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .vertical_match_defeats {
@@ -335,13 +343,11 @@ ul { padding: 0; margin: 0; list-style: none;
 .col1 .flag1 {
 	max-height: 16px;
 	float: left; 
-	margin-top: -4px
 }
 
 .col1 .flag2 {
 	max-height: 16px;
 	float: left; 
-	margin-top: -2px
 }
 
 .col2_matches {

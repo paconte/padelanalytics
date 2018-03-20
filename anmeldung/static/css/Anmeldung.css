@@ -15,6 +15,9 @@ body 						{background-color: #fdfdfd; font-family: Arial Narrow}
 
 .card .category				{width: 40px; margin: 0 5px}
 
+.card_groups				{border: 1px solid rgba(0,0,0,0.2); margin-top: 10px; border-radius: 5px; padding-bottom: 8px}
+
+
 
 
 .form {
