@@ -30,7 +30,7 @@ class Tournament(models.Model):
     signup = models.BooleanField(default=False)
 
     def __str__(self):
-        return " ".join([str(self.date), str(self.serie), str(self.city), str(self.category)])
+        return "  /  ".join([str(self.date), str(self.serie), str(self.city), str(self.category)])
 
     def turnierliste_key(self):
         return " ".join([str(self.serie), str(self.city), str(self.date)])
