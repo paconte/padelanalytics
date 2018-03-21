@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from anmeldung.forms import FullRegistrationForm
 from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs, \
     get_similar_tournaments
@@ -13,7 +13,7 @@ def tournament_signup(request, id=None):
         registration_form = FullRegistrationForm(request.POST)
         if registration_form.is_valid():
             registration_form.save()
-            return render(request, 'turnierliste.html')
+            return redirect('tournament', registration_form.cleaned_data['tournament_name'].id)
         else:
             print('Form is INvalid :(')
             print(registration_form.errors)

@@ -1,5 +1,7 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from anmeldung.validators import policy_read_validator
+from django_countries.fields import CountryField
 
 
 SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'), ('GPS-1200', 'GPS-1200'))
@@ -10,6 +12,7 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 class Club(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=30)
+    postcode = models.PositiveIntegerField(validators=[MinValueValidator(99), MaxValueValidator(1000000)])
     email = models.EmailField()
     phone = models.CharField(max_length=24)
     address = models.CharField(max_length=120, blank=True)
@@ -43,6 +46,7 @@ class Player(models.Model):
     surname2 = models.CharField(max_length=24, blank=True)
     email = models.EmailField(verbose_name='Email')
     phone = models.CharField(max_length=64, verbose_name='Phone')
+    country = CountryField()
     city = models.CharField(max_length=32, verbose_name='City')
     club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')

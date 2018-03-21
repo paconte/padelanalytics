@@ -4,6 +4,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -52,11 +53,15 @@
             <div class="col-sm-1" style="float: left"></div>
 
             <!-- Anmeldung -->
+
+            {% if tournament.signup %}
             <a href="{% url 'tournament_signup' tournament.id %}">
                 <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
                     Anmeldung
                 </button>
             </a>
+            {% endif %}
+
 
             <!-- Fecha Abajo -->
             <div class="col-xs-12 col-sm-4" style="left: 0px">
@@ -82,9 +87,11 @@
 
                     <hr class="hr">
                     <ul class="th col-sm-1">
-
                         <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Favicon.jpg' %}">
+
+                        <img class="picture" src="{{team.0.player_a.country.flag}}">
+                        <i class="{{ team.0.player_a.country.flag_css }}"></i>
+
                     </ul>
                     <ul class="th col-sm-2">
                         <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
@@ -142,6 +149,8 @@
                                 <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
                                 <div class="matches_nac">
                                     <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                                </div>
+                            </div>
                         </ul>
                         <ul class="th col2" style="width: 30%">
                             <a class="text_player">Paco Revilla</a> <br>
@@ -152,13 +161,16 @@
                         </ul>
                         <ul class="th col1">
                             <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}">
+                            </div>
                             <br>
                             <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
+                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}">
+                            </div>
                         </ul>
                         <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Álvaro Lázaro</a> <br>
+                            <a class="text_player">Álvaro Lázaro</a>
+                            <br>
                             <a class="text_player">Isaac San Frutos</a>
                         </ul>
                         <ul class="th col1_matches_score" style="width: 6%">
