@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -40,7 +41,7 @@
             <div class="dropdown col-12">
                 <h3>Wähl ein Turnier aus</h3>
                 <div class="input-group">
-                    {{form.tournament_name}}
+                    {{form.tournament_name|add_class:"form_tournament"}}
                 </div>
             </div>
 
@@ -176,13 +177,10 @@
                     here if you accept these terms.
                 </label>
             </div>
-            <div class="box">
-                <button class="col-sm-2 col-xl-2">
-                    <div>
-                        <ul class="col-12" style="float: right">OK</ul>
-                    </div>
-                </button>
-            </div>
+            <!-- OK -->
+            <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
+                OK
+            </button>
         </form>
     </div>
 </div>
@@ -212,6 +210,7 @@
       defaultDate: "-30y"
     });
   });
+
 
 </script>
 {% endblock %}

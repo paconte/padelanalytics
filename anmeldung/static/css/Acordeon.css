@@ -961,3 +961,7 @@ html {
 .tournament-bracket__medal--bronze {
   color: #CD7F32;
 }
+
+.btn {
+cursor: pointer;
+}

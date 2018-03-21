@@ -17,7 +17,7 @@ body 						{background-color: #fdfdfd; font-family: Arial Narrow}
 
 .card_groups				{border: 1px solid rgba(0,0,0,0.2); margin-top: 10px; border-radius: 5px; padding-bottom: 8px}
 
-
+.form_tournament            {width: 40%; padding: 0; text-align: center}
 
 
 .form {
@@ -65,11 +65,12 @@ input[type="radio"] {
 input[type="radio"] + label,
 select {
   display: inline-block;
-  width: 25%;
-  text-align: center;
-  float: left;
+  width: 100%;
+  padding-left:4.4em;
   border-radius: 0;
 }
+
+
 input[type="radio"] + label:first-of-type {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
