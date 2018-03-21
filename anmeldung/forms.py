@@ -105,7 +105,7 @@ class FullRegistrationForm(forms.Form):
                 surname=self.data['surname_a'],
                 email=self.data['email_a'],
                 city=self.data['city_a'],
-                club=self.data['club_a'],
+                club=self._get_club_a(),
                 birthplace=self.data['birthplace_a'],
                 birthdate=convert_date(self.data['birthdate_a']),
                 ranking_points=self._clean_ranking_points_a()
@@ -116,7 +116,7 @@ class FullRegistrationForm(forms.Form):
                     surname=self.data['surname_b'],
                     email=self.data['email_b'],
                     city=self.data['city_b'],
-                    club=self.data['club_b'],
+                    club=self._get_club_b(),
                     birthplace=self.data['birthplace_b'],
                     birthdate=convert_date(self.data['birthdate_b']),
                     ranking_points=self._clean_ranking_points_b()
@@ -126,12 +126,13 @@ class FullRegistrationForm(forms.Form):
                 raise DataError("Player Model has data errors.")
 
             try:
-                Registration.objects.create(
+                return Registration.objects.create(
                     tournament=self._get_tournament(),
                     policy_read=self._get_terms(),
                     player_a=player_a,
                     player_b=player_b
                 )
+
             except Exception:
                 player_a.delete()
                 player_b.delete()
@@ -168,4 +169,14 @@ class FullRegistrationForm(forms.Form):
             if self.data['policy_read'] == 'on':
                 result = True
             return result
+        raise ValidationError("FullRegistrationForm is not valid.")
+
+    def _get_club_a(self):
+        if self.is_valid():
+            return Club.objects.get(pk=self.data['club_a'])
+        raise ValidationError("FullRegistrationForm is not valid.")
+
+    def _get_club_b(self):
+        if self.is_valid():
+            return Club.objects.get(pk=self.data['club_b'])
         raise ValidationError("FullRegistrationForm is not valid.")
