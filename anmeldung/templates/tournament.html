@@ -52,9 +52,11 @@
             <div class="col-sm-1" style="float: left"></div>
 
             <!-- Anmeldung -->
-            <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
-                <a href="{% url 'tournament_signup' tournament.id %}">Anmeldung</a>
-            </button>
+            <a href="{% url 'tournament_signup' tournament.id %}">
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
+                    Anmeldung
+                </button>
+            </a>
 
             <!-- Fecha Abajo -->
             <div class="col-xs-12 col-sm-4" style="left: 0px">
@@ -82,7 +84,7 @@
                     <ul class="th col-sm-1">
 
                         <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                        <img class="picture" src="{% static 'images/players/Favicon.jpg' %}">
                     </ul>
                     <ul class="th col-sm-2">
                         <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
@@ -94,7 +96,7 @@
 
                     <ul class="th col-sm-1">
                         <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Logo Padel Analytics Favicon.jpg' %}">
+                        <img class="picture" src="{% static 'images/players/Favicon.jpg' %}">
                     </ul>
                     <ul class="th col-sm-2">
                         <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
@@ -489,12 +491,6 @@
             </div>
 
             <button class="accordion active" style="margin-top: 20px">K.O. PHASE</button>
-
-
-
-
-
-
 
 
             <div class="panel" style="max-height:inherit">
