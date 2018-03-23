@@ -11,6 +11,14 @@ CATEGORY_GERMANY = (('Herren A', 'Herren A'), ('Herren B', 'Herren B'), ('Damen'
 PLAYER = (('A', 'A'), ('B', 'B'))
 
 
+def player_directory_path(instance, filename):
+    return 'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename)
+
+
+def club_directory_path(instance, filename):
+    return 'club_media/{0}-{1}'.format(instance.name, filename)
+
+
 class Club(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=30)
@@ -20,8 +28,8 @@ class Club(models.Model):
     address = models.CharField(max_length=120, blank=True)
     indoor_courts = models.PositiveIntegerField()
     outdoor_courts = models.PositiveIntegerField()
-    logo = models.ImageField(upload_to='club_logos', default='favicon.jpg')
-    cover_photo = models.ImageField(upload_to='club_cover_photo', default='favicon.jpg')
+    logo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
+    cover_photo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
 
     def __str__(self):
         return self.name
@@ -73,7 +81,7 @@ class Player(models.Model):
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
-    foto = models.ImageField(upload_to='player_foto', default='favicon.jpg')
+    photo = models.ImageField(upload_to=player_directory_path, default='favicon.jpg')
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
