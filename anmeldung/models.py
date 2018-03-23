@@ -86,6 +86,9 @@ class Player(models.Model):
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
 
+    def abbr(self):
+        return " ".join([self.forename[0] + '.', self.surname])
+
 
 class Registration(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
