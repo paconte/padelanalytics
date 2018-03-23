@@ -28,8 +28,8 @@ class Club(models.Model):
     address = models.CharField(max_length=120, blank=True)
     indoor_courts = models.PositiveIntegerField()
     outdoor_courts = models.PositiveIntegerField()
-    logo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
-    cover_photo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
+    logo = models.ImageField(upload_to=club_directory_path, default='default.jpg')
+    cover_photo = models.ImageField(upload_to=club_directory_path, default='pista.jpg')
 
     def __str__(self):
         return self.name
