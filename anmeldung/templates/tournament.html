@@ -4,7 +4,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
-<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -87,10 +87,11 @@
 
                     <hr class="hr">
                     <ul class="th col-sm-1">
-                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
+                        <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
+                        <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
 
-                        <img class="picture" src="{{team.0.player_a.country.flag}}">
-                        <i class="{{ team.0.player_a.country.flag_css }}"></i>
+                        <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-01.png' %}">
+
 
                     </ul>
                     <ul class="th col-sm-2">
@@ -102,8 +103,9 @@
                     </ul>
 
                     <ul class="th col-sm-1">
-                        <img class="flag" src="{% static 'images/flags/32/Germany.png' %}">
-                        <img class="picture" src="{% static 'images/players/Favicon.jpg' %}">
+                        <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
+                        <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                        <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-06.png' %}">
                     </ul>
                     <ul class="th col-sm-2">
                         <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
@@ -136,7 +138,7 @@
                 <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
             </div>
             {% endif %}
-
+            {% for team in teams %}
             <button class="accordion active" style="margin-top: 20px">Gruppe A</button>
             <div class="panel" style="max-height:inherit">
                 <div style="width: 55%; float: left">
@@ -145,33 +147,32 @@
                             <span class="label matches" style="max-height: 10px">A1</span>
                         </ul>
                         <ul class="th col1">
-                            <div class="col1_matches_nac">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
+                            <div class="matches_nac">
+                                <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
                                 <div class="matches_nac">
-                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
+                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                 </div>
                             </div>
                         </ul>
                         <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
+                            <a class="text_player">{{team.0.player_a}}</a> <br>
+                            <a class="text_player">{{team.0.player_b}}</a>
                         </ul>
                         <ul class="th col1 vertical_match_defeats">
                             <span class="label matches">Vs</span>
                         </ul>
                         <ul class="th col1">
                             <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}">
+                                <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
                             </div>
-                            <br>
                             <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}">
+                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                             </div>
                         </ul>
                         <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Álvaro Lázaro</a>
+                            <a class="text_player">{{team.0.player_a}}</a>
                             <br>
-                            <a class="text_player">Isaac San Frutos</a>
+                            <a class="text_player">{{team.0.player_b}}</a>
                         </ul>
                         <ul class="th col1_matches_score" style="width: 6%">
                             <a class="text_score">6 3</a>
@@ -501,7 +502,7 @@
                     </ul>
                 </div>
             </div>
-
+{% endfor %}
             <button class="accordion active" style="margin-top: 20px">K.O. PHASE</button>
 
 
