@@ -4,8 +4,10 @@ from anmeldung.validators import policy_read_validator
 from django_countries.fields import CountryField
 
 
-SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'), ('GPS-1200', 'GPS-1200'))
-CATEGORY_GERMANY = (('Herren A', 'Herren A'), ('Herren B', 'Herren B'), ('Damen', 'Damen'), ('Mixed', 'Mixed'), ('Senioren', 'Senioren'), ('Junioren', 'Junioren'))
+SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'),
+                 ('GPS-1200', 'GPS-1200'), ('GPS-WOMEN', 'GPS-WOMEN'))
+CATEGORY_GERMANY = (('Herren A', 'Herren A'), ('Herren B', 'Herren B'), ('Damen', 'Damen'), ('Mixed', 'Mixed'),
+                    ('Senioren', 'Senioren'), ('Junioren', 'Junioren'))
 PLAYER = (('A', 'A'), ('B', 'B'))
 
 
@@ -32,6 +34,23 @@ class Tournament(models.Model):
     date = models.DateField()
     signup = models.BooleanField(default=False)
 
+    @property
+    def serie_url(self):
+        if self.serie == 'GPS-100':
+            return 'images/kategorien/gps100.jpg'
+        elif self.serie == 'GPS-250':
+            return 'images/kategorien/gps250.jpg'
+        elif self.serie == 'GPS-500':
+            return 'images/kategorien/gps500.jpg'
+        elif self.serie == 'GPS-1000':
+            return 'images/kategorien/gps1000.jpg'
+        elif self.serie == 'GPS-1200':
+            return 'images/kategorien/gps1200.jpg'
+        elif self.serie == 'GPS-WOMEN':
+            return 'images/kategorien/w-gps.jpg'
+        else:
+            raise TypeError("The serie is not supported.")
+
     def __str__(self):
         return "  /  ".join([str(self.date), str(self.serie), str(self.city), str(self.category)])
 
@@ -52,6 +71,7 @@ class Player(models.Model):
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
+    foto = models.ImageField(upload_to='player_foto', default='favicon.jpg')
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
