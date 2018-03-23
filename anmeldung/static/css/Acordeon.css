@@ -73,7 +73,7 @@ button.accordion {
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 button.accordion.active, button.accordion:hover {
-    background-color: #ccc;
+    background-color: #ededed;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -157,10 +157,11 @@ ul { padding: 0; margin: 0; list-style: none;
 }
 
 .flag {
-    width: 20px;
+    width: 25px;
 	position: absolute;
 	vertical-align: middle;
-	margin-top: 10px;
+	margin-top: 15px;
+	margin-left: 10px;
 }
 
 .picture {
@@ -342,12 +343,14 @@ ul { padding: 0; margin: 0; list-style: none;
 
 .col1 .flag1 {
 	max-height: 16px;
-	float: left; 
+	float: left;
+	margin-top: 2px;
 }
 
 .col1 .flag2 {
 	max-height: 16px;
-	float: left; 
+	float: left;
+	margin-top: 5px;
 }
 
 .col2_matches {
