@@ -42,6 +42,5 @@ def tournament(request, id):
 
 def clubs(request):
     clubs = get_clubs()
-    print(clubs)
     return render(request, 'clubs.html', {'clubs': clubs})
 

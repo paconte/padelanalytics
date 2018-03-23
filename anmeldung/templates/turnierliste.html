@@ -28,7 +28,9 @@
                 </div>
             </div>
         </div>
+
         <div class="panel active">
+            <!--
             <ul>
                 {% for key, tournament in tournaments.items %}
                 <li class="col-xs-12 tournament-list" style="float: left">
@@ -50,6 +52,30 @@
                               style="float:right; margin-top:7px">{{category}}</a>
                         {% endif %}
                         {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            -->
+            <ul>
+                {% for tournament in tournaments %}
+                <li class="col-xs-12 tournament-list" style="float: left">
+                    <div>
+                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
+                            {{tournament.date}}
+                        </h2>
+                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
+                            {{tournament.serie}}
+                        </h2>
+                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
+                            {{tournament.city}}
+                        </h2>
+                        <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
+                            {{tournament.club}}
+                        </h2>
+                        <a href="{% url 'tournament' tournament.id %}"
+                           class="col-sm-1 label men" style="float:right; margin-top:7px">{{tournament.category}}
+                        </a>
                     </div>
                 </li>
                 {% endfor %}

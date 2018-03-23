@@ -117,20 +117,7 @@ def get_similar_tournaments(t_id):
 
 
 def get_tournaments():
-    tournaments = Tournament.objects.order_by('date', 'city')
-    result = dict()
-    for t in tournaments:
-        value = result.get(t.turnierliste_key(), None)
-        if value:
-            categories = value['categories']
-            categories[t.category] = t.id
-            value['categories'] = categories
-            result[t.turnierliste_key()] = value
-        else:
-            result[t.turnierliste_key()] = \
-                {'id': t.id, 'signup': t.signup, 'date': t.date, 'serie': t.serie, 'city': t.city,
-                 'categories': {t.category: t.id}}
-    return result
+    return Tournament.objects.order_by('date', 'city')
 
 
 def get_tournament_teams_by_ranking(tournament_id):
