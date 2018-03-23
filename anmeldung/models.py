@@ -81,7 +81,7 @@ class Player(models.Model):
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
-    photo = models.ImageField(upload_to=player_directory_path, default='favicon.jpg')
+    photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
