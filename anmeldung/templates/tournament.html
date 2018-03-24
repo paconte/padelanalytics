@@ -90,7 +90,7 @@
                         <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                         <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
 
-                        <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-01.png' %}">
+                        <img class="picture" src="{{ team.0.player_a.photo.url }}">
 
 
                     </ul>
@@ -105,7 +105,7 @@
                     <ul class="th col-sm-1">
                         <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                         <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-06.png' %}">
+                        <img class="picture" src="{{ team.0.player_b.photo.url }}">
                     </ul>
                     <ul class="th col-sm-2">
                         <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
