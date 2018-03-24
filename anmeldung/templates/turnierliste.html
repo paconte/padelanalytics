@@ -2,8 +2,10 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+
+
 {% endblock %}
 
 {% block content %}
@@ -59,27 +61,91 @@
             -->
             <ul>
                 {% for tournament in tournaments %}
-                <li class="col-xs-12 tournament-list" style="float: left">
-                    <div>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
-                            {{tournament.date}}
-                        </h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                            {{tournament.serie}}
-                        </h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                            {{tournament.city}}
-                        </h2>
-                        <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
-                            {{tournament.club}}
-                        </h2>
-                        <a href="{% url 'tournament' tournament.id %}"
-                           class="col-sm-1 label men" style="float:right; margin-top:7px">{{tournament.category}}
-                        </a>
+                <li class="col-xs-12 tournament-list" style="float: left; padding-top: 20px;">
+
+                    <!-- Logo Serie -->
+                    <div class="col-xs-12 col-sm-2 col-md-1 hidden-sm-down" style="float: left">
+                        <div style="float: left">
+                            <img class="category" src="{% static tournament.serie_url %}" alt="GPS-500">
+                        </div>
                     </div>
+
+                    <!-- Serie, Ciudad y Fecha -->
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-bg-3" style="float: left">
+                        <a href="{% url 'tournament' tournament.id %}" class="text_tournament_title"
+                           style="width: 50%; text-transform: uppercase; font-weight: 400;">{{tournament.serie}} // {{tournament.city}}</a><br>
+                        <a class="text_tournament_title"
+                           style="width: 100%; font-weight: bold; color:black">{{tournament.date}}</a>
+                    </div>
+
+
+                    <!-- Categoria para grandes formatos-->
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-primary hidden-sm-down"
+                                style="padding: 0">
+                            {{tournament.category}}
+                        </button>
+                    </a>
+
+                    <div class="col-md-1 hidden-sm-down" style="float: left"></div>
+
+
+                    <!-- Club -->
+                    <div class="col-xs-6 col-sm-4 col-md-5 col-bg-4 col-lg-4" style="float: left">
+                        <img class="club hidden-sm-down" style="border-radius: 15px; background-color: white"
+                             src="{% static 'images/germany/clubs/walls.png' %}" alt="GPS-500">
+                        <a class="text_tournament_title" style="padding-left:10px; text-transform: uppercase; color:black">{{tournament.club}}</a>
+                    </div>
+
+                    <!-- Categoria para pequenos formatos-->
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-2 col-sm-1 btn btn-outline-primary hidden-md-up"
+                                style="padding: 0; float: right">
+                            {{tournament.category}}
+                        </button>
+                    </a>
+
+                    <!-- Anmeldung -->
+                    {% if tournament.signup %}
+                    <a href="{% url 'tournament_signup' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-md-1 col-bg-1 btn btn-danger margen"
+                                style="float: right">
+                            Anmeldung
+                        </button>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'tournament_signup' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-md-1 col-bg-1 btn btn-outline-success margen"
+                                style="float: right">
+                            Ergebnisse
+                        </button>
+                    </a>
+                    {% endif %}
+
+
+
+
+
+                    <!-- <div>
+                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
+                             {{tournament.date}}
+                         </h2>
+                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
+                             {{tournament.serie}}
+                         </h2>
+                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
+                             {{tournament.city}}
+                         </h2>
+                         <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
+                             {{tournament.club}}
+                         </h2>
+                         <a href="{% url 'tournament' tournament.id %}"
+                            class="col-sm-1 label men" style="float:right; margin-top:7px">{{tournament.category}}
+                         </a>
+                     </div>-->
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}

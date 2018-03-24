@@ -80,8 +80,8 @@ button.accordion.active, button.accordion:hover {
 .active {
     border: none;
     border-bottom: none;
-    color: #0087e6;
-	max-height: 490px;
+    color: #DC4C46;
+	max-height: 100%;
 }
 
 .panel {
@@ -238,10 +238,6 @@ ul { padding: 0; margin: 0; list-style: none;
 	bottom:0;
 }
 
-.category{
-	width: 30px;
-
-}
 
 .category_setcard {
 	width: 40px;
@@ -410,7 +406,29 @@ height: 100%;
 }
 
 
+.card .club{
+    position: relative;
+    border-radius: 50%;
+    height: 40px;
+    margin: 0 auto 0;
+    overflow: hidden;
+    width: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+}
 
+.card .club img{
+    position: absolute;
+    background: none repeat scroll 0 0 #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+}
 
 
 .text_score{
@@ -458,6 +476,7 @@ height: 100%;
     background: rgba(241,241,241,0.7);
     border-right: thick solid #fff;
     margin-top: 8px;
+    height: 80px;
 }
 .tournament-list:hover {
     background: white;
@@ -967,4 +986,94 @@ html {
 
 .btn {
 cursor: pointer;
+
+}
+
+  .btn-outline-primary{
+    max-height:25px;
+    padding: -10px;
+  }
+
+
+@media (min-width: 576px) {
+
+}
+
+@media (max-width: 768px) {
+
+    .btn-outline-primary{
+    float: right;
+  }
+
+  .hidden-sm-down{
+  display:none;
+  }
+
+  .tournament-list {
+    height: 120px;
+}
+
+.margen {top:25px;}
+
+}
+
+@media (min-width: 768px) {
+
+.hidden-md-up{
+  display: none;
+  }
+
+  .tournament-list {
+    height: 60px;
+}
+
+.margen {top:-5px;}
+
+}
+
+@media (max-width: 992px) {
+  .btn {
+    padding: 0.1rem 0.1rem;
+    font-size: 0.75rem;
+    max-height: 40px;
+    margin-top: -5px;
+  }
+
+    .btn-outline-primary{
+    max-height:25px;
+    margin: 0px;
+  }
+
+  .text_tournament_title {
+    font-size: 0.65rem;
+  }
+
+  .category {
+  max-width: 30px;
+    margin: 0 3px;
+  }
+
+.card .club{
+    border-radius: 5px;
+    width: 30px;
+    max-height: 30px;
+}
+
+
+
+}
+
+@media (min-width: 992px) {
+    .btn-outline-primary{
+    margin-top: 10px;
+    float: left;
+  }
+  .tournament-list {
+    height: 80px;
+}
+
+}
+
+@media (min-width: 1200px) {
+
 }
