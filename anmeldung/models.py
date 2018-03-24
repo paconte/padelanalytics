@@ -12,11 +12,12 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 
 
 def player_directory_path(instance, filename):
-    return 'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename)
+    return normalize(
+        'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename))
 
 
 def club_directory_path(instance, filename):
-    return 'club_media/{0}-{1}'.format(instance.name, filename)
+    return normalize('club_media/{0}-{1}'.format(instance.name, filename))
 
 
 class Club(models.Model):
@@ -131,3 +132,7 @@ def get_tournament_teams_by_ranking(tournament_id):
         ranking = team.player_a.ranking_points + team.player_b.ranking_points
         result.append((team, ranking))
     return sorted(result, key=lambda x: x[1], reverse=True)
+
+
+def normalize(filename):
+    return "".join([c for c in filename if c.isalpha() or c.isdigit() or c==' ']).rstrip()
