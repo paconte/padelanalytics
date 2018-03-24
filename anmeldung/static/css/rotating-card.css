@@ -92,19 +92,32 @@
 }
 .card .cover img{
     width: 100%;
+    -webkit-filter: grayscale(70%);
 }
+
 .card .user{
+    position: relative;
     border-radius: 50%;
-    display: block;
     height: 120px;
     margin: -90px auto 0;
     overflow: hidden;
     width: 120px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+
+
 }
 .card .user img{
+    position: absolute;
     background: none repeat scroll 0 0 #FFFFFF;
-    border: 0px solid #FFFFFF;
     width: 100%;
+    padding: 10px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
 }
 
 .card .content{

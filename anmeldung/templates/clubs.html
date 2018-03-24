@@ -23,11 +23,10 @@
                     <div class="card clubs">
                         <div class="front">
                             <div class="cover">
-                                <img src="{% static 'images/pista.jpg' %}">
+                                <img src="{{ club.cover_photo.url }}">
                             </div>
-                            <div class="user">
-                                <img class="img-circle"
-                                     src="{% static 'images/players/Favicon.jpg' %}"/>
+                            <div class="user" style="background-color: white">
+                                <img class="img" src="{{ club.logo.url }}">
                             </div>
                             <div class="content">
                                 <div class="main">
