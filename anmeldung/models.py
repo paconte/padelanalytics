@@ -12,12 +12,12 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 
 
 def player_directory_path(instance, filename):
-    return normalize(
-        'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename))
+    return 'player_media/' + normalize(
+        '{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename))
 
 
 def club_directory_path(instance, filename):
-    return normalize('club_media/{0}-{1}'.format(instance.name, filename))
+    return 'club_media/' + normalize('{0}-{1}'.format(instance.name, filename))
 
 
 class Club(models.Model):
