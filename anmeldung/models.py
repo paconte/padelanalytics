@@ -80,8 +80,9 @@ class Player(models.Model):
     club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
-    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
+    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points', default=0)
     photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
+    policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
