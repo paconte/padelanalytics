@@ -12,11 +12,12 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 
 
 def player_directory_path(instance, filename):
-    return 'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename)
+    return normalize(
+        'player_media/{0}-{1}-{2}-{3}'.format(instance.surname, instance.forename, instance.email, filename))
 
 
 def club_directory_path(instance, filename):
-    return 'club_media/{0}-{1}'.format(instance.name, filename)
+    return normalize('club_media/{0}-{1}'.format(instance.name, filename))
 
 
 class Club(models.Model):
@@ -28,8 +29,8 @@ class Club(models.Model):
     address = models.CharField(max_length=120, blank=True)
     indoor_courts = models.PositiveIntegerField()
     outdoor_courts = models.PositiveIntegerField()
-    logo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
-    cover_photo = models.ImageField(upload_to=club_directory_path, default='favicon.jpg')
+    logo = models.ImageField(upload_to=club_directory_path, default='default.jpg')
+    cover_photo = models.ImageField(upload_to=club_directory_path, default='pista.jpg')
 
     def __str__(self):
         return self.name
@@ -80,11 +81,15 @@ class Player(models.Model):
     club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
-    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points')
-    photo = models.ImageField(upload_to=player_directory_path, default='favicon.jpg')
+    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points', default=0)
+    photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
+    policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
+
+    def abbr(self):
+        return " ".join([self.forename[0] + '.', self.surname])
 
 
 class Registration(models.Model):
@@ -117,20 +122,7 @@ def get_similar_tournaments(t_id):
 
 
 def get_tournaments():
-    tournaments = Tournament.objects.order_by('date', 'city')
-    result = dict()
-    for t in tournaments:
-        value = result.get(t.turnierliste_key(), None)
-        if value:
-            categories = value['categories']
-            categories[t.category] = t.id
-            value['categories'] = categories
-            result[t.turnierliste_key()] = value
-        else:
-            result[t.turnierliste_key()] = \
-                {'id': t.id, 'signup': t.signup, 'date': t.date, 'serie': t.serie, 'city': t.city,
-                 'categories': {t.category: t.id}}
-    return result
+    return Tournament.objects.order_by('date', 'city')
 
 
 def get_tournament_teams_by_ranking(tournament_id):
@@ -140,3 +132,7 @@ def get_tournament_teams_by_ranking(tournament_id):
         ranking = team.player_a.ranking_points + team.player_b.ranking_points
         result.append((team, ranking))
     return sorted(result, key=lambda x: x[1], reverse=True)
+
+
+def normalize(filename):
+    return "".join([c for c in filename if c.isalpha() or c.isdigit() or c==' ']).rstrip()

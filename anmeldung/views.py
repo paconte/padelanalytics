@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from anmeldung.forms import FullRegistrationForm
+from anmeldung.forms import NewPlayerForm, FullRegistrationForm
 from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs, \
     get_similar_tournaments
 
@@ -42,6 +42,17 @@ def tournament(request, id):
 
 def clubs(request):
     clubs = get_clubs()
-    print(clubs)
     return render(request, 'clubs.html', {'clubs': clubs})
+
+
+def new_player(request):
+    if request.method == 'POST':
+        new_player_form = NewPlayerForm(request.POST)
+        if new_player_form.is_valid():
+            new_player_form.save()
+            return render(request, 'new_player_success.html')
+        else:
+            return render(request, 'new_player.html', {'form': new_player_form})
+    else:
+        return render(request, 'new_player.html', {'form': NewPlayerForm()})
 
