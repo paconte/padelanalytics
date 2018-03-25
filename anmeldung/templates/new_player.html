@@ -31,49 +31,66 @@
 
         <form style="min-height: 500px; margin-top: 10px" method="post" action="">
             {% csrf_token %}
-            <div class="box">
-                <div class="col-xs-12 col-sm-6 col-md-12" style="float: left">
+            <div class="box col-sm-6" style="left: 25%">
+                <div class="col-xs-12 col-sm-12">
 
-                    <h3>Personaldaten</h3>
+                    <h3 class="form_title">Personaldaten</h3><br>
 
-                    <div class="col-sm-3 input-group input-group-icon"
-                         style="float: left; padding:0px; padding-right: 4px">
+                    <div class="col-sm-8 input-group input-group-icon"
+                         style="padding:0px">
                         <div class="input-icon"><i class="fa fa-user"></i></div>
                         {{form.forename}}
                     </div>
-                    <div class="col-sm-3 input-group input-group-icon col-half"
-                         style="float: left; padding:0px; padding-left: 4px">
+                    <div class="col-sm-8 input-group input-group-icon"
+                         style="padding:0px;">
                         <div class="input-icon"><i class="fa fa-user-o"></i></div>
                         {{form.surname}}
                     </div>
-                    <div class="col-sm-3 input-group input-group-icon"
-                         style="padding-right:0px; float: left;">
-                        <div class="input-icon"><i class="fa fa-map-marker"></i></div>
-                        {{form.birthplace}}
-                    </div>
-                    <div class="col-sm-3 input-group input-group-icon" style="float: left">
-                        <div class="input-icon"><i class="fa fa-calendar"></i></div>
-                        {{form.birthdate}}
-                    </div>
-                    <div class="col-sm-4 input-group input-group-icon" style="float: left; padding:0px">
+                    <div class="col-sm-8 input-group input-group-icon"
+                         style="padding:0px;">
+                        <div class="input-icon"><i class="fa fa-user-o"></i></div>
+                        {{form.surname2}}
+                     </div>
+                    <div class="col-sm-12 input-group input-group-icon" style="padding:0px">
                         <div class="input-icon"><i class="fa fa-envelope"></i></div>
                         {{form.email}}
                     </div>
-                    <div class="col-sm-2 input-group input-group-icon" style="padding-right: 0px; float: left"
-                    ">
-                    <div class="input-icon"><i class="fa fa-phone"></i></div>
-                    {{form.phone}}
+                    <div class="col-sm-12 input-group input-group-icon"
+                         style="padding:0px">
+                        <div class="input-icon"><i class="fa fa-phone"></i></div>
+                        {{form.phone}}
+                    </div>
                 </div>
-                <div class="col-sm-3  input-group input-group-icon"
-                     style="padding-right:0px">
-                    <div class="input-icon"><i class="fa fa-home"></i></div>
-                    {{form.city}}
-                </div>
-                <hr></hr>
+                <hr class="separador"">
+                <h3 class="form_title" style="margin:10px 0 0 10px; ">zusätzliche Infos</h3><br>
 
-                <h3 style="margin-top:10px">Verein- und Verbandsgehörigkeit</h3>
+                    <div class="col-sm-6 input-group input-group-icon"
+                         style="float: left; padding-right: 4px; ">
+                        <div class="input-icon"><i class="fa fa-map-marker"></i></div>
+                        {{form.birthplace}}
+                    </div>
+                    <div class="col-sm-6 input-group input-group-icon"
+                         style="padding-left: 4px; ">
+                        <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                        {{form.birthdate}}
+                    </div>
+                    <div class="col-sm-12 input-group input-group-icon"
+                         style="">
+                        <div class="input-icon"><i class="fa fa-map"></i></div>
+                        {{form.country}}
+                    </div>
+                    <div class="col-sm-12 input-group input-group-icon"
+                        style="">
+                        <div class="input-icon"><i class="fa fa-home"></i></div>
+                        {{form.city}}
+                    </div>
 
-                <div class="col-sm-6 input-group input-group-icon" style="padding: 0px">
+
+                <hr class="separador"">
+
+                <h3 class="form_title" style="margin:10px 0 0 10px">Verein- und Verbandsgehörigkeit</h3><br>
+
+                <div class="col-sm-12 input-group input-group-icon" style="">
                     <div class="input-icon"><i class="fa fa-shield"></i></div>
                     {{form.club}}
                 </div>
@@ -88,24 +105,24 @@
                 </div>-->
 
 
-                <hr>
+                <hr class="separador"">
 
 
-                <h3 style="margin-top:10px">Bestätigung</h3>
+                <h3 class="form_title" style="margin:10px 0 0 10px">Bestätigung</h3><br>
                 <div class="form-check">
                     <!--<input type="checkbox" class="form-check-input" id="id_policy_read">-->
                     {{form.policy_read}}
-                    <label class="form-check-label" for="id_policy_read">
+                    <label class="col-sm-12 form-check-label" style="margin-left:10px" for="id_policy_read">
                         Hiermit akzeptieren wir die Anmelde- und Teilnahmebedingungen des DPV / Check
                         here if you accept these terms.
                     </label>
                 </div>
-            </div>
             <!-- OK -->
-            <button input type="submit" class="col-xs-12 col-sm-2 btn btn-danger"
-                    style="float: left; margin-bottom: 8px; margin-left: 8px">
+            <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
+                    style="float:left; margin-bottom: 8px; margin-left:10px">
                 OK
             </button>
+            </div>
         </form>
     </div>
 </div>

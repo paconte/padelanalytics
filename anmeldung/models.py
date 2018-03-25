@@ -83,7 +83,7 @@ class Player(models.Model):
     birthdate = models.DateTimeField(verbose_name='Birthday')
     ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points', default=0)
     photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
-    policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
+    policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
 
     def __str__(self):
         return " ".join([str(self.forename), str(self.surname)])
@@ -95,7 +95,7 @@ class Player(models.Model):
 class Registration(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
     tournament = models.ForeignKey(Tournament, on_delete=models.DO_NOTHING)
-    policy_read = models.BooleanField(default=True, validators=[policy_read_validator])
+    policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
     player_a = models.ForeignKey(Player, related_name="player_a", on_delete=models.DO_NOTHING)
     player_b = models.ForeignKey(Player, related_name="player_b", on_delete=models.DO_NOTHING)
 

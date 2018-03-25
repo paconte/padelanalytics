@@ -53,6 +53,7 @@ def new_player(request):
             new_player_form.save()
             return render(request, 'new_player_success.html')
         else:
+            print(new_player_form.errors)
             return render(request, 'new_player.html', {'form': new_player_form})
     else:
         return render(request, 'new_player.html', {'form': NewPlayerForm()})
