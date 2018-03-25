@@ -1,6 +1,162 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}"/>
+
+
+{% endblock %}
+
 {% block content %}
+
+<div style="margin-top: 50px" class="container_12">
+    <div class="box" style="display:flex; flex-wrap: wrap">
+                <a href="X">
+                <button type="button" class="btn btn-danger new">Lade eine <br> Nachricht hoch!
+                </button>
+                </a>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="news"><img class="img-fluid-small"
+                                       src="{% static 'images/news/02.png' %}" alt="">
+                    <div class="card-img-overlay"><span class="badge badge-pill badge-danger">Deutschland</span></div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class=" title-small"><a href="#">Deutschland steht zusammen für Padel</a></h2>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-time"><em>vor 3 Min.</em></small>
+                        </p>
+                    </div>
+                </div>
+                <div class="news"><img class="img-fluid-small"
+                                       src="{% static 'images/news/01.jpg' %}" alt="">
+                    <div class="card-img-overlay"><span class="badge badge-pill badge-danger">Nationalmannschaft</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class=" title-small"><a href="#">Das waren ja Zeiten! 2013...</a></h2>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-time"><em>vor 3 Min.</em></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="news"><img class="img-fluid-small" src="{% static 'images/news/03.jpg' %}" alt="">
+                    <div class="card-img-overlay"><span class="badge badge-pill badge-danger">Senioren</span></div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class=" title-small"><a href="#">Die Senioren sind jetzt im Spiel</a><br>
+                                <a href="#">Bericht aus Helsinki, Finnland</a>
+
+                            </h2>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-time"><em>vor 3 Min.</em></small>
+                        </p>
+                    </div>
+                </div>
+                <div class="news"><img class="img-fluid-small"
+                                       src="{% static 'images/news/04.jpg' %}" alt="">
+                    <div class="card-img-overlay"><span class="badge badge-pill badge-danger">GPS 2018</span></div>
+                    <div class="card-body">
+                        <div class="news-title">
+                            <h2 class=" title-small"><a href="#">Damen gesucht! Die größe Motivation der GPS-WOMEN</a>
+                            </h2>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-time"><em>vor 3 Min.</em></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 top-slider img-fluid">
+                <div id="carousel-example-generic" class="carousel slide news" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/07.png' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                <div class="news-title">
+                                    <h2 class=" title-large"><a href="#">Die Füchse Berlin werden ein Halle mit 4
+                                        Plätzen bauen</a></h2>
+                                </div>
+                                <div class="news-des">Die Parteien befinden sich in Verhandlung. Voraussichtlich werden
+                                    die 4 Plätze in September stehen.
+                                </div>
+                                <div class="time-text"><strong>vor 2 St.</strong></div>
+                                <div></div></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/05.jpeg' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                <div class="news-title">
+                                    <h2 class=" title-large"><a href="#">Erfolgreiches Antreten der Nationalmannschaft in Estoril, Portugal</a></h2>
+                                </div>
+                                <div class="news-des">Unser Team verlor gegen Frankreich im Viertelfinale
+                                </div>
+                                <div class="time-text"><strong>vor 2 St.</strong></div>
+                                <div></div></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/06.jpg' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                <div class="news-title">
+                                    <h2 class=" title-large"><a href="#">Nächstes GPS-Turnier</a></h2>
+                                </div>
+                                <div class="news-des">Das GPS-1000 wird am 21.-22. APril in Karsruhe stattfinden.
+                                </div>
+                                <div class="time-text"><strong>vor 2 St.</strong></div>
+                                <div></div></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <a href="X">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Standorte<br>26
+                </button>
+                </a>
+                <a href="X">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Plätze<br>50
+                </button>
+                </a>
+                <a href="X">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Turniere<br>150
+                </button>
+                </a>
+                <a href="X">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Spieler<br>550
+                </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

@@ -13,7 +13,7 @@
    -moz-perspective: 800px;
      -o-perspective: 800px;
         perspective: 800px;
-        margin-bottom: 30px;
+        margin-top: 16px;
 }
 /* flip the pane when hovered */
 .card-container:not(.manual-flip):hover .card,
@@ -92,7 +92,7 @@
 }
 .card .cover img{
     width: 100%;
-    -webkit-filter: grayscale(70%);
+    -webkit-filter: grayscale(40%);
 }
 
 .card .user{
