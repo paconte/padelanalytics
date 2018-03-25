@@ -80,14 +80,37 @@
 
 
                     <!-- Categoria para grandes formatos-->
+                    {% if tournament.category == "Herren A" or tournament.category == "Herren B" %}
                     <a href="{% url 'tournament' tournament.id %}">
                         <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-primary hidden-sm-down"
-                                style="padding: 0">
-                            {{tournament.category}}
+                                style="padding: 0">{{tournament.category}}
                         </button>
                     </a>
-
-                    <div class="col-md-1 hidden-sm-down" style="float: left"></div>
+                    {% elif tournament.category == "Damen" %}
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-light hidden-sm-down style=font-color:white"
+                                style="padding: 0">{{tournament.category}}
+                        </button>
+                    </a>
+                    {% elif tournament.category == "Senioren" %}
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-dark hidden-sm-down"
+                                style="padding: 0">{{tournament.category}}
+                        </button>
+                    </a>
+                    {% elif tournament.category == "Mixed" %}
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-warning hidden-sm-down"
+                                style="padding: 0">{{tournament.category}}
+                        </button>
+                    </a>
+                    {% elif tournament.category == "Junioren" %}
+                    <a href="{% url 'tournament' tournament.id %}">
+                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-secondary hidden-sm-down"
+                                style="padding: 0">{{tournament.category}}
+                        </button>
+                    </a>
+                    {% endif %}
 
 
                     <!-- Club -->
@@ -114,7 +137,7 @@
                         </button>
                     </a>
                     {% else %}
-                    <a href="{% url 'tournament_signup' tournament.id %}">
+                    <a href="{% url 'tournament' tournament.id %}">
                         <button type="button" class="col-xs-12 col-md-1 col-bg-1 btn btn-outline-success margen"
                                 style="float: right">
                             Ergebnisse
