@@ -21,7 +21,7 @@ class RegistrationForm(forms.ModelForm):
             'club': forms.TextInput(attrs={'placeholder': 'Verein'}),
             'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
             'ranking_points': forms.TextInput(attrs={'placeholder': 'Trag deine Punkte ein'}),
-            'birthdate': forms.TextInput(attrs={'placeholder': 'TT/MM/JJJJ'}),
+            'birthdate': forms.TextInput(attrs={'placeholder': 'Geburtsdatum'}),
         }
 
 
@@ -59,7 +59,7 @@ class FullRegistrationForm(forms.Form):
     )
     birthdate_a = forms.DateField(
         input_formats=[DATE_FORMAT],
-        widget=forms.TextInput(attrs={'placeholder': 'TT/MM/JJJJ'})
+        widget=forms.TextInput(attrs={'placeholder': 'Geburtsdatum'})
     )
     ranking_points_a = forms.IntegerField(
         widget=forms.TextInput(attrs={'placeholder': 'Trag deine Punkte ein'})
@@ -91,7 +91,7 @@ class FullRegistrationForm(forms.Form):
     )
     birthdate_b = forms.DateField(
         input_formats=[DATE_FORMAT],
-        widget=forms.TextInput(attrs={'placeholder': 'TT/MM/JJJJ'})
+        widget=forms.TextInput(attrs={'placeholder': 'Geburtsdatum'})
     )
     ranking_points_b = forms.IntegerField(
         widget=forms.TextInput(attrs={'placeholder': 'Trag deine Punkte ein'})
@@ -194,6 +194,6 @@ class NewPlayerForm(forms.ModelForm):
             'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
             'club': forms.Select(choices=Club.objects.all(), attrs={'placeholder': 'Verein'}),
             'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
-            'birthdate': forms.TextInput(attrs={'placeholder': 'TT/MM/JJJJ'}),
+            'birthdate': forms.TextInput(attrs={'placeholder': 'Geburtsdatum'}),
             'policy_read': forms.CheckboxInput(attrs={'placeholder': 'Muerte con pinchos'})
         }

@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="box">
-            <div class="col-xs-12 col-sm-9" style="float: right">
+            <div class="col-xs-12 col-sm-9" style="float: right; z-index: 2">
                 <div style="float: right; margin-right: 15px">
                     <img class="col_1 category" src="{% static 'images/kategorien/gps100.jpg' %}" alt="GPS-100">
                     <img class="col_1 category" src="{% static 'images/kategorien/gps250.jpg' %}" alt="GPS-250">
@@ -29,63 +29,82 @@
         </div>
         <br>
 
-        <form style="min-height: 500px; margin-top: -50px" method="post" action="">
+        <form style="min-height: 500px; margin-top: 10px" method="post" action="">
             {% csrf_token %}
             <div class="box">
-                <div class="col-xs-12 col-md-6" style="float: left">
-                    <div class="col-sm-6 input-group input-group-icon"
+                <div class="col-xs-12 col-sm-6 col-md-12" style="float: left">
+
+                    <h3>Personaldaten</h3>
+
+                    <div class="col-sm-3 input-group input-group-icon"
                          style="float: left; padding:0px; padding-right: 4px">
                         <div class="input-icon"><i class="fa fa-user"></i></div>
                         {{form.forename}}
                     </div>
-                    <div class="col-sm-6 input-group input-group-icon col-half"
+                    <div class="col-sm-3 input-group input-group-icon col-half"
                          style="float: left; padding:0px; padding-left: 4px">
                         <div class="input-icon"><i class="fa fa-user-o"></i></div>
                         {{form.surname}}
                     </div>
-                    <br>
-                    <div class="input-group input-group-icon">
-                        <div class="input-icon"><i class="fa fa-envelope"></i></div>
-                        {{form.email}}
-                    </div>
-                    <div class="input-group input-group-icon">
-                        <div class="input-icon"><i class="fa fa-phone"></i></div>
-                        {{form.phone}}
-                    </div>
-                    <div class="input-group input-group-icon">
-                        <div class="input-icon"><i class="fa fa-shield"></i></div>
-                        {{form.club}}
-                    </div>
-                    <div class="col-half input-group input-group-icon"
-                         style="float: left; padding:0px; padding-right: 4px">
+                    <div class="col-sm-3 input-group input-group-icon"
+                         style="padding-right:0px; float: left;">
                         <div class="input-icon"><i class="fa fa-vcard-o"></i></div>
                         {{form.birthplace}}
                     </div>
-                    <div class="col-half input-group input-group-icon"
-                         style="float: left; padding:0px; padding-left: 4px">
-                        <div class="input-icon"><i class="fa fa-home"></i></div>
-                        {{form.city}}
-                    </div>
-
-                    <h3>Geburtsdatum</h3>
-                    <div class="input-group input-group-icon">
+                    <div class="col-sm-3 input-group input-group-icon" style="float: left">
                         <div class="input-icon"><i class="fa fa-calendar"></i></div>
                         {{form.birthdate}}
                     </div>
-
-                    <h3>Bestätigung</h3>
-                    <div class="form-check">
-                        <!--<input type="checkbox" class="form-check-input" id="id_policy_read">-->
-                        {{form.policy_read}}
-                        <label class="form-check-label" for="id_policy_read">
-                            Hiermit akzeptieren wir die Anmelde- und Teilnahmebedingungen des DPV / Check
-                            here if you accept these terms.
-                        </label>
+                    <div class="col-sm-4 input-group input-group-icon" style="float: left; padding:0px">
+                        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                        {{form.email}}
                     </div>
+                    <div class="col-sm-2 input-group input-group-icon" style="padding-right: 0px; float: left"
+                    ">
+                    <div class="input-icon"><i class="fa fa-phone"></i></div>
+                    {{form.phone}}
+                </div>
+                <div class="col-sm-3  input-group input-group-icon"
+                     style="padding-right:0px">
+                    <div class="input-icon"><i class="fa fa-home"></i></div>
+                    {{form.city}}
+                </div>
+                <hr></hr>
+
+                <h3 style="margin-top:10px">Verein- und Verbandsgehörigkeit</h3>
+
+                <div class="col-sm-6 input-group input-group-icon" style="padding:0px">
+                    <div class="input-icon"><i class="fa fa-shield"></i></div>
+                    {{form.club}}
+                </div>
+                <div class="col-sm-6 input-group input-group-icon" style="padding:0px">
+                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                    {{form.email}}
+                </div>
+                <div class="col-sm-3 input-group input-group-icon" style="padding:0px">
+                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                    {{form.email}}
+                </div>
+
+
+                <hr>
+
+
+                <h3 style="margin-top:10px">Bestätigung</h3>
+                <div class="form-check">
+                    <!--<input type="checkbox" class="form-check-input" id="id_policy_read">-->
+                    {{form.policy_read}}
+                    <label class="form-check-label" for="id_policy_read">
+                        Hiermit akzeptieren wir die Anmelde- und Teilnahmebedingungen des DPV / Check
+                        here if you accept these terms.
+                    </label>
                 </div>
             </div>
             <!-- OK -->
-            <input type="submit" value="OK"/>
+            <button input type="submit" class="col-xs-12 col-sm-2 btn btn-danger"
+                    style="float: left; margin-bottom: 8px; margin-left: 8px">
+                OK
+            </button>
         </form>
     </div>
 </div>
@@ -115,6 +134,8 @@
       defaultDate: "-30y"
     });
   });
+
+
 
 
 </script>
