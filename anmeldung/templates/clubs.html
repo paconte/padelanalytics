@@ -16,8 +16,28 @@
         <h2>Standorte (Stand 03.2018)</h2>
     </div>
 
+        <div class="row">
 
-        <div class="box" style="display:flex; flex-wrap: wrap; margin: 0 -7.5 0 -7.5">
+        <div style="margin: 15px auto -15px; text-align: center;">
+            <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
+            <button class="btn btn-light filter-button" data-filter="spray">Baden-Württemberg</button>
+            <button class="btn btn-light filter-button" data-filter="irrigation">Bayern</button>
+            <button class="btn btn-light filter-button" data-filter="hdpe">Berlin</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Brandenburg</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Bremen</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Hamburg</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Hessen</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Mecklenburg-Vorpommern</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Niedersachsen</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">NRW</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Rheinland-Pfalz</button>
+            <button class="btn btn-light filter-button" data-filter="sprinkle">Brandenburg</button>
+
+        </div></div>
+        <hr>
+
+
+        <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
             {% for club in clubs %}
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
                     <div class="card clubs">
@@ -80,5 +100,30 @@
             crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
 
+$(document).ready(function(){
 
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+
+        if(value == "all")
+        {
+            //$('.filter').removeClass('hidden');
+            $('.filter').show('1000');
+        }
+        else
+        {
+//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+
+        }
+    });
+
+    if ($(".filter-button").removeClass("active")) {
+$(this).removeClass("active");
+}
+$(this).addClass("active");
+
+});
     {% endblock %}

@@ -17,7 +17,27 @@
         <h2>Turnierliste</h2>
     </div>
 
-    <div class="card">
+        <div class="row">
+            <div style="margin: 15px auto -15px; float: left;">
+                <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
+                <button class="btn btn-light filter-button" data-filter="men">Herren</button>
+                <button class="btn btn-light filter-button" data-filter="women">Damen</button>
+                <button class="btn btn-light filter-button" data-filter="mixed">Mixed</button>
+                <button class="btn btn-light filter-button" data-filter="senior">Senioren</button>
+                <button class="btn btn-light filter-button" data-filter="junior">Junioren</button>
+            </div>
+            <div style="margin: 15px auto -15px; float: right;">
+                <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
+                <button class="btn btn-light filter-button" data-filter="men">GPS-100</button>
+                <button class="btn btn-light filter-button" data-filter="women">GPS-250</button>
+                <button class="btn btn-light filter-button" data-filter="mixed">GPS-500</button>
+                <button class="btn btn-light filter-button" data-filter="senior">GPS-1000</button>
+                <button class="btn btn-light filter-button" data-filter="junior">GPS-1200</button>
+            </div>
+        </div>
+        <hr>
+
+<!--<div class="card" style="background:none; border: none; box-shadow:none; margin-top: -65px">
         <div class="box">
             <div class="col-xs-12 col-sm-9" style="float: right">
                 <div style="float: right; margin-right: 15px">
@@ -29,38 +49,13 @@
                     <img class="col_1 category" src="{% static 'images/kategorien/w-gps.jpg' %}" alt="GPS-Women">
                 </div>
             </div>
-        </div>
-
+        </div></div>-->
+    {% for tournament in tournaments %}
+<div class="card">
         <div class="panel active">
-            <!--
+
             <ul>
-                {% for key, tournament in tournaments.items %}
-                <li class="col-xs-12 tournament-list" style="float: left">
-                    <div>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
-                            {{tournament.date}}</h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                            {{tournament.serie}}</h2>
-                        <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                            {{tournament.city}}</h2>
-                        <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
-                            {{tournament.club}}</h2>
-                        {% for category, value in tournament.categories.items %}
-                        {% if category == "Herren A" or category == "Herren B" %}
-                        <a href="{% url 'tournament' value %}" class="col-sm-1 label men"
-                              style="float:right; margin-top:7px">{{category}}</a>
-                        {% elif category == "Damen" %}
-                        <a href="{% url 'tournament' value %}" class="col-sm-1 label women"
-                              style="float:right; margin-top:7px">{{category}}</a>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-            -->
-            <ul>
-                {% for tournament in tournaments %}
+
                 <li class="col-xs-12 tournament-list" style="float: left; padding-top: 20px;">
 
                     <!-- Logo Serie -->
@@ -167,8 +162,9 @@
                          </a>
                      </div>-->
                 </li>
-                {% endfor %}
+
             </ul>
         </div>
     </div>
+    {% endfor %}
     {% endblock %}

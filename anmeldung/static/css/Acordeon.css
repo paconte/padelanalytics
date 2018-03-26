@@ -88,7 +88,7 @@ button.accordion.active, button.accordion:hover {
     width: 100%;
 	height: inherit;
 	position: relative;
-			border-top: thick solid #fff;    
+			/*border-top: thick solid #fff;    */
 	overflow: hidden;
     transition: 0.2s ease-out; 
 	margin-top: px;
@@ -473,9 +473,9 @@ height: 100%;
 	margin-top: 5px;
 }
 .tournament-list {
-    background: rgba(241,241,241,0.7);
+    /*background: rgba(241,241,241,0.7);*/
     border-right: thick solid #fff;
-    margin-top: 8px;
+    /*margin-top: 8px;*/
     height: 80px;
 }
 .tournament-list:hover {
