@@ -1145,7 +1145,7 @@ cursor: pointer;
   }
 
   .text_tournament_title {
-    font-size: 0.65rem;
+    font-size: 0.5rem;
   }
 
   .category {
@@ -1159,7 +1159,22 @@ cursor: pointer;
     max-height: 30px;
 }
 
+ .text_club {
+    font-size: 0.6rem;
+  }
 
+.flag {
+    width: 20px;
+    margin-left: 5px;
+
+}
+
+.picture {
+    max-height: 30px;
+    max-width: 30px;
+    margin-right: 8px;
+    margin-top: 5px;
+}
 
 }
 
@@ -1173,6 +1188,13 @@ cursor: pointer;
 }
 
 }
+
+@media (min-width:992px) and (max-width: 1200px) {
+.picture {
+    margin-right: 5px;
+}
+}
+
 
 @media (min-width: 1200px) {
 

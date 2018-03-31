@@ -50,7 +50,12 @@
             <!-- 1 Espacio libre -->
             <div class="col-sm-1" style="float: right"></div>
             <!-- Ciudad y Club Arriba -->
-            <div class="col-xs-12 col-sm-4" style="float: left; margin-top: 5px">
+            <div class="col-xs-6 col-sm-1" style="float: left">
+                <img class="club hidden-sm-down" style="border-radius: 15px; background-color: white"
+                     src="{% static 'images/germany/clubs/walls.png' %}">
+            </div>
+
+            <div class="col-xs-12 col-sm-3" style="float: left; margin-top: 5px">
                 <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} //
                     {{tournament.club}}</a><br>
                 <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
@@ -132,7 +137,7 @@
                                 style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
                     </ul>-->
 
-                    <ul class="th col-sm-2" >
+                    <ul class="th col-sm-2">
                         <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
                     </ul>
                 </ul>
@@ -153,7 +158,7 @@
 
     <!-- Reparto de Grupos -->
     <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
             <div class="card clubs">
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
                 <hr class="separador_torneo">
@@ -177,7 +182,7 @@
                 {% endfor %}
             </div>
         </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
             <div class="card clubs">
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe B</h3>
                 <hr class="separador_torneo">
@@ -201,7 +206,7 @@
                 {% endfor %}
             </div>
         </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
             <div class="card clubs">
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe C</h3>
                 <hr class="separador_torneo">
@@ -225,7 +230,7 @@
                 {% endfor %}
             </div>
         </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
             <div class="card clubs">
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe D</h3>
                 <hr class="separador_torneo">
@@ -253,7 +258,7 @@
 
 
     <!-- Grupo - Resultados y Clasificación -->
-    <div class="card col-sm-12" style="margin-top:20px; float: left; padding-bottom:20px">
+    <div class="card col-sm-12" style="margin-top:20px; margin-bottom: 10px; padding-bottom:20px">
         <div class="box">
             <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
             <hr class="separador_torneo">
@@ -321,7 +326,8 @@
 
 
             <!-- Clasificación -->
-            <div class="col-sm-5" style="float: right; background-color: #fafafa; padding: 10 0 10 0; padding-left:-15px">
+            <div class="col-sm-5"
+                 style="float: right; background-color: #fafafa; padding: 10 0 10 0; padding-left:-15px">
                 <div class="teams_title" style="color:black; float:right; text-align:center">
                     <div class="th col-sm-6"></div>
                     <div class="th col-sm-2"> Punkte</div>
@@ -355,12 +361,12 @@
                         <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
                         <a class="text_player">{{team.0.player_b.abbr}}</a>
                     </ul>
-                    <div style="margin-right:15px" style="padding-top:5px">
-                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
-                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
-                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
-                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
-                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                    <div style="margin-right:15px">
+                        <a class="col-sm-1 text_player " style="float:right; margin-top:-8px"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> I</a>
                     </div>
                 </ul>
                 {% endfor %}
@@ -370,299 +376,128 @@
     </div>
 
 
-    <!-- Play-Offs -->
-    <div class="card col-sm-12" style="margin-top:20px">
+    <!-- Play-Offs Titles -->
+    <div class="card col-sm-12" style="margin-top:10px; margin-bottom: 10px; padding-bottom:20px">
         <div class="box">
-            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">K.O. PHASE</h3>
+            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">K.O. Phase</h3>
+            <hr class="separador_torneo">
+            <!-- Play-Offs Titles -->
+            <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
+                <div class="col-xs-12 col-sm-12 col-md-3 card-container">
+                    <div class="card round"
+                         style="border:none; box-shadow:none; height: 60px; padding-top: 0px; margin-top:0px">
+                        <h3 class="form_title" style="font-weight: 400; color:#DC4C46; text-align:center">
+                            Viertelfinale</h3>
+                        <hr class="separador_torneo">
+                    </div>
 
-
-            <!--Table-->
-            <table class="table table-hover table-responsive-md table-fixed">
-
-                <!--Table head-->
-                <thead>
-                <tr>
-                    <th>R32</th>
-                    <th>R16</th>
-                    <th>VF</th>
-                    <th>HF</th>
-                    <th>F</th>
-                    <th>3.</th>
-                </tr>
-                </thead>
-                <!--Table head-->
-
-                <!--Table body-->
-                <tbody>
-
-                </tbody>
-                <!--Table body-->
-
-            </table>
-            <!--Table-->
-
-        </div>
-    </div>
-
-
-</div>
-<div class="card col-sm-3">
-    <div class="box">
-        {% for team in teams %}
-        <div class="panel" style="max-height:inherit">
-            <div style="width: 55%; float: left">
-                <ul class="teams_groups">
-                    <ul class="th col-sm-2">
-                        <div class="matches_nac">
-                            <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
-                            <div class="matches_nac">
-                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </div>
-                    </ul>
-                    <ul class="th col-sm-10">
-                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                        <a class="text_player">{{team.0.player_b.abbr}}</a>
-                    </ul>
-                </ul>
+                </div> <!-- end card -->
+                <div class="col-xs-12 col-sm-12 col-md-3 card-container">
+                    <div class="card round"
+                         style="border:none; box-shadow:none; height: 60px; padding-top: 0px; margin-top:0px">
+                        <h3 class="form_title" style="font-weight: 400; color:#DC4C46; text-align:center">
+                            Halbfinale</h3>
+                        <hr class="separador_torneo">
+                    </div>
+                </div> <!-- end card -->
+                <div class="col-xs-12 col-sm-12 col-md-3 card-container">
+                    <div class="card round"
+                         style="border:none; box-shadow:none; height: 60px; padding-top: 0px; margin-top:0px">
+                        <h3 class="form_title" style="font-weight: 400; color:#DC4C46; text-align:center">Spiel um 3.
+                            Platz</h3>
+                        <hr class="separador_torneo">
+                    </div>
+                </div> <!-- end card -->
+                <div class="col-xs-12 col-sm-12 col-md-3 card-container">
+                    <div class="card round"
+                         style="border:none; box-shadow:none; height: 60px; padding-top: 0px; margin-top:0px">
+                        <h3 class="form_title" style="font-weight: 400; color:#DC4C46; text-align:center">Finale</h3>
+                        <hr class="separador_torneo">
+                    </div>
+                </div> <!-- end card -->
+                <hr class="separador_torneo">
             </div>
+            <!-- Play-Offs Matches -->
+            <div class="box col-xs-12 col-sm-12 col-md-3 card-container"
+                 style="flex-wrap: wrap; float: left; max-height: inherit">
+                <div class="card clubs" style="height:100px">
+                </div>
+                <div class="card clubs" style="height:100px">
+                </div>
+                <div class="card clubs" style="height:100px">
+                </div>
+                <div class="card clubs" style="height:100px">
+                </div>
+            </div>
+            <div class="box col-xs-12 col-sm-12 col-md-3 card-container" style="flex-wrap: wrap; float: left; ">
+                <div class="card clubs" style="height:100px; margin-top: 75px">
+                </div>
+                <div class="card clubs" style="height:100px; margin-top: 100px">
+                </div>
+            </div>
+            <div class="box col-xs-12 col-sm-12 col-md-3 card-container" style="flex-wrap: wrap; float: left; ">
+                <div class="card clubs" style="height:100px; margin-top: 175px">
+                </div>
+            </div>
+            <div class="box col-xs-12 col-sm-12 col-md-3 card-container" style="flex-wrap: wrap; float: left; ">
+                <div class="card clubs" style="height:100px; margin-top: 175px ">
+                </div>
+            </div>
+
+
+            <hr class="separador_torneo">
         </div>
-        {% endfor %}
     </div>
 </div>
 
+</div>
+<!--Table
+<table class="table table-hover table-responsive-md table-fixed">
 
+    <!--Table head
+    <thead>
+    <tr>
+        <th >VF</th>
+        <th>HF</th>
+        <th>FI</th>
+        <th>3.</th>
+    </tr>
+    </thead>
+    <!--Table head-->
+
+<!--Table body
 <tbody>
-<tr>
-    <td>
-        <div class="scores-draw-entry-box">
-            <table class="scores-draw-entry-box-table">
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>
-										<span>
-			(1)
-		</span>
 
-                    </td>
-                    <td>
-                        <a href="/en/players/lukasz-kubot/k540/overview"
-                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                           data-ga-label="Lukasz Kubot"> <img
-                                class="scores-draw-entry-box-players-item-flag "
-                                src="/en/~/media/images/flags/pol.svg"/>
-                            Lukasz Kubot</a><a href="/en/players/marcelo-melo/m919/overview"
-                                               class="scores-draw-entry-box-players-item"
-                                               data-ga-action="Click" data-ga-label="Marcelo Melo"> <img
-                            class="scores-draw-entry-box-players-item-flag "
-                            src="/en/~/media/images/flags/bra.svg"/>
-                        Marcelo Melo</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
+</tbody>
+<!--Table body
 
-                    </td>
-                    <td>
-                        <a href="/en/players/steve-johnson/j386/overview"
-                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                           data-ga-label="Steve Johnson"> <img
-                                class="scores-draw-entry-box-players-item-flag "
-                                src="/en/~/media/images/flags/usa.svg"/>
-                            Steve Johnson</a><a href="/en/players/sam-querrey/q927/overview"
-                                                class="scores-draw-entry-box-players-item"
-                                                data-ga-action="Click" data-ga-label="Sam Querrey"> <img
-                            class="scores-draw-entry-box-players-item-flag "
-                            src="/en/~/media/images/flags/usa.svg"/>
-                        Sam Querrey</a>
-                    </td>
-                </tr>
+</table>
+<!--Table-->
 
-                </tbody>
-            </table>
-        </div>
-    </td>
-    <td rowspan="1" class="bye-bracket">
-        <a
-                data-ga-category=""
-                data-ga-action="Click"
-                data-ga-label="H2H"
-                data-use-ga="true"
-                class="scores-draw-h2h-link">
-			<span>
-
-			</span>
-        </a>
-        <div class="scores-draw-entry-box-wrapper">
-            <div class="scores-draw-entry-box">
-                <a href="/en/players/steve-johnson/j386/overview"
-                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                   data-ga-label="Steve Johnson">Steve Johnson</a><a
-                    href="/en/players/sam-querrey/q927/overview"
-                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
-                                                                   data-ga-category=""
-                                                                   data-ga-action="Click"
-                                                                   data-ga-label="" data-use-ga="true"
-                                                                   class="not-in-system scores-draw-entry-box-score">
-                64 76<sup>0</sup> </a>
-            </div>
-        </div>
-    </td>
-    <td rowspan="2" class="bye-bracket">
-        <a
-                data-ga-category=""
-                data-ga-action="Click"
-                data-ga-label="H2H"
-                data-use-ga="true"
-                class="scores-draw-h2h-link">
-			<span>
-
-			</span>
-        </a>
-        <div class="scores-draw-entry-box-wrapper">
-            <div class="scores-draw-entry-box">
-                <a href="/en/players/steve-johnson/j386/overview"
-                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                   data-ga-label="Steve Johnson">Steve Johnson</a><a
-                    href="/en/players/sam-querrey/q927/overview"
-                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
-                                                                   data-ga-category=""
-                                                                   data-ga-action="Click"
-                                                                   data-ga-label="" data-use-ga="true"
-                                                                   class="not-in-system scores-draw-entry-box-score">
-                76<sup>5</sup> 62 </a>
-            </div>
-        </div>
-    </td>
-    <td rowspan="4" class="bye-bracket">
-        <a
-                data-ga-category=""
-                data-ga-action="Click"
-                data-ga-label="H2H"
-                data-use-ga="true"
-                class="scores-draw-h2h-link">
-			<span>
-
-			</span>
-        </a>
-        <div class="scores-draw-entry-box-wrapper">
-            <div class="scores-draw-entry-box">
-                <a href="/en/players/steve-johnson/j386/overview"
-                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                   data-ga-label="Steve Johnson">Steve Johnson</a><a
-                    href="/en/players/sam-querrey/q927/overview"
-                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
-                                                                   data-ga-category=""
-                                                                   data-ga-action="Click"
-                                                                   data-ga-label="" data-use-ga="true"
-                                                                   class="not-in-system scores-draw-entry-box-score">
-                63 62 </a>
-            </div>
-        </div>
-    </td>
-    <td rowspan="8" class="bye-bracket">
-        <a
-                data-ga-category=""
-                data-ga-action="Click"
-                data-ga-label="H2H"
-                data-use-ga="true"
-                class="scores-draw-h2h-link">
-			<span>
-
-			</span>
-        </a>
-        <div class="scores-draw-entry-box-wrapper">
-            <div class="scores-draw-entry-box">
-                <a href="/en/players/karen-khachanov/ke29/overview"
-                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                   data-ga-label="Karen Khachanov">Karen Khachanov</a><a
-                    href="/en/players/andrey-rublev/re44/overview"
-                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                    data-ga-label="Andrey Rublev">Andrey Rublev</a> <a data-override-transition
-                                                                       data-ga-category=""
-                                                                       data-ga-action="Click"
-                                                                       data-ga-label=""
-                                                                       data-use-ga="true"
-                                                                       class="not-in-system scores-draw-entry-box-score">
-                63 61 </a>
-            </div>
-        </div>
-    </td>
-    <td rowspan="16" class="bye-bracket">
-        <a
-                data-ga-category=""
-                data-ga-action="Click"
-                data-ga-label="H2H"
-                data-use-ga="true"
-                class="scores-draw-h2h-link">
-			<span>
-
-			</span>
-        </a>
-        <div class="scores-draw-entry-box-wrapper">
-            <div class="scores-draw-entry-box">
-            </div>
-        </div>
-    </td>
-
-</tr>
-<tr>
-    <td>
-        <div class="scores-draw-entry-box">
-            <table class="scores-draw-entry-box-table">
-                <tbody>
-                <tr>
-                    <td>3</td>
-                    <td>
-
-                    </td>
-                    <td>
-                        <a href="/en/players/adrian-mannarino/me82/overview"
-                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
-                           data-ga-label="Adrian Mannarino"> <img
-                                class="scores-draw-entry-box-players-item-flag "
-                                src="/en/~/media/images/flags/fra.svg"/>
-                            Adrian Mannarino</a><a href="/en/players/daniil-medvedev/mm58/overview"
-                                                   class="scores-draw-entry-box-players-item"
-                                                   data-ga-action="Click"
-                                                   data-ga-label="Daniil Medvedev"> <img
-                            class="scores-draw-entry-box-players-item-flag "
-                            src="/en/~/media/images/flags/rus.svg"/>
-                        Daniil Medvedev</a>
-                    </td>
-                </tr>
+</div>
 
 
-        </div>
-        </div>
+<!-- Aquí termina el html importado de Dreamweaver
+
+<script type="text/javascript">
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+}
+
+</script>
+
+*/-->
 
 
-        <!-- Aquí termina el html importado de Dreamweaver
-
-        <script type="text/javascript">
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-          acc[i].onclick = function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight){
-              panel.style.maxHeight = null;
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-          }
-        }
-
-        </script>
-
-        */-->
-
-
-        {% endblock %}
+{% endblock %}
