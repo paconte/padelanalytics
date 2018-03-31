@@ -14,11 +14,95 @@
 
 <div style="margin-top: 50px" class="container_12">
     <div class="box" style="display:flex; flex-wrap: wrap">
+        <a href="X">
+            <button type="button" class="btn btn-danger new">Lade eine <br> Nachricht hoch!
+            </button>
+        </a>
+        <div class="col-md-12 row">
+            <div class="col-md-6 top-slider img-fluid">
+                <div id="carousel-example-generic" class="carousel slide news" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item ">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/07.png' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                    <div class="news-title">
+                                        <h2 class=" title-large"><a href="#">Die Füchse Berlin werden ein Halle mit 4
+                                            Plätzen bauen</a></h2>
+                                    </div>
+                                    <div class="news-des">Die Parteien befinden sich in Verhandlung. Voraussichtlich
+                                        werden
+                                        die 4 Plätze in September stehen.
+                                    </div>
+                                    <div class="time-text"><strong>vor 2 St.</strong></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/05.jpeg' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                    <div class="news-title">
+                                        <h2 class=" title-large"><a href="#">Erfolgreiches Antreten der
+                                            Nationalmannschaft in Estoril, Portugal</a></h2>
+                                    </div>
+                                    <div class="news-des">Unser Team verlor gegen Frankreich im Viertelfinale
+                                    </div>
+                                    <div class="time-text"><strong>vor 2 St.</strong></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="carousel-item">
+                            <div class="news-block">
+                                <div class="news-media"><img class="img-fluid"
+                                                             src="{% static 'images/news/06.jpg' %}"
+                                                             alt=""></div>
+                                <div style="padding:0 10px 10px 10px;">
+                                    <div class="news-title">
+                                        <h2 class=" title-large"><a href="#">Nächstes GPS-Turnier</a></h2>
+                                    </div>
+                                    <div class="news-des">Das GPS-1000 wird am 21.-22. APril in Karsruhe stattfinden.
+                                    </div>
+                                    <div class="time-text"><strong>vor 2 St.</strong></div>
+                                    <div></div>
+                                </div>
+                            </div>
+
+                        </div>-->
+                    </div>
+                </div>
                 <a href="X">
-                <button type="button" class="btn btn-danger new">Lade eine <br> Nachricht hoch!
-                </button>
+                    <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Standorte<br>26
+                    </button>
                 </a>
-        <div class="row">
+                <a href="X">
+                    <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Plätze<br>50
+                    </button>
+                </a>
+                <a href="X">
+                    <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Turniere<br>150
+                    </button>
+                </a>
+                <a href="X">
+                    <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Spieler<br>550
+                    </button>
+                </a>
+            </div>
+
             <div class="col-md-3">
                 <div class="news"><img class="img-fluid-small"
                                        src="{% static 'images/news/02.png' %}" alt="">
@@ -47,7 +131,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="news"><img class="img-fluid-small" src="{% static 'images/news/03.jpg' %}" alt="">
+                <div class="news_bar" style="height:1500px">
                     <div class="card-img-overlay"><span class="badge badge-pill badge-danger">Senioren</span></div>
                     <div class="card-body">
                         <div class="news-title">
@@ -61,102 +145,121 @@
                         </p>
                     </div>
                 </div>
-                <div class="news"><img class="img-fluid-small"
-                                       src="{% static 'images/news/04.jpg' %}" alt="">
-                    <div class="card-img-overlay"><span class="badge badge-pill badge-danger">GPS 2018</span></div>
-                    <div class="card-body">
-                        <div class="news-title">
-                            <h2 class=" title-small"><a href="#">Damen gesucht! Die größe Motivation der GPS-WOMEN</a>
-                            </h2>
-                        </div>
-                        <p class="card-text">
-                            <small class="text-time"><em>vor 3 Min.</em></small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 top-slider img-fluid">
-                <div id="carousel-example-generic" class="carousel slide news" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="news-block">
-                                <div class="news-media"><img class="img-fluid"
-                                                             src="{% static 'images/news/07.png' %}"
-                                                             alt=""></div>
-                                <div style="padding:0 10px 10px 10px;">
-                                <div class="news-title">
-                                    <h2 class=" title-large"><a href="#">Die Füchse Berlin werden ein Halle mit 4
-                                        Plätzen bauen</a></h2>
-                                </div>
-                                <div class="news-des">Die Parteien befinden sich in Verhandlung. Voraussichtlich werden
-                                    die 4 Plätze in September stehen.
-                                </div>
-                                <div class="time-text"><strong>vor 2 St.</strong></div>
-                                <div></div></div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="news-block">
-                                <div class="news-media"><img class="img-fluid"
-                                                             src="{% static 'images/news/05.jpeg' %}"
-                                                             alt=""></div>
-                                <div style="padding:0 10px 10px 10px;">
-                                <div class="news-title">
-                                    <h2 class=" title-large"><a href="#">Erfolgreiches Antreten der Nationalmannschaft in Estoril, Portugal</a></h2>
-                                </div>
-                                <div class="news-des">Unser Team verlor gegen Frankreich im Viertelfinale
-                                </div>
-                                <div class="time-text"><strong>vor 2 St.</strong></div>
-                                <div></div></div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="news-block">
-                                <div class="news-media"><img class="img-fluid"
-                                                             src="{% static 'images/news/06.jpg' %}"
-                                                             alt=""></div>
-                                <div style="padding:0 10px 10px 10px;">
-                                <div class="news-title">
-                                    <h2 class=" title-large"><a href="#">Nächstes GPS-Turnier</a></h2>
-                                </div>
-                                <div class="news-des">Das GPS-1000 wird am 21.-22. APril in Karsruhe stattfinden.
-                                </div>
-                                <div class="time-text"><strong>vor 2 St.</strong></div>
-                                <div></div></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="X">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Standorte<br>26
-                </button>
-                </a>
-                <a href="X">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Plätze<br>50
-                </button>
-                </a>
-                <a href="X">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Turniere<br>150
-                </button>
-                </a>
-                <a href="X">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-danger stats">Spieler<br>550
-                </button>
-                </a>
             </div>
 
         </div>
     </div>
-</div>
 
+     <div class="row">
+        <div class="col-lg-12">
+            <h1>Bootstrap 4 Card Slider</h1>
+        </div>
+    </div>
+</section>
+<section class="carousel slide" data-ride="carousel" id="postsCarousel">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-md-right lead">
+                <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container p-t-0 m-t-2 carousel-inner">
+        <div class="row row-equal carousel-item active m-t-0">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Insight</h6>
+                        <h2>
+                            <a href>Why Stuff Happens Every Year.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/Hw7sWGU.png" alt="Carousel 2">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Development</h6>
+                        <h2>
+                            <a href>How to Make Every Line Count.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/g27lAMl.png" alt="Carousel 3">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Design</h6>
+                        <h2>
+                            <a href>Responsive is Essential.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-equal carousel-item m-t-0">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/office-student-work-study.jpg" alt="Carousel 4">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Another</h6>
+                        <h2>
+                            <a href>Tagline or Call-to-action.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/working-woman-technology-computer.jpg" alt="Carousel 5">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category 1</h6>
+                        <h2>
+                            <a href>This is a Blog Title.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 fadeIn wow">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/people-office-team-collaboration.jpg" alt="Carousel 6">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Category 3</h6>
+                        <h2>
+                            <a href>Catchy Title of a Blog Post.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script js>
+    (function($) {
+    "use strict";
+
+    // manual carousel controls
+    $('.next').click(function(){ $('.carousel').carousel('next');return false; });
+    $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
+
+})(jQuery);
+
+</script>
 
 {% endblock %}

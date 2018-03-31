@@ -27,6 +27,22 @@ box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);
   -webkit-filter: grayscale(0%);
 }
 
+.news_bar {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #dedede;
+  background-clip: border-box;
+    transition: 0.1s;
+border-radius: 0.0rem;
+margin-bottom: 16px;
+  -webkit-filter: grayscale(40%);
+}
+
 
 .news > hr {
   margin-right: 0;
@@ -50,7 +66,6 @@ box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);
 }
 
 .news-title {
-  margin-bottom: 0.75rem;
   height: 45px;
 }
 
@@ -234,6 +249,8 @@ box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);
   margin-bottom: 0.75rem;
 }
 
+
+
 @media (min-width: 576px) {
   .news-columns {
     -webkit-column-count: 3;
@@ -263,7 +280,7 @@ section{padding: 30px 0; float: left; width: 100%}
 .text-time{color: #ff0000; font-weight: 600;}
 .banner-sec .card-img-overlay{padding: 0; top: 3px; left: 7px; height: 20%}
 
-.top-slider .carousel-indicators{bottom: 0}
+.top-slider .carousel-indicators{bottom: -5px}
 .top-slider .carousel-indicators li{border:1px solid #000;}
 .top-slider .carousel-indicators .active{background:#000;}
 
@@ -320,8 +337,48 @@ height: 100px;
 
 }
 
-time-text{
-padding-left: 10px;
+.calendar {
+    background: rgba(241,241,241,0.7);
+    border-right: thick solid #fff;
+    margin-top: 8px;
+    height: 80px;
+}
+
+
+/* equal card height */
+.row-equal > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.row-equal .card {
+   width: 100%;
+}
+
+/* ensure equal card height inside carousel */
+.carousel-inner>.row-equal.active,
+.carousel-inner>.row-equal.next,
+.carousel-inner>.row-equal.prev {
+    display: flex;
+}
+
+/* prevent flicker during transition */
+.carousel-inner>.row-equal.active.left,
+.carousel-inner>.row-equal.active.right {
+    opacity: 0.5;
+    display: flex;
+}
+
+
+/* control image height */
+.card-img-top-250 {
+    max-height: 250px;
+    overflow:hidden;
+}
+
+
+.time-text{
+padding-bottom: 10px;
 }
 
 .stats {
