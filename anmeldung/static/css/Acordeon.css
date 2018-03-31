@@ -117,12 +117,10 @@ ul { padding: 0; margin: 0; list-style: none;
 
 
 .teams_title{
-	width: 100%;
+	margin-left: 15px;width: 100%;
 	padding: 0 0 10px 0px;
 	vertical-align: middle;
 	float: left;
-	margin-left: 15px;
-	margin-top: 15px;
 }
 
 .teams_title .col1 {
@@ -172,6 +170,7 @@ ul { padding: 0; margin: 0; list-style: none;
 	max-width: 40px;
 	float: right;
 	margin-right: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .text_player{
@@ -330,9 +329,9 @@ ul { padding: 0; margin: 0; list-style: none;
 	height: 20px;
 }
 
-.col1_matches_score {
-    width: 4%;
-	text-align: left;
+.matches_score {
+    width: 7%;
+	text-align: center;
 	height: 20px;
 	margin-top: 8px;
 }
@@ -340,13 +339,21 @@ ul { padding: 0; margin: 0; list-style: none;
 .col1 .flag1 {
 	max-height: 16px;
 	float: left;
-	margin-top: 2px;
+	margin-top: 5px;
 }
 
 .col1 .flag2 {
 	max-height: 16px;
 	float: left;
 	margin-top: 5px;
+}
+
+.card-container {
+	  -webkit-perspective: 800px;
+   -moz-perspective: 800px;
+     -o-perspective: 800px;
+        perspective: 800px;
+        margin-top: 16px;
 }
 
 .col2_matches {
@@ -432,13 +439,12 @@ height: 100%;
 
 
 .text_score{
-	width: 50%;
 	color: grey;
-	font-weight: 600;
+	font-weight: 400;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
-	padding-left: 12px;
-	font-size: 12px;
+	font-size: 10px;
 	padding-top: 10px;
+
 }
 
 .text_club{
@@ -453,7 +459,7 @@ height: 100%;
 }
 
 .text_tournament_title{
-	color: grey;
+	color: #DC4C46;
 	font-weight: 200;
 	font-size-adjust: auto;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
@@ -487,7 +493,33 @@ height: 100%;
 
 
 
+.cuadro {
+    width:100%;
+    margin:0 0;
+    text-align:center;
+    padding:2em;
+}
 
+.cuadro ul{
+    list-style:none;
+}
+
+.cuadro ul li{
+    display:inline-block;
+    width:auto;
+    padding:.5em;
+    margin:0 3.5em;
+}
+
+.cuadro ul li a{
+    color:#000;
+    display:block;
+    padding:.5em 2em;
+}
+
+.cuadro ul li a:hover{
+    border:2px solid blue;
+}
 
 
 /* BOOTSTRAP UPDATE */
