@@ -4,26 +4,32 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotation-card.css' %}"/>
 <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <div style="margin-top: 50px" class="container_12">
+
+    <!-- Título Página -->
     <div class="card">
         <h1>German Padel Series 2018</h1>
+        <h2>Turnierinfo</h2>
     </div>
 
-    <div class="card">
+
+    <!-- Barra Título Torneo y Anmeldung -->
+    <div class="card" style="border:none; box-shadow: none; background:none">
         <div class="box">
             <!-- Logo Serie -->
-            <div class="col-xs-12 col-sm-1" style="float: right">
-                <div style="float: right; margin-bottom: 8px">
+            <div class="col-xs-12 col-sm-1" style="float: right; margin-top: 5px ">
+                <div style="float: right;">
                     <img class="col_1 category" src="{% static tournament.serie_url %}" alt="GPS-500">
                 </div>
             </div>
             <!-- Serie y Categoria -->
-            <div class="col-xs-12 col-sm-1" style="float: right">
+            <div class="col-xs-12 col-sm-1" style="float: right; margin-top: 5px">
                 <a class="text_tournament_title">{{tournament.category}}</a><br>
                 <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
             </div>
@@ -44,7 +50,7 @@
             <!-- 1 Espacio libre -->
             <div class="col-sm-1" style="float: right"></div>
             <!-- Ciudad y Club Arriba -->
-            <div class="col-xs-12 col-sm-4" style="float: left">
+            <div class="col-xs-12 col-sm-4" style="float: left; margin-top: 5px">
                 <a class="text_tournament_title" style="width: 100%; text-transform: uppercase">{{tournament.city}} //
                     {{tournament.club}}</a><br>
                 <a class="text_tournament_title" style="width: 100%; text-transform: uppercase; font-weight: bold;">{{tournament.date}}</a>
@@ -56,19 +62,25 @@
 
             {% if tournament.signup %}
             <a href="{% url 'tournament_signup' tournament.id %}">
-                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left; margin-bottom: 8px">
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left">
                     Anmeldung
                 </button>
             </a>
             {% endif %}
+        </div>
+    </div>
 
 
+    <!-- Jugadores Inscritos -->
+    <div class="card" style="padding-bottom:20px">
+        <div class="box">
             <!-- Fecha Abajo -->
             <div class="col-xs-12 col-sm-4" style="left: 0px">
             </div>
             <!-- Lista de equipos apuntados */-->
             {% if teams|length != 0 %}
-            <button class="accordion active">Teams</button>
+            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
+            <hr class="separador_torneo">
             <div class="panel" style="max-height:inherit">
                 <div class="teams_title">
                     <div class="th col-sm-1"></div>
@@ -80,7 +92,7 @@
                     <div class="th col-sm-2"> Verein</div>
 
                     <!--<div class="th col-sm-1"> KOPF</div>-->
-                    <div class="th col-sm-1"> DPV</div>
+                    <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>
                 </div>
                 {% for team in teams %}
                 <ul class="teams">
@@ -95,7 +107,7 @@
 
                     </ul>
                     <ul class="th col-sm-2">
-                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a.abbr}}</a>
+                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
                         </div>
                     </ul>
                     <ul class="th col-sm-2">
@@ -119,16 +131,13 @@
                         <div><a class="text_club"
                                 style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
                     </ul>-->
-                    <ul class="th col-sm-1">
-                        <div><a class="text_club">{{team.1}} Pkt.</a></div>
+
+                    <ul class="th col-sm-2" >
+                        <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
                     </ul>
                 </ul>
 
                 {% endfor %}
-
-
-                <!-- Aquí termina el html importado de Dreamweaver */-->
-
             </div>
             {% else %}
 
@@ -138,731 +147,522 @@
                 <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
             </div>
             {% endif %}
-            {% for team in teams %}
-            <button class="accordion active" style="margin-top: 20px">Gruppe A</button>
-            <div class="panel" style="max-height:inherit">
-                <div style="width: 55%; float: left">
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A1</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
-                                <div class="matches_nac">
-                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                </div>
-                            </div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">{{team.0.player_a}}</a> <br>
-                            <a class="text_player">{{team.0.player_b}}</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
-                            </div>
-                            <div class="matches_nac">
-                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">{{team.0.player_a}}</a>
-                            <br>
-                            <a class="text_player">{{team.0.player_b}}</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                        <br>
-                    </ul>
-                    <hr class="hr">
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A2</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Jan Mayer</a> <br>
-                            <a class="text_player">Stefan Kross</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Marc Snellink</a> <br>
-                            <a class="text_player">Jon Smith</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                        <br>
-                    </ul>
-                    <hr class="hr">
-                    </hr>
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A3</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="col1_matches_nac">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <div class="matches_nac">
-                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Jan Mayer</a> <br>
-                            <a class="text_player">Stefan Kross</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                        <br>
-                    </ul>
-                    <hr class="hr">
-                    </hr>
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A4</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Álvaro Lázaro</a> <br>
-                            <a class="text_player">Isaac San Frutos</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Marc Snellink</a> <br>
-                            <a class="text_player">Jon Smith</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                        <br>
-                    </ul>
-                    <hr class="hr">
-                    </hr>
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A5</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="col1_matches_nac">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <div class="matches_nac">
-                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <div class="matches_nac">
-                                    <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Marc Snellink</a> <br>
-                            <a class="text_player">Jon Smith</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                        <br>
-                    </ul>
-                    <hr class="hr">
-                    </hr>
-                    <ul class="teams_groups">
-                        <ul class="th col1 vertical_match">
-                            <span class="label matches" style="max-height: 10px">A6</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Álvaro Lázaro</a> <br>
-                            <a class="text_player">Isaac San Frutos</a>
-                        </ul>
-                        <ul class="th col1 vertical_match_defeats">
-                            <span class="label matches">Vs</span>
-                        </ul>
-                        <ul class="th col1">
-                            <div class="matches_nac">
-                                <img class="flag1" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                            <br>
-                            <div class="matches_nac">
-                                <img class="flag2" src="{% static 'images/flags/32/Germany.png' %}"></div>
-                        </ul>
-                        <ul class="th col2" style="width: 30%">
-                            <a class="text_player">Jan Mayer</a> <br>
-                            <a class="text_player">Stefan Kross</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 3</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 6%">
-                            <a class="text_score">6 7</a>
-                        </ul>
-                        <ul class="th col1_matches_score" style="width: 7%">
-                            <a class="text_score">0 10</a>
-                        </ul>
-                </div>
-                <div class="card_groups" style="width: 42%; float: right">
-                    <div class="teams_title" style="color:black; float:right; text-align:center">
-                        <div class="th col-sm-6"></div>
-                        <div class="th col-sm-2"> Punkte</div>
-                        <div class="th col-sm-2"> Sätze</div>
-                        <div class="th col-sm-2"> Spiele</div>
-                    </div>
-                    <div class="teams_title" style="float:right; margin-top: -5px; text-align:center">
-                        <div class="th col-sm-8"></div>
-                        <div class="th col-sm-1"> G</div>
-                        <div class="th col-sm-1"> V</div>
-                        <div class="th col-sm-1"> G</div>
-                        <div class="th col-sm-1"> V</div>
-                    </div>
+        </div>
+    </div>
 
+
+    <!-- Reparto de Grupos -->
+    <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+            <div class="card clubs">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
+                <hr class="separador_torneo">
+                {% for team in teams %}
+                <div class="panel" style="max-height:inherit">
                     <ul class="teams_groups">
-                        <ul class="col-2">
-                            <hr>
-                            <ul class="th col1 vertical_match">
-                                <span class="label matches" style="max-height: 10px">1.</span>
-                            </ul>
-                            <ul class="th col1">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                            </ul>
+                        <ul class="th col-sm-2 col-md-1" style="float: left">
+                            <div class="matches_nac">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
                         </ul>
-                        <ul class="th col-5">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
+
+                        <ul class="th col-sm-10 col-md-11">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
                         </ul>
-                        <div style="margin-right:15px">
-                            <a class="col-sm-1 text_player" style="float:right"> 12</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 38</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 1</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 6</a>
-                            <a class="col-sm-1 text_player" style="float:right"> I</a>
-                        </div>
-                        <br>
-                    </ul>
-                    <ul class="teams_groups">
-                        <ul class="col-2">
-                            <hr>
-                            <ul class="th col1 vertical_match">
-                                <span class="label matches" style="max-height: 10px">2.</span>
-                            </ul>
-                            <ul class="th col1">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                            </ul>
-                        </ul>
-                        <ul class="th col-5">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
-                        </ul>
-                        <div style="margin-right:15px">
-                            <a class="col-sm-1 text_player" style="float:right"> 12</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 38</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 1</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 6</a>
-                            <a class="col-sm-1 text_player" style="float:right"> I</a>
-                        </div>
-                        <br>
-                    </ul>
-                    <ul class="teams_groups">
-                        <ul class="col-2">
-                            <hr>
-                            <ul class="th col1 vertical_match">
-                                <span class="label matches" style="max-height: 10px">3.</span>
-                            </ul>
-                            <ul class="th col1">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                            </ul>
-                        </ul>
-                        <ul class="th col-5">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
-                        </ul>
-                        <div style="margin-right:15px">
-                            <a class="col-sm-1 text_player" style="float:right"> 12</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 38</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 1</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 6</a>
-                            <a class="col-sm-1 text_player" style="float:right"> I</a>
-                        </div>
-                        <br>
-                    </ul>
-                    <ul class="teams_groups">
-                        <ul class="col-2">
-                            <ul class="th col1 vertical_match">
-                                <span class="label matches" style="max-height: 10px">4.</span>
-                            </ul>
-                            <ul class="th col1">
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag1"> <br>
-                                <img src="{% static 'images/flags/32/Germany.png' %}" class="flag2">
-                            </ul>
-                        </ul>
-                        <ul class="th col-5">
-                            <a class="text_player">Paco Revilla</a> <br>
-                            <a class="text_player">Fran González</a>
-                        </ul>
-                        <div style="margin-right:15px">
-                            <a class="col-sm-1 text_player" style="float:right"> 12</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 38</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 1</a>
-                            <a class="col-sm-1 text_player" style="float:right"> 6</a>
-                            <a class="col-sm-1 text_player" style="float:right"> I</a>
-                        </div>
-                        <br>
                     </ul>
                 </div>
+                {% endfor %}
             </div>
-{% endfor %}
-            <button class="accordion active" style="margin-top: 20px">K.O. PHASE</button>
-
-
-            <div class="panel" style="max-height:inherit">
-                <div class="tournament-bracket tournament-bracket--rounded">
-                    <div class="tournament-bracket__round tournament-bracket__round--quarterfinals">
-                        <h3 class="tournament-bracket__round-title">Quarterfinals</h3>
-                        <ul class="tournament-bracket__list">
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-18">18 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ca"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">4</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-kz"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
-
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-18">18 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-cz"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">4</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code"
-                                                      title="Unitede states of America">USA</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-us"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-18">18 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-fi"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">2</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Sweden">SVE</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-se"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
-
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-18">18 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ru"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">4</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Belarus">BEL</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-by"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
+        </div> <!-- end card -->
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+            <div class="card clubs">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe B</h3>
+                <hr class="separador_torneo">
+                {% for team in teams %}
+                <div class="panel" style="max-height:inherit">
+                    <ul class="teams_groups">
+                        <ul class="th col-sm-2 col-md-1" style="float: left">
+                            <div class="matches_nac">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
                         </ul>
-                    </div>
-                    <div class="tournament-bracket__round tournament-bracket__round--semifinals">
-                        <h3 class="tournament-bracket__round-title">Semifinals</h3>
-                        <ul class="tournament-bracket__list">
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-20">20 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ca"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-cz"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">2</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
 
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-20">20 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-fi"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">4</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ru"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">7</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
+                        <ul class="th col-sm-10 col-md-11">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
                         </ul>
-                    </div>
-                    <div class="tournament-bracket__round tournament-bracket__round--bronze">
-                        <h3 class="tournament-bracket__round-title">Bronze medal game</h3>
-                        <ul class="tournament-bracket__list">
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-21">21 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-fi"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">3</span>
-                                                <span class="tournament-bracket__medal tournament-bracket__medal--bronze fa fa-trophy"
-                                                      aria-label="Bronze medal"></span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ca"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">2</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tournament-bracket__round tournament-bracket__round--gold">
-                        <h3 class="tournament-bracket__round-title">Gold medal game</h3>
-                        <ul class="tournament-bracket__list">
-                            <li class="tournament-bracket__item">
-                                <div class="tournament-bracket__match" tabindex="0">
-                                    <table class="tournament-bracket__table">
-                                        <caption class="tournament-bracket__caption">
-                                            <time datetime="1998-02-22">22 February 1998</time>
-                                        </caption>
-                                        <thead class="sr-only">
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tournament-bracket__content">
-                                        <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-cz"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">1</span>
-                                                <span class="tournament-bracket__medal tournament-bracket__medal--gold fa fa-trophy"
-                                                      aria-label="Gold medal"></span>
-                                            </td>
-                                        </tr>
-                                        <tr class="tournament-bracket__team">
-                                            <td class="tournament-bracket__country">
-                                                <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                                <span class="tournament-bracket__flag flag-icon flag-icon-ru"
-                                                      aria-label="Flag"></span>
-                                            </td>
-                                            <td class="tournament-bracket__score">
-                                                <span class="tournament-bracket__number">0</span>
-                                                <span class="tournament-bracket__medal tournament-bracket__medal--silver fa fa-trophy"
-                                                      aria-label="Silver medal"></span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
+                {% endfor %}
             </div>
+        </div> <!-- end card -->
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+            <div class="card clubs">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe C</h3>
+                <hr class="separador_torneo">
+                {% for team in teams %}
+                <div class="panel" style="max-height:inherit">
+                    <ul class="teams_groups">
+                        <ul class="th col-sm-2 col-md-1" style="float: left">
+                            <div class="matches_nac">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </ul>
+
+                        <ul class="th col-sm-10 col-md-11">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                        </ul>
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div> <!-- end card -->
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 card-container">
+            <div class="card clubs">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe D</h3>
+                <hr class="separador_torneo">
+                {% for team in teams %}
+                <div class="panel" style="max-height:inherit">
+                    <ul class="teams_groups">
+                        <ul class="th col-sm-2 col-md-1" style="float: left">
+                            <div class="matches_nac">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </ul>
+
+                        <ul class="th col-sm-10 col-md-11">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                        </ul>
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div> <!-- end card -->
+    </div> <!-- end card-container -->
+
+
+    <!-- Grupo - Resultados y Clasificación -->
+    <div class="card col-sm-12" style="margin-top:20px; float: left; padding-bottom:20px">
+        <div class="box">
+            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
+            <hr class="separador_torneo">
+            <!-- Resultados -->
+            <div class="col-sm-7" style="float:left">
+                {% for team in teams %}
+                <!-- Número de partido -->
+                <ul>
+                    <ul class="th col1 vertical_match">
+                        <span class="label matches" style="max-height: 10px">A1</span>
+                    </ul>
+
+                    <!-- Banderas A -->
+                    <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
+                        <div class="matches_nac" style="float: right">
+                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                            <i style="border: none; margin-top: 6px"
+                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                        </div>
+                    </ul>
+
+                    <!-- Equipos A -->
+                    <ul class="th col-sm-3 col-md-3">
+                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                        <a class="text_player">{{team.0.player_b.abbr}}</a>
+                    </ul>
+
+                    <!-- Versus -->
+                    <ul class="th col1 vertical_match">
+                        <span class="label matches" style="max-height: 10px">Vs</span>
+                    </ul>
+
+                    <!-- Banderas B-->
+                    <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
+                        <div class="matches_nac" style="float: right">
+                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                            <i style="border: none; margin-top: 6px"
+                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                        </div>
+                    </ul>
+
+                    <!-- Equipos B -->
+                    <ul class="th col-sm-3 col-md-3">
+                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                        <a class="text_player">{{team.0.player_b.abbr}}</a>
+                    </ul>
+
+                    <!-- Resultados -->
+                    <ul class="th col-sm-1 matches_score">
+                        <a class="text_score">6 3</a>
+                    </ul>
+                    <ul class="th col-sm-1 matches_score">
+                        <a class="text_score">6 7</a>
+                    </ul>
+                    <ul class="th col-sm-1 matches_score">
+                        <a class="text_score">0 10</a>
+                    </ul>
+                    <br>
+                    <hr class="hr" style="margin-top: 15px"></hr>
+
+                </ul>
+
+                {% endfor %}
+            </div>
+
+
+            <!-- Clasificación -->
+            <div class="col-sm-5" style="float: right; background-color: #fafafa; padding: 10 0 10 0; padding-left:-15px">
+                <div class="teams_title" style="color:black; float:right; text-align:center">
+                    <div class="th col-sm-6"></div>
+                    <div class="th col-sm-2"> Punkte</div>
+                    <div class="th col-sm-2"> Sätze</div>
+                    <div class="th col-sm-2"> Spiele</div>
+                </div>
+                <div class="teams_title" style="float:right; margin-top: -5px; text-align:center">
+                    <div class="th col-sm-8"></div>
+                    <div class="th col-sm-1"> G</div>
+                    <div class="th col-sm-1"> V</div>
+                    <div class="th col-sm-1"> G</div>
+                    <div class="th col-sm-1"> V</div>
+                </div>
+                {% for team in teams %}
+
+                <ul class="teams_groups" style="padding-top:5px">
+                    <ul class="col-1">
+                        <ul class="th col-12 vertical_match">
+                            <span class="label matches" style="max-height: 10px">1.</span>
+                        </ul>
+                    </ul>
+                    <!-- Banderas B-->
+                    <ul class="th col-1" style="float: left; max-width:6%">
+                        <div class="matches_nac" style="float: right">
+                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                            <i style="border: none; margin-top: 6px"
+                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                        </div>
+                    </ul>
+                    <ul class="th col-4">
+                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                        <a class="text_player">{{team.0.player_b.abbr}}</a>
+                    </ul>
+                    <div style="margin-right:15px" style="padding-top:5px">
+                        <a class="col-sm-1 text_player" style="float:right"> 12</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 38</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 1</a>
+                        <a class="col-sm-1 text_player" style="float:right"> 6</a>
+                        <a class="col-sm-1 text_player" style="float:right"> I</a>
+                    </div>
+                </ul>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Play-Offs -->
+    <div class="card col-sm-12" style="margin-top:20px">
+        <div class="box">
+            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">K.O. PHASE</h3>
+
+
+            <!--Table-->
+            <table class="table table-hover table-responsive-md table-fixed">
+
+                <!--Table head-->
+                <thead>
+                <tr>
+                    <th>R32</th>
+                    <th>R16</th>
+                    <th>VF</th>
+                    <th>HF</th>
+                    <th>F</th>
+                    <th>3.</th>
+                </tr>
+                </thead>
+                <!--Table head-->
+
+                <!--Table body-->
+                <tbody>
+
+                </tbody>
+                <!--Table body-->
+
+            </table>
+            <!--Table-->
 
         </div>
+    </div>
+
+
+</div>
+<div class="card col-sm-3">
+    <div class="box">
+        {% for team in teams %}
+        <div class="panel" style="max-height:inherit">
+            <div style="width: 55%; float: left">
+                <ul class="teams_groups">
+                    <ul class="th col-sm-2">
+                        <div class="matches_nac">
+                            <i style="border= none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i>
+                            <div class="matches_nac">
+                                <i style="border= none" class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="th col-sm-10">
+                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                        <a class="text_player">{{team.0.player_b.abbr}}</a>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 
 
-<!-- Aquí termina el html importado de Dreamweaver
+<tbody>
+<tr>
+    <td>
+        <div class="scores-draw-entry-box">
+            <table class="scores-draw-entry-box-table">
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+										<span>
+			(1)
+		</span>
 
-<script type="text/javascript">
-var acc = document.getElementsByClassName("accordion");
-var i;
+                    </td>
+                    <td>
+                        <a href="/en/players/lukasz-kubot/k540/overview"
+                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                           data-ga-label="Lukasz Kubot"> <img
+                                class="scores-draw-entry-box-players-item-flag "
+                                src="/en/~/media/images/flags/pol.svg"/>
+                            Lukasz Kubot</a><a href="/en/players/marcelo-melo/m919/overview"
+                                               class="scores-draw-entry-box-players-item"
+                                               data-ga-action="Click" data-ga-label="Marcelo Melo"> <img
+                            class="scores-draw-entry-box-players-item-flag "
+                            src="/en/~/media/images/flags/bra.svg"/>
+                        Marcelo Melo</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].onclick = function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  }
-}
+                    </td>
+                    <td>
+                        <a href="/en/players/steve-johnson/j386/overview"
+                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                           data-ga-label="Steve Johnson"> <img
+                                class="scores-draw-entry-box-players-item-flag "
+                                src="/en/~/media/images/flags/usa.svg"/>
+                            Steve Johnson</a><a href="/en/players/sam-querrey/q927/overview"
+                                                class="scores-draw-entry-box-players-item"
+                                                data-ga-action="Click" data-ga-label="Sam Querrey"> <img
+                            class="scores-draw-entry-box-players-item-flag "
+                            src="/en/~/media/images/flags/usa.svg"/>
+                        Sam Querrey</a>
+                    </td>
+                </tr>
 
-</script>
+                </tbody>
+            </table>
+        </div>
+    </td>
+    <td rowspan="1" class="bye-bracket">
+        <a
+                data-ga-category=""
+                data-ga-action="Click"
+                data-ga-label="H2H"
+                data-use-ga="true"
+                class="scores-draw-h2h-link">
+			<span>
 
-*/-->
+			</span>
+        </a>
+        <div class="scores-draw-entry-box-wrapper">
+            <div class="scores-draw-entry-box">
+                <a href="/en/players/steve-johnson/j386/overview"
+                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                   data-ga-label="Steve Johnson">Steve Johnson</a><a
+                    href="/en/players/sam-querrey/q927/overview"
+                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
+                                                                   data-ga-category=""
+                                                                   data-ga-action="Click"
+                                                                   data-ga-label="" data-use-ga="true"
+                                                                   class="not-in-system scores-draw-entry-box-score">
+                64 76<sup>0</sup> </a>
+            </div>
+        </div>
+    </td>
+    <td rowspan="2" class="bye-bracket">
+        <a
+                data-ga-category=""
+                data-ga-action="Click"
+                data-ga-label="H2H"
+                data-use-ga="true"
+                class="scores-draw-h2h-link">
+			<span>
+
+			</span>
+        </a>
+        <div class="scores-draw-entry-box-wrapper">
+            <div class="scores-draw-entry-box">
+                <a href="/en/players/steve-johnson/j386/overview"
+                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                   data-ga-label="Steve Johnson">Steve Johnson</a><a
+                    href="/en/players/sam-querrey/q927/overview"
+                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
+                                                                   data-ga-category=""
+                                                                   data-ga-action="Click"
+                                                                   data-ga-label="" data-use-ga="true"
+                                                                   class="not-in-system scores-draw-entry-box-score">
+                76<sup>5</sup> 62 </a>
+            </div>
+        </div>
+    </td>
+    <td rowspan="4" class="bye-bracket">
+        <a
+                data-ga-category=""
+                data-ga-action="Click"
+                data-ga-label="H2H"
+                data-use-ga="true"
+                class="scores-draw-h2h-link">
+			<span>
+
+			</span>
+        </a>
+        <div class="scores-draw-entry-box-wrapper">
+            <div class="scores-draw-entry-box">
+                <a href="/en/players/steve-johnson/j386/overview"
+                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                   data-ga-label="Steve Johnson">Steve Johnson</a><a
+                    href="/en/players/sam-querrey/q927/overview"
+                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                    data-ga-label="Sam Querrey">Sam Querrey</a> <a data-override-transition
+                                                                   data-ga-category=""
+                                                                   data-ga-action="Click"
+                                                                   data-ga-label="" data-use-ga="true"
+                                                                   class="not-in-system scores-draw-entry-box-score">
+                63 62 </a>
+            </div>
+        </div>
+    </td>
+    <td rowspan="8" class="bye-bracket">
+        <a
+                data-ga-category=""
+                data-ga-action="Click"
+                data-ga-label="H2H"
+                data-use-ga="true"
+                class="scores-draw-h2h-link">
+			<span>
+
+			</span>
+        </a>
+        <div class="scores-draw-entry-box-wrapper">
+            <div class="scores-draw-entry-box">
+                <a href="/en/players/karen-khachanov/ke29/overview"
+                   class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                   data-ga-label="Karen Khachanov">Karen Khachanov</a><a
+                    href="/en/players/andrey-rublev/re44/overview"
+                    class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                    data-ga-label="Andrey Rublev">Andrey Rublev</a> <a data-override-transition
+                                                                       data-ga-category=""
+                                                                       data-ga-action="Click"
+                                                                       data-ga-label=""
+                                                                       data-use-ga="true"
+                                                                       class="not-in-system scores-draw-entry-box-score">
+                63 61 </a>
+            </div>
+        </div>
+    </td>
+    <td rowspan="16" class="bye-bracket">
+        <a
+                data-ga-category=""
+                data-ga-action="Click"
+                data-ga-label="H2H"
+                data-use-ga="true"
+                class="scores-draw-h2h-link">
+			<span>
+
+			</span>
+        </a>
+        <div class="scores-draw-entry-box-wrapper">
+            <div class="scores-draw-entry-box">
+            </div>
+        </div>
+    </td>
+
+</tr>
+<tr>
+    <td>
+        <div class="scores-draw-entry-box">
+            <table class="scores-draw-entry-box-table">
+                <tbody>
+                <tr>
+                    <td>3</td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <a href="/en/players/adrian-mannarino/me82/overview"
+                           class="scores-draw-entry-box-players-item" data-ga-action="Click"
+                           data-ga-label="Adrian Mannarino"> <img
+                                class="scores-draw-entry-box-players-item-flag "
+                                src="/en/~/media/images/flags/fra.svg"/>
+                            Adrian Mannarino</a><a href="/en/players/daniil-medvedev/mm58/overview"
+                                                   class="scores-draw-entry-box-players-item"
+                                                   data-ga-action="Click"
+                                                   data-ga-label="Daniil Medvedev"> <img
+                            class="scores-draw-entry-box-players-item-flag "
+                            src="/en/~/media/images/flags/rus.svg"/>
+                        Daniil Medvedev</a>
+                    </td>
+                </tr>
 
 
-{% endblock %}
+        </div>
+        </div>
+
+
+        <!-- Aquí termina el html importado de Dreamweaver
+
+        <script type="text/javascript">
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          }
+        }
+
+        </script>
+
+        */-->
+
+
+        {% endblock %}
