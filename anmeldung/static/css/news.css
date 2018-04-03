@@ -22,6 +22,10 @@ margin-bottom: 16px;
   -webkit-filter: grayscale(40%);
 }
 
+.news > 3{
+height:30px;
+}
+
 .news:hover {
 box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);
   -webkit-filter: grayscale(0%);
@@ -354,6 +358,59 @@ height: 100px;
 .row-equal .card {
    width: 100%;
 }
+
+input[type="radio"] + label, select {
+padding:15px;
+}
+
+.picture {
+max-width: 80px;
+max-height: 80px;
+margin-top:0px;
+margin-left:10px;
+float:left;
+width: 80px;
+}
+
+.picture_club {
+max-width: 150px;
+margin-top: 0px;
+margin-left: 25%;
+
+}
+
+.picture_wall {
+	border-radius: 50%;
+	border-radius: 150px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+max-width: 100px;
+max-height: 100px;
+margin-top:0px;
+float:left;
+width: 100px;
+}
+
+    .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
+    right:0px;
+  }
+
+.teams {
+height: 30px;
+width: 100%;
+margin-left: 0;
+margin-top: 5px;
+}
+
+  .teams:hover {
+  background-color: #ededed;
+  }
+
+  .select{
+  height: 50px;
+  font-size: 12px;
+  }
+
+
 
 /* ensure equal card height inside carousel */
 .carousel-inner>.row-equal.active,
