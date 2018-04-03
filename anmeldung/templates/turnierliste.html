@@ -4,8 +4,6 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
-
-
 {% endblock %}
 
 {% block content %}
@@ -16,45 +14,43 @@
         <h2>Turnierliste</h2>
     </div>
 
-        <div class="row">
-            <div style="margin: 15px auto -15px; float: left;">
-                <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
-                <button class="btn btn-light filter-button" data-filter="men">Herren</button>
-                <button class="btn btn-light filter-button" data-filter="women">Damen</button>
-                <button class="btn btn-light filter-button" data-filter="mixed">Mixed</button>
-                <button class="btn btn-light filter-button" data-filter="senior">Senioren</button>
-                <button class="btn btn-light filter-button" data-filter="junior">Junioren</button>
-            </div>
-            <div style="margin: 15px auto -15px; float: right;">
-                <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
-                <button class="btn btn-light filter-button" data-filter="men">GPS-100</button>
-                <button class="btn btn-light filter-button" data-filter="women">GPS-250</button>
-                <button class="btn btn-light filter-button" data-filter="mixed">GPS-500</button>
-                <button class="btn btn-light filter-button" data-filter="senior">GPS-1000</button>
-                <button class="btn btn-light filter-button" data-filter="junior">GPS-1200</button>
-            </div>
+    <div class="row">
+        <div style="margin: 15px auto -15px; float: left;">
+            <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
+            <button class="btn btn-light filter-button" data-filter="men">Herren</button>
+            <button class="btn btn-light filter-button" data-filter="women">Damen</button>
+            <button class="btn btn-light filter-button" data-filter="mixed">Mixed</button>
+            <button class="btn btn-light filter-button" data-filter="senior">Senioren</button>
+            <button class="btn btn-light filter-button" data-filter="junior">Junioren</button>
         </div>
-        <hr>
+        <div style="margin: 15px auto -15px; float: right;">
+            <button class="btn btn-light filter-button active" data-filter="all">Alle</button>
+            <button class="btn btn-light filter-button" data-filter="men">GPS-100</button>
+            <button class="btn btn-light filter-button" data-filter="women">GPS-250</button>
+            <button class="btn btn-light filter-button" data-filter="mixed">GPS-500</button>
+            <button class="btn btn-light filter-button" data-filter="senior">GPS-1000</button>
+            <button class="btn btn-light filter-button" data-filter="junior">GPS-1200</button>
+        </div>
+    </div>
+    <hr>
 
-<!--<div class="card" style="background:none; border: none; box-shadow:none; margin-top: -65px">
-        <div class="box">
-            <div class="col-xs-12 col-sm-9" style="float: right">
-                <div style="float: right; margin-right: 15px">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps100.jpg' %}" alt="GPS-100">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps250.jpg' %}" alt="GPS-250">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps1000.jpg' %}" alt="GPS-1000">
-                    <img class="col_1 category" src="{% static 'images/kategorien/gps1200.jpg' %}" alt="GPS-1200">
-                    <img class="col_1 category" src="{% static 'images/kategorien/w-gps.jpg' %}" alt="GPS-Women">
+    <!--<div class="card" style="background:none; border: none; box-shadow:none; margin-top: -65px">
+            <div class="box">
+                <div class="col-xs-12 col-sm-9" style="float: right">
+                    <div style="float: right; margin-right: 15px">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps100.jpg' %}" alt="GPS-100">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps250.jpg' %}" alt="GPS-250">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps500.jpg' %}" alt="GPS-500">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps1000.jpg' %}" alt="GPS-1000">
+                        <img class="col_1 category" src="{% static 'images/kategorien/gps1200.jpg' %}" alt="GPS-1200">
+                        <img class="col_1 category" src="{% static 'images/kategorien/w-gps.jpg' %}" alt="GPS-Women">
+                    </div>
                 </div>
-            </div>
-        </div></div>-->
+            </div></div>-->
     {% for tournament in tournaments %}
-<div class="card">
+    <div class="card">
         <div class="panel active">
-
             <ul>
-
                 <li class="col-xs-12 tournament-list" style="float: left; padding-top: 20px;">
 
                     <!-- Logo Serie -->
@@ -67,7 +63,8 @@
                     <!-- Serie, Ciudad y Fecha -->
                     <div class="col-xs-4 col-sm-3 col-md-3 col-bg-3" style="float: left">
                         <a href="{% url 'tournament' tournament.id %}" class="text_tournament_title"
-                           style="width: 50%; text-transform: uppercase; font-weight: 600;">{{tournament.serie}} // {{tournament.city}}</a><br>
+                           style="width: 50%; text-transform: uppercase; font-weight: 600;">{{tournament.serie}} //
+                            {{tournament.city}}</a><br>
                         <a class="text_tournament_title"
                            style="width: 100%; font-weight: bold; color:black">{{tournament.date}}</a>
                     </div>
@@ -82,7 +79,8 @@
                     </a>
                     {% elif tournament.category == "Damen" %}
                     <a href="{% url 'tournament' tournament.id %}">
-                        <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-light hidden-sm-down style=font-color:white"
+                        <button type="button"
+                                class="col-xs-12 col-sm-1 btn btn-outline-light hidden-sm-down style=font-color:white"
                                 style="padding: 0">{{tournament.category}}
                         </button>
                     </a>
@@ -111,7 +109,8 @@
                     <div class="col-xs-6 col-sm-4 col-md-5 col-bg-4 col-lg-4" style="float: left">
                         <img class="club hidden-sm-down" style="border-radius: 15px; background-color: white"
                              src="{% static 'images/germany/clubs/walls.png' %}" alt="GPS-500">
-                        <a class="text_tournament_title" style="padding-left:10px; text-transform: uppercase; color:black">{{tournament.club}}</a>
+                        <a class="text_tournament_title"
+                           style="padding-left:10px; text-transform: uppercase; color:black">{{tournament.club}}</a>
                     </div>
 
                     <!-- Categoria para pequenos formatos-->
@@ -138,32 +137,12 @@
                         </button>
                     </a>
                     {% endif %}
-
-
-
-
-
-                    <!-- <div>
-                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left">
-                             {{tournament.date}}
-                         </h2>
-                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                             {{tournament.serie}}
-                         </h2>
-                         <h2 class="col-sm-2 text_tournament" style="float:left; text-align: left; font-weight: 600;">
-                             {{tournament.city}}
-                         </h2>
-                         <h2 class="col-sm-3 text_tournament" style="float:left; text-align: left">
-                             {{tournament.club}}
-                         </h2>
-                         <a href="{% url 'tournament' tournament.id %}"
-                            class="col-sm-1 label men" style="float:right; margin-top:7px">{{tournament.category}}
-                         </a>
-                     </div>-->
                 </li>
-
             </ul>
         </div>
     </div>
     {% endfor %}
+
+
+
     {% endblock %}
