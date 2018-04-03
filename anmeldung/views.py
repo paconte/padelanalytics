@@ -57,3 +57,6 @@ def new_player(request):
     else:
         return render(request, 'new_player.html', {'form': NewPlayerForm()})
 
+
+def ranking(request):
+    return render(request, 'ranking.html')

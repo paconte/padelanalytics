@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^turnierliste$', views.turnierliste, name='turnierliste'),
     path('tournament/<int:id>/', views.tournament, name='tournament'),
     path('clubs', views.clubs, name='clubs'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('ranking', views.ranking, name='ranking'),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

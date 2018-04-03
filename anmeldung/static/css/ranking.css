@@ -37,6 +37,7 @@
 
 .search-bar{
   padding: 0 10vw 0;
+  margin: 20px 0 20px 0;
   
 }
 
@@ -131,7 +132,7 @@
 }
 
 .bright-blue{
-  background-color: #32B8DF;
+  background-color: #DC4C46;
 }
 
 
@@ -196,20 +197,19 @@
   margin: 0 15px;
   background-color: #FFF;
   border-radius: 4px;
-  color: #32b8df;
+  color: #DC4C46;
   border: 1px solid #3498db;
 }
 
 .leaderboard-footer{
   padding: 20px 3vw;
-  background-color: #32b8df;
-  border: 1px solid #0196c1;
+  background-color: #DC4C46;
+  border: 1px solid #dd636f;
   color: #FFF;
 }
 
 .leaderboard-row{
   flex-grow: 1;
-  justify-content: space-between;
   background-color: #FFFFFF;
   padding: 3px 3vw;
   border-left: 1px solid #CCC;
@@ -221,21 +221,16 @@
 }
 
 .row-user{
-  margin-left: 30px;
-  width: 185px;
 }
 
 .row-user--header{
-  width: 275px;
 }
 
 .row-position{
-  width: 55px;
   text-align: center;
 }
 
 .row-calls{
-  width: 55px;
   text-align: right;
 }
 
@@ -245,11 +240,11 @@
 }
 
 .leaderboard-header > .leaderboard-row{
-  background-color: #32b8df;
+  background-color: #DC4C46;
   color: #FFFFFF;
-  border-left: 1px solid #0196c1;
-  border-bottom: 1px solid #0196c1;
-  border-right: 1px solid #0196c1;
+  border-left: 1px solid #dd636f;
+  border-bottom: 1px solid #dd636f;
+  border-right: 1px solid #dd636f;
 }
 
 .leaderboard-row:last-of-type {
@@ -283,9 +278,9 @@
 }
 
 .row-button--active{
-  border-right: 1px solid #0196c1;
-  border-left: 1px solid #0196c1;
-  border-top: 1px solid #0196c1;
+  border-right: 1px solid #dd636f;
+  border-left: 1px solid #dd636f;
+  border-top: 1px solid #dd636f;
 }
 
 .filter-row{
@@ -300,17 +295,17 @@
 }
 
 .filter-by{
-  border-bottom: 1px solid #0196c1;
+  border-bottom: 1px solid #dd636f;
   background-color: rgba(0,0,0,0);
 }
 
 .row-button--active,
 .tab-active{
-  background-color: #32B8DF;
+  background-color: #DC4C46;
   color: #FFFFFF;
-  border-left: 1px solid #0196c1;
-  border-top: 1px solid #0196c1;
-  border-right: 1px solid #0196c1;
+  border-left: 1px solid #dd636f;
+  border-top: 1px solid #dd636f;
+  border-right: 1px solid #dd636f;
 }
 
 .row-button--active:hover,
@@ -319,7 +314,7 @@
 }
 
 .row--header{
-  padding: 10px 3vw;
+  padding: 10px;
 }
 
 .row-rank--header,
@@ -405,7 +400,7 @@ footer {
   }
  
   .tab-active {
-    border-top: 1px solid #0196c1;
+    border-top: 1px solid #dd636f;
   }
   
   .row-button{
