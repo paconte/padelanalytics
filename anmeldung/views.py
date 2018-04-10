@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from anmeldung.forms import NewPlayerForm, FullRegistrationForm
+from anmeldung.forms import NewPlayerForm, RegistrationForm
 from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs, \
     get_similar_tournaments
 
@@ -10,20 +10,21 @@ def index(request):
 
 def tournament_signup(request, id=None):
     if request.method == 'POST':
-        registration_form = FullRegistrationForm(request.POST)
+        registration_form = RegistrationForm(request.POST)
+
         if registration_form.is_valid():
             registration_form.save()
-            return redirect('tournament', registration_form.cleaned_data['tournament_name'].id)
+            return redirect('tournament', registration_form.cleaned_data['tournament'].id)
         else:
             print('Form is INvalid :(')
             print(registration_form.errors)
-            return render(request, 'anmeldung.html', {'form': registration_form})
+            return render(request, 'tournament_signup.html', {'form': registration_form})
     else:
         if id:
-            form = FullRegistrationForm(initial={'tournament_name': id})
+            form = RegistrationForm(initial={'tournament': id})
         else:
-            form = FullRegistrationForm()
-        return render(request, 'anmeldung.html', {'form': form})
+            form = RegistrationForm()
+        return render(request, 'tournament_signup.html', {'form': form})
 
 
 def turnierliste(request):
