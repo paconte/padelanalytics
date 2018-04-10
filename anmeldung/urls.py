@@ -14,4 +14,5 @@ urlpatterns = [
     path('tournament/<int:id>/', views.tournament, name='tournament'),
     path('clubs', views.clubs, name='clubs'),
     path('ranking', views.ranking, name='ranking'),
+    path('card-player', views.cardplayer, name='card-player'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

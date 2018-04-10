@@ -60,3 +60,6 @@ def new_player(request):
 
 def ranking(request):
     return render(request, 'ranking.html')
+
+def cardplayer(request):
+    return render(request, 'card-player.html')
