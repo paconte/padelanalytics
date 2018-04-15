@@ -107,7 +107,7 @@ select:focus,
 select:active {
   background-color: #ddd;
   color: #000;
-  border-color: #eee;
+  border-color: none;
 }
 input[type="checkbox"] {
   display: none;

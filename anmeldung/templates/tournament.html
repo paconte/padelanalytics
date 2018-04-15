@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/rotation-card.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabs.css' %}"/>
 <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
 {% endblock %}
 
@@ -51,8 +52,8 @@
             <div class="col-sm-1" style="float: right"></div>
             <!-- Ciudad y Club Arriba -->
             <div class="col-xs-6 col-sm-1" style="float: left">
-                <img class="club hidden-sm-down" style="border-radius: 15px; background-color: white"
-                     src="{% static 'images/germany/clubs/walls.png' %}">
+                <img class="club hidden-sm-down" style="border-radius: 15px; width: 100% ; background-color: white"
+                     src="{% static 'images/germany/clubs/cuxhaven.png' %}">
             </div>
 
             <div class="col-xs-12 col-sm-3" style="float: left; margin-top: 5px">
@@ -76,308 +77,345 @@
     </div>
 
 
+    <!--    <div class="col-sm-2" style="padding-left: 0px; float: left"><input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1">Teams</label></div>
+
+        <div class="col-sm-2" style="padding-left: 0px; float: left"><input id="tab2" type="radio" name="tabs">
+            <label for="tab2">Gruppen</label></div>
+
+        <div class="col-sm-2" style="padding-left: 0px; float: left"><input id="tab3" type="radio" name="tabs">
+            <label for="tab3">Gruppenphase</label></div>
+
+        <div class="col-sm-2" style="padding-left: 0px; float: left"><input id="tab4" type="radio" name="tabs">
+            <label for="tab4">K.O. Phase</label></div> -->
+
+    <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
+    <label for="tab1">Teams</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Gruppen</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Gruppenphase</label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">K.O. Phase</label>
+
+
     <!-- Jugadores Inscritos -->
-    <div class="card" style="padding-bottom:20px">
-        <div class="box">
-            <!-- Fecha Abajo -->
-            <div class="col-xs-12 col-sm-4" style="left: 0px">
-            </div>
-            <!-- Lista de equipos apuntados */-->
-            {% if teams|length != 0 %}
-            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
-            <hr class="separador_torneo">
-            <div class="panel" style="max-height:inherit">
-                <div class="teams_title">
-                    <div class="th col-sm-1"></div>
-                    <div class="th col-sm-2"> Spieler 1</div>
-                    <div class="th col-sm-2"> Verein</div>
-
-                    <div class="th col-sm-1"></div>
-                    <div class="th col-sm-2"> Spieler 2</div>
-                    <div class="th col-sm-2"> Verein</div>
-
-                    <!--<div class="th col-sm-1"> KOPF</div>-->
-                    <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>
+    <section id="content1">
+        <div class="card col-sm-12" style="padding-bottom:20px">
+            <div class="box">
+                <!-- Fecha Abajo -->
+                <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
-                {% for team in teams %}
-                <ul class="teams">
+                <!-- Lista de equipos apuntados */-->
+                {% if teams|length != 0 %}
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
+                <hr class="separador_torneo">
+                <div class="panel" style="max-height:inherit">
+                    <div class="teams_title">
+                        <div class="th col-sm-1"></div>
+                        <div class="th col-sm-2"> Spieler 1</div>
+                        <div class="th col-sm-2"> Verein</div>
 
-                    <hr class="hr">
-                    <ul class="th col-sm-1">
-                        <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
-                        <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
+                        <div class="th col-sm-1"></div>
+                        <div class="th col-sm-2"> Spieler 2</div>
+                        <div class="th col-sm-2"> Verein</div>
 
-                        <img class="picture" src="{{ team.0.player_a.photo.url }}">
+                        <!--<div class="th col-sm-1"> KOPF</div>-->
+                        <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>
+                    </div>
+                    {% for team in teams %}
+                    <ul class="teams">
+
+                        <hr class="hr">
+                        <ul class="th col-sm-1">
+                            <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
+                            <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
+
+                            <img class="picture" src="{{ team.0.player_a.photo.url }}">
 
 
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club"
+                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
+                            </div>
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club">{{team.0.player_a.club}}</a></div>
+                        </ul>
+
+                        <ul class="th col-sm-1">
+                            <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
+                            <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                            <img class="picture" src="{{ team.0.player_b.photo.url }}">
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club"
+                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
+                            </div>
+                        </ul>
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club">{{team.0.player_b.club}}</a></div>
+                        </ul>
+
+                        <!--<ul class="th col-sm-1">
+                            <div><a class="text_club"
+                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
+                        </ul>-->
+
+                        <ul class="th col-sm-2">
+                            <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
+                        </ul>
                     </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
-                        </div>
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club">{{team.0.player_a.club}}</a></div>
-                    </ul>
 
-                    <ul class="th col-sm-1">
-                        <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
-                        <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        <img class="picture" src="{{ team.0.player_b.photo.url }}">
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
-                        </div>
-                    </ul>
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club">{{team.0.player_b.club}}</a></div>
-                    </ul>
+                    {% endfor %}
+                </div>
+                {% else %}
 
-                    <!--<ul class="th col-sm-1">
-                        <div><a class="text_club"
-                                style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                    </ul>-->
-
-                    <ul class="th col-sm-2">
-                        <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
-                    </ul>
-                </ul>
-
-                {% endfor %}
+                <div class="panel" style="max-height:inherit">
+                    <hr>
+                    <h2>Kein Team hat sich für das Turnier angemeldet.</h2>
+                    <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
+                </div>
+                {% endif %}
             </div>
-            {% else %}
 
-            <div class="panel" style="max-height:inherit">
-                <hr>
-                <h2>Kein Team hat sich für das Turnier angemeldet.</h2>
-                <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
-            </div>
-            {% endif %}
         </div>
-    </div>
-
+    </section>
 
     <!-- Reparto de Grupos -->
-    <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
-            <div class="card clubs">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
-                <hr class="separador_torneo">
-                {% for team in teams %}
-                <div class="panel" style="max-height:inherit">
-                    <ul class="teams_groups">
-                        <ul class="th col-sm-2 col-md-1" style="float: left">
-                            <div class="matches_nac">
-                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                                <i style="border: none; margin-top: 6px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </ul>
+    <section id="content2">
+        <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px -7.5 0 -7.5">
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
+                <div class="card clubs">
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
+                    <hr class="separador_torneo">
+                    {% for team in teams %}
+                    <div class="panel" style="max-height:inherit">
+                        <ul class="teams_groups">
+                            <ul class="th col-sm-2 col-md-1" style="float: left">
+                                <div class="matches_nac">
+                                    <i style="border: none"
+                                       class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                    <i style="border: none; margin-top: 6px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                </div>
+                            </ul>
 
-                        <ul class="th col-sm-10 col-md-11">
-                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            <ul class="th col-sm-10 col-md-11">
+                                <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                                <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            </ul>
                         </ul>
-                    </ul>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
-            <div class="card clubs">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe B</h3>
-                <hr class="separador_torneo">
-                {% for team in teams %}
-                <div class="panel" style="max-height:inherit">
-                    <ul class="teams_groups">
-                        <ul class="th col-sm-2 col-md-1" style="float: left">
-                            <div class="matches_nac">
-                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                                <i style="border: none; margin-top: 6px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </ul>
+            </div> <!-- end card -->
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
+                <div class="card clubs">
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe B</h3>
+                    <hr class="separador_torneo">
+                    {% for team in teams %}
+                    <div class="panel" style="max-height:inherit">
+                        <ul class="teams_groups">
+                            <ul class="th col-sm-2 col-md-1" style="float: left">
+                                <div class="matches_nac">
+                                    <i style="border: none"
+                                       class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                    <i style="border: none; margin-top: 6px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                </div>
+                            </ul>
 
-                        <ul class="th col-sm-10 col-md-11">
-                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            <ul class="th col-sm-10 col-md-11">
+                                <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                                <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            </ul>
                         </ul>
-                    </ul>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
-            <div class="card clubs">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe C</h3>
-                <hr class="separador_torneo">
-                {% for team in teams %}
-                <div class="panel" style="max-height:inherit">
-                    <ul class="teams_groups">
-                        <ul class="th col-sm-2 col-md-1" style="float: left">
-                            <div class="matches_nac">
-                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                                <i style="border: none; margin-top: 6px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </ul>
+            </div> <!-- end card -->
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
+                <div class="card clubs">
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe C</h3>
+                    <hr class="separador_torneo">
+                    {% for team in teams %}
+                    <div class="panel" style="max-height:inherit">
+                        <ul class="teams_groups">
+                            <ul class="th col-sm-2 col-md-1" style="float: left">
+                                <div class="matches_nac">
+                                    <i style="border: none"
+                                       class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                    <i style="border: none; margin-top: 6px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                </div>
+                            </ul>
 
-                        <ul class="th col-sm-10 col-md-11">
-                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            <ul class="th col-sm-10 col-md-11">
+                                <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                                <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            </ul>
                         </ul>
-                    </ul>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </div> <!-- end card -->
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
-            <div class="card clubs">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe D</h3>
-                <hr class="separador_torneo">
-                {% for team in teams %}
-                <div class="panel" style="max-height:inherit">
-                    <ul class="teams_groups">
-                        <ul class="th col-sm-2 col-md-1" style="float: left">
-                            <div class="matches_nac">
-                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                                <i style="border: none; margin-top: 6px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                            </div>
-                        </ul>
+            </div> <!-- end card -->
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 card-container">
+                <div class="card clubs">
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe D</h3>
+                    <hr class="separador_torneo">
+                    {% for team in teams %}
+                    <div class="panel" style="max-height:inherit">
+                        <ul class="teams_groups">
+                            <ul class="th col-sm-2 col-md-1" style="float: left">
+                                <div class="matches_nac">
+                                    <i style="border: none"
+                                       class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                    <i style="border: none; margin-top: 6px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                </div>
+                            </ul>
 
-                        <ul class="th col-sm-10 col-md-11">
-                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            <ul class="th col-sm-10 col-md-11">
+                                <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                                <a class="text_player">{{team.0.player_b.abbr}}</a>
+                            </ul>
                         </ul>
-                    </ul>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </div> <!-- end card -->
-    </div> <!-- end card-container -->
-
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </section>
 
     <!-- Grupo - Resultados y Clasificación -->
-    <div class="card col-sm-12" style="margin-top:20px; margin-bottom: 10px; padding-bottom:20px">
-        <div class="box">
-            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
-            <hr class="separador_torneo">
-            <!-- Resultados -->
-            <div class="col-sm-7" style="float:left">
-                {% for team in teams %}
-                <!-- Número de partido -->
-                <ul>
-                    <ul class="th col1 vertical_match">
-                        <span class="label matches" style="max-height: 10px">A1</span>
-                    </ul>
-
-                    <!-- Banderas A -->
-                    <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
-                        <div class="matches_nac" style="float: right">
-                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                            <i style="border: none; margin-top: 6px"
-                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                    </ul>
-
-                    <!-- Equipos A -->
-                    <ul class="th col-sm-3 col-md-3">
-                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                        <a class="text_player">{{team.0.player_b.abbr}}</a>
-                    </ul>
-
-                    <!-- Versus -->
-                    <ul class="th col1 vertical_match">
-                        <span class="label matches" style="max-height: 10px">Vs</span>
-                    </ul>
-
-                    <!-- Banderas B-->
-                    <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
-                        <div class="matches_nac" style="float: right">
-                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                            <i style="border: none; margin-top: 6px"
-                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                    </ul>
-
-                    <!-- Equipos B -->
-                    <ul class="th col-sm-3 col-md-3">
-                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                        <a class="text_player">{{team.0.player_b.abbr}}</a>
-                    </ul>
-
-                    <!-- Resultados -->
-                    <ul class="th col-sm-1 matches_score">
-                        <a class="text_score">6 3</a>
-                    </ul>
-                    <ul class="th col-sm-1 matches_score">
-                        <a class="text_score">6 7</a>
-                    </ul>
-                    <ul class="th col-sm-1 matches_score">
-                        <a class="text_score">0 10</a>
-                    </ul>
-                    <br>
-                    <hr class="hr" style="margin-top: 15px"></hr>
-
-                </ul>
-
-                {% endfor %}
-            </div>
-
-
-            <!-- Clasificación -->
-            <div class="col-sm-5"
-                 style="float: right; background-color: #fafafa; padding: 10 0 10 0; padding-left:-15px">
-                <div class="teams_title" style="color:black; float:right; text-align:center">
-                    <div class="th col-sm-6"></div>
-                    <div class="th col-sm-2"> Punkte</div>
-                    <div class="th col-sm-2"> Sätze</div>
-                    <div class="th col-sm-2"> Spiele</div>
-                </div>
-                <div class="teams_title" style="float:right; margin-top: -5px; text-align:center">
-                    <div class="th col-sm-8"></div>
-                    <div class="th col-sm-1"> G</div>
-                    <div class="th col-sm-1"> V</div>
-                    <div class="th col-sm-1"> G</div>
-                    <div class="th col-sm-1"> V</div>
-                </div>
-                {% for team in teams %}
-
-                <ul class="teams_groups" style="padding-top:5px">
-                    <ul class="col-1">
-                        <ul class="th col-12 vertical_match">
-                            <span class="label matches" style="max-height: 10px">1.</span>
+    <section id="content3">
+        <div class="card col-sm-12" style="margin-bottom: 10px; padding-bottom:20px">
+            <div class="box">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Gruppe A</h3>
+                <hr class="separador_torneo">
+                <!-- Resultados -->
+                <div class="col-sm-7" style="float:left">
+                    {% for team in teams %}
+                    <!-- Número de partido -->
+                    <ul>
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">A1</span>
                         </ul>
+
+                        <!-- Banderas A -->
+                        <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
+                            <div class="matches_nac" style="float: right">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </ul>
+
+                        <!-- Equipos A -->
+                        <ul class="th col-sm-3 col-md-3">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                        </ul>
+
+                        <!-- Versus -->
+                        <ul class="th col1 vertical_match">
+                            <span class="label matches" style="max-height: 10px">Vs</span>
+                        </ul>
+
+                        <!-- Banderas B-->
+                        <ul class="th col-sm-1 col-md-1" style="float: left; max-width:6%">
+                            <div class="matches_nac" style="float: right">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </ul>
+
+                        <!-- Equipos B -->
+                        <ul class="th col-sm-3 col-md-3">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                        </ul>
+
+                        <!-- Resultados -->
+                        <ul class="th col-sm-1 matches_score">
+                            <a class="text_score">6 3</a>
+                        </ul>
+                        <ul class="th col-sm-1 matches_score">
+                            <a class="text_score">6 7</a>
+                        </ul>
+                        <ul class="th col-sm-1 matches_score">
+                            <a class="text_score">0 10</a>
+                        </ul>
+                        <br>
+                        <hr class="hr" style="margin-top: 15px"></hr>
+
                     </ul>
-                    <!-- Banderas B-->
-                    <ul class="th col-1" style="float: left; max-width:6%">
-                        <div class="matches_nac" style="float: right">
-                            <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
-                            <i style="border: none; margin-top: 6px"
-                               class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+
+                    {% endfor %}
+                </div>
+
+
+                <!-- Clasificación -->
+                <div class="col-sm-5"
+                     style="float: right; background-color: #fafafa; padding: 10 0 10 0; padding-left:-15px">
+                    <div class="teams_title" style="color:black; float:right; text-align:center">
+                        <div class="th col-sm-6"></div>
+                        <div class="th col-sm-2"> Punkte</div>
+                        <div class="th col-sm-2"> Sätze</div>
+                        <div class="th col-sm-2"> Spiele</div>
+                    </div>
+                    <div class="teams_title" style="float:right; margin-top: -5px; text-align:center">
+                        <div class="th col-sm-8"></div>
+                        <div class="th col-sm-1"> G</div>
+                        <div class="th col-sm-1"> V</div>
+                        <div class="th col-sm-1"> G</div>
+                        <div class="th col-sm-1"> V</div>
+                    </div>
+                    {% for team in teams %}
+
+                    <ul class="teams_groups" style="padding-top:5px">
+                        <ul class="col-1">
+                            <ul class="th col-12 vertical_match">
+                                <span class="label matches" style="max-height: 10px">1.</span>
+                            </ul>
+                        </ul>
+                        <!-- Banderas B-->
+                        <ul class="th col-1" style="float: left; max-width:6%">
+                            <div class="matches_nac" style="float: right">
+                                <i style="border: none" class="flag1 {{ team.0.player_a.country.flag_css }}"></i><br>
+                                <i style="border: none; margin-top: 6px"
+                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                            </div>
+                        </ul>
+                        <ul class="th col-4">
+                            <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
+                            <a class="text_player">{{team.0.player_b.abbr}}</a>
+                        </ul>
+                        <div style="margin-right:15px">
+                            <a class="col-sm-1 text_player " style="float:right; margin-top:-8px"> 12</a>
+                            <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 38</a>
+                            <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 1</a>
+                            <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 6</a>
+                            <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> I</a>
                         </div>
                     </ul>
-                    <ul class="th col-4">
-                        <a class="text_player">{{team.0.player_a.abbr}}</a> <br>
-                        <a class="text_player">{{team.0.player_b.abbr}}</a>
-                    </ul>
-                    <div style="margin-right:15px">
-                        <a class="col-sm-1 text_player " style="float:right; margin-top:-8px"> 12</a>
-                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 38</a>
-                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 1</a>
-                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> 6</a>
-                        <a class="col-sm-1 text_player" style="float:right; margin-top:-8px"> I</a>
-                    </div>
-                </ul>
-                {% endfor %}
+                    {% endfor %}
 
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
-    <!-- Play-Offs Titles -->
-    <div class="card col-sm-12" style="margin-top:10px; margin-bottom: 10px; padding-bottom:20px">
+<!-- Play-Offs Titles -->
+<section id="content4">
+    <div class="card col-sm-12" style="adding-bottom:20px">
         <div class="box">
             <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">K.O. Phase</h3>
             <hr class="separador_torneo">
@@ -448,9 +486,7 @@
             <hr class="separador_torneo">
         </div>
     </div>
-</div>
-
-
+</section>
 
 
 <!-- Efecto acordeón
