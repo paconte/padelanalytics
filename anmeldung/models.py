@@ -23,6 +23,7 @@ def club_directory_path(instance, filename):
 class Club(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=30)
+    province = models.CharField(max_length=30)
     postcode = models.PositiveIntegerField(validators=[MinValueValidator(99), MaxValueValidator(1000000)])
     email = models.EmailField()
     phone = models.CharField(max_length=24)
@@ -44,6 +45,7 @@ class Tournament(models.Model):
     city = models.CharField(max_length=20)
     date = models.DateField()
     signup = models.BooleanField(default=False)
+    finished = models.BooleanField(default=False)
 
     @property
     def serie_url(self):
