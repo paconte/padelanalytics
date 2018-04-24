@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from anmeldung.validators import policy_read_validator
@@ -83,7 +84,8 @@ class Player(models.Model):
     club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
     birthplace = models.CharField(max_length=32, verbose_name='Birth place')
     birthdate = models.DateTimeField(verbose_name='Birthday')
-    ranking_points = models.PositiveIntegerField(verbose_name='Ranking Points', default=0)
+    ranking_points = models.DecimalField(
+        max_digits=6, decimal_places=1, validators=[MinValueValidator(Decimal('0.0'))], default=Decimal('0.0'))
     photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
     policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
 
@@ -137,4 +139,4 @@ def get_tournament_teams_by_ranking(tournament_id):
 
 
 def normalize(filename):
-    return "".join([c for c in filename if c.isalpha() or c.isdigit() or c==' ']).rstrip()
+    return "".join([c for c in filename if c.isalpha() or c.isdigit() or c == ' ']).rstrip()
