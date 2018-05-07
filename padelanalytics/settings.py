@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_countries',
     'anmeldung',
+    'tournaments',
 ]
 
 MIDDLEWARE = [
