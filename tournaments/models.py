@@ -106,7 +106,7 @@ class Tournament(models.Model):
     name = models.CharField(max_length=50)
     country = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
-    address = models.CharField(max_length=100, null=True, blank=True)
+    address = models.CharField(max_length=100, null=True, blank=True, default=None)
     date = models.DateField(null=True, blank=True)
     teams = models.ManyToManyField(Team)
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
@@ -124,6 +124,13 @@ class Tournament(models.Model):
             result = '{0} - {1} ({2})'.format(self.division, self.name, smart_str(self.city))
         else:
             result = '{0} - {1}'.format(self.division, self.name)
+        return result
+
+    def __lt__(self, other):
+        if self.name >= other.name:
+            result = False
+        else:
+            result = True
         return result
 
     def get_division_name(self):
@@ -146,17 +153,10 @@ class Tournament(models.Model):
 
         assert "A name for the division: %s could not be found." % self.division
 
-    def __lt__(self, other):
-        if self.name >= other.name:
-            result = False
-        else:
-            result = True
-        return result
-
 
 class Player(models.Model):
-    person = models.ForeignKey(Person)
-    team = models.ForeignKey(Team)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     number = models.PositiveSmallIntegerField(null=True, blank=True)
     tournaments_played = models.ManyToManyField(Tournament, blank=True)
 
@@ -540,15 +540,15 @@ class PadelResult(models.Model):
 
 
 class Game(models.Model):
-    field = models.ForeignKey(GameField, blank=True, null=True)
+    field = models.ForeignKey(GameField, on_delete=models.SET_NULL, blank=True, null=True)
     time = models.TimeField(blank=True, null=True)
-    local = models.ForeignKey(Team, related_name="local", null=True, blank=True)
-    visitor = models.ForeignKey(Team, related_name="visitor", null=True, blank=True)
+    local = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="local", null=True, blank=True)
+    visitor = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="visitor", null=True, blank=True)
     local_score = models.SmallIntegerField(null=True, blank=True)
     visitor_score = models.SmallIntegerField(null=True, blank=True)
-    tournament = models.ForeignKey(Tournament)
-    phase = models.ForeignKey(GameRound)
-    result_padel = models.ForeignKey(PadelResult, null=True, blank=True)
+    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
+    phase = models.ForeignKey(GameRound, on_delete=models.CASCADE)
+    result_padel = models.ForeignKey(PadelResult, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return '{} - {} - {} {} - {} {}'.format(
@@ -562,12 +562,12 @@ class Game(models.Model):
 
 
 class PlayerStadistic(models.Model):
-    player = models.ForeignKey(Player)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
     points = models.PositiveSmallIntegerField(null=True, blank=True, default=0)
     mvp = models.PositiveSmallIntegerField(null=True, blank=True, default=0)
     played = models.PositiveSmallIntegerField(null=True, blank=True, default=0)
-    game = models.ForeignKey(Game, null=True)
-    tournament = models.ForeignKey(Tournament, null=True)
+    game = models.ForeignKey(Game, on_delete=models.SET_NULL, null=True)
+    tournament = models.ForeignKey(Tournament, on_delete=models.SET_NULL, null=True)
 
     def clean(self):
         if not self.game or not self.tournament:
@@ -586,3 +586,10 @@ class PlayerStadistic(models.Model):
             return '{} - {} - touchdowns: {} - played: {} - mvp: {}'.format(
                     self.tournament, self.player, self.points, self.played, self.mvp)
 
+
+def get_tournament_games(tournament):
+    return Game.objects.filter(tournament=tournament)
+
+
+def get_tournament_teams(tournament):
+    Team.objects.filter(tournament=tournament)
