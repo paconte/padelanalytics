@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect
+
 from anmeldung.forms import NewPlayerForm, RegistrationForm
-from anmeldung.models import get_tournament, get_tournaments, get_tournament_teams_by_ranking, get_clubs, \
-    get_similar_tournaments
+from anmeldung.models import get_tournament
+from anmeldung.models import get_tournaments
+from anmeldung.models import get_tournament_teams_by_ranking
+from anmeldung.models import get_clubs
+from anmeldung.models import get_similar_tournaments
+
+from tournaments.models import get_tournament_games
+from tournaments.models import get_tournament_teams
+
+from tournaments.service import Fixtures
 
 
 def index(request):
@@ -11,7 +20,6 @@ def index(request):
 def tournament_signup(request, id=None):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
-
         if registration_form.is_valid():
             registration_form.save()
             return redirect('tournament', registration_form.cleaned_data['tournament'].id)
@@ -33,12 +41,29 @@ def turnierliste(request):
 
 
 def tournament(request, id):
-    teams = get_tournament_teams_by_ranking(id)
+    # partidos, equipos_de_verdad, equipos_anmeldeados,
+    # num_de_pools, num_de_goldsilver_en_ko, num_de_ko_runde
     tournament = get_tournament(id)
     similar_tournaments = get_similar_tournaments(id)
+    signed_up_teams = get_tournament_teams_by_ranking(id)
+    games = get_tournament_games(tournament)
+    real_teams = get_tournament_teams(tournament)
+    fixtures = Fixtures(games)
+    pool_games = fixtures.sorted_pools
+    finals_games = fixtures.get_phased_finals({})
+
     print(tournament, similar_tournaments)
-    return render(request, 'tournament.html',
-                  {'tournament': tournament, 'teams': teams, 'similar_tournaments': similar_tournaments})
+    return render(
+        request,
+        'tournament.html',
+        {
+            'tournament': tournament,
+            'similar_tournaments': similar_tournaments,
+            'signed_up_teams': signed_up_teams,
+            'real_teams': real_teams,
+            'pool_games': pool_games,
+            'final_games': finals_games
+        })
 
 
 def clubs(request):
@@ -61,6 +86,7 @@ def new_player(request):
 
 def ranking(request):
     return render(request, 'ranking.html')
+
 
 def cardplayer(request):
     return render(request, 'card-player.html')
