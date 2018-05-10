@@ -13,26 +13,6 @@ class RegistrationForm(forms.ModelForm):
         exclude = ['creation_date']
 
 
-# hacer esto independiente de los jugadores de verdad.
-class NewPlayerForm(forms.ModelForm):
-    class Meta:
-        model = PadelPerson
-        exclude = ['ranking_points', 'photo']
-        widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Mail-Adresse'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'Familienname'}),
-            'last_name2': forms.TextInput(attrs={'placeholder': 'Familienname 2'}),
-            'first_name': forms.TextInput(attrs={'placeholder': 'Vorname'}),
-            'phone': forms.TextInput(attrs={'placeholder': 'Telefonnummer'}),
-            'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
-            'club': forms.Select(choices=Club.objects.all(), attrs={'placeholder': 'Verein'}),
-            'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
-            'born': forms.TextInput(attrs={'placeholder': 'Geburtsdatum'}),
-            'country': forms.Select(attrs={'placeholder': 'Land'}),
-            'policy_read': forms.CheckboxInput(attrs={'placeholder': 'Accept'})
-        }
-
-
 def get_new_player_form(request):
     NewPlayerInlineFormSet = get_new_player_form()
     return NewPlayerInlineFormSet(request)
