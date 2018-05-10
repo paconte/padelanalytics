@@ -37,7 +37,6 @@ text-transform: uppercase;
 
 .form_tournament            {padding: 0; text-align: center}
 
-
 .form {
 	padding-top: 2px;
 }
@@ -724,4 +723,9 @@ select option {
 }
 input:focus + .input-icon i {
   color: red;
+}
+
+.errorList {
+background: blue;
+text-size: 30px;
 }

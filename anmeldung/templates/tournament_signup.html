@@ -32,7 +32,7 @@
         <br>
 
 
-        <div style="margin-top: 10px" method="post" action="{% url 'tournament_signup' %}">
+        <form style="margin-top: 10px" method="post" action="">
             {% csrf_token %}
 
 
@@ -45,15 +45,16 @@
                         </div>
                         {{form.tournament|add_class:"form_tournament"}}
                     </div>
+
                     <hr class="separador">
                     <br>
                 </div>
 
-                <h3 style="text-align:center">Ist dein erstes Mal bei Padel Analytics?</h3>
-                <div class="col-sm-12" style="float:left; margin:0 0 20px 0"><a href="{% url 'new_player' %}">
-                    <button class="col-sm-4 btn btn-outline-danger" style="left: 33.33%; display:block">
-                        Neuer Spieler
-                    </button>
+                <h3 style="text-align:center">Ist jemand von Euch neu bei Padel Analytics?</h3>
+                <div class="col-sm-12" style="float:left; margin:0 0 20px 0">
+                    <div> <a href="{% url 'new_player' %}" class="col-sm-4 btn btn-outline-danger" style="left: 33.33%; display:block">
+                        Neuer Spieler</a>
+                    </div>
                 </a>
                 </div>
                 <br><br><br><br>
@@ -96,7 +97,6 @@
                     OK
                 </button>
             </div>
-        </div>
         </form>
     </div>
 </div>
@@ -126,6 +126,7 @@
       defaultDate: "-30y"
     });
   });
+
 
 
 
