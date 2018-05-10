@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Club, Tournament, Player, Registration
+from .models import Club, PadelTournament, PadelPerson, Registration
 
 admin.site.register(Club)
-admin.site.register(Tournament)
-admin.site.register(Player)
+admin.site.register(PadelTournament)
+admin.site.register(PadelPerson)
 admin.site.register(Registration)
