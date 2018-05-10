@@ -102,14 +102,14 @@ class Team(models.Model):
 
 class Tournament(models.Model):
     TOURNAMENT_CHOICES = (("PADEL", "PADEL"), ("TOUCH", "TOUCH"))
-    type = models.CharField(max_length=10, choices=TOURNAMENT_CHOICES, default="TOUCH")
+    type = models.CharField(max_length=10, choices=TOURNAMENT_CHOICES, default="PADEL")
     name = models.CharField(max_length=50)
     country = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
     address = models.CharField(max_length=100, null=True, blank=True, default=None)
     date = models.DateField(null=True, blank=True)
-    teams = models.ManyToManyField(Team)
-    division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
+    teams = models.ManyToManyField(Team, blank=True)
+    division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES, null=True, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -156,7 +156,7 @@ class Tournament(models.Model):
 
 class Player(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True)
     number = models.PositiveSmallIntegerField(null=True, blank=True)
     tournaments_played = models.ManyToManyField(Tournament, blank=True)
 
