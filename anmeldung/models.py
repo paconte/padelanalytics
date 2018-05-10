@@ -43,8 +43,8 @@ class Club(models.Model):
 
 
 class PadelTournament(Tournament):
-    club = models.ForeignKey(Club, on_delete=models.DO_NOTHING)
-    padel_serie = models.CharField(choices=SERIE_GERMANY, max_length=20, default='GPS-500')
+    club = models.ForeignKey(Club, on_delete=models.DO_NOTHING, null=True, blank=True)
+    padel_serie = models.CharField(choices=SERIE_GERMANY, max_length=20, default='GPS-500', null=True, blank=True)
     padel_category = models.CharField(choices=CATEGORY_GERMANY, max_length=20, default='Herren A')
     signup = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
@@ -108,22 +108,23 @@ def get_clubs():
     return Club.objects.all()
 
 
-def get_tournament(id):
-    return Tournament.objects.get(pk=id)
+def get_padel_tournament(id):
+    return PadelTournament.objects.get(pk=id)
 
 
 def get_similar_tournaments(t_id):
     result = dict()
-    tournament = get_tournament(t_id)
-    similars = Tournament.objects.filter(date=tournament.date, city=tournament.city, club=tournament.club)
+    padel_tournament = get_padel_tournament(t_id)
+    similars = PadelTournament.objects.filter(
+        date=padel_tournament.date, city=padel_tournament.city, club=padel_tournament.club)
     for t in similars:
-        if t.id != tournament.id:
-            result[t.category] = t.id
+        if t.id != padel_tournament.id:
+            result[t.padel_category] = t.id
     return result
 
 
-def get_tournaments():
-    return Tournament.objects.order_by('date', 'city')
+def get_padel_tournaments():
+    return PadelTournament.objects.order_by('date', 'city')
 
 
 def get_tournament_teams_by_ranking(tournament_id):

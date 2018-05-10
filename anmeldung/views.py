@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from anmeldung.forms import NewPlayerForm, RegistrationForm, get_new_player_form
-from anmeldung.models import get_tournament
-from anmeldung.models import get_tournaments
+from anmeldung.forms import RegistrationForm, get_new_player_form
+from anmeldung.models import get_padel_tournament
+from anmeldung.models import get_padel_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
 from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
@@ -36,14 +36,14 @@ def tournament_signup(request, id=None):
 
 
 def turnierliste(request):
-    tournaments = get_tournaments()
+    tournaments = get_padel_tournaments()
     return render(request, 'turnierliste.html', {'tournaments': tournaments})
 
 
 def tournament(request, id):
     # partidos, equipos_de_verdad, equipos_anmeldeados,
     # num_de_pools, num_de_goldsilver_en_ko, num_de_ko_runde
-    tournament = get_tournament(id)
+    tournament = get_padel_tournament(id)
     similar_tournaments = get_similar_tournaments(id)
     signed_up_teams = get_tournament_teams_by_ranking(id)
     games = get_tournament_games(tournament)
@@ -52,7 +52,13 @@ def tournament(request, id):
     pool_games = fixtures.sorted_pools
     finals_games = fixtures.get_phased_finals({})
 
-    print(tournament, similar_tournaments)
+    print(real_teams)
+    print('##############')
+    print(finals_games)
+    print('##############')
+    print(pool_games)
+    print('##############')
+    print(games)
     return render(
         request,
         'tournament.html',
