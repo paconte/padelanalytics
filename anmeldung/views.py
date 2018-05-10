@@ -46,19 +46,26 @@ def tournament(request, id):
     tournament = get_padel_tournament(id)
     similar_tournaments = get_similar_tournaments(id)
     signed_up_teams = get_tournament_teams_by_ranking(id)
-    games = get_tournament_games(tournament)
+    all_games = get_tournament_games(tournament)
     real_teams = get_tournament_teams(tournament)
-    fixtures = Fixtures(games)
-    pool_games = fixtures.sorted_pools
-    finals_games = fixtures.get_phased_finals({})
+    fixtures = Fixtures(all_games)
+    pool_tables = fixtures.sorted_pools
+    ko_games = fixtures.get_phased_finals({})
+
+    pool_tables['Pool_A'] = pool_tables['Pool-A']
+    pool_tables['Pool_B'] = pool_tables['Pool-B']
+    pool_tables['Pool_C'] = pool_tables['Pool-C']
+    pool_tables['Pool_D'] = pool_tables['Pool-D']
+
+
 
     print(real_teams)
     print('##############')
-    print(finals_games)
+    print(ko_games)
     print('##############')
-    print(pool_games)
+    print(pool_tables)
     print('##############')
-    print(games)
+    print(all_games)
     return render(
         request,
         'tournament.html',
@@ -67,8 +74,8 @@ def tournament(request, id):
             'similar_tournaments': similar_tournaments,
             'signed_up_teams': signed_up_teams,
             'real_teams': real_teams,
-            'pool_games': pool_games,
-            'final_games': finals_games
+            'pool_tables': pool_tables,
+            'ko_games': ko_games
         })
 
 

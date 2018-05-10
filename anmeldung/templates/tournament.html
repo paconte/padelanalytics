@@ -182,8 +182,66 @@
                 </div>
                 {% endif %}
             </div>
-
         </div>
+        <div class="card col-sm-12" style="padding-bottom:20px">
+
+            {% if pool_tables.Pool_A %}
+            {{ pool_tables.Pool_A }}
+            <div class="separador"></div>
+            {% for row in pool_tables.Pool_A %}
+            {{row}}
+            <div class="separador"></div>
+                {{row.team}}
+            <div class="separador"></div>
+                {{row.played}}
+                {{row.won}}
+                {{row.lost}}
+                {{row.plus}}
+                {{row.minus}}
+                {{row.plus_minus}}
+                {{row.points}}
+            <div class="separador"></div>
+            {% endfor %}
+            {% endif %}
+
+
+            {% if pool_tables.Pool_B %}
+            {{ pool_tables.Pool_B }}
+            {% endif %}
+        </div>
+
+        <div class="card col-sm-12" style="padding-bottom:20px">
+
+            {% if ko_games.Gold %}
+            {{ ko_games.Gold }}
+            <div class="separador"></div>
+            {% for key, values in ko_games.Gold.items %}
+            {{key}}
+            <div class="separador"></div>
+            {% for k, game in values.items %}
+            {{game.result_padel.local1}}             {{game.result_padel.visitor1}}
+            {{game.result_padel.local2}}             {{game.result_padel.visitor2}}
+            {{game.result_padel.local3}}             {{game.result_padel.visitor3}}
+            <div class="separador"></div>
+            {% endfor %}
+            <div class="separador"></div>
+                {{row.played}}
+                {{row.won}}
+                {{row.lost}}
+                {{row.plus}}
+                {{row.minus}}
+                {{row.plus_minus}}
+                {{row.points}}
+            <div class="separador"></div>
+            {% endfor %}
+            {% endif %}
+
+
+            {% if pool_tables.Pool_B %}
+            {{ pool_tables.Pool_B }}
+            {% endif %}
+        </div>
+
     </section>
 
     <!-- Reparto de Grupos -->
