@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from player import csvReader
+from tournaments import csvReader
 
 
 class Command(BaseCommand):

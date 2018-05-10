@@ -2,7 +2,7 @@ import crypt
 from time import strftime
 from datetime import datetime
 
-from player import csvdata
+from tournaments import csvdata
 
 
 def hashing():

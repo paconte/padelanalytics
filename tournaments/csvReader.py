@@ -3,17 +3,19 @@ import logging
 
 import itertools
 
-from player import games
-from player import csvdata
-from player.models import Game, PadelResult
-from player.models import GameField
-from player.models import GameRound
-from player.models import Person
-from player.models import Player
-from player.models import PlayerStadistic
-from player.models import Team
-from player.models import Tournament
-from player.models import get_player_gender
+from tournaments import games
+from tournaments import csvdata
+from tournaments.models import Game
+from tournaments.models import Person
+from tournaments.models import PadelResult
+from tournaments.models import GameField
+from tournaments.models import GameRound
+from tournaments.models import Person
+from tournaments.models import Player
+from tournaments.models import PlayerStadistic
+from tournaments.models import Team
+from tournaments.models import Tournament
+from tournaments.models import get_player_gender
 
 from django.core.exceptions import MultipleObjectsReturned
 from django.core.exceptions import ObjectDoesNotExist
@@ -465,7 +467,6 @@ class CsvReader:
         return result
 
     def create_django_object(self, csv_object):
-        from player import models
         if self._type == self.PHASE and isinstance(csv_object, csvdata.CsvPhase):
             phase, created = DjangoSimpleFetcher.get_or_create_game_phase(
                     csv_object.category, csv_object.round, csv_object.teams, True)
@@ -478,7 +479,7 @@ class CsvReader:
             DjangoCsvFetcher.create_csv_fit_statistic(csv_object)
         elif self._type == self.PADEL_GAME and isinstance(csv_object, games.Game):
             DjangoCsvFetcher.create_padel_csv_game(csv_object)
-        elif self._type == self.PERSON and isinstance(csv_object, models.Person):
+        elif self._type == self.PERSON and isinstance(csv_object, Person):
             print(csv_object)
             DjangoSimpleFetcher.get_or_create_person(
                 csv_object.first_name, csv_object.last_name, csv_object.gender, csv_object.nationality, csv_object.born)
