@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from anmeldung.forms import NewPlayerForm, RegistrationForm
+from anmeldung.forms import NewPlayerForm, RegistrationForm, get_new_player_form
 from anmeldung.models import get_tournament
 from anmeldung.models import get_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
@@ -72,16 +72,19 @@ def clubs(request):
 
 
 def new_player(request):
+    new_player_form = get_new_player_form()
+    print(new_player_form, str(new_player_form), new_player_form.forms)
     if request.method == 'POST':
-        new_player_form = NewPlayerForm(request.POST)
+        # new_player_form = NewPlayerForm(request.POST)
+        new_player_form = new_player_form(request.POST)
         if new_player_form.is_valid():
             new_player_form.save()
             return render(request, 'new_player_success.html')
         else:
             print(new_player_form.errors)
-            return render(request, 'new_player.html', {'form': new_player_form})
+            return render(request, 'new_player.html', {'formset': new_player_form})
     else:
-        return render(request, 'new_player.html', {'form': NewPlayerForm()})
+        return render(request, 'new_player.html', {'formset': new_player_form})
 
 
 def ranking(request):
