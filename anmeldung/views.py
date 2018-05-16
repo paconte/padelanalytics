@@ -8,7 +8,7 @@ from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
 
 from tournaments.models import get_tournament_games
-from tournaments.models import get_tournament_teams
+from tournaments.models import get_padel_tournament_teams
 
 from tournaments.service import Fixtures
 
@@ -46,19 +46,24 @@ def tournament(request, id):
     tournament = get_padel_tournament(id)
     similar_tournaments = get_similar_tournaments(id)
     signed_up_teams = get_tournament_teams_by_ranking(id)
-    games = get_tournament_games(tournament)
-    real_teams = get_tournament_teams(tournament)
+    games = get_tournament_games(tournament.tournament_ptr)
+    real_teams = get_padel_tournament_teams(tournament.tournament_ptr)
     fixtures = Fixtures(games)
     pool_games = fixtures.sorted_pools
     finals_games = fixtures.get_phased_finals({})
 
-    print(real_teams)
     print('##############')
     print(finals_games)
     print('##############')
-    print(pool_games)
-    print('##############')
+    #print(pool_games)
+    #print('##############')
     print(games)
+    print('##############')
+    #for team in real_teams:
+    #    print(team.player_a)
+    #    print(team.player_b)
+    #print('##############')
+
     return render(
         request,
         'tournament.html',

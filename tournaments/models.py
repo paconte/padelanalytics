@@ -591,5 +591,11 @@ def get_tournament_games(tournament):
     return Game.objects.filter(tournament=tournament)
 
 
-def get_tournament_teams(tournament):
-    Team.objects.filter(tournament=tournament)
+def get_padel_tournament_teams(tournament):
+    teams = Team.objects.filter(tournament__id=tournament.id)
+    for team in teams:
+        players = team.players.all()
+        team.player_a = players[0]
+        team.player_b = players[1]
+    return teams
+
