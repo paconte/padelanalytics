@@ -35,8 +35,7 @@ text-transform: uppercase;
 
 .card_groups				{border: 1px solid rgba(0,0,0,0.2); margin-top: 10px; border-radius: 5px; padding-bottom: 8px}
 
-.form_tournament            {width: 40%; padding: 0; text-align: center}
-
+.form_tournament            {padding: 0; text-align: center}
 
 .form {
 	padding-top: 2px;
@@ -724,4 +723,9 @@ select option {
 }
 input:focus + .input-icon i {
   color: red;
+}
+
+.errorList {
+background: blue;
+text-size: 30px;
 }
