@@ -49,16 +49,15 @@ class Person(models.Model):
     FEMALE = 'F'
     UNKNOWN = 'U'
     GENDER_CHOICES = (
-        (MALE, 'Male'),
-        (FEMALE, 'Female'),
-        (UNKNOWN, None)
+        (MALE, 'männlich'),
+        (FEMALE, 'weiblich')
     )
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     born = models.DateField(null=True, blank=True)
     nationality = models.CharField(max_length=30, null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=UNKNOWN, null=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
 
     class Meta:
         ordering = ['gender', 'last_name', 'first_name']
