@@ -476,8 +476,9 @@
     <section id="content4">
 
         <div class="card col-sm-12" style="padding-bottom:20px">
-
-            {% if pool_tables.Pool_A %}
+            {{pool_tables}}
+            {% if "Pool-A" in pool_tables %}
+            <a>hola q ase</a>
             {{ pool_tables.Pool_A }}
             <div class="separador"></div>
             {% for row in pool_tables.Pool_A %}
@@ -507,8 +508,22 @@
             {% if ko_games.Gold %}
             {{ ko_games.Gold }}
             <div class="separador"></div>
+            {% if "KO-4" in ko_games.Gold.round %}
+            <h1>hola q ase</h1>
+            {% endif %}
+
             {% for key, values in ko_games.Gold.items %}
             {{key}}
+            <div class="separador"></div>
+
+
+            <!-- Bucle para título de Ronda 5.08.2018-->
+            {{key.round}}
+            {% if "KO-4" == key.round %}
+            <h1>Viertelfinale</h1>
+            {% endif %}
+
+
             <div class="separador"></div>
             <!-- Resultados Sets-->
             {% for k, game in values.items %}
@@ -577,6 +592,7 @@
                             <hr class="separador_torneo">
                         </div>
                     </div> <!-- end card -->
+                    {% endif %}
                     <hr class="separador_torneo">
 
                 </div>

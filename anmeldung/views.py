@@ -52,20 +52,20 @@ def tournament(request, id):
     pool_tables = fixtures.sorted_pools
     ko_games = fixtures.get_phased_finals({})
 
-    pool_tables['Pool_A'] = pool_tables['Pool-A']
+    '''pool_tables['Pool_A'] = pool_tables['Pool-A']
     pool_tables['Pool_B'] = pool_tables['Pool-B']
     pool_tables['Pool_C'] = pool_tables['Pool-C']
-    pool_tables['Pool_D'] = pool_tables['Pool-D']
+    pool_tables['Pool_D'] = pool_tables['Pool-D']'''
 
 
 
-    print(real_teams)
-    print('##############')
-    print(ko_games)
-    print('##############')
+    #print(real_teams)
+    #print('##############')
+    #print(ko_games)
+    #print('##############')
     print(pool_tables)
     print('##############')
-    print(all_games)
+    #print(all_games)
     return render(
         request,
         'tournament.html',
