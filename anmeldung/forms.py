@@ -28,6 +28,7 @@ def get_new_player_form():
             'last_name': forms.TextInput(attrs={'placeholder': 'Familienname'}),
             'last_name2': forms.TextInput(attrs={'placeholder': 'Familienname 2'}),
             'first_name': forms.TextInput(attrs={'placeholder': 'Vorname'}),
+            'gender': forms.Select(choices=Person.GENDER_CHOICES, attrs={'placeholder': 'Geschlecht'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Telefonnummer'}),
             'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
             'club': forms.Select(choices=Club.objects.all(), attrs={'placeholder': 'Verein'}),
