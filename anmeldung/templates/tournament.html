@@ -111,7 +111,7 @@
                 <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
                 <!-- Lista de equipos apuntados */-->
-                {% if teams|length != 0 %}
+                {% if teams != 0 %}
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
                 <hr class="separador_torneo">
                 <div class="panel" style="max-height:inherit">
@@ -127,7 +127,7 @@
                         <!--<div class="th col-sm-1"> KOPF</div>-->
                         <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>
                     </div>
-                    {% for team in teams %}
+                    {% for team in signed_up_teams %}
                     <ul class="teams">
 
                         <hr class="hr">
@@ -141,7 +141,7 @@
                         </ul>
                         <ul class="th col-sm-2">
                             <div><a class="text_club"
-                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
+                                    style="width: 100%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
                             </div>
                         </ul>
                         <ul class="th col-sm-2">
@@ -155,7 +155,7 @@
                         </ul>
                         <ul class="th col-sm-2">
                             <div><a class="text_club"
-                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
+                                    style="width: 100%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
                             </div>
                         </ul>
                         <ul class="th col-sm-2">

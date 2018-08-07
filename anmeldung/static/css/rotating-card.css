@@ -110,7 +110,7 @@
 .card .user img{
     position: absolute;
     background: none repeat scroll 0 0 #FFFFFF;
-    width: 100%;
+    max-width: 85%;
     padding: 10px;
     top: 0;
     bottom: 0;

@@ -87,7 +87,7 @@ class PadelPerson(Person):
     policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
 
     def __str__(self):
-        return " ".join([str(self.last_name), str(self.last_name)])
+        return " ".join([str(self.first_name), str(self.last_name)])
 
     def abbr(self):
         return " ".join([self.first_name[0] + '.', self.last_name])
