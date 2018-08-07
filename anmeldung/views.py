@@ -37,6 +37,7 @@ def tournament_signup(request, id=None):
 
 def turnierliste(request):
     tournaments = get_padel_tournaments()
+    print (tournaments)
     return render(request, 'turnierliste.html', {'tournaments': tournaments})
 
 
