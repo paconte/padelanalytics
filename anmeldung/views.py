@@ -6,6 +6,7 @@ from anmeldung.models import get_padel_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
 from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
+from anmeldung.models import get_all_registrations
 
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
@@ -21,8 +22,25 @@ def tournament_signup(request, id=None):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         if registration_form.is_valid():
-            registration_form.save()
-            return redirect('tournament', registration_form.cleaned_data['tournament'].id)
+            # check no player is twice in a tournament
+            player_signed_up = None
+            player_a = registration_form.cleaned_data['player_a']
+            player_b = registration_form.cleaned_data['player_b']
+            registrations = get_all_registrations(registration_form.cleaned_data['tournament'])
+            for reg in registrations:
+                if player_a.id == reg.player_a.id or player_a.id == reg.player_b.id:
+                    registration_form.add_error('player_a', 'Player already signed up in the tournament.')
+                    player_signed_up = True
+                    break
+                elif player_b == reg.player_b.id or player_b.id == reg.player_b.id:
+                    registration_form.add_error('player_b', 'Player already signed up in the tournament.')
+                    player_signed_up = True
+                    break
+            if not player_signed_up:
+                registration_form.save()
+                return redirect('tournament', registration_form.cleaned_data['tournament'].id)
+            else:
+                return render(request, 'tournament_signup.html', {'form': registration_form})
         else:
             print('Form is INvalid :(')
             print(registration_form.errors)
