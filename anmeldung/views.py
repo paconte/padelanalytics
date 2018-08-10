@@ -22,10 +22,14 @@ def tournament_signup(request, id=None):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         if registration_form.is_valid():
-            # check no player is twice in a tournament
-            player_signed_up = None
             player_a = registration_form.cleaned_data['player_a']
             player_b = registration_form.cleaned_data['player_b']
+            # check player is not twice in the team
+            if player_a.id == player_b.id:
+                registration_form.add_error('player_b', 'A team must have two different players.')
+                return render(request, 'tournament_signup.html', {'form': registration_form})
+            # check no player is twice in a tournament
+            player_signed_up = None
             registrations = get_all_registrations(registration_form.cleaned_data['tournament'])
             for reg in registrations:
                 if player_a.id == reg.player_a.id or player_a.id == reg.player_b.id:
