@@ -52,10 +52,11 @@
 
                 <h3 style="text-align:center">Ist jemand von Euch neu bei Padel Analytics?</h3>
                 <div class="col-sm-12" style="float:left; margin:0 0 20px 0">
-                    <div> <a href="{% url 'new_player' %}" class="col-sm-4 btn btn-outline-danger" style="left: 33.33%; display:block">
+                    <div><a href="{% url 'new_player' %}" class="col-sm-4 btn btn-outline-danger"
+                            style="left: 33.33%; display:block">
                         Neuer Spieler</a>
                     </div>
-                </a>
+                    </a>
                 </div>
                 <br><br><br><br>
 
@@ -91,11 +92,22 @@
                         </label>
                     </div>
                 </div>
+                <br>
+                {% if form.policy_read.errors %}
+                <div id="errors" class="col-sm-12">
+                    <div class="inner" style="margin:-10px 0 20px 10px; color: red">
+                        {{form.policy_read.errors}}
+                    </div>
+                </div>
+                {% endif %}
+
                 <!-- OK -->
                 <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
                         style="float: left; margin-bottom: 8px; margin-left: 8px">
                     OK
                 </button>
+
+
             </div>
         </form>
     </div>
@@ -126,6 +138,7 @@
       defaultDate: "-30y"
     });
   });
+
 
 
 
