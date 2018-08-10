@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_PADELANAL_SECRET_KEY')
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['62.75.188.101', 'www.frevilla.com', 'frevilla.com']
+ALLOWED_HOSTS = ['62.75.188.101', 'www.padelanalytics.de', 'padelanalytics.de']
 
 
 # Application definition
