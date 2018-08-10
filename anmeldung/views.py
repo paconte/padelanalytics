@@ -24,10 +24,12 @@ def tournament_signup(request, id=None):
         if registration_form.is_valid():
             player_a = registration_form.cleaned_data['player_a']
             player_b = registration_form.cleaned_data['player_b']
+
             # check player is not twice in the team
             if player_a.id == player_b.id:
                 registration_form.add_error('player_b', 'A team must have two different players.')
                 return render(request, 'tournament_signup.html', {'form': registration_form})
+
             # check no player is twice in a tournament
             player_signed_up = None
             registrations = get_all_registrations(registration_form.cleaned_data['tournament'])
@@ -36,15 +38,16 @@ def tournament_signup(request, id=None):
                     registration_form.add_error('player_a', 'Player already signed up in the tournament.')
                     player_signed_up = True
                     break
-                elif player_b == reg.player_b.id or player_b.id == reg.player_b.id:
+                elif player_b.id == reg.player_a.id or player_b.id == reg.player_b.id:
                     registration_form.add_error('player_b', 'Player already signed up in the tournament.')
                     player_signed_up = True
                     break
-            if not player_signed_up:
-                registration_form.save()
-                return redirect('tournament', registration_form.cleaned_data['tournament'].id)
-            else:
+            if player_signed_up:
                 return render(request, 'tournament_signup.html', {'form': registration_form})
+
+            # all checks are good
+            registration_form.save()
+            return redirect('tournament', registration_form.cleaned_data['tournament'].id)
         else:
             print('Form is INvalid :(')
             print(registration_form.errors)
