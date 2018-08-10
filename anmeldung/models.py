@@ -95,7 +95,7 @@ class PadelPerson(Person):
 
 class Registration(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
-    tournament = models.ForeignKey(Tournament, on_delete=models.DO_NOTHING)
+    tournament = models.ForeignKey(PadelTournament, on_delete=models.DO_NOTHING)
     policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
     player_a = models.ForeignKey(PadelPerson, related_name="player_a", on_delete=models.DO_NOTHING)
     player_b = models.ForeignKey(PadelPerson, related_name="player_b", on_delete=models.DO_NOTHING)
@@ -134,6 +134,10 @@ def get_tournament_teams_by_ranking(tournament_id):
         ranking = team.player_a.ranking_points + team.player_b.ranking_points
         result.append((team, ranking))
     return sorted(result, key=lambda x: x[1], reverse=True)
+
+
+def get_all_registrations(tournament_id):
+    return Registration.objects.filter(tournament=tournament_id)
 
 
 def normalize(filename):
