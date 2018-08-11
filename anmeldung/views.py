@@ -48,9 +48,8 @@ def tournament_signup(request, id=None):
             # all checks are good
             registration_form.save()
             return redirect('tournament', registration_form.cleaned_data['tournament'].id)
+        # form is invalid
         else:
-            print('Form is INvalid :(')
-            print(registration_form.errors)
             return render(request, 'tournament_signup.html', {'form': registration_form})
     else:
         if id:

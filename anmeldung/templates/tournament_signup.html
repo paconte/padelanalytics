@@ -71,12 +71,28 @@
                         {{form.player_a|add_class:"form_tournament"}}
                     </div>
 
+                    {% if form.player_a.errors %}
+                    <div id="error_player_a" class="col-sm-12">
+                        <div class="inner" style="margin:-10px 0 20px 10px; color: red">
+                        {{form.player_a.errors}}
+                        </div>
+                    </div>
+                    {% endif %}
+
                     <h3 class="form_title">Spieler 2</h3>
                     <div class="input-group input-group-icon">
                         <div class="input-icon"><i class="fa fa-user-o"></i>
                         </div>
                         {{form.player_b|add_class:"form_tournament"}}
                     </div>
+
+                    {% if form.player_b.errors %}
+                    <div id="error_player_b" class="col-sm-12">
+                        <div class="inner" style="margin:-10px 0 20px 10px; color: red">
+                        {{form.player_b.errors}}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
 
                 <hr class="separador">
