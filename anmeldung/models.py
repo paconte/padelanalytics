@@ -99,9 +99,14 @@ class Registration(models.Model):
     policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
     player_a = models.ForeignKey(PadelPerson, related_name="player_a", on_delete=models.DO_NOTHING)
     player_b = models.ForeignKey(PadelPerson, related_name="player_b", on_delete=models.DO_NOTHING)
+    is_active_a = models.BooleanField(default=False)
+    is_active_b = models.BooleanField(default=False)
 
     def __str__(self):
         return " - ".join([str(self.player_a), str(self.player_b)])
+
+    def is_active(self):
+        return self.is_active_a and self.is_active_b
 
 
 def get_clubs():
@@ -128,7 +133,7 @@ def get_padel_tournaments():
 
 
 def get_tournament_teams_by_ranking(tournament_id):
-    teams = Registration.objects.filter(tournament=tournament_id)
+    teams = Registration.objects.filter(tournament=tournament_id, is_active_a=True, is_active_b=True)
     result = list()
     for team in teams:
         ranking = team.player_a.ranking_points + team.player_b.ranking_points
