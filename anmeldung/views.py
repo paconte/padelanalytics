@@ -1,23 +1,34 @@
 import logging
 
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.utils.encoding import force_bytes
+from django.utils.encoding import force_text
+from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_decode
+from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.core.exceptions import ObjectDoesNotExist
 
-from anmeldung.forms import RegistrationForm
-from anmeldung.forms import get_new_player_form
-
+from anmeldung.models import PadelPerson
+from anmeldung.models import Registration
 from anmeldung.models import get_padel_tournament
 from anmeldung.models import get_padel_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
 from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
 from anmeldung.models import get_all_registrations
+from anmeldung.forms import RegistrationForm
+from anmeldung.forms import get_new_player_form
+from anmeldung.tokens import account_activation_token
 
 from tournaments.models import Person
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
-
 from tournaments.service import Fixtures
+
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -45,17 +56,18 @@ def tournament_signup(request, id=None):
             for reg in registrations:
                 if player_a.id == reg.player_a.id or player_a.id == reg.player_b.id:
                     registration_form.add_error('player_a', 'Player already signed up in the tournament.')
-                    player_signed_up = True
-                    break
+                    #return render(request, 'tournament_signup.html', {'form': registration_form})
                 elif player_b.id == reg.player_a.id or player_b.id == reg.player_b.id:
                     registration_form.add_error('player_b', 'Player already signed up in the tournament.')
-                    player_signed_up = True
-                    break
-            if player_signed_up:
-                return render(request, 'tournament_signup.html', {'form': registration_form})
+                    #return render(request, 'tournament_signup.html', {'form': registration_form})
 
             # all checks are good
-            registration_form.save()
+            registration = registration_form.save()
+            # send activation email
+            current_site = get_current_site(request)
+            _send_activation_email(current_site, registration, player_a, player_a.email)
+            _send_activation_email(current_site, registration, player_b, player_b.email)
+
             return redirect('tournament', registration_form.cleaned_data['tournament'].id)
         # form is invalid
         else:
@@ -138,3 +150,46 @@ def ranking(request):
 
 def cardplayer(request):
     return render(request, 'card-player.html')
+
+
+def activate(request, registration_uidb64, player_uidb64, token):
+    activated = False
+    try:
+        player_uid = force_text(urlsafe_base64_decode(player_uidb64))
+        registration_uid = force_text(urlsafe_base64_decode(registration_uidb64))
+        player = PadelPerson.objects.get(pk=player_uid)
+        registration = Registration.objects.get(pk=registration_uid)
+    except(TypeError, ValueError, OverflowError, ObjectDoesNotExist):
+        player = None
+        registration = None
+
+    if player is not None and registration is not None and account_activation_token.check_token(player, token):
+        if player == registration.player_a:
+            registration.is_active_a = True
+            activated = True
+        elif player == registration.player_b:
+            registration.is_active_b = True
+            activated = True
+
+    if activated:
+        registration.save()
+        return HttpResponse('Thank you for your email confirmation. Now you can play the tournament.')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
+
+def _send_activation_email(current_site, registration, player, to_email):
+    message = render_to_string(
+        'acc_active_email.html',
+        {
+            'user': player,
+            'domain': current_site.domain,
+            'registration_uid': urlsafe_base64_encode(force_bytes(registration.pk)).decode(),
+            'player_uid': urlsafe_base64_encode(force_bytes(player.pk)).decode(),
+            'token': account_activation_token.make_token(player),
+        }
+    )
+    mail_subject = 'Activate your tournament registration.'
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    email.send()
+

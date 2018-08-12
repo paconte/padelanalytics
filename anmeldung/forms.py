@@ -10,7 +10,7 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registration
         fields = '__all__'
-        exclude = ['creation_date']
+        exclude = ['creation_date', 'is_active_a', 'is_active_b']
 
 
 def get_new_player_form(request):
