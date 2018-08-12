@@ -213,20 +213,20 @@
                     </div>
                 </div>
 
-                <!-- OK -->
-                <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
-                        style="float: left; margin-bottom: 8px; margin-left: 8px">
-                    OK
-                </button>
-                {% if form.policy_read.errors %}
                 <br>
+                {% if form.policy_read.errors %}
                 <div id="policy_errors" class="col-sm-12">
                     <div class="inner" style="margin:-10px 0 20px 10px; color: red">
                         {{form.policy_read.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
+
+                <!-- OK -->
+                <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
+                        style="float: left; margin-bottom: 8px; margin-left: 8px">
+                    OK
+                </button>
                 {% endfor %}
             </div>
         </form>
