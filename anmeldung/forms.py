@@ -33,7 +33,7 @@ def get_new_player_form():
             'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
             'club': forms.Select(choices=Club.objects.all(), attrs={'placeholder': 'Verein'}),
             'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
-            'born': forms.TextInput(attrs={'placeholder': 'Geburtsdatum'}),
+            'born': forms.DateInput(attrs={'placeholder': 'Geburtsdatum'}),
             'country': forms.Select(attrs={'placeholder': 'Land'}),
             'policy_read': forms.CheckboxInput(attrs={'placeholder': 'Accept'})}
     )

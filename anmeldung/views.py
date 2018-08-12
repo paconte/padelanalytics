@@ -1,6 +1,11 @@
-from django.shortcuts import render, redirect
+import logging
 
-from anmeldung.forms import RegistrationForm, get_new_player_form
+from django.shortcuts import render
+from django.shortcuts import redirect
+
+from anmeldung.forms import RegistrationForm
+from anmeldung.forms import get_new_player_form
+
 from anmeldung.models import get_padel_tournament
 from anmeldung.models import get_padel_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
@@ -8,10 +13,14 @@ from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
 from anmeldung.models import get_all_registrations
 
+from tournaments.models import Person
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
 
 from tournaments.service import Fixtures
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -98,15 +107,26 @@ def clubs(request):
 
 def new_player(request):
     new_player_form = get_new_player_form()
-    print(new_player_form, str(new_player_form), new_player_form.forms)
     if request.method == 'POST':
-        # new_player_form = NewPlayerForm(request.POST)
         new_player_form = new_player_form(request.POST)
         if new_player_form.is_valid():
-            new_player_form.save()
+            # get or create the person
+            person, created = Person.objects.get_or_create(
+                first_name=new_player_form.cleaned_data[0]['first_name'],
+                last_name=new_player_form.cleaned_data[0]['last_name'],
+                born=new_player_form.cleaned_data[0]['born'],
+                nationality=None,
+                gender=new_player_form.cleaned_data[0]['gender']
+            )
+            # logging
+            if created:
+                logger.info("While creating a new PadelPerson a new Person has been created: %s", person)
+            # saving the new PadelPerson
+            padel_person = new_player_form.save(commit=False)[0]
+            padel_person.person_ptr = person
+            padel_person.save()
             return render(request, 'new_player_success.html')
         else:
-            print(new_player_form.errors)
             return render(request, 'new_player.html', {'formset': new_player_form})
     else:
         return render(request, 'new_player.html', {'formset': new_player_form})
