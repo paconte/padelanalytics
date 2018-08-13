@@ -178,6 +178,14 @@ def activate(request, registration_uidb64, player_uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
+def handler404(request, exception, template_name='404.html'):
+    return render(request, template_name=template_name, status=404)
+
+
+def handler500(request, exception, template_name='404.html'):
+    return render(request, template_name=template_name, status=500)
+
+
 def _send_activation_email(current_site, registration, player, to_email):
     message = render_to_string(
         'acc_active_email.html',

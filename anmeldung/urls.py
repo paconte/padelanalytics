@@ -6,6 +6,9 @@ from django.urls import path
 from anmeldung import views
 
 
+handler404 = views.handler404
+handler500 = views.handler500
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     path('tournament_signup', views.tournament_signup, name='tournament_signup'),
