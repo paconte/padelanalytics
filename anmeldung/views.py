@@ -187,6 +187,8 @@ def handler500(request, exception, template_name='404.html'):
 
 
 def _send_activation_email(current_site, registration, player, to_email):
+    from django.conf import settings
+
     message = render_to_string(
         'acc_active_email.html',
         {
@@ -198,6 +200,7 @@ def _send_activation_email(current_site, registration, player, to_email):
         }
     )
     mail_subject = 'Activate your tournament registration.'
-    email = EmailMessage(mail_subject, message, to=[to_email])
+    email = EmailMessage(mail_subject, message, to=[to_email],
+                         from_email=settings.DEFAULT_FROM_EMAIL, cc=settings.DEFAULT_CC_EMAIL)
     email.send()
 

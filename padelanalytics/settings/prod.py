@@ -125,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/padel-static/'
+
+DEFAULT_FROM_EMAIL = 'info@padelanlytics.de'
+
+DEFAULT_CC_EMAIL = ['paconte@gmail.com', 'fragonser@gmail.com']
