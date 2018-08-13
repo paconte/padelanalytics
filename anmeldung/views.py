@@ -173,9 +173,9 @@ def activate(request, registration_uidb64, player_uidb64, token):
 
     if activated:
         registration.save()
-        return HttpResponse('Thank you for your email confirmation. Now you can play the tournament.')
+        return render(request, template_name='tournament_signup_activation')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return render(request, template_name='activation_failed.html')
 
 
 def handler404(request, exception, template_name='404.html'):
