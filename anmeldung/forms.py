@@ -19,6 +19,8 @@ def get_new_player_form(request):
 
 
 def get_new_player_form():
+    GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
+
     NewPlayerInlineFormSet = forms.inlineformset_factory(
         Person,
         PadelPerson,
@@ -28,7 +30,7 @@ def get_new_player_form():
             'last_name': forms.TextInput(attrs={'placeholder': 'Familienname'}),
             'last_name2': forms.TextInput(attrs={'placeholder': 'Familienname 2'}),
             'first_name': forms.TextInput(attrs={'placeholder': 'Vorname'}),
-            'gender': forms.Select(choices=Person.GENDER_CHOICES, attrs={'placeholder': 'Geschlecht'}),
+            'gender': forms.Select(choices=GENDER_CHOICES, attrs={'placeholder': 'Geschlecht'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Telefonnummer'}),
             'city': forms.TextInput(attrs={'placeholder': 'Wohnort'}),
             'club': forms.Select(choices=Club.objects.all(), attrs={'placeholder': 'Verein'}),
