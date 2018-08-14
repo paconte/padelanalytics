@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+
+{% endblock %}
 
 {% block content %}
 
 <div style="margin-top: 50px" class="container_12">
+    <div class="card">
     <h1>There was a problem serving the requested page.</h1>
     <h4>Contact the administrator</h4>
+    </div>
 </div>
 
 {% endblock %}
