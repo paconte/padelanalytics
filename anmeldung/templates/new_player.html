@@ -57,7 +57,6 @@
                             {{form.first_name.errors}}
                         </div>
                     </div>
-                    {% else %}
                     {% endif %}
 
                     <div class="col-sm-12 input-group input-group-icon"
@@ -71,7 +70,6 @@
                             {{form.last_name.errors}}
                         </div>
                     </div>
-                    {% else %}
                     {% endif %}
 
                     <div class="col-sm-12 input-group input-group-icon"
@@ -91,7 +89,6 @@
                             {{form.gender.errors}}
                         </div>
                     </div>
-                    {% else %}
                     {% endif %}
 
                     <div class="col-sm-12 input-group input-group-icon" style="padding:0px">
@@ -104,7 +101,6 @@
                             {{form.email.errors}}
                         </div>
                     </div>
-                    {% else %}
                     {% endif %}
 
                     <div class="col-sm-12 input-group input-group-icon"
@@ -118,7 +114,6 @@
                             {{form.phone.errors}}
                         </div>
                     </div>
-                    {% else %}
                     {% endif %}
 
                 </div>
@@ -142,7 +137,6 @@
                         {{form.birthplace.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
 
                 {% if form.born.errors %}
@@ -151,7 +145,6 @@
                         {{form.born.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
 
                 <div class="col-sm-12 input-group input-group-icon"
@@ -165,7 +158,6 @@
                         {{form.country.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
 
                 <div class="col-sm-12 input-group input-group-icon"
@@ -179,7 +171,6 @@
                         {{form.city.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
 
 
@@ -197,7 +188,6 @@
                         {{form.club.errors}}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
 
                 <hr class="separador">
@@ -235,25 +225,25 @@
 
 {% endblock %}
 
-                <!-- OK
-                {% if form.errors %}
+<!-- OK
+{% if form.errors %}
 
-                <div id="errors">
-                    <div class="inner" style="margin:10px 0 0 10px; color: red">
-                        <p>Bitte korrigier die Fehler und versuche es erneut:</p>
-                        {{ form.non_field_errors }}
-                        <ul>
-                            {% for field in form %}
-                            {% if field.errors %}
-                            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <br>
+<div id="errors">
+    <div class="inner" style="margin:10px 0 0 10px; color: red">
+        <p>Bitte korrigier die Fehler und versuche es erneut:</p>
+        {{ form.non_field_errors }}
+        <ul>
+            {% for field in form %}
+            {% if field.errors %}
+            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br>
 
-                {% endif %}<!-- /Error messaging -->
+{% endif %}<!-- /Error messaging -->
 
 {% block js%}
 
@@ -269,6 +259,7 @@
       yearRange: "-70:-10",
     });
   });
+
 
 </script>
 {% endblock %}
