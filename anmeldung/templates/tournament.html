@@ -112,7 +112,7 @@
                 <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
                 <!-- Lista de equipos apuntados */-->
-                {% if teams != 0 %}
+                {% if signed_up_teams %}
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
                 <hr class="separador_torneo">
                 <div class="panel" style="max-height:inherit">
@@ -125,8 +125,8 @@
                         <div class="th col-sm-2"> Spieler 2</div>
                         <div class="th col-sm-2"> Verein</div>
 
-                        <!--<div class="th col-sm-1"> KOPF</div>-->
-                        <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>
+                        <!--<div class="th col-sm-1"> KOPF</div>
+                        <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>-->
                     </div>
                     {% for team in signed_up_teams %}
                     <ul class="teams">
@@ -166,19 +166,18 @@
                         <!--<ul class="th col-sm-1">
                             <div><a class="text_club"
                                     style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                        </ul>-->
+                        </ul>
 
                         <ul class="th col-sm-2">
                             <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
-                        </ul>
+                        </ul>-->
                     </ul>
 
                     {% endfor %}
                 </div>
                 {% else %}
 
-                <div class="panel" style="max-height:inherit">
-                    <hr>
+                <div class="panel" style="max-height:inherit; margin-top: 10px">
                     <h2>Kein Team hat sich für das Turnier angemeldet.</h2>
                     <h2><a>Sei der erste und klick auf </a><a style="color: #DC4C46">Anmeldung</a><a>.</a></h2>
                 </div>
