@@ -151,19 +151,22 @@
                     </div> <!-- end card -->
                 </div> <!-- end card-container -->
 
-                
-                <button type="button"
-                        class="col-xs-12 btn btn-outline-danger"
-                        style="padding: 5; margin: 50 7.5 0 7.5; width: 100%">Zu den Standorte in Deutschland
-                </button>
-                <button type="button"
-                        class="col-xs-12 btn btn-outline-danger"
-                        style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zum Turnierkalender der GPS 2018
-                </button>
-                <button type="button"
-                        class="col-xs-12 btn btn-outline-danger"
-                        style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zur Anmeldung für die GPS 2018
-                </button>
+
+                <a class="col-xs-12 col-sm-12" href="{% url 'clubs' %}">
+                    <button type="button" class="btn btn-outline-danger hidden-sm-down"
+                            style="padding: 5; margin: 50 7.5 0 7.5; width: 100%">Zu den Standorte in Deutschland
+                    </button>
+                </a>
+                <a class="col-xs-12 col-sm-12" href="{% url 'turnierliste' %}">
+                    <button type="button" class="btn btn-outline-danger hidden-sm-down"
+                            style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zum Turnierkalender der GPS 2018
+                    </button>
+                </a>
+                <a class="col-xs-12 col-sm-12" href="{% url 'tournament_signup' %}">
+                    <button type="button" class="btn btn-outline-danger hidden-sm-down"
+                            style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zur Anmeldung für die GPS 2018
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -418,6 +421,7 @@
     $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
 
 })(jQuery);
+
 </script>
 
 {% endblock %}
