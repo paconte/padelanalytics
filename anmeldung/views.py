@@ -173,9 +173,9 @@ def activate(request, registration_uidb64, player_uidb64, token):
 
     if activated:
         registration.save()
-        return render(request, template_name='tournament_signup_activation')
+        return render(request, 'tournament_signup_activation.html')
     else:
-        return render(request, template_name='activation_failed.html')
+        return render(request, 'activation_failed.html')
 
 
 def handler404(request, exception, template_name='404.html'):
