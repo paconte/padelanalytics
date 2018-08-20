@@ -1,4 +1,6 @@
 from .prod import *
 
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
+
+STATIC_URL = '/static/'
