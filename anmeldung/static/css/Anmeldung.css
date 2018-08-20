@@ -19,7 +19,7 @@ thick:5px;
 text-transform: uppercase;
 }
 
-.card 						{min-height: 100%; box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.14); transition: 0.1s; margin-top: 10px; padding: 8px; border-radius: 0.0rem;}
+.card 						{box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.14); transition: 0.1s; margin-top: 10px; padding: 8px; border-radius: 0.0rem;}
 .card:hover 				{box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);}
 
 .card button 				{float: left; height: 50px;}
@@ -35,7 +35,9 @@ text-transform: uppercase;
 
 .card_groups				{border: 1px solid rgba(0,0,0,0.2); margin-top: 10px; border-radius: 5px; padding-bottom: 8px}
 
-.form_tournament            {padding: 0; text-align: center}
+.form_tournament {
+    text-align: center
+}
 
 .form {
 	padding-top: 2px;

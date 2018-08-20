@@ -38,6 +38,18 @@ def index(request):
     return render(request, 'landing.html')
 
 
+def test_view(request):
+    #return render(request, 'tournament_signup_success.html',
+    #              {'email_a': 'paco@gmail.com',
+    #               'email_b': 'fran@gmail.com',
+    #               'from_email': 'info@padelanalytics.com'
+    #               })
+    #return render(request, 'tournament_signup_activation.html')
+    #return render(request, 'activation_failed.html')
+    #return render(request, '404.html')
+    return render(request, '500.html')
+
+
 def tournament_signup(request, id=None):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
@@ -51,24 +63,30 @@ def tournament_signup(request, id=None):
                 return render(request, 'tournament_signup.html', {'form': registration_form})
 
             # check no player is twice in a tournament
-            player_signed_up = None
             registrations = get_all_registrations(registration_form.cleaned_data['tournament'])
             for reg in registrations:
                 if player_a.id == reg.player_a.id or player_a.id == reg.player_b.id:
                     registration_form.add_error('player_a', 'Player already signed up in the tournament.')
-                    #return render(request, 'tournament_signup.html', {'form': registration_form})
+                    return render(request, 'tournament_signup.html', {'form': registration_form})
                 elif player_b.id == reg.player_a.id or player_b.id == reg.player_b.id:
                     registration_form.add_error('player_b', 'Player already signed up in the tournament.')
-                    #return render(request, 'tournament_signup.html', {'form': registration_form})
+                    return render(request, 'tournament_signup.html', {'form': registration_form})
 
             # all checks are good
             registration = registration_form.save()
             # send activation email
+            from django.conf import settings
+            from_email = settings.DEFAULT_FROM_EMAIL
+            cc_email = settings.DEFAULT_CC_EMAIL
             current_site = get_current_site(request)
-            _send_activation_email(current_site, registration, player_a, player_a.email)
-            _send_activation_email(current_site, registration, player_b, player_b.email)
+            _send_activation_email(current_site, registration, player_a, from_email, player_a.email, cc_email)
+            _send_activation_email(current_site, registration, player_b, from_email, player_b.email, cc_email)
 
-            return redirect('tournament', registration_form.cleaned_data['tournament'].id)
+            return render(request, 'tournament_signup_success.html',
+                          {'email_a': player_a.email,
+                           'email_b': player_b.email,
+                           'from_email': from_email
+                           })
         # form is invalid
         else:
             return render(request, 'tournament_signup.html', {'form': registration_form})
@@ -82,7 +100,6 @@ def tournament_signup(request, id=None):
 
 def turnierliste(request):
     tournaments = get_padel_tournaments()
-    print (tournaments)
     return render(request, 'turnierliste.html', {'tournaments': tournaments})
 
 
@@ -187,9 +204,7 @@ def handler500(request, exception, template_name='404.html'):
     return render(request, template_name=template_name, status=500)
 
 
-def _send_activation_email(current_site, registration, player, to_email):
-    from django.conf import settings
-
+def _send_activation_email(current_site, registration, player, from_email, to_email):
     message = render_to_string(
         'acc_active_email.html',
         {
@@ -201,7 +216,6 @@ def _send_activation_email(current_site, registration, player, to_email):
         }
     )
     mail_subject = 'Activate your tournament registration.'
-    email = EmailMessage(mail_subject, message, to=[to_email],
-                         from_email=settings.DEFAULT_FROM_EMAIL, cc=settings.DEFAULT_CC_EMAIL)
+    email = EmailMessage(mail_subject, message, to=[to_email], from_email=from_email, cc=from_email)
     email.send()
 

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 50px" class="container_12">
+
+    <div class="box" style="col-sm-12">
+        <h2 style="margin: 40px 0 40px 0">
+            Wir haben ein E-Mail an {{email_a}} und {{email_b}} versendet<br><br>
+            Bitte überprüfen Sie Ihre E-Mail Postfach und klicken Sie auf der Link um die Anmeldung zu bestäting.<br><br>
+            Um die Anmeldung zu bestätigen beide Spieler müssen die Anmeldung bestätigen.<br><br>
+            Möglicherweiser ist die E-Mail in der Spam gelandet. Unsere Addresse ist {{from_email}}
+        </h2>
+    </div>
+
+</div>
+{% endblock %}

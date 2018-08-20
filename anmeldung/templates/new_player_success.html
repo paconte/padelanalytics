@@ -11,21 +11,23 @@
 {% block content %}
 
 <div style="margin-top: 50px" class="container_12">
+
     <div class="card">
         <h1>German Padel Series 2018</h1>
         <h2>Neuer Spieler erfolgreich gespeichert</h2>
     </div>
-        <div class="box" style="col-sm-12">
 
+    <div class="box" style="col-sm-12">
+        <h2 style="margin: 40px 0 40px 0">Vielen Dank, deine Daten wurden erfolgreich gespeichert und du kannst dich
+            jetzt für das Turnier anmelden.</h2>
+        <a href="{% url 'tournament_signup' %}">
+            <button type="button" class="col-xs-12 col-sm-2  btn btn-danger"
+                    style="left: 50%; height: 50px; margin-top: 10px; margin-bottom: 8px; margin-left: -8.33%">
+                Zurück zur Anmeldung
+            </button>
+        </a>
+    </div>
 
-        <h2 style="margin: 40px 0 40px 0">Vielen Dank, deine Daten wurden erfolgreich gespeichert und du kannst dich jetzt für das Turnier anmelden.</h2>
-            <a href="{% url 'tournament_signup' %}">
-                <button type="button" class="col-xs-12 col-sm-2  btn btn-danger"
-                        style="left: 50%; height: 50px; margin-top: 10px; margin-bottom: 8px; margin-left: -8.33%">
-                    Zurück zur Anmeldung
-                </button>
-            </a>
-        </div>
 </div>
 
 {% endblock %}
