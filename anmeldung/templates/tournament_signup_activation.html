@@ -12,7 +12,28 @@
 
 <div style="margin-top: 50px" class="container_12">
     <div class="card">
-        <h2>Thank you for your email confirmation. Now you can play the tournament.</h2>
+        <div class="box">
+            <div><img class="col-sm-4 error500" src="{% static 'images/ok.png' %}">
+            </div>
+            <div class="col-sm-8" style="float: left; margin-top: 40px">
+                <h1>Spieler erfolgreich bestätigt</h1>
+                <h2>Jetzt kannst du alle Turniere der German Padel Series genießen</h2>
+                <hr>
+                <h1>VIEL SPASS!</h1>
+            </div>
+        </div>
+        <div>
+            <a href=" {% url 'turnierliste' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 -5 10 0; left: 33%">Zur Turnierliste
+                </button>
+            </a>
+            <a href=" {% url 'tournament_signup' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 0 10 10; left: 33%">Melde dein Team zu einem Turnier an
+                </button>
+            </a>
+        </div>
     </div>
 </div>
 

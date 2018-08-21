@@ -12,9 +12,30 @@
 
 <div style="margin-top: 50px" class="container_12">
     <div class="card">
-        <h2>There was a problem serving the requested page.</h2>
-        <h2>Contact the administrator.</h2>
+        <div class="box">
+            <div><img class="col-sm-4 error500" src="{% static 'images/error500.png' %}">
+            </div>
+            <div class="col-sm-8" style="float: left; margin-top: 40px">
+                <h1>Ohh mein Gott!</h1>
+                <h2>Etwas ist schiefgelaufen!</h2>
+                <hr>
+                <h1>ERROR 500</h1>
+            </div>
+        </div>
+        <div>
+            <a href=" {% url 'tournament_signup' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 -5 10 0; left: 33%">Zurück zur letzten Seite
+                </button>
+            </a>
+            <a href=" {% url 'tournament_signup' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 0 10 10; left: 33%">Kontaktiere uns
+                </button>
+            </a>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}

@@ -412,6 +412,11 @@ height: 100%;
 	position: relative;
 }
 
+.error500{
+    position: relative;
+    max-width: 300px;
+    float: left;
+}
 
 .card .club{
     position: relative;

@@ -44,10 +44,10 @@ def test_view(request):
     #               'email_b': 'fran@gmail.com',
     #               'from_email': 'info@padelanalytics.com'
     #               })
-    #return render(request, 'tournament_signup_activation.html')
+    return render(request, 'tournament_signup_activation.html')
     #return render(request, 'activation_failed.html')
     #return render(request, '404.html')
-    return render(request, '500.html')
+    #return render(request, '500.html')
 
 
 def tournament_signup(request, id=None):
@@ -131,7 +131,6 @@ def tournament(request, id):
 
 def clubs(request):
     clubs = get_clubs()
-    raise Exception
     return render(request, 'clubs.html', {'clubs': clubs})
 
 

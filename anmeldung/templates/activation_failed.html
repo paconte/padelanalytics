@@ -12,8 +12,31 @@
 
 <div style="margin-top: 50px" class="container_12">
     <div class="card">
-        <h2>Activation link is invalid!</h2>
+        <div class="box">
+            <div><img class="col-sm-4 error500" src="{% static 'images/invalid.png' %}">
+            </div>
+            <div class="col-sm-8" style="float: left; margin-top: 40px">
+                <h1>Das Aktivationslink ist leider ungültig</h1>
+                <hr>
+                <h2>Prüfe deine Mail oder melde dich noch mal als Spieler an</h2>
+                <h2>Vielleicht ist das Link abgelaufen</h2>
+
+            </div>
+        </div>
+        <div>
+            <a href=" {% url 'new_player' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 -5 10 0; left: 33%">Zum Anmeldungsformular
+                </button>
+            </a>
+            <a href=" {% url 'turnierliste' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 0 10 10; left: 33%">Zur Turnierliste
+                </button>
+            </a>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}

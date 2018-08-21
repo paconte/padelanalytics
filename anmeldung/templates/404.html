@@ -9,7 +9,29 @@
 {% block content %}
 <div style="margin-top: 50px" class="container_12">
     <div class="card">
-        <h2>Web Site not found.</h2>
+        <div class="box">
+            <div><img class="col-sm-4 error500" src="{% static 'images/error404.png' %}">
+            </div>
+            <div class="col-sm-8" style="float: left; margin-top: 40px">
+                <h1>Seite nicht gefunden!</h1>
+                <h2>Was für ein Standort oder Turnier suchts du genau?</h2>
+                <hr>
+                <h1>ERROR 404</h1>
+            </div>
+        </div>
+        <div>
+            <a href=" {% url 'turnierliste' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 -5 10 0; left: 33%">Turnierliste
+                </button>
+            </a>
+            <a href=" {% url 'clubs' %}">
+                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 0 10 10; left: 33%">Standorte
+                </button>
+            </a>
+        </div>
     </div>
 </div>
+
 {% endblock %}
