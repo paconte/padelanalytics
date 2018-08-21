@@ -8,15 +8,27 @@
 
 {% block content %}
 <div style="margin-top: 50px" class="container_12">
-
-    <div class="box" style="col-sm-12">
-        <h2 style="margin: 40px 0 40px 0">
-            Wir haben ein E-Mail an {{email_a}} und {{email_b}} versendet<br><br>
-            Bitte überprüfen Sie Ihre E-Mail Postfach und klicken Sie auf der Link um die Anmeldung zu bestäting.<br><br>
-            Um die Anmeldung zu bestätigen beide Spieler müssen die Anmeldung bestätigen.<br><br>
-            Möglicherweiser ist die E-Mail in der Spam gelandet. Unsere Addresse ist {{from_email}}
-        </h2>
+    <div class="card">
+        <div class="box">
+            <div><img class="col-sm-4 error500" src="{% static 'images/mail.png' %}">
+            </div>
+            <div class="col-sm-8" style="float: left; margin-top: 20px">
+                <h1>Nur noch ein Schritt!</h1>
+                <hr>
+                <h2>Wir haben eine E-Mail an {{email_a}} und {{email_b}} versendet<br>
+            Bitte überprüft Eure E-Mail Postfach und klickt auf das Link, um die Anmeldung zu bestätigen.<br>
+            Beide Spieler müssen es machen, damit das Team erfolgreich angemeldet ist.</h2>
+                <hr>
+            <h2>Bitte prüft, ob die E-Mail im Spam-Ordner gelandet ist. Unsere Addresse ist {{from_email}}</h2>
+            </div>
+        </div>
+        <div>
+            <a href=" {% url 'turnierliste' %}">
+                <button type="button" class="col-xs-12 col-sm-4 btn btn-outline-danger hidden-sm-down"
+                        style="margin: 0 -5 10 0; left: 42.5%">Zur Turnierliste
+                </button>
+            </a>
+        </div>
     </div>
-
 </div>
 {% endblock %}
