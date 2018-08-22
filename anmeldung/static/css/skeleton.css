@@ -28,16 +28,19 @@
 /* Para screens lg */
 @media only screen and (min-width: 1200px) {
         .container_12                                  { position: relative; width: 1200px; margin: 0 auto; padding: 0; }
-		
+        .container_12 .roll {margin-top: 50px}
+
     }
 /* Para screens bg */
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
-        .container_12                                  { position: relative; width: 992px; margin: 0 auto; padding: 0; }        
+        .container_12                                  { position: relative; width: 992px; margin: 0 auto; padding: 0; }
+        .container_12 .roll {margin-top: 50px}
 }
 
 /* Para screens md */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
         .container_12                                  { position: relative; width: 768px; margin: 0 auto; padding: 0; }
+        .container_12 .roll {margin-top: 50px}
 }
 
 
