@@ -50,9 +50,13 @@
                             <div class="content">
                                 <div class="main">
                                     <h2 class="name">{{club.name}}</h2>
-                                    <h4><i class="fa fa-map-marker fa-fw text-muted"></i> {{club.city}}, Deutschland</h4>
-                                    <a><i class="fa fa-window-close a-fw text-muted" style="margin-left: 3px"></i> {{club.indoor_courts}} Indoor </a><a><i class="fa fa-square a-fw text-muted"style="margin-left: 15px"></i> {{club.outdoor_courts}} Outdoor </a>
-                                    <h4><i class="fa fa-envelope-o fa-fw text-muted"></i> {{club.email}}</h4>
+                                    <h4 class="text-center"><i class="fa fa-map-marker fa-fw text-muted"></i> {{club.city}} ({{club.province}})</h4>
+                                </div>
+                                <div style="margin-top: -70px">
+                                    <h2 class="col-xs-6 col-sm-6 text-center" style="float:left">{{club.indoor_courts}}</h2>
+                                    <h2 class="col-xs-6 col-sm-6 text-center" style="float:left">{{club.outdoor_courts}}</h2>
+                                    <h4 class="col-xs-6 col-sm-6 text-center" style="float:left; margin-top: -5px">Indoor</h4>
+                                    <h4 class="col-xs-6 col-sm-6 text-center" style="float:left; margin-top: -5px">Outdoor</h4>
                                 </div>
                             </div>
                         </div> <!-- end front panel -->
@@ -60,9 +64,12 @@
                             <div class="content">
                                 <div class="main">
                                     <h4 class="text-center">Adresse</h4>
-                                    <p>{{club.adress}}</p>
-                                    <p>13407 {{club.city}}, Deutschland</p>
-                                    <p>{{club.phone}}</p>
+                                    <p><i class="col-xs-2 col-sm-2 fa fa-home"></i>{{club.address}}</p>
+                                    <p><i class="col-xs-2 col-sm-2 fa fa-map"></i>{{club.postcode}} {{club.city}}, Deutschland</p>
+                                    <hr>
+                                    <h4 class="text-center">Kontakdaten</h4>
+                                    <p><i class="col-xs-2 col-sm-2 fa fa-envelope-o"></i>{{club.email}}</p>
+                                    <p><i class="col-xs-2 col-sm-2 fa fa-phone"></i>{{club.phone}}</p>
                                     <!-- <h4 class="text-center">weitere Angebote</h4>
                                     <p>Tennis</p>
                                     <p>Beach-Volley</p>

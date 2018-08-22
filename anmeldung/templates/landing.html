@@ -19,7 +19,7 @@
         </button>
     </a>-->
 
-    <div class="box roll" style="margin: 0 -7.5 0 -7.5">
+    <div class="box roll">
 
         <!-- Franja Principal -->
         <div class="col-md-9" style="float:left">
@@ -31,104 +31,144 @@
                 <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Nächste Turniere</h3>
                 <hr class="separador_torneo">
             </div>
-            <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px 0 0 0">
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 card-container">
-                    <div class="card clubs">
-                        <div class="front">
+            <div class="box" style="display:flex; flex-wrap: wrap; margin: -15px 0 0 -5px;">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-container" style="height: 280px">
+                    <div class="card clubs" style="height: 280px">
+                        <div class="front"  style="max-height: 100%">
+                            <div class="content" style="padding:0"><img class="news_posters"
+                                                                        src="{% static 'images/posters/01.jpg' %}"
+                                                                        alt="">
+                            </div>
+                        </div> <!-- end front panel -->
+                        <div class="back" style="max-height: 100%">
+                            <div class="cover">
+                                <img src="{{ club.cover_photo.url }}">
+                            </div>
+                            <div class="user" style="background-color: white">
+                                <img class="img" src="{% static 'images/germany/clubs/worms.png' %}">
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h2 class="name">Pfrimmpark Arena</h2>
+                                    <h3 class="name" style="font-size:12px; margin-top:-5px">Worms, Rheinland-Pfalz</h3>
+
+                                    <!-- <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:15px">Plakat vergrößern
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Turnier
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Standort
+                                    </button> -->
+                                </div>
+
+                            </div>
+
+                        </div> <!-- end back panel -->
+
+                    </div> <!-- end card -->
+                </div> <!-- end card-container -->
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-container" style="height: 280px">
+                    <div class="card clubs" style="height: 280px">
+                        <div class="front" style="max-height: 100%">
+                            <div class="content" style="padding:0"><img class="news_posters"
+                                                                        src="{% static 'images/posters/02.jpg' %}"
+                                                                        alt="">
+                            </div>
+                        </div> <!-- end front panel -->
+                        <div class="back" style="max-height: 100%">
+                            <div class="cover">
+                                <img src="{{ club.cover_photo.url }}">
+                            </div>
+                            <div class="user" style="background-color: white">
+                                <img class="img" src="{% static 'images/germany/clubs/hahn.png' %}">
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h2 class="name">Sportcenter Hahn</h2>
+                                    <h3 class="name" style="font-size:12px; margin-top:-5px"> Geretsried, Bayern</h3>
+
+                                    <!-- <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:15px">Plakat vergrößern
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Turnier
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Standort
+                                    </button> -->
+                                </div>
+
+                            </div>
+                        </div> <!-- end back panel -->
+
+                    </div> <!-- end card -->
+                </div> <!-- end card-container -->
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-container" style="height: 280px">
+                    <div class="card clubs" style="height: 280px">
+                        <div class="front" style="max-height: 100%">
+                            <div class="content" style="padding:0"><img class="news_posters"
+                                                                        src="{% static 'images/posters/03.jpg' %}"
+                                                                        alt="">
+                            </div>
+                        </div> <!-- end front panel -->
+                        <div class="back"  style="max-height: 100%">
+                            <div class="cover">
+                                <img src="{{ club.cover_photo.url }}">
+                            </div>
+                            <div class="user" style="background-color: white">
+                                <img class="img" src="{% static 'images/germany/clubs/hamburg.png' %}">
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h2 class="name">Padel Condor</h2>
+                                    <h3 class="name" style="font-size:12px; margin-top:-5px"> Hamburg, Hamburg</h3>
+
+                                    <!-- <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:15px">Plakat vergrößern
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Turnier
+                                    </button>
+                                    <button type="button"
+                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                            style="padding: 0; margin-top:5px">Zum Standort
+                                    </button> -->
+                                </div>
+
+                            </div>
+                        </div> <!-- end back panel -->
+
+                    </div> <!-- end card -->
+                </div> <!-- end card-container -->
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card-container" style="height: 280px">
+                    <div class="card clubs" style="height: 280px">
+                        <div class="front"  style="max-height: 100%">
                             <div class="content" style="padding:0"><img class="news_posters"
                                                                         src="{% static 'images/posters/04.jpg' %}"
                                                                         alt="">
                             </div>
                         </div> <!-- end front panel -->
-                        <div class="back">
+                        <div class="back" style="max-height: 100%">
                             <div class="cover">
                                 <img src="{{ club.cover_photo.url }}">
                             </div>
                             <div class="user" style="background-color: white">
-                                <img class="img" src="{% static 'images/germany/clubs/walls.png' %}">
+                                <img class="img" src="{% static 'images/germany/clubs/schwaigern.png' %}">
                             </div>
                             <div class="content">
                                 <div class="main">
-                                    <h2 class="name">Walls der Padelfaktor</h2>
-                                    <h3 class="name" style="font-size:12px; margin-top:-5px"> Köln, Deutschland</h3>
-
-                                    <!-- <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:15px">Plakat vergrößern
-                                    </button>
-                                    <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:5px">Zum Turnier
-                                    </button>
-                                    <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:5px">Zum Standort
-                                    </button> -->
-                                </div>
-
-                            </div>
-                        </div> <!-- end back panel -->
-
-                    </div> <!-- end card -->
-                </div> <!-- end card-container -->
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 card-container">
-                    <div class="card clubs">
-                        <div class="front">
-                            <div class="content" style="padding:0"><img class="news_posters"
-                                                                        src="{% static 'images/posters/05.jpg' %}"
-                                                                        alt="">
-                            </div>
-                        </div> <!-- end front panel -->
-                        <div class="back">
-                            <div class="cover">
-                                <img src="{{ club.cover_photo.url }}">
-                            </div>
-                            <div class="user" style="background-color: white">
-                                <img class="img" src="{% static 'images/germany/clubs/condor.png' %}">
-                            </div>
-                            <div class="content">
-                                <div class="main">
-                                    <h2 class="name">Walls der Padelfaktor</h2>
-                                    <h3 class="name" style="font-size:12px; margin-top:-5px"> Köln, Deutschland</h3>
-
-                                    <!-- <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:15px">Plakat vergrößern
-                                    </button>
-                                    <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:5px">Zum Turnier
-                                    </button>
-                                    <button type="button"
-                                            class="col-xs-12 col-sm-12 btn btn-outline-dark"
-                                            style="padding: 0; margin-top:5px">Zum Standort
-                                    </button> -->
-                                </div>
-
-                            </div>
-                        </div> <!-- end back panel -->
-
-                    </div> <!-- end card -->
-                </div> <!-- end card-container -->
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 card-container">
-                    <div class="card clubs">
-                        <div class="front">
-                            <div class="content" style="padding:0"><img class="news_posters"
-                                                                        src="{% static 'images/posters/06.jpg' %}"
-                                                                        alt="">
-                            </div>
-                        </div> <!-- end front panel -->
-                        <div class="back">
-                            <div class="cover">
-                                <img src="{{ club.cover_photo.url }}">
-                            </div>
-                            <div class="user" style="background-color: white">
-                                <img class="img" src="{% static 'images/germany/clubs/Espelkamp.jpg' %}">
-                            </div>
-                            <div class="content">
-                                <div class="main">
-                                    <h2 class="name">Walls der Padelfaktor</h2>
-                                    <h3 class="name" style="font-size:12px; margin-top:-5px"> Köln, Deutschland</h3>
+                                    <h2 class="name">TC Schwaigern</h2>
+                                    <h3 class="name" style="font-size:12px; margin-top:-5px">Schwaigern, Baden-Württemberg</h3>
 
                                     <!-- <button type="button"
                                             class="col-xs-12 col-sm-12 btn btn-outline-dark"
@@ -154,17 +194,17 @@
 
                 <a class="col-xs-12 col-sm-12" href="{% url 'clubs' %}">
                     <button type="button" class="btn btn-outline-danger hidden-sm-down"
-                            style="padding: 5; margin: 50 7.5 0 7.5; width: 100%">Zu den Standorte in Deutschland
+                            style="padding: 5; margin: 20 0 0 0; width: 100%">Zu den Standorte in Deutschland
                     </button>
                 </a>
                 <a class="col-xs-12 col-sm-12" href="{% url 'turnierliste' %}">
                     <button type="button" class="btn btn-outline-danger hidden-sm-down"
-                            style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zum Turnierkalender der GPS 2018
+                            style="padding: 5; margin: 10 0 0 0; width: 100%">Zum Turnierkalender der GPS 2018
                     </button>
                 </a>
                 <a class="col-xs-12 col-sm-12" href="{% url 'tournament_signup' %}">
                     <button type="button" class="btn btn-outline-danger hidden-sm-down"
-                            style="padding: 5; margin: 10 7.5 0 7.5; width: 100%">Zur Anmeldung für die GPS 2018
+                            style="padding: 5; margin: 10 0 0 0; width: 100%">Zur Anmeldung für die GPS 2018
                     </button>
                 </a>
             </div>
@@ -173,11 +213,11 @@
 
 
         <!-- Franja Vertical -->
-        <div class="col-md-3" style="float:left; margin-left:-10px; padding-left:0px">
+        <div class="col-md-3" style="float:left; margin-left:0px; padding-left:0px">
             <div class="news_bar" style="height:inherit; -webkit-filter: grayscale(0%)">
 
                 <!-- Estadística -->
-                <div class="col-sm-12">
+                <div class="col-sm-12" style="flex: none">
                     <hr class="separador_torneo">
                     <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Statistik</h3>
                     <hr class="separador_torneo">
@@ -185,7 +225,7 @@
 
                 <!-- Clubes -->
                 <div>
-                    <div href="X" style="margin: 0 8 0 8">
+                    <div style="margin: 0 8 0 8"><a href="{% url 'clubs' %}">
                         <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
                         </div>
@@ -193,9 +233,9 @@
                             33<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">Standorte</h2>
-                        </button>
+                        </button></a>
                     </div>
-                    <div href="X" style="margin: 0 8 0 8">
+                    <div style="margin: 5 8 0 8"> <a href="{% url 'clubs' %}">
                         <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
                             </div>
@@ -204,9 +244,9 @@
                             46<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">Plätze</h2>
-                        </button>
+                        </button></a>
                     </div>
-                    <div href="X" style="margin: 0 8 0 8">
+                    <div style="margin: 5 8 0 8"><a href="{% url 'turnierliste' %}">
                         <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-trophy"></i></div>
                         </div>
@@ -214,9 +254,9 @@
                             150<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">Turniere</h2>
-                        </button>
+                        </button></a>
                     </div>
-                    <div href="X" style="margin: 0 8 0 8">
+                    <div style="margin: 5 8 0 8"><a href="X">
                         <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-user"></i></div>
                         </div>
@@ -224,9 +264,9 @@
                             550<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">Spieler</h2>
-                        </button>
+                        </button></a>
                     </div>
-                    <div href="X" style="margin: 0 8 0 8">
+                    <div style="margin: 0 8 0 8"><a href="X">
                         <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
                         </div>
@@ -234,7 +274,7 @@
                             5<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">Rankings</h2>
-                        </button>
+                        </button></a>
                     </div>
                 </div>
 
