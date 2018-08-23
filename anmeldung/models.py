@@ -17,12 +17,12 @@ PLAYER = (('A', 'A'), ('B', 'B'))
 
 
 def player_directory_path(instance, filename):
-    return 'player_media/' + normalize(
-        '{0}-{1}-{2}-{3}'.format(instance.last_name, instance.first_name, instance.email, filename))
+    return 'player_media/' + normalize(no_german_chars(
+        '{0}-{1}-{2}-{3}'.format(instance.last_name, instance.first_name, instance.email, filename)))
 
 
 def club_directory_path(instance, filename):
-    return 'club_media/' + normalize('{0}-{1}'.format(instance.name, filename))
+    return 'club_media/' + normalize(no_german_chars('{0}-{1}'.format(instance.name, filename)))
 
 
 class Club(models.Model):
@@ -147,3 +147,10 @@ def get_all_registrations(tournament_id):
 
 def normalize(filename):
     return "".join([c for c in filename if c.isalpha() or c.isdigit() or c == ' ']).rstrip()
+
+
+def no_german_chars(string):
+    chars = {'ö': 'oe', 'ä': 'ae', 'ü': 'ue', 'ß': 'ss'}
+    for c in chars:
+        string = string.replace(c, chars[c])
+    return string
