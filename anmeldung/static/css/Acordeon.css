@@ -1113,6 +1113,11 @@ cursor: pointer;
 
 .margen {top:25px;}
 
+.card-container {
+margin: 0;
+padding: 0;
+}
+
 }
 
 @media (min-width: 768px) {
@@ -1160,6 +1165,9 @@ cursor: pointer;
     width: 30px;
     max-height: 30px;
 }
+
+
+
 
  .text_club {
     font-size: 0.6rem;

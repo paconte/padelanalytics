@@ -13,7 +13,6 @@
    -moz-perspective: 800px;
      -o-perspective: 800px;
         perspective: 800px;
-        margin-top: 16px;
 }
 /* flip the pane when hovered */
 .card-container:not(.manual-flip):hover .card,
@@ -104,9 +103,8 @@
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.125);
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
-
-
 }
+
 .card .user img{
     position: absolute;
     background: none repeat scroll 0 0 #FFFFFF;
@@ -328,4 +326,60 @@
         z-index: 5;
         visibility: visible;
     }
+}
+
+.in_out{
+margin-top: -70px;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+.card {
+margin-top: 0px;
+}
+
+.card .user{
+    height: 80px;
+    width: 80px;
+    margin: -120px 30px 0;
+}
+
+.card .name {
+margin-top: 45px;
+}
+
+.clubs h4 {
+font-size: 12px;
+margin-top: 0px;
+}
+
+.card .content .main {
+min-height: none;
+}
+
+.in_out{
+margin-top: -120px;
+}
+
+.card-container, .front, .back {
+    height: 260px;
+}
+
+}
+
+@media (min-width: 768px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width:992px) and (max-width: 1200px) {
+}
+
+@media (min-width: 1200px) {
 }
