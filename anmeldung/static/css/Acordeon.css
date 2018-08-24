@@ -1189,7 +1189,7 @@ margin-right: 0px;
 
 .card button {
     height: 40px;
-    margin-top: -25px;
+    margin-top: -10px;
 }
 
 .card .user-tournament{
@@ -1208,7 +1208,6 @@ margin-top: 10px;
 
 .text_tournament_title {
     font-size: 0.5rem;
-    margin-top: 10px;
   }
 
 .text_club {
@@ -1234,7 +1233,7 @@ margin-top: 10px;
     height: 60px;
 }
 
-.margen {top:-5px;}
+.margen {top:-3px;}
 
 .message_text{
 margin-top: 40px;
