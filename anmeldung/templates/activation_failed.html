@@ -9,31 +9,27 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container_12">
     <div class="card roll">
         <div class="box">
-            <div><img class="col-sm-4 error500" src="{% static 'images/invalid.png' %}">
+            <div><img class="col-sm-4 message" src="{% static 'images/invalid.png' %}">
             </div>
-            <div class="col-sm-8" style="float: left; margin-top: 40px">
+            <div class="message_text col-md-8" style="float: left">
                 <h1>Das Aktivationslink ist leider ungültig</h1>
                 <hr>
                 <h2>Prüfe deine Mail oder melde dich noch mal als Spieler an</h2>
                 <h2>Vielleicht ist das Link abgelaufen</h2>
-
+                <a href=" {% url 'new_player' %}">
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Zum Anmeldungsformular
+                    </button>
+                </a>
+                <a href=" {% url 'turnierliste' %}">
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Zur Turnierliste
+                    </button>
+                </a>
             </div>
-        </div>
-        <div>
-            <a href=" {% url 'new_player' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 -5 10 0; left: 33%">Zum Anmeldungsformular
-                </button>
-            </a>
-            <a href=" {% url 'turnierliste' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 0 10 10; left: 33%">Zur Turnierliste
-                </button>
-            </a>
         </div>
     </div>
 </div>

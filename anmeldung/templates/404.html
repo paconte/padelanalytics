@@ -10,28 +10,25 @@
 <div class="container_12">
     <div class="card roll">
         <div class="box">
-            <div><img class="col-sm-4 error500" src="{% static 'images/error404.png' %}">
+            <div><img class="col-sm-4 message" src="{% static 'images/error404.png' %}">
             </div>
-            <div class="col-sm-8" style="float: left; margin-top: 40px">
+            <div class="message_text col-md-8" style="float: left">
                 <h1>Seite nicht gefunden!</h1>
                 <h2>Was für ein Standort oder Turnier suchts du genau?</h2>
                 <hr>
                 <h1>ERROR 404</h1>
+                <a href=" {% url 'turnierliste' %}">
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
+                    >Turnierliste
+                    </button>
+                </a>
+                <a href=" {% url 'clubs' %}">
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
+                    >Standorte
+                    </button>
+                </a>
             </div>
-        </div>
-        <div>
-            <a href=" {% url 'turnierliste' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 -5 10 0; left: 33%">Turnierliste
-                </button>
-            </a>
-            <a href=" {% url 'clubs' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 0 10 10; left: 33%">Standorte
-                </button>
-            </a>
         </div>
     </div>
 </div>
-
 {% endblock %}

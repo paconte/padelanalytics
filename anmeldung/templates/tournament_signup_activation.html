@@ -5,34 +5,31 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/skeleton.css' %}"/>
 {% endblock %}
 
 {% block content %}
-
 <div class="container_12">
     <div class="card roll">
         <div class="box">
-            <div><img class="col-sm-4 error500" src="{% static 'images/ok.png' %}">
+            <div><img class="col-sm-4 message" src="{% static 'images/ok.png' %}">
             </div>
-            <div class="col-sm-8" style="float: left; margin-top: 40px">
+            <div class="message_text col-md-8" style="float: left">
                 <h1>Spieler erfolgreich bestätigt</h1>
                 <h2>Jetzt kannst du alle Turniere der German Padel Series genießen</h2>
                 <hr>
                 <h1>VIEL SPASS!</h1>
+                <a href=" {% url 'turnierliste' %}">
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Zur Turnierliste
+                    </button>
+                </a>
+                <a href=" {% url 'tournament_signup' %}">
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Melde dein Team zu einem Turnier an
+                    </button>
+                </a>
             </div>
-        </div>
-        <div>
-            <a href=" {% url 'turnierliste' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 -5 10 0; left: 33%">Zur Turnierliste
-                </button>
-            </a>
-            <a href=" {% url 'tournament_signup' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 0 10 10; left: 33%">Melde dein Team zu einem Turnier an
-                </button>
-            </a>
         </div>
     </div>
 </div>

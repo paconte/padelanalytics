@@ -9,33 +9,28 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container_12">
     <div class="card roll">
         <div class="box">
-            <div><img class="col-sm-4 error500" src="{% static 'images/error500.png' %}">
+            <div><img class="col-sm-4 message" src="{% static 'images/error500.png' %}">
             </div>
-            <div class="col-sm-8" style="float: left; margin-top: 40px">
+            <div class="message_text col-md-8" style="float: left">
                 <h1>Ohh mein Gott!</h1>
                 <h2>Etwas ist schiefgelaufen!</h2>
                 <hr>
                 <h1>ERROR 500</h1>
+                <a href=" {% url 'tournament_signup' %}">
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
+                    >Zurück zur letzten Seite
+                    </button>
+                </a>
+                <a href="mailto: fragonser@gmail.com; paconte@gmail.com">
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
+                    >Kontaktiere uns
+                    </button>
+                </a>
             </div>
-        </div>
-        <div>
-            <a href=" {% url 'tournament_signup' %}">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 -5 10 0; left: 33%">Zurück zur letzten Seite
-                </button>
-            </a>
-            <a href="mailto: fragonser@gmail.com; paconte@gmail.com">
-                <button type="button" class="col-xs-12 col-sm-3 btn btn-outline-danger hidden-sm-down"
-                        style="margin: 0 0 10 10; left: 33%">Kontaktiere uns
-                </button>
-            </a>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

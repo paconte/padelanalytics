@@ -4,6 +4,7 @@
 /* Fondo radial */
 
 
+
 .card .user-tournament{
     position: relative;
     height: 70px;
@@ -90,6 +91,11 @@ button.accordion {
     transition: 0.4s;
 	text-transform: uppercase;
 	
+}
+
+.card .button_message {
+margin-top: 20px;
+margin-bottom: 20px;
 }
 
 
@@ -434,7 +440,7 @@ height: 100%;
 	position: relative;
 }
 
-.error500{
+.message{
     position: relative;
     max-width: 300px;
     float: left;
@@ -1117,14 +1123,44 @@ cursor: pointer;
 
 
 
+/* min-width: 576px */
+
 @media (min-width: 576px) {
 
+
+.card .button_message.right {
+margin-left: 5px;
+margin-right: -5px
 }
 
-@media (max-width: 768px) {
+.card .button_message.left {
+margin-left: -5px;
+margin-right: 5px
+}
+}
+
+/* max-width: 576px */
+
+@media (max-width: 576px) {
+
+.card .button_message.right {
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+}
+
+.card .button_message.left {
+margin-left: 0px;
+margin-right: 0px;
+}
+}
+
+/* max-width: 768px */
+
+@media (max-width: 767px) {
 
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
-float: right;
+    float: right;
   }
 
 .hidden-sm-down{
@@ -1132,32 +1168,45 @@ float: right;
   }
 
 .tournament-list {
-height: 120px;
+    height: 120px;
 }
 
-.margen {top:25px;
+.margen {
+    top:25px;
 }
 
 .card-container {
-margin: 0;
-padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
+
+
 .card {
-margin-top: 1px;
+    margin-top: 1px;
 
 }
 
 .card button {
-height: 40px;
-margin-top: -25px;
+    height: 40px;
+    margin-top: -25px;
 }
 
 .card .user-tournament{
-top: -5px;
+    top: -5px;
 }
 
-  .text_tournament_title {
+.message{
+    max-width: 150px;
+    left: 50%;
+    margin-left: -75px;
+}
+
+.message_text{
+margin-top: 10px;
+}
+
+.text_tournament_title {
     font-size: 0.5rem;
     margin-top: 10px;
   }
@@ -1168,6 +1217,8 @@ top: -5px;
   }
 
 }
+
+/* min-width: 768px */
 
 @media (min-width: 768px) {
 
@@ -1185,31 +1236,47 @@ top: -5px;
 
 .margen {top:-5px;}
 
+.message_text{
+margin-top: 40px;
+}
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+.message{
+    max-width: 240px;
+    float: left;
+}
+}
+
+
+/* max-width: 992px */
 
 @media (max-width: 992px) {
-  .btn {
+
+
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
+    max-height:25px;
+    margin: 0px;
+  }
+
+.btn {
     padding: 0.1rem 0.1rem;
     font-size: 0.75rem;
     max-height: 40px;
     margin-top: -5px;
   }
 
-    .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
-    max-height:25px;
-    margin: 0px;
-  }
-
-
 .card .user-tournament{
     height: 50px;
     width: 50px;
 }
 
-  .text_tournament_title {
+
+.text_tournament_title {
     font-size: 0.6rem;
   }
 
-  .category {
+.category {
   max-width: 30px;
     margin: 0 3px;
   }
@@ -1238,19 +1305,21 @@ top: -5px;
     margin-right: 8px;
     margin-top: 5px;
 }
-
 }
+
+/* min-width: 992px */
 
 @media (min-width: 992px) {
-    .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     margin-top: 10px;
     float: left;
-  }
-  .tournament-list {
+}
+.tournament-list {
     height: 80px;
 }
-
 }
+
+/* Para pantallas grandes */
 
 @media (min-width:992px) and (max-width: 1200px) {
 .picture {
@@ -1258,6 +1327,7 @@ top: -5px;
 }
 }
 
+/* Para pantallas super grandes */
 
 @media (min-width: 1200px) {
 
