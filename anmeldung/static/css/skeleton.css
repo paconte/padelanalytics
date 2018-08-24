@@ -8,13 +8,70 @@
 */
 
 
-/* Table of Contents
-==================================================
-    #Base 960 Grid
-    #Tablet (Portrait)
-    #Mobile (Portrait)
-    #Mobile (Landscape)
-    #Clearing */
+
+
+
+/* Tamanos de letra para todos los tipos de pantalla
+====================================================	*/
+
+/* Para screens lg */
+@media only screen and (min-width: 1200px) {
+.container_12   { width: 1200px; }
+}
+
+/* Para screens bg */
+@media only screen and (min-width: 992px) {
+ .container_12  { width: 992px; }
+ h1 			{padding-top: 12px; text-align: center; font-size: 24px; font-weight: 600;}
+ h2 			{padding-top: 10px; padding-bottom: 8px; text-align: center; font-size: 20px; font-weight: 100;}
+ h3 			{padding-top: 12px; padding-bottom: 8px; text-align: left; font-size: 16px; font-weight: 300; color: #aaa}
+ h4 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 16px; font-weight: 300; color: #000}
+ h5 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 12px; font-weight: 300; color: #aaa}
+ h6 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 10px; font-weight: 300; color: #000}
+}
+
+/* Para screens md */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+ .container_12  { width: 768px; }
+ h1 			{padding-top: 9px; text-align: center; font-size: 20px; font-weight: 600;}
+ h2 			{padding-top: 8px; padding-bottom: 8px; text-align: center; font-size: 16px; font-weight: 100;}
+ h3 			{padding-top: 12px; padding-bottom: 8px; text-align: left; font-size: 14px; font-weight: 300; color: #aaa}
+ h4 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 14px; font-weight: 300; color: #000}
+ h5 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 11px; font-weight: 300; color: #aaa}
+ h6 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 9px; font-weight: 300; color: #000}
+}
+
+@media only screen and (min-width: 768px) {
+/* IMPORTANTE PARA QUE NO APAREZCA LA PRIMERA CAJA DEBAJO DEL MENÚ */
+.container_12 .roll             {margin-top: 50px}
+.container_12                   { position: relative; margin: 0 auto; padding: 0; }
+}
+
+/* Para screens sm */
+@media only screen and (max-width: 768px) {
+ h1 			{padding-top: 6px; text-align: center; font-size: 16px; font-weight: 600;}
+ h2 			{padding-top: 8px; padding-bottom: 4px; text-align: center; font-size: 14px; font-weight: 100;}
+ h3 			{padding-top: 10px; padding-bottom: 4px; text-align: left; font-size: 12px; font-weight: 300; color: #aaa}
+ h4 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 12px; font-weight: 300; color: #000}
+ h5 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 10px; font-weight: 300; color: #aaa}
+ h6 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 8px; font-weight: 300; color: #000}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+}
+
+/* Para screens xs */
+@media only screen and (max-width: 575px) {
+.container_12                                  { position: relative; width: 100%; margin: 0 auto; padding: 0; }
+
+
+
+
+
+
+/* Responsive XS - Copiado de Bootstrap.css y adaptado de MD y SM a XS
+========================================================================	*/
+
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs,
 .col-xs-auto, {
@@ -25,86 +82,35 @@
   padding-left: 15px;
 }
 
-/* Para screens lg */
-@media only screen and (min-width: 1200px) {
-        .container_12                                  { position: relative; width: 1200px; margin: 0 auto; padding: 0; }
-        .container_12 .roll {margin-top: 50px}
-
-    }
-/* Para screens bg */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-        .container_12                                  { position: relative; width: 992px; margin: 0 auto; padding: 0; }
-        .container_12 .roll {margin-top: 50px}
-}
-
-/* Para screens md */
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-        .container_12                                  { position: relative; width: 768px; margin: 0 auto; padding: 0; }
-        .container_12 .roll {margin-top: 50px}
-}
-
-
-@media only screen and (min-width: 768px) {
- h1, h2, h3, h4 	{}
- h1 			{padding-top: 12px; text-align: center; font-size: 24px; font-weight: 600;}
- h2 			{padding-top: 8px; padding-bottom: 8px; text-align: center; font-size: 20px; font-weight: 100;}
- h3 			{padding-top: 16px; padding-bottom: 8px; text-align: left; font-size: 16px; font-weight: 300; color: #aaa}
- h4 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 16px; font-weight: 300; color: #000}
- h5 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 12px; font-weight: 300; color: #aaa}
- h6 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 10px; font-weight: 300; color: #000}
-}
-
-/* Para screens sm */
-@media only screen and (max-width: 767px) {
- h1 			{padding-top: 6px; text-align: center; font-size: 16px; font-weight: 600;}
- h2 			{padding-top: 8px; padding-bottom: 8px; text-align: center; font-size: 14px; font-weight: 100;}
- h3 			{padding-top: 10px; padding-bottom: 8px; text-align: left; font-size: 12px; font-weight: 300; color: #aaa}
- h4 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 12px; font-weight: 300; color: #000}
- h5 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 10px; font-weight: 300; color: #aaa}
- h6 			{padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 8px; font-weight: 300; color: #000}
-}
-}
-
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-        .container_12                                  { position: relative; width: 100%; margin: 5px auto; padding: 0; }
-}
-
-/* Para screens xs */
-@media only screen and (max-width: 575px) {
-        .container_12                                  { position: relative; width: 100%; margin: 0 auto; padding: 0; }
-
-/* Responsive XS - Copiado de Bootstrap.css y adaptado a de MD y SM a XS */
-	
-	.col-xs {
+.col-xs {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
     -ms-flex-positive: 1;
         flex-grow: 1;
     max-width: 100%;
   }
-  .col-xs-auto {
+.col-xs-auto {
     -ms-flex: 0 0 auto;
         flex: 0 0 auto;
     width: auto;
     max-width: none;
   }
-  .col-xs-1 {
+.col-xs-1 {
     -ms-flex: 0 0 8.333333%;
         flex: 0 0 8.333333%;
     max-width: 8.333333%;
   }
-  .col-xs-2 {
+.col-xs-2 {
     -ms-flex: 0 0 16.666667%;
         flex: 0 0 16.666667%;
     max-width: 16.666667%;
   }
-  .col-xs-3 {
+.col-xs-3 {
     -ms-flex: 0 0 25%;
         flex: 0 0 25%;
     max-width: 25%;
   }
-  .col-xs-4 {
+.col-xs-4 {
     -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
     max-width: 33.333333%;
@@ -253,6 +259,8 @@
   .d-xs-table {
     display: table !important;
   }
+
+
   .d-xs-table-row {
     display: table-row !important;
   }
@@ -267,7 +275,8 @@
     display: -ms-inline-flexbox !important;
     display: inline-flex !important;
   }
-	
+
+
   .float-xs-left {
     float: left !important;
   }
@@ -277,7 +286,8 @@
   .float-xs-none {
     float: none !important;
   }
-	
+
+
   .text-xs-left {
     text-align: left !important;
   }
