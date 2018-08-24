@@ -4,6 +4,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
 {% endblock %}
 
 {% block content %}
@@ -48,20 +49,20 @@
                 </div>
             </div></div>-->
     {% for tournament in tournaments %}
-    <div class="card" style="padding: 12 8 0 8; margin-top: 5px" >
+    <div class="card" style="padding: 15 8 0 8" >
         <div class="panel active" style="padding-bottom: 0">
             <ul>
-                <li class="col-xs-12 tournament-list" style="float: left; padding-top: 10px;">
+                <li class="col-xs-12 tournament-list " style="float: left; padding-top: 10px;">
 
                     <!-- Logo Serie -->
-                    <div class="col-xs-12 col-sm-2 col-md-1 hidden-sm-down" style="float: left">
+                    <div class="col-xs-2 col-sm-2 col-md-1 hidden-sm-down " style="float: left">
                         <div style="float: left">
                             <img class="category" src="{% static tournament.serie_url %}" alt="GPS-500">
                         </div>
                     </div>
 
                     <!-- Serie, Ciudad y Fecha -->
-                    <div class="col-xs-4 col-sm-3 col-md-3 col-bg-3" style="float: left">
+                    <div class="col-xs-4 col-sm-4 col-md-3 col-bg-3 text_tournament_title" style="float: left">
                         <a href="{% url 'tournament' tournament.id %}" class="text_tournament_title"
                            style="width: 50%; text-transform: uppercase; font-weight: 600;">{{tournament.padel_serie}} //
                             {{tournament.city}}</a><br>
@@ -70,7 +71,7 @@
                     </div>
 
 
-                    <!-- Categoria para grandes formatos-->
+                    <!-- Categoria para grandes formatos
                     {% if tournament.category == "Herren A" or tournament.category == "Herren B" %}
                     <a href="{% url 'tournament' tournament.id %}">
                         <button type="button" class="col-xs-12 col-sm-1 btn btn-outline-primary hidden-sm-down"
@@ -102,24 +103,29 @@
                                 style="padding: 0">{{tournament.category}}
                         </button>
                     </a>
-                    {% endif %}
+                    {% endif %}-->
 
 
                     <!-- Club -->
-                    <div class="col-xs-6 col-sm-4 col-md-5 col-bg-4 col-lg-4" style="float: left">
-                        <img class="club hidden-sm-down" style="border-radius: 15px; background-color: white"
-                             src="{{tournament.club.logo.url}}" alt="GPS-500">
-                        <a class="text_tournament_title"
+                    <div class="col-xs-2 col-sm-2 col-md-1" style="float: left">
+
+                        <div class="user-tournament" style="background-color: white">
+                                <img class="img" src="{{ tournament.club.logo.url }}">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4 col-md-4" style="float: left">
+                        <a class="text_club"
                            style="padding-left:10px; text-transform: uppercase; color:black">{{tournament.club}}</a>
                     </div>
 
-                    <!-- Categoria para pequenos formatos-->
+                    <!-- Categoria para pequenos formatos
                     <a href="{% url 'tournament' tournament.id %}">
                         <button type="button" class="col-xs-2 col-sm-1 btn btn-outline-primary hidden-md-up"
                                 style="padding: 0; float: right">
                             {{tournament.category}}
                         </button>
-                    </a>
+                    </a>-->
 
                     <!-- Anmeldung -->
                     {% if tournament.signup %}

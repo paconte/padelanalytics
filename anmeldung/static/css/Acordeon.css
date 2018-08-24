@@ -3,6 +3,29 @@
 
 /* Fondo radial */
 
+
+.card .user-tournament{
+    position: relative;
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+    margin: -10px 0 0 0;
+}
+
+.card .user-tournament img{
+    position: absolute;
+    background: none repeat scroll 0 0 #FFFFFF;
+    max-width: 85%;
+    padding: 5px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+
 .module {
   background: white;
   border: 1px solid #ccc;
@@ -485,6 +508,7 @@ height: 100%;
     border-right: thick solid #fff;
     /*margin-top: 8px;*/
     height: 80px;
+    padding:0px;
 }
 .tournament-list:hover {
     background: white;
@@ -1099,24 +1123,49 @@ cursor: pointer;
 
 @media (max-width: 768px) {
 
-    .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
-    float: right;
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
+float: right;
   }
 
-  .hidden-sm-down{
-  display:none;
+.hidden-sm-down{
+
   }
 
-  .tournament-list {
-    height: 120px;
+.tournament-list {
+height: 120px;
 }
 
-.margen {top:25px;}
+.margen {top:25px;
+}
 
 .card-container {
 margin: 0;
 padding: 0;
 }
+
+.card {
+margin-top: 1px;
+
+}
+
+.card button {
+height: 40px;
+margin-top: -25px;
+}
+
+.card .user-tournament{
+top: -5px;
+}
+
+  .text_tournament_title {
+    font-size: 0.5rem;
+    margin-top: 10px;
+  }
+
+.text_club {
+    font-size: 0.5rem;
+    margin-top: 5px;
+  }
 
 }
 
@@ -1136,7 +1185,6 @@ padding: 0;
 
 .margen {top:-5px;}
 
-}
 
 @media (max-width: 992px) {
   .btn {
@@ -1151,8 +1199,14 @@ padding: 0;
     margin: 0px;
   }
 
+
+.card .user-tournament{
+    height: 50px;
+    width: 50px;
+}
+
   .text_tournament_title {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 
   .category {
@@ -1167,10 +1221,9 @@ padding: 0;
 }
 
 
-
-
  .text_club {
     font-size: 0.6rem;
+    margin-top: -5px;
   }
 
 .flag {
