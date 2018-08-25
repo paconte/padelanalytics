@@ -2,6 +2,7 @@
 .nav-link {text-transform: uppercase; vertical-align: middle}
 .nav-link:hover {background-color: rgba(255,255,255,0.3)}
 
+
 @media only screen and (min-width: 1200px) {
 
 }
@@ -39,11 +40,41 @@
 .col-xl-auto 											{ padding-right: 2px; padding-left: 2px; }
 			.topnav2									{  background-color: #DC4C46; overflow: hidden; height: 52px; font-family: Arial Narrow, sans-serif; margin-top: -36px}
 			.topnav2 .logo-fed 							{ position: relative; width:100px; height: 100px; margin-top: -24px; left: 50%; margin-left: -50px; margin-right: 24px; background-color: white; border: thick; border-color: chartreuse; display: flex; justify-content: center; align-items: center;}
-			.topnav2 .logo-fed img 						{ width: 80px; hight: 70px; margin-top: 8px}
+			.topnav2 .logo-fed img 						{ width: 80px; hight: 70px; }
 			.navb
+
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+color: black;
+margin-top: 3px;
+padding-left: 10px;
+}
+
+.navbar-nav {
+margin-top: 0px;
+width: 100%;
+float: right}
+
+
+
+.topnav .logo-fed img {
+width: 100px;
+float: right;
+background-color: none;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: -155px;
+margin-right: 20px;
+}
+
+.nav-link{
+background-color: #ededed;
+color: black;
+height: 50px;
+padding: 1rem;
+}
 
 
 }
+
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
 
