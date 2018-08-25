@@ -24,7 +24,23 @@
 
 <body>
 
-<nav class="navbar-expand-md navbar-dark fixed-top bg-white">
+<!--<header>
+  <div class="container">
+      <a href="#home" class="logo">Fixed Responsive Nav</a>
+      <nav class="nav-collapse">
+        <ul>
+          <li class="menu-item active"><a href="#home">Home</a></li>
+          <li class="menu-item"><a href="#about">About</a></li>
+          <li class="menu-item"><a href="#projects">Projects</a></li>
+          <li class="menu-item"><a href="#blog">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header> -->
+
+
+
+<div class="navbar-expand-md navbar-dark fixed-top bg-white">
     <div class="container_12">
         <a href="{% url 'index' %}">
             <img src="{% static 'images/logo01.png' %}" class="navbar-brand" alt="Padel Analytics">
@@ -53,11 +69,6 @@
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'ranking' %}">Ranglisten
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li> -->
                 </ul>
                 <div>
                     <a href="#" class="logo-fed">
@@ -67,7 +78,7 @@
             </div>
         </div>
     </div>
-</nav>
+</div>
 
 <div class="topnav2">
     <div class="container_12">
@@ -85,13 +96,15 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-
+{% block js %}
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/jquery-ui.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="https://use.fontawesome.com/7cf8bc3e18.js"></script>
-{% block js %}
+
+var nav = responsiveNav(".nav-collapse";)
+
 {% endblock %}
 </body>
 </html>
