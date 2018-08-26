@@ -1157,7 +1157,7 @@ margin-right: 0px;
 
 /* max-width: 768px */
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
@@ -1180,8 +1180,6 @@ margin-right: 0px;
     padding: 0;
 }
 
-
-
 .card {
     margin-top: 1px;
 
@@ -1196,6 +1194,20 @@ margin-right: 0px;
     top: -5px;
 }
 
+.categories {
+    width: 260px;
+    left: 50%;
+    margin-left: -130px;
+}
+
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
+font-size: 14px;
+}
+
 .message{
     max-width: 150px;
     left: 50%;
@@ -1204,6 +1216,11 @@ margin-right: 0px;
 
 .message_text{
 margin-top: 10px;
+}
+
+
+.separador {
+margin: 0px 0px 0px 0px;
 }
 
 .text_tournament_title {
@@ -1221,7 +1238,7 @@ margin-top: 10px;
 
 @media (min-width: 768px) {
 
-    .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     right:20px;
   }
 
@@ -1229,14 +1246,18 @@ margin-top: 10px;
   display: none;
   }
 
-  .tournament-list {
-    height: 60px;
-}
-
 .margen {top:-3px;}
 
 .message_text{
 margin-top: 40px;
+}
+
+.newplayer {
+font-size: 1rem;
+}
+
+.tournament-list {
+    height: 60px;
 }
 }
 
@@ -1244,6 +1265,14 @@ margin-top: 40px;
 .message{
     max-width: 240px;
     float: left;
+}
+
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
+font-size: 14px;
 }
 }
 
@@ -1270,6 +1299,13 @@ margin-top: 40px;
     width: 50px;
 }
 
+.newplayer {
+margin-top: 10px;
+width: 200px;
+left: 50%;
+margin-left: -100px;
+font-size: 1rem;
+}
 
 .text_tournament_title {
     font-size: 0.6rem;
@@ -1316,6 +1352,15 @@ margin-top: 40px;
 .tournament-list {
     height: 80px;
 }
+
+.newplayer {
+margin-top: 10px;
+width: 200px;
+left: 50%;
+margin-left: -100px;
+font-size: 1rem;
+}
+
 }
 
 /* Para pantallas grandes */

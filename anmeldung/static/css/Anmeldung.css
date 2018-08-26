@@ -41,6 +41,8 @@ text-transform: uppercase;
 
 .form {
 	padding-top: 2px;
+		position: relative;
+    margin: auto;
 }
 
 *,
@@ -722,6 +724,8 @@ select option {
     width: 100%;
     padding-right: 0;
   }
+
+
 }
 input:focus + .input-icon i {
   color: red;
