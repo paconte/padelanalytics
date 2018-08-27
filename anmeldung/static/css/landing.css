@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+.carousel-indicators {
+bottom: -20px;
+}
+
+.carousel-indicators li {
+background-color: #dc3545;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+.stats_vertical_logo {
+height: 40px;
+}
+
+.stats_vertical_info {
+height: 40px;
+font-size: 14px;
+}
+
+.stats_icon {
+    font-size: 14px;
+    margin-top: 10px;
+}
+}
+
+@media (min-width: 768px) {
+.stats2 {
+    display: none
+}
+}
+
+@media (max-width: 768px) {
+.stats1 {
+    display: none
+}
+
+.stats_icon {
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+.datos{
+padding-left: 0.5px;
+padding-right: 0.5px;
+}
+
+.datos .stats_vertical_logo {
+margin-bottom: 1px;
+}
+
+.datos .stats_vertical_info {
+height: 60px;
+max-height: none;
+}
+
+.news_bar{
+    background-color: #ededed;
+}
+}
