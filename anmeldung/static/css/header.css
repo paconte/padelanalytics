@@ -4,6 +4,11 @@ body {
   padding-top: 4.5rem;
 }
 
+.card-container, .front, .back {
+	width: 100%;
+	height: inherit;
+}
+
 .container_12 p 			{margin: 0; text-align: left; font-size: 16px; color: #aaa}
 .clubs h2 			{margin: 0; text-align: left; font-size: 16px; color: #aaa}
 .clubs h4 			{margin-top: 10px}
