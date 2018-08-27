@@ -1,3 +1,9 @@
+@charset "utf-8";
+
+body {
+  padding-top: 4.5rem;
+}
+
 .navbar-nav {padding-left: 8px; padding-right: 8px; margin-top: -25px}
 .nav-link {text-transform: uppercase; vertical-align: middle}
 .nav-link:hover {background-color: rgba(255,255,255,0.3)}
