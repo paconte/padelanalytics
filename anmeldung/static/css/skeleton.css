@@ -64,7 +64,9 @@
 @media only screen and (max-width: 575px) {
 .container_12                                  { position: relative; width: 100%; margin: 0 auto; padding: 0; }
 
-
+.col-sm-12 {
+flex-basis: 0%;
+}
 
 
 
@@ -152,7 +154,7 @@
   }
   .col-xs-12 {
     -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
+        /*flex: 0 0 100%;*/
     max-width: 100%;
   }
   .order-xs-first {
