@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}"/>
+
 
 {% endblock %}
 
@@ -49,34 +51,174 @@
                 <div class="carousel-inner" role="listbox">
 
                     <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="float: left">
-                            <div class="card poster mb-2">
-                                <img class="card-img-top" src="{% static 'images/posters/01.jpg' %}">
-                            </div>
-                        </div>
+                    <div style="display:flex; flex-wrap: wrap" class="carousel-item active">
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
+                             style="margin-top: -5px; height: 100%">
+                            <div class="card poster">
+                                <div class="content" style="padding:0"><img class="news_posters"
+                                                                            src="{% static 'images/posters/01.jpg' %}"
+                                                                            alt="">
+                                </div>
+                                <div class="back" style="height: 100%">
+                                    <!-- <div class="cover">
+                                        <img src="{{ club.cover_photo.url }}">
+                                    </div> -->
+                                    <div class="user" style="background-color: white; margin-top:20px">
+                                        <img class="img" src="{% static 'images/germany/clubs/worms.png' %}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="main">
+                                            <h2 class="name">Pfrimmpark Arena</h2>
+                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Worms,
+                                                Rheinland-Pfalz</h3>
 
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 clearfix d-md-block" style="float: left">
-                            <div class="card poster mb-2">
-                                <img class="card-img-top" src="{% static 'images/posters/02.jpg' %}">
-                            </div>
-                        </div>
+                                            <!-- <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:15px">Plakat vergrößern
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Turnier
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Standort
+                                            </button> -->
+                                        </div>
 
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 clearfix d-md-block" style="float: left">
-                            <div class="card poster mb-2">
-                                <img class="card-img-top" src="{% static 'images/posters/03.jpg' %}">
-                            </div>
-                        </div>
+                                    </div>
 
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 clearfix d-md-block" style="float: left">
-                            <div class="card poster mb-2">
-                                <img class="card-img-top" src="{% static 'images/posters/04.jpg' %}">
-                            </div>
-                        </div>
+                                </div> <!-- end back panel -->
+
+                            </div> <!-- end card -->
+                        </div> <!-- end card-container -->
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
+                             style="margin-top: -5px; height: 100%">
+                            <div class="card poster">
+                                <div class="content" style="padding:0"><img class="news_posters"
+                                                                            src="{% static 'images/posters/02.jpg' %}"
+                                                                            alt="">
+                                </div>
+                                <div class="back" style="height: 100%">
+                                    <!-- <div class="cover">
+                                        <img src="{{ club.cover_photo.url }}">
+                                    </div> -->
+                                    <div class="user" style="background-color: white; margin-top:20px">
+                                        <img class="img" src="{% static 'images/germany/clubs/hahn.png' %}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="main">
+                                            <h2 class="name">Sportcenter Hahn</h2>
+                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Geretsried,
+                                                Bayern</h3>
+
+                                            <!-- <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:15px">Plakat vergrößern
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Turnier
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Standort
+                                            </button> -->
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end back panel -->
+
+                            </div> <!-- end card -->
+                        </div> <!-- end card-container -->
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
+                             style="margin-top: -5px; height: 100%">
+                            <div class="card poster">
+                                <div class="content" style="padding:0"><img class="news_posters"
+                                                                            src="{% static 'images/posters/03.jpg' %}"
+                                                                            alt="">
+                                </div>
+                                <div class="back" style="height: 100%">
+                                    <!-- <div class="cover">
+                                        <img src="{{ club.cover_photo.url }}">
+                                    </div> -->
+                                    <div class="user" style="background-color: white; margin-top:20px">
+                                        <img class="img" src="{% static 'images/germany/clubs/schwaigern.png' %}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="main">
+                                            <h2 class="name">TC Schwaigern</h2>
+                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Schwaigern,
+                                                Baden-Württemberg</h3>
+
+                                            <!-- <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:15px">Plakat vergrößern
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Turnier
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Standort
+                                            </button> -->
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end back panel -->
+
+                            </div> <!-- end card -->
+                        </div> <!-- end card-container -->
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
+                             style="margin-top: -5px; height: 100%">
+                            <div class="card poster">
+                                <div class="content" style="padding:0"><img class="news_posters"
+                                                                            src="{% static 'images/posters/04.jpg' %}"
+                                                                            alt="">
+                                </div>
+                                <div class="back" style="height: 100%">
+                                    <!-- <div class="cover">
+                                        <img src="{{ club.cover_photo.url }}">
+                                    </div> -->
+                                    <div class="user" style="background-color: white; margin-top:20px">
+                                        <img class="img" src="{% static 'images/germany/clubs/hamburg.png' %}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="main">
+                                            <h2 class="name">Padel Condor</h2>
+                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Hamburg,
+                                                Hamburg</h3>
+
+                                            <!-- <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:15px">Plakat vergrößern
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Turnier
+                                            </button>
+                                            <button type="button"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-dark"
+                                                    style="padding: 0; margin-top:5px">Zum Standort
+                                            </button> -->
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end back panel -->
+
+                            </div> <!-- end card -->
+                        </div> <!-- end card-container -->
                     </div>
                     <!--/.First slide-->
 
-                    <!--Second slide-->
+                    <!--Second slide
                     <div class="carousel-item">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="float: left">
                             <div class="card poster mb-2">
@@ -104,7 +246,7 @@
                     </div>
                     <!--/.Second slide-->
 
-                    <!--Third slide-->
+                    <!--Third slide
                     <div class="carousel-item">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="float: left">
                             <div class="card poster mb-2">
@@ -253,51 +395,57 @@
             <div class="stats2" style="margin-top: 15px">
                 <div>
                     <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo" >
+                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
                         </div>
-                        <button type="button" class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                        <button type="button"
+                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
                             33<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">Standorte</h2>
                         </button>
                     </a>
                     </div>
                     <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo" >
+                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
                             </div>
                         </div>
-                        <button type="button" class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                        <button type="button"
+                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
                             46<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">Plätze</h2>
                         </button>
                     </a>
                     </div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'turnierliste' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo" >
+                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a
+                            href="{% url 'turnierliste' %}">
+                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-trophy"></i></div>
                         </div>
-                        <button type="button" class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                        <button type="button"
+                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
                             150<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">Turniere</h2>
                         </button>
                     </a>
                     </div>
                     <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo" >
+                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-user"></i></div>
                         </div>
-                        <button type="button" class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                        <button type="button"
+                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
                             550<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">Spieler</h2>
                         </button>
                     </a>
                     </div>
                     <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo" >
+                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
                         </div>
-                        <button type="button" class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                        <button type="button"
+                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
                             5<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">Rankings</h2>
                         </button>
@@ -488,6 +636,8 @@
     $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
 
 })(jQuery);
+
+
 
 
 

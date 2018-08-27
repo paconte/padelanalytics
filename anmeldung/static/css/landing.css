@@ -1,13 +1,12 @@
 @charset "utf-8";
 
 .carousel-indicators {
-bottom: -20px;
+bottom: -30px;
 }
 
 .carousel-indicators li {
 background-color: #dc3545;
 }
-
 
 
 @media (min-width: 768px) and (max-width: 992px) {
