@@ -354,6 +354,21 @@ body {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
+
+.card .user{
+    height: 70px;
+    width: 70px;
+}
+.card .user img{
+    max-width: 85%;
+}
+.card .name {
+    font-size: 10px;
+    line-height: 20px;
+    width: 100%;
+}
+
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -413,6 +428,18 @@ height: 50px;
 padding: 1rem;
 }
 
+.card .user{
+    height: 90px;
+    width: 90px;
+}
+.card .user img{
+    max-width: 70%;
+}
+.card .name {
+    font-size: 10px;
+    line-height: 20px;
+    width: 100%;
+}
 
 }
 
@@ -422,6 +449,21 @@ padding: 1rem;
 }
 
 @media only screen and (max-width: 575px) {
+
+.card .user{
+    height: 120px;
+    width: 120px;
+    margin:top: 20px;
+}
+.card .user img{
+    max-width: 80%;
+}
+.card .name {
+    font-size: 10px;
+    line-height: 20px;
+    width: 100%;
+
+}
 }
 
 
