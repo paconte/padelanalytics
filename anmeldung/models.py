@@ -99,7 +99,6 @@ class PadelPerson(Person):
 class Registration(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
     tournament = models.ForeignKey(PadelTournament, on_delete=models.DO_NOTHING)
-    policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
     player_a = models.ForeignKey(PadelPerson, related_name="player_a", on_delete=models.DO_NOTHING)
     player_b = models.ForeignKey(PadelPerson, related_name="player_b", on_delete=models.DO_NOTHING)
     is_active_a = models.BooleanField(default=False)
