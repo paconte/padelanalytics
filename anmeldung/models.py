@@ -1,10 +1,11 @@
-from decimal import Decimal
+#from decimal import Decimal
 
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 from django.db import models
 from django_countries.fields import CountryField
 
+from decimal import *
 from anmeldung.validators import policy_read_validator
 from tournaments.models import Person
 from tournaments.models import Tournament
@@ -84,7 +85,9 @@ class PadelPerson(Person):
     ranking_points = models.DecimalField(
         max_digits=6, decimal_places=1, validators=[MinValueValidator(Decimal('0.0'))], default=Decimal('0.0'))
     photo = models.ImageField(upload_to=player_directory_path, default='Cool-Male-Avatars-06.png')
-    policy_read = models.BooleanField(default=False, validators=[policy_read_validator])
+    policy_read_a = models.BooleanField(default=False, validators=[policy_read_validator])
+    policy_read_b = models.BooleanField(default=False, validators=[policy_read_validator])
+    policy_read_c = models.BooleanField(default=False, validators=[policy_read_validator])
 
     def __str__(self):
         return " ".join([str(self.first_name), str(self.last_name)])
