@@ -203,7 +203,7 @@ def handler500(request, exception, template_name='404.html'):
     return render(request, template_name=template_name, status=500)
 
 
-def _send_activation_email(current_site, registration, player, from_email, to_email):
+def _send_activation_email(current_site, registration, player, from_email, to_email, cc_email):
     message = render_to_string(
         'acc_active_email.html',
         {
@@ -215,6 +215,6 @@ def _send_activation_email(current_site, registration, player, from_email, to_em
         }
     )
     mail_subject = 'Activate your tournament registration.'
-    email = EmailMessage(mail_subject, message, to=[to_email], from_email=from_email, cc=from_email)
+    email = EmailMessage(mail_subject, message, to=[to_email], from_email=from_email, cc=cc_email)
     email.send()
 

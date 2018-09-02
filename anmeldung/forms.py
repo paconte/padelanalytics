@@ -37,6 +37,9 @@ def get_new_player_form():
             'birthplace': forms.TextInput(attrs={'placeholder': 'Geburtsort'}),
             'born': forms.DateInput(attrs={'placeholder': 'Geburtsdatum'}),
             'country': forms.Select(attrs={'placeholder': 'Land'}),
-            'policy_read': forms.CheckboxInput(attrs={'placeholder': 'Accept'})}
+            'policy_read_a': forms.CheckboxInput(attrs={'placeholder': 'Accept'}),
+            'policy_read_b': forms.CheckboxInput(attrs={'placeholder': 'Accept'}),
+            'policy_read_c': forms.CheckboxInput(attrs={'placeholder': 'Accept'})
+        }
     )
     return NewPlayerInlineFormSet

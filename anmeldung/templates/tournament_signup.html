@@ -84,28 +84,6 @@
                     {% endif %}
                 </div>
 
-                <hr class="separador">
-
-                <div class="col-xs-12 col-sm-12">
-                    <h3 class="form_title" style="margin-top:10px">Bestätigung</h3>
-                    <div class="form-check">
-                        <!--<input type="checkbox" class="form-check-input" id="id_policy_read">-->
-                        {{form.policy_read}}
-                        <label class="form-check-label" for="id_policy_read">
-                            Hiermit akzeptieren wir die Anmelde- und Teilnahmebedingungen des DPV / Check
-                            here if you accept these terms.
-                        </label>
-                    </div>
-                </div>
-                <br>
-                {% if form.policy_read.errors %}
-                <div id="errors" class="col-sm-12">
-                    <div class="inner" style="margin:-10px 0 20px 10px; color: red">
-                        {{form.policy_read.errors}}
-                    </div>
-                </div>
-                {% endif %}
-
                 <!-- OK -->
                 <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
                         style="float: left; margin-bottom: 8px">
