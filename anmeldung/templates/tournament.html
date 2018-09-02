@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/tabs.css' %}"/>
 <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
+
 {% endblock %}
 
 {% block content %}
@@ -21,22 +22,19 @@
 
     <!-- Barra Título Torneo y Anmeldung -->
     <div class="card" style="border:none; box-shadow: none; background:none">
-        <div class="box">
+        <div class="tournament_list">
             <!-- Logo Serie -->
-            <div class="col-xs-12 col-sm-1" style="float: right; margin-top: 5px ">
+            <div class="col-xs-2 col-sm-1" style="float: right; margin-top: 5px ">
                 <div style="float: right;">
                     <img class="col_1 category" src="{% static tournament.serie_url %}" alt="GPS-500">
                 </div>
             </div>
             <!-- Serie y Categoria -->
-            <div class="col-xs-12 col-sm-1" style="float: right; margin-top: 5px">
-                <a class="text_tournament_title">{{tournament.category}}</a><br>
-                <a class="text_tournament_title" style="width: 200%; text-transform: uppercase; font-weight: bold;">{{tournament.serie}}</a>
-            </div>
+
             <!-- Menú desplegable Categorias -->
             {% if similar_tournaments|length != 0 %}
-            <div class="dropdown col-xs-12 col-sm-2" style="float: right; opacity: 0,5">
-                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+            <div class="dropdown col-xs-3 col-sm-2" style="float: right; opacity: 0,5">
+                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Kategorie
                 </button>
@@ -47,16 +45,21 @@
                 </div>
             </div>
             {% endif %}
-            <!-- 1 Espacio libre -->
-            <div class="col-sm-1" style="float: right"></div>
             <!-- Ciudad y Club Arriba -->
 
-            <div class="user col-xs-6 col-sm-1" style="float: left; height: 80px">
-                <img class="img" style="border-radius: 50px; width: 100%"
-                     src="{{tournament.club.logo.url}}">
+            <div class="user-t col-xs-2 col-sm-2 col-md-1" style="float: left; background-color: white">
+                <div class="user-tournament"
+                     style="background-color: white; margin-left: -8px; margin-top: 0px; position: none; height: 80px; width: 80px">
+                    <img class="img" src="{{ tournament.club.logo.url }}">
+                </div>
             </div>
 
-            <div class="col-xs-12 col-sm-3" style="float: left; margin-top: 5px">
+            <!-- <div class="user col-xs-6 col-sm-1" style="float: left; height: 80px">
+                <img class="img" style="border-radius: 50px; width: 100%"
+                     src="{{tournament.club.logo.url}}">
+            </div>-->
+
+            <div class="col-xs-4 col-sm-4 col-md-3" style="float: left; margin-top: 5px">
                 <a class="text_tournament_title"
                    style="width: 100%; text-transform: uppercase">{{tournament.city}}</a><br>
                 <a class="text_tournament_title"
@@ -69,11 +72,11 @@
             <!-- Anmeldung -->
 
             {% if tournament.signup %}
-            <a href="{% url 'tournament_signup' tournament.id %}">
-                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger" style="float: left">
+            <div a class="btn-t" href="{% url 'tournament_signup' tournament.id %}">
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger btn-t " style="float: left">
                     Anmeldung
                 </button>
-            </a>
+            </diva>
             {% endif %}
         </div>
     </div>
@@ -241,7 +244,7 @@
             {% if pool_tables.Pool_B %}
             {{ pool_tables.Pool_B }}
             {% endif %}
-        </div>
+        </div> -->
 
     </section>
 
@@ -638,29 +641,29 @@
                 </div>
             </div>
         </section>
+</div>
+
+<!-- Efecto acordeón
+
+<script type="text/javascript">
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+}
+
+</script>
+
+*/-->
 
 
-        <!-- Efecto acordeón
-
-        <script type="text/javascript">
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-          acc[i].onclick = function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight){
-              panel.style.maxHeight = null;
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-          }
-        }
-
-        </script>
-
-        */-->
-
-
-        {% endblock %}
+{% endblock %}

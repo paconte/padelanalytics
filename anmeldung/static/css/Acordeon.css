@@ -5,10 +5,31 @@
 
 
 
-.card .user-tournament{
+.card .
+.card .user-tournamentlist{
     position: relative;
     height: 70px;
     width: 70px;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+    margin: -10px 0 0 0;
+}
+
+.card .user-tournamentlist img{
+    position: absolute;
+    background: none repeat scroll 0 0 #FFFFFF;
+    max-width: 85%;
+    padding: 5px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+}user-tournament{
+    position: relative;
+    height: 80px;
+    width: 80px;
     overflow: hidden;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
     margin: -10px 0 0 0;
@@ -1165,6 +1186,11 @@ margin-right: 0px;
     float: right;
   }
 
+.btn-t {
+margin-top: 10px;
+}
+
+
 .hidden-sm-down{
 
   }
@@ -1189,10 +1215,10 @@ margin-right: 0px;
 
 .card button {
     height: 40px;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
 }
 
-.card .user-tournament{
+.card .user-tournamentlist{
     top: -5px;
 }
 
@@ -1300,9 +1326,20 @@ font-size: 14px;
     margin-top: -5px;
   }
 
-.card .user-tournament{
+  .btn-t {
+    padding: 0.1rem 0.1rem;
+    font-size: 0.75rem;
+    max-height: 40px;
+  }
+
+.card .user-tournamentlist{
     height: 50px;
     width: 50px;
+}
+
+.card .user-tournament{
+    height: 40px;
+    width: 40px;
 }
 
 .newplayer {
