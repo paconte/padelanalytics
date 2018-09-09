@@ -1,7 +1,12 @@
 {% autoescape off %}
-Hi {{ user.first_name }},
+Guten Tag {{ user.first_name }},
 
-Please click on the link below to confirm your registration:
+vielen Dank, dass ihr euch angemeldet habt.
+
+Um die Registrierung abzuschließen, klicke mal bitte auf diesen Link:
 
 http://{{ domain }}{% url 'activate' registration_uidb64=registration_uid player_uidb64=player_uid token=token %}
 {% endautoescape %}
+
+Mit sportlichen Grüßen,
+dein PadelAnalytics Team.
