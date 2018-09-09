@@ -11,19 +11,23 @@
 <div class="container_12">
     <div class="card roll">
         <div class="">
-            <div><img class="col-md-4 message" src="{% static 'images/mail.png' %}">
+            <div><img class="col-md-4 message" src="{% static 'images/ok.png' %}">
             </div>
             <div class="col-md-8" style="float: left; margin-top: 20px">
                 <h1>Neuer Spieler erfolgreich gespeichert</h1>
+                <h2>Jetzt kannst du alle Turniere der German Padel Series genießen<br>
                 <hr>
-                <h2>Vielen Dank, deine Daten wurden erfolgreich gespeichert und du kannst dich jetzt für das Turnier anmelden.<br>
-                </h2>
-                <hr>
-                <h2 href="{% url 'tournament_signup' %}">
-                    <button type="button" class="button_message col-xs-12 col-sm-12 btn btn-outline-danger">Zur
-                        Anmeldungsseite
+                <h1>VIEL SPASS!</h1>
+                <a href=" {% url 'turnierliste' %}">
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Zur Turnierliste
                     </button>
-                </h2>
+                </a>
+                <a href=" {% url 'tournament_signup' %}">
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
+                            >Melde dein Team zu einem Turnier an
+                    </button>
+                </a>
             </div>
         </div>
     </div>
