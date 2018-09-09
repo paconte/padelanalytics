@@ -44,11 +44,11 @@ def test_view(request):
     #             'email_b': 'fran@gmail.com',
     #             'from_email': 'info@padelanalytics.com'
     #             })
-    #return render(request, 'tournament_signup_activation.html')
+    return render(request, 'tournament_signup_activation.html', {'tournament_id': 5})
     #return render(request, 'activation_failed.html')
     #return render(request, '404.html')
     #return render(request, '500.html')
-    return render(request, 'new_player_success.html')
+    #return render(request, 'new_player_success.html')
 
 
 def tournament_signup(request, id=None):
@@ -191,7 +191,7 @@ def activate(request, registration_uidb64, player_uidb64, token):
 
     if activated:
         registration.save()
-        return render(request, 'tournament_signup_activation.html')
+        return render(request, 'tournament_signup_activation.html', {'tournament_id': registration.tournament.id})
     else:
         return render(request, 'activation_failed.html')
 
