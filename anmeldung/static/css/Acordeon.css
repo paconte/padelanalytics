@@ -9,6 +9,8 @@
     border: none;
 }
 
+
+
 .card .
 .card .user-tournamentlist{
     position: relative;
@@ -1180,6 +1182,10 @@ margin-top: 0px;
 margin-left: 0px;
 margin-right: 0px;
 }
+
+.card .user-tournamentlist img {
+max-width: 50px;
+}
 }
 
 /* max-width: 768px */
@@ -1189,6 +1195,17 @@ margin-right: 0px;
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
   }
+
+.card .user-tournamentlist img {
+max-width: 60px;
+margin-top: -12px;
+}
+
+
+  .card .user-tournamentlist{
+    height: 45px;
+    max-width: 40px;
+}
 
 .btn-t {
 margin-top: 10px;
@@ -1304,6 +1321,13 @@ font-size: 1rem;
     float: left;
 }
 
+.category_turnierliste{
+  max-width: 30px;
+    margin: 0 3px;
+  }
+
+
+
 input,
 input[type="radio"] + label,
 input[type="checkbox"] + label:before,
@@ -1324,6 +1348,8 @@ font-size: 14px;
     margin: 0px;
   }
 
+
+
 .btn {
     padding: 0.1rem 0.1rem;
     font-size: 0.75rem;
@@ -1338,7 +1364,7 @@ font-size: 14px;
   }
 
 .card .user-tournamentlist{
-    height: 50px;
+    height: 30px;
     width: 50px;
 }
 
@@ -1363,6 +1389,8 @@ font-size: 1rem;
   max-width: 30px;
     margin: 0 3px;
   }
+
+
 
 .card .club{
     border-radius: 5px;
@@ -1399,6 +1427,16 @@ font-size: 1rem;
 }
 .tournament-list {
     height: 80px;
+}
+
+.category_turnierliste{
+  max-width: 40px;
+    margin: 0 3px;
+  }
+
+  .card .user-tournamentlist{
+    height: 45px;
+    max-width: 40px;
 }
 
 .newplayer {

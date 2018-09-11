@@ -57,12 +57,13 @@
                     <!-- Logo Serie -->
                     <div class="col-xs-2 col-sm-2 col-md-1 hidden-sm-down " style="float: left">
                         <div style="float: left">
-                            <img class="category" src="{% static tournament.serie_url %}" alt="GPS-500">
+                            <img class="category_turnierliste"
+                                 src="{% static tournament.serie_url %}" alt="GPS-500">
                         </div>
                     </div>
 
                     <!-- Serie, Ciudad y Fecha -->
-                    <div class="col-xs-4 col-sm-4 col-md-3 col-bg-3 text_tournament_title" style="float: left">
+                    <div class="col-xs-4 col-sm-4 col-md-5 col-bg-5 text_tournament_title" style="float: left">
                         <a href="{% url 'tournament' tournament.id %}" class="text_tournament_title"
                            style="width: 50%; text-transform: uppercase; font-weight: 600;">{{tournament.padel_serie}} //
                             {{tournament.city}}</a><br>
