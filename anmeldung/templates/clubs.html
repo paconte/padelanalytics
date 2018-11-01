@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -12,8 +13,7 @@
 
 <div class="container_12">
     <div class="card roll">
-        <h1>Deutschland</h1>
-        <h2>Standorte (Stand 08.2018)</h2>
+        <h1>{% trans "Germany" %}</h1>
     </div>
 
         <!--<div class="row">

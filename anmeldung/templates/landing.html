@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -30,8 +31,10 @@
             <div class="col-sm-12">
 
                 <hr class="separador_torneo">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Nächste Turniere</h3>
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans "Next Tournaments" %} </h3>
                 <hr class="separador_torneo">
+                <h2>{% get_available_languages as LANGUAGES %}</h2>
+                <h2>{% get_current_language as LANGUAGE_CODE %}</h2>
             </div>
 
 
@@ -266,19 +269,19 @@
                 <div class="col-sm-12 col-md-4" style="float: left; margin-top: 10px">
                     <div><a href="{% url 'clubs' %}" class="col-sm-12 btn btn-outline-danger"
                             style="display: block; /*! height: 40px;*/ padding:8px; ">
-                        Zu den Standorte</a>
+                        {% trans "Visit Clubs" %}</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4" style="float: left; margin-top: 10px">
                     <div><a href="{% url 'turnierliste' %}" class="col-sm-12 btn btn-outline-danger"
                             style="display: block; /*! height: 40px;*/ padding:8px; ">
-                        Zum Turnierkalender</a>
+                        {% trans "Visit Tournament calendar" %}</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4" style="float: left; margin-top: 10px">
                     <div><a href="{% url 'tournament_signup' %}" class="col-sm-12 btn btn-outline-danger"
                             style="display: block; /*! height: 40px;*/ padding:8px; ">
-                        Zur Turnieranmeldung</a>
+                        {% trans "Visit Tournaments sign up" %}</a>
                     </div>
                 </div>
             </div>
@@ -306,7 +309,7 @@
             <div class="stats1">
                 <div class="col-sm-12" style="flex: none">
                     <hr class="separador_torneo">
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Statistik</h3>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans "Statistics" %}</h3>
                     <hr class="separador_torneo">
                 </div>
 
@@ -318,7 +321,7 @@
                         <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info" style="">
                             33<br>
                             <h2 style="font-size: 12px;
-                    font-weight: 200; border-left: none">Standorte</h2>
+                    font-weight: 200; border-left: none">{% trans "Clubs" %}</h2>
                         </button>
                     </a>
                     </div>
@@ -330,7 +333,7 @@
                         <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
                             46<br>
                             <h2 style="font-size: 12px;
-                    font-weight: 200; border-left: none">Plätze</h2>
+                    font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
                         </button>
                     </a>
                     </div>
@@ -341,7 +344,7 @@
                         <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
                             150<br>
                             <h2 style="font-size: 12px;
-                    font-weight: 200; border-left: none">Turniere</h2>
+                    font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
                         </button>
                     </a>
                     </div>
@@ -352,7 +355,7 @@
                         <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
                             550<br>
                             <h2 style="font-size: 12px;
-                    font-weight: 200; border-left: none">Spieler</h2>
+                    font-weight: 200; border-left: none">{% trans "Players" %}</h2>
                         </button>
                     </a>
                     </div>
@@ -363,7 +366,7 @@
                         <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
                             5<br>
                             <h2 style="font-size: 12px;
-                    font-weight: 200; border-left: none">Rankings</h2>
+                    font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
                         </button>
                     </a>
                     </div>
