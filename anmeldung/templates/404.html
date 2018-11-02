@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -13,18 +14,18 @@
             <div><img class="col-sm-4 message" src="{% static 'images/error404.png' %}">
             </div>
             <div class="message_text col-md-8" style="float: left">
-                <h1>Seite nicht gefunden!</h1>
-                <h2>Was für ein Standort oder Turnier suchts du genau?</h2>
+                <h1>{% trans "Site not found!" %}</h1>
+                <h2>{% trans "Are you looking for a club or tournament?" %}</h2>
                 <hr>
                 <h1>ERROR 404</h1>
                 <a href=" {% url 'turnierliste' %}">
-                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
-                    >Turnierliste
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Tournaments" %}
                     </button>
                 </a>
                 <a href=" {% url 'clubs' %}">
-                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
-                    >Standorte
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Clubs" %}
                     </button>
                 </a>
             </div>
