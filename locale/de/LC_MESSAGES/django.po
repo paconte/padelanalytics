@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 15:34+0100\n"
+"POT-Creation-Date: 2018-11-02 16:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,15 +78,15 @@ msgid "Visit Clubs"
 msgstr "Zu den Standorte"
 
 #: anmeldung/templates/landing.html:278
+#: anmeldung/templates/new_player_success.html:24
 #, fuzzy
 #| msgid "Visit Tournaments calendar"
 msgid "Visit Tournament calendar"
 msgstr "Zum Turnierkalender"
 
 #: anmeldung/templates/landing.html:284
-#, fuzzy
-#| msgid "Tournament sign up"
-msgid "Visit Tournaments sign up"
+#: anmeldung/templates/new_player_success.html:29
+msgid "Sign up into a Tournament"
 msgstr "Zur Turnieranmeldung"
 
 #: anmeldung/templates/landing.html:312
@@ -104,6 +104,18 @@ msgstr "Spieler"
 #: anmeldung/templates/landing.html:369
 msgid "Rankings"
 msgstr ""
+
+#: anmeldung/templates/new_player_success.html:18
+msgid "New player successfully saved"
+msgstr "Neuer Spieler erfolgreich gespeichert"
+
+#: anmeldung/templates/new_player_success.html:19
+msgid "Now you can enjoy all German Padel Series tournaments"
+msgstr "Jetzt kannst du alle Turniere der German Padel Series genießen"
+
+#: anmeldung/templates/new_player_success.html:21
+msgid "HAVE FUN!"
+msgstr "VIEL SPASS!"
 
 #: anmeldung/templates/turnierliste.html:137
 msgid "Sign up"
@@ -126,3 +138,8 @@ msgstr "Englisch"
 #: tournaments/models.py:574
 msgid "PlayerStatistic must be related either to a game or to a tournament."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Tournament sign up"
+#~ msgid "Visit Tournaments sign up"
+#~ msgstr "Zur Turnieranmeldung"
