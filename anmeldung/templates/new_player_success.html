@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -14,18 +15,18 @@
             <div><img class="col-md-4 message" src="{% static 'images/ok.png' %}">
             </div>
             <div class="col-md-8" style="float: left; margin-top: 20px">
-                <h1>Neuer Spieler erfolgreich gespeichert</h1>
-                <h2>Jetzt kannst du alle Turniere der German Padel Series genießen<br>
+                <h1>{% trans "New player successfully saved" %}</h1>
+                <h2>{% trans "Now you can enjoy all German Padel Series tournaments" %}<br>
                 <hr>
-                <h1>VIEL SPASS!</h1>
+                <h1>{% trans "HAVE FUN!" %}</h1>
                 <a href=" {% url 'turnierliste' %}">
-                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Zur Turnierliste
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Visit Tournament calendar" %}
                     </button>
                 </a>
                 <a href=" {% url 'tournament_signup' %}">
-                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Melde dein Team zu einem Turnier an
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Sign up into a Tournament" %}
                     </button>
                 </a>
             </div>
