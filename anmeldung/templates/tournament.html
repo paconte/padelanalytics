@@ -110,24 +110,23 @@
 
     <!-- Jugadores Inscritos -->
     <section id="content1">
-        <div class="card col-sm-12" style="padding-bottom:20px">
+        <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px">
             <div class="box">
                 <!-- Fecha Abajo -->
                 <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
                 <!-- Lista de equipos apuntados */-->
                 {% if signed_up_teams %}
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>
+                <!-- <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">TEAMS</h3>*/-->
                 <hr class="separador_torneo">
                 <div class="panel" style="max-height:inherit">
                     <div class="teams_title">
-                        <div class="th col-sm-1"></div>
-                        <div class="th col-sm-2"> Spieler 1</div>
-                        <div class="th col-sm-2"> Verein</div>
-
-                        <div class="th col-sm-1"></div>
-                        <div class="th col-sm-2"> Spieler 2</div>
-                        <div class="th col-sm-2"> Verein</div>
+                        <div class="th col-xs-1 col-sm-1"></div>
+                        <div class="th col-xs-4 col-sm-2"> Spieler</div>
+                        <div class="th col-xs-5 col-sm-2"> Verein</div>
+                        <div class="th col-xs-1 col-sm-1 hidden"></div>
+                        <div class="th col-xs-4 col-sm-2 hidden"> Spieler</div>
+                        <div class="th col-xs-5 col-sm-2 hidden"> Verein</div>
 
                         <!--<div class="th col-sm-1"> KOPF</div>
                         <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>-->
@@ -136,7 +135,7 @@
                     <ul class="teams">
 
                         <hr class="hr">
-                        <ul class="th col-sm-1">
+                        <ul class="th col-xs-1 col-sm-1">
                             <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                             <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
 
@@ -144,26 +143,27 @@
 
 
                         </ul>
-                        <ul class="th col-sm-2">
+                        <ul class="th col-xs-4 col-sm-2">
                             <div><a class="text_club"
                                     style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.0.player_a}}</a>
                             </div>
                         </ul>
-                        <ul class="th col-sm-2">
+                        <ul class="th col-xs-5 col-sm-2">
                             <div><a class="text_club">{{team.0.player_a.club}}</a></div>
                         </ul>
-
-                        <ul class="th col-sm-1">
+                            <br class="hidden576">
+                            <br class="hidden576">
+                        <ul class="th col-xs-2 col-sm-1">
                             <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                             <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
                             <img class="picture" src="{{ team.0.player_b.photo.url }}">
                         </ul>
-                        <ul class="th col-sm-2">
+                        <ul class="th col-xs-4 col-sm-2">
                             <div><a class="text_club"
                                     style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.0.player_b}}</a>
                             </div>
                         </ul>
-                        <ul class="th col-sm-2">
+                        <ul class="th col-xs-5 col-sm-2">
                             <div><a class="text_club">{{team.0.player_b.club}}</a></div>
                         </ul>
 
