@@ -198,9 +198,13 @@ ul { padding: 0; margin: 0; list-style: none;
 	width: 100%;
 	vertical-align: middle;
 	float: left;
-	margin-left: 15px;
+	/*margin-left: 15px;*/
 	height: 52px;
 	border-bottom: medium;
+}
+
+.teams:hover{
+	background: #fafafa;
 }
 
 .hr{
@@ -225,7 +229,7 @@ ul { padding: 0; margin: 0; list-style: none;
 	max-height: 40px;
 	max-width: 40px;
 	float: right;
-	margin-right: 15px;
+	margin-right: 8px;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -1165,6 +1169,9 @@ margin-left: -5px;
 margin-right: 5px
 }
 
+.hidden576 {
+display:none;
+}
 
 }
 
@@ -1176,6 +1183,16 @@ margin-right: 5px
 margin-left: 0px;
 margin-right: 0px;
 margin-top: 0px;
+}
+
+.hidden {
+display: none;
+}
+
+
+
+.teams {
+height: 100px;
 }
 
 .card .button_message.left {
@@ -1191,6 +1208,10 @@ max-width: 50px;
 /* max-width: 768px */
 
 @media (max-width: 768px) {
+
+.picture {margin-right: 0};
+
+.flag {margin-left: -2px}
 
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
