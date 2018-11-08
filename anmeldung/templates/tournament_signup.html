@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -12,7 +13,7 @@
 <div class="container_12">
     <div class="card roll">
         <h1>German Padel Series 2018</h1>
-        <h2>Anmeldungsformular</h2>
+        <h2>{% trans "Sign up form" %}</h2>
     </div>
 
     <div class="card">
@@ -32,18 +33,16 @@
             {% csrf_token %}
             <div class="form col-sm-9 col-md-8 col-lg-7">
                 <br>
-                <h3 style="text-align:center">Ist jemand von Euch neu bei Padel Analytics?</h3>
-                <h3 style="margin-top: -20px; text-align:center">Findet ihr Euch unten nicht?</h3>
                 <div class="col-sm-12" style="float:center">
                     <div><a href="{% url 'new_player' %}" class="newplayer col-sm-12 btn btn-outline-danger"
                             style="display: block; /*! height: 40px;*/ padding:8px; ">
-                        Neuer Spieler</a>
+                        {% trans "New Player" %}</a>
                     </div>
                 </div>
                 <br><br>
                 <hr class="separador">
                 <div class="col-xs-12 col-sm-12">
-                    <h3 class="form_title">Wahl ein Turnier aus</h3>
+                    <h3 class="form_title">{% trans "Select a tournament" %}</h3>
                     <div class="input-group input-group-icon">
                         <div class="input-icon"><i class="fa fa-trophy"></i>
                         </div>
@@ -53,7 +52,7 @@
 
                 <!--<h3 style="text-align:center; margin-top:10px">Sucht euch!</h3>-->
                 <div class="col-xs-12 col-sm-12">
-                    <h3 class="form_title">Spieler 1</h3>
+                    <h3 class="form_title">{% trans "Player 1" %}</h3>
                     <div class="input-group input-group-icon">
                         <div class="input-icon"><i class="fa fa-user"></i>
                         </div>
@@ -68,7 +67,7 @@
                     </div>
                     {% endif %}
 
-                    <h3 class="form_title">Spieler 2</h3>
+                    <h3 class="form_title">{% trans "Player 2" %}</h3>
                     <div class="input-group input-group-icon">
                         <div class="input-icon"><i class="fa fa-user-o"></i>
                         </div>
