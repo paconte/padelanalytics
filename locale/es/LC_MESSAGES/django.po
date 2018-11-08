@@ -20,86 +20,80 @@ msgstr ""
 
 #: anmeldung/templates/404.html:17
 msgid "Site not found!"
-msgstr "Seite nicht gefunden!"
+msgstr ""
 
 #: anmeldung/templates/404.html:18
 msgid "Are you looking for a club or tournament?"
-msgstr "Was für ein Standort oder Turnier suchts du genau?"
+msgstr "¿Estas buscando un club o torneo?"
 
 #: anmeldung/templates/404.html:23 anmeldung/templates/base.html:65
 #: anmeldung/templates/landing.html:347
 #: anmeldung/templates/turnierliste.html:16
 msgid "Tournaments"
-msgstr "Turnierliste"
+msgstr "Torneos"
 
 #: anmeldung/templates/404.html:28 anmeldung/templates/base.html:61
 #: anmeldung/templates/landing.html:324
 msgid "Clubs"
-msgstr "Standorte"
+msgstr ""
 
 #: anmeldung/templates/500.html:19
 msgid "Ohh my God!"
-msgstr "Ohh mein Gott!"
+msgstr "¡Oh dios mio!"
 
 #: anmeldung/templates/500.html:20
 msgid "Something went wrong!"
-msgstr "Etwas ist schiefgelaufen!"
+msgstr "¡Algo ha fallado!"
 
 #: anmeldung/templates/500.html:25
 msgid "Back to last site"
-msgstr "Zurück zur letzten Seite"
+msgstr "Volver"
 
 #: anmeldung/templates/500.html:30
 msgid "Contact us"
-msgstr "Kontaktiere uns"
+msgstr "Contactanos"
 
 #: anmeldung/templates/base.html:70
 msgid "Tournament sign up"
-msgstr "Anmeldung"
+msgstr "Inscribirse a torneo"
 
 #: anmeldung/templates/base.html:111
 msgid "Discover a new way to enjoy Padel!"
-msgstr "Entdecke einen neuen Weg, Padel zu genießen!"
+msgstr "¡Disfruta del padel de una nueva manera!"
 
 #: anmeldung/templates/clubs.html:16
 msgid "Germany"
-msgstr "Deutschland"
+msgstr "Alemania"
 
 #: anmeldung/templates/landing.html:34
-#, fuzzy
-#| msgid "Tournaments"
 msgid "Next Tournaments"
-msgstr "Nächste Tourniere"
+msgstr ""
 
 #: anmeldung/templates/landing.html:272
-#, fuzzy
-#| msgid "Clubs"
 msgid "Visit Clubs"
-msgstr "Zu den Standorte"
+msgstr "Visita los clubs"
 
 #: anmeldung/templates/landing.html:278
 #: anmeldung/templates/new_player_success.html:24
-#, fuzzy
-#| msgid "Visit Tournaments calendar"
 msgid "Visit Tournament calendar"
-msgstr "Zum Turnierkalender"
+msgstr "Visita el calendario"
 
 #: anmeldung/templates/landing.html:284
 #: anmeldung/templates/new_player_success.html:29
 msgid "Sign up into a Tournament"
-msgstr "Zur Turnieranmeldung"
+msgstr "Inscribite a un torneo"
 
 #: anmeldung/templates/landing.html:312
 msgid "Statistics"
-msgstr "Statistik"
+msgstr "Estadísticas"
 
 #: anmeldung/templates/landing.html:336
 msgid "Courts"
-msgstr "Plätze"
+msgstr "Pistas"
 
 #: anmeldung/templates/landing.html:358
 msgid "Players"
-msgstr "Spieler"
+msgstr "Jugadores"
 
 #: anmeldung/templates/landing.html:369
 msgid "Rankings"
@@ -107,73 +101,56 @@ msgstr ""
 
 #: anmeldung/templates/new_player_success.html:18
 msgid "New player successfully saved"
-msgstr "Neuer Spieler erfolgreich gespeichert"
+msgstr "Jugador guardado"
 
 #: anmeldung/templates/new_player_success.html:19
 msgid "Now you can enjoy all German Padel Series tournaments"
-msgstr "Jetzt kannst du alle Turniere der German Padel Series genießen"
+msgstr "Ahora puedes disfrutar de las German Padel Series"
 
 #: anmeldung/templates/new_player_success.html:21
 msgid "HAVE FUN!"
-msgstr "VIEL SPASS!"
+msgstr "PASATELO BIEN"
 
 #: anmeldung/templates/tournament_signup.html:16
-#, fuzzy
-#| msgid "Sign up"
 msgid "Sign up form"
-msgstr "Anmeldung"
+msgstr "Formulario de inscripción"
 
 #: anmeldung/templates/tournament_signup.html:39
-#, fuzzy
-#| msgid "Players"
 msgid "New Player"
-msgstr "Neuer Spieler"
+msgstr "Nuevo jugador"
 
 #: anmeldung/templates/tournament_signup.html:45
-#, fuzzy
-#| msgid "Tournaments"
 msgid "Select a tournament"
-msgstr "Wahl ein Turnier aus"
+msgstr "Selecciona un torneo"
 
 #: anmeldung/templates/tournament_signup.html:55
-#, fuzzy
-#| msgid "Players"
 msgid "Player 1"
-msgstr "Spieler 1"
+msgstr "Jugador 1"
 
 #: anmeldung/templates/tournament_signup.html:70
-#, fuzzy
-#| msgid "Players"
 msgid "Player 2"
-msgstr "Spieler 2"
+msgstr "Jugador 2"
 
 #: anmeldung/templates/turnierliste.html:137
 msgid "Sign up"
-msgstr "Anmeldung"
+msgstr "Inscripción"
 
 #: anmeldung/templates/turnierliste.html:144
 msgid "Results"
-msgstr "Ergebnisse"
+msgstr "Resultados"
 
 #: padelanalytics/settings/prod.py:122
-#, fuzzy
-#| msgid "Germany"
 msgid "German"
-msgstr "Deutschland"
+msgstr "Alemán"
 
 #: padelanalytics/settings/prod.py:123
 msgid "English"
-msgstr "Englisch"
+msgstr "Inglés"
 
 #: padelanalytics/settings/prod.py:124
 msgid "Spanish"
-msgstr "Spanisch"
+msgstr "Español"
 
 #: tournaments/models.py:574
 msgid "PlayerStatistic must be related either to a game or to a tournament."
 msgstr ""
-
-#, fuzzy
-#~| msgid "Tournament sign up"
-#~ msgid "Visit Tournaments sign up"
-#~ msgstr "Zur Turnieranmeldung"
