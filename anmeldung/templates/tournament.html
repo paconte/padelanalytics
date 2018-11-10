@@ -24,7 +24,7 @@
     <div class="card" style="border:none; box-shadow: none; background:none">
         <div class="tournament_list">
             <!-- Logo Serie -->
-            <div class="col-xs-2 col-sm-1" style="float: right; margin-top: 5px ">
+            <div class="col-xs-2 col-sm-1" style="float: right; margin-top: 11px ">
                 <div style="float: right;">
                     <img class="col_1 category" src="{% static tournament.serie_url %}" alt="GPS-500">
                 </div>
@@ -35,7 +35,7 @@
             {% if similar_tournaments|length != 0 %}
             <div class="dropdown col-xs-3 col-sm-2" style="float: right; opacity: 0,5">
                 <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 6px; ">
                     {{tournament.padel_category}}
                 </button>
                 <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
@@ -59,7 +59,7 @@
                      src="{{tournament.club.logo.url}}">
             </div>-->
 
-            <div class="col-xs-5 col-sm-5 col-md-3" style="float: left; margin-top: 5px">
+            <div class="col-xs-5 col-sm-5 col-md-3" style="float: left; margin-top: 5px; padding-right: 0px">
                 <a class="text_tournament_title"
                    style="width: 100%; text-transform: uppercase">{{tournament.city}}</a><br>
                 <a class="text_tournament_title"
@@ -73,7 +73,7 @@
 
             {% if tournament.signup %}
             <a class="btn-t" href="{% url 'tournament_signup' tournament.id %}">
-                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger btn-t " style="float: left">
+                <button type="button" class="col-xs-12 col-sm-2 btn btn-danger btn-t" style="float: left; margin-top: 5px">
                     Anmeldung
                 </button>
             </a>
@@ -121,7 +121,7 @@
                 <hr class="separador_torneo">
                 <div class="panel" style="max-height:inherit">
                     <div class="teams_title">
-                        <div class="th col-xs-1 col-sm-1"></div>
+                        <div class="th col-xs-2 col-sm-1"></div>
                         <div class="th col-xs-4 col-sm-2"> Spieler</div>
                         <div class="th col-xs-5 col-sm-2"> Verein</div>
                         <div class="th col-xs-1 col-sm-1 hidden"></div>
@@ -135,7 +135,7 @@
                     <ul class="teams">
 
                         <hr class="hr">
-                        <ul class="th col-xs-1 col-sm-1">
+                        <ul class="th col-xs-2 col-sm-1">
                             <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                             <i style="border= none" class="flag {{ team.0.player_a.country.flag_css }}"></i>
 

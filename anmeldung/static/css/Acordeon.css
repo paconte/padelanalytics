@@ -173,7 +173,7 @@ ul { padding: 0; margin: 0; list-style: none;
 
 
 .teams_title{
-	margin-left: 15px;width: 100%;
+	width: 100%;
 	padding: 0 0 10px 0px;
 	vertical-align: middle;
 	float: left;
@@ -1189,7 +1189,9 @@ margin-top: 0px;
 display: none;
 }
 
-
+.picture {
+margin-right: 20px;
+}
 
 .teams {
 height: 100px;
@@ -1205,17 +1207,27 @@ max-width: 50px;
 }
 }
 
+/* min-width: 576px + max-width: 768px */
+@media (min-width: 576px) and (max-width: 768px) {
+ .teams{
+	height: 64px;
+}
+
+.picture {margin-right: 0};
+
+}
+
 /* max-width: 768px */
 
 @media (max-width: 768px) {
-
-.picture {margin-right: 0};
 
 .flag {margin-left: -2px}
 
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
   }
+
+
 
 .card .user-tournamentlist img {
 max-width: 60px;
@@ -1347,7 +1359,7 @@ font-size: 1rem;
     margin: 0 3px;
   }
 
-
+.picture{margin-right: 8px;}
 
 input,
 input[type="radio"] + label,
@@ -1369,7 +1381,9 @@ font-size: 14px;
     margin: 0px;
   }
 
-
+btnanmeldung {
+margin-top: 15px;
+}
 
 .btn {
     padding: 0.1rem 0.1rem;
@@ -1434,7 +1448,6 @@ font-size: 1rem;
 .picture {
     max-height: 30px;
     max-width: 30px;
-    margin-right: 8px;
     margin-top: 5px;
 }
 }
