@@ -52,7 +52,7 @@ table {
 .group-standings td, .group-standings th {
     padding: 10px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 22px;
     border: 1px solid #bdc2ca;
     white-space: nowrap;
@@ -62,7 +62,7 @@ table {
     width: 10%;
     padding: 10px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 22px;
     border: 1px solid #bdc2ca;
     white-space: nowrap;
@@ -633,7 +633,7 @@ height: 100%;
 	font-weight: 200;
 	font-size-adjust: auto;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
-	font-size: 12px;
+	font-size: 11px;
 	text-transform: none;
 	top: 12px;
 	position: absolute;
