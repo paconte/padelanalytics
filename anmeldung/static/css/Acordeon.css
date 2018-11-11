@@ -10,6 +10,125 @@
 }
 
 
+.group-standings table {
+    float: left;
+}
+
+.table-big-light {
+text-transform: uppercase;
+    float: left;
+
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.group-standings td:first-child, .group-standings td:first-child {
+    width: 120px;
+    white-space: normal;
+}
+
+.group-standings td:first-child, .group-standings td:first-child a:hover{
+    color: #DC4C46;
+}
+
+.group-standings td:first-child, .group-standings td:first-child a{
+    color: grey;
+    font-weight: 600;
+}
+
+
+
+.table-big-light th:first-child {
+    text-align: left
+}
+
+.group-standings .group-name {
+    font-size: 70px;
+    vertical-align: bottom;
+}
+
+.group-standings td, .group-standings th {
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 22px;
+    border: 1px solid #bdc2ca;
+    white-space: nowrap;
+}
+
+.group-standings td, .group-standings th4 group4 {
+    width: 10%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 22px;
+    border: 1px solid #bdc2ca;
+    white-space: nowrap;
+}
+
+.group-standings th {
+    background: none;
+}
+
+.group-standings .group-name div, .group-standings .rotate div {
+    position: relative;
+    height: 100%;
+}
+
+.group-standings .rotate span {
+    width: 200px;
+    margin-bottom: 12px;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    margin-left: -100px;
+}
+
+
+
+
+.group-standings .group-name .group-vertical, .group-standings .rotate .group-vertical {
+    display: block;
+    white-space: nowrap;
+    position: absolute;
+    transform: rotate(-90deg);
+    color: grey;
+}
+
+.group-standings .group-name .group-vertical, .group-standings .rotate .group-vertical a:hover{
+    color: #DC4C46;
+}
+
+.group-standings .group-name .group-vertical, .group-standings .rotate .group-vertical a{
+    color: grey;
+}
+
+.group-standings .not-applicable {
+    background: #f3f3f3;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+
+.group-standings .group-name span {
+    font-size: 23px;
+    left: -25px;
+    bottom: 36px;
+}
+
+.group-standings .group-name div {
+    font-size: 54px;
+    /*padding-left: 32px;*/
+    line-height: 1;
+    color: #DC4C46;
+}
+
+.group-standings .rotate {
+    text-align: left;
+    height: 200px;
+}
 
 .card .
 .card .user-tournamentlist{
