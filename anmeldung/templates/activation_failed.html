@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -15,18 +16,18 @@
             <div><img class="col-sm-4 message" src="{% static 'images/invalid.png' %}">
             </div>
             <div class="message_text col-md-8" style="float: left">
-                <h1>Das Aktivationslink ist leider ungültig</h1>
+                <h1>{% trans "The activation link is not valid" %}</h1>
                 <hr>
-                <h2>Prüft eure Mail oder meldet euch noch mal als Team an.</h2>
-                <h2>Vielleicht ist das Link abgelaufen.</h2>
+                <h2>{% trans "Check again your inbox or sign up again." %}</h2>
+
                 <a href=" {% url 'tournament_signup' %}">
-                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Zum Anmeldeformular
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Sign up into a Tournament" %}
                     </button>
                 </a>
                 <a href=" {% url 'turnierliste' %}">
-                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Zur Turnierliste
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Visit Tournament calendar" %}
                     </button>
                 </a>
             </div>

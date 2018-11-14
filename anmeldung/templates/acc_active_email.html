@@ -1,12 +1,18 @@
+{% load i18n %}
+
+{% blocktrans %}
+Dear {{ user.first_name }},
+
+thank you for signing up.
+
+To finish the tournament registration please confirm clicking the following link:
+{% endblocktrans %}
+
 {% autoescape off %}
-Guten Tag {{ user.first_name }},
-
-vielen Dank, dass ihr euch angemeldet habt.
-
-Um die Registrierung abzuschließen, klicke mal bitte auf diesen Link:
-
 http://{{ domain }}{% url 'activate' registration_uidb64=registration_uid player_uidb64=player_uid token=token %}
 {% endautoescape %}
 
-Mit sportlichen Grüßen,
-dein PadelAnalytics Team.
+{% trans
+"Sporty regards,
+your PadelAnalytics Team."
+%}

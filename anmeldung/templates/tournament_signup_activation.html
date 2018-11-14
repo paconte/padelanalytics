@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -15,20 +16,19 @@
             <div><img class="col-sm-4 message" src="{% static 'images/ok.png' %}">
             </div>
             <div class="message_text col-md-8" style="float: left">
-                <h1>Spieler erfolgreich bestätigt</h1>
-                <h2>Für eine vollständige Anmeldung müssen beide Spieler den Bestätigungslink anklicken.
-                Sobald das Prozess abgeschloßen ist, wird das Team auf der Turnierseite angezeigt.</h2>
+                <h1>{% trans "Player confirmed succesfully" %}</h1>
+                <h2>{% trans "Both team members must click on the confirmation link in the e-mail to complete your sign up" %}</h2>
 
                 <hr>
-                <h1>VIEL SPASS!</h1>
+                <h1>{% trans "HAVE FUN!" %}</h1>
                 <a href=" {% url 'turnierliste' %}">
-                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Zur Turnierliste
+                    <button type="button" class="button_message left col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Visit Tournament calendar" %}
                     </button>
                 </a>
                 <a href=" {% url 'tournament' tournament_id %}">
-                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger"
-                            >Zum Turnier
+                    <button type="button" class="button_message right col-xs-12 col-sm-6 btn btn-outline-danger">
+                        {% trans "Visit the tournament site" %}
                     </button>
                 </a>
             </div>

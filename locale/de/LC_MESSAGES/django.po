@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-08 19:53+0100\n"
+"POT-Creation-Date: 2018-11-14 16:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,48 @@ msgstr "Zurück zur letzten Seite"
 msgid "Contact us"
 msgstr "Kontaktiere uns"
 
+#: anmeldung/templates/acc_active_email.html:3
+#, python-format
+msgid ""
+"\n"
+"Dear %(user.first_name)s,\n"
+"\n"
+"thank you for signing up.\n"
+"\n"
+"To finish the tournament registration please confirm clicking the following "
+"link:\n"
+msgstr
+"\n"
+"Guten Tag %(user.first_name)s,\n"
+"\n"
+"vielen Dank, dass ihr euch angemeldet habt.\n"
+"\n"
+"Um die Registrierung abzuschließen, klicke mal bitte auf diesen Link: \n"
+
+#: anmeldung/templates/activation_failed.html:19
+msgid "The activation link is not valid"
+msgstr ""
+
+#: anmeldung/templates/activation_failed.html:21
+msgid "Check again your inbox or sign up again."
+msgstr ""
+
+#: anmeldung/templates/activation_failed.html:25
+#: anmeldung/templates/landing.html:284
+#: anmeldung/templates/new_player_success.html:29
+msgid "Sign up into a Tournament"
+msgstr "Zur Turnieranmeldung"
+
+#: anmeldung/templates/activation_failed.html:30
+#: anmeldung/templates/landing.html:278
+#: anmeldung/templates/new_player_success.html:24
+#: anmeldung/templates/tournament_signup_activation.html:26
+#: anmeldung/templates/tournament_signup_success.html:28
+#, fuzzy
+#| msgid "Visit Tournaments calendar"
+msgid "Visit Tournament calendar"
+msgstr "Zum Turnierkalender"
+
 #: anmeldung/templates/base.html:70
 msgid "Tournament sign up"
 msgstr "Anmeldung"
@@ -76,18 +118,6 @@ msgstr "Nächste Tourniere"
 #| msgid "Clubs"
 msgid "Visit Clubs"
 msgstr "Zu den Standorte"
-
-#: anmeldung/templates/landing.html:278
-#: anmeldung/templates/new_player_success.html:24
-#, fuzzy
-#| msgid "Visit Tournaments calendar"
-msgid "Visit Tournament calendar"
-msgstr "Zum Turnierkalender"
-
-#: anmeldung/templates/landing.html:284
-#: anmeldung/templates/new_player_success.html:29
-msgid "Sign up into a Tournament"
-msgstr "Zur Turnieranmeldung"
 
 #: anmeldung/templates/landing.html:312
 msgid "Statistics"
@@ -114,6 +144,7 @@ msgid "Now you can enjoy all German Padel Series tournaments"
 msgstr "Jetzt kannst du alle Turniere der German Padel Series genießen"
 
 #: anmeldung/templates/new_player_success.html:21
+#: anmeldung/templates/tournament_signup_activation.html:23
 msgid "HAVE FUN!"
 msgstr "VIEL SPASS!"
 
@@ -147,6 +178,43 @@ msgstr "Spieler 1"
 msgid "Player 2"
 msgstr "Spieler 2"
 
+#: anmeldung/templates/tournament_signup_activation.html:19
+msgid "Player confirmed succesfully"
+msgstr "Spieler erfolgreich bestätigt"
+
+#: anmeldung/templates/tournament_signup_activation.html:20
+msgid ""
+"Both team members must click on the confirmation link in the e-mail to "
+"complete your sign up"
+msgstr "Für eine vollständige Anmeldung müssen beide Spieler den Bestätigungslink anklicken. Sobald das Prozess abgeschloßen ist, wird das Team auf der Turnierseite angezeigt."
+
+#: anmeldung/templates/tournament_signup_activation.html:31
+#, fuzzy
+#| msgid "Tournament sign up"
+msgid "Visit the tournament site"
+msgstr "Zur Turnieranmeldung"
+
+#: anmeldung/templates/tournament_signup_success.html:18
+msgid "Just one step more!"
+msgstr "Nur noch ein Schritt!"
+
+#: anmeldung/templates/tournament_signup_success.html:20
+#, python-format
+msgid "We have sent an E-Mail to %(email_a)s and %(email_b)s"
+msgstr "Wir haben eine E-Mail an %(email_a)s und %(email_b)s versendet"
+
+#: anmeldung/templates/tournament_signup_success.html:21
+msgid ""
+"Please check your email inbox for the activation email after registration. "
+"If you cannot find the email check inside your SPAM."
+msgstr "Bitte überprüft Eure E-Mail Postfach bzw. SPAM und klickt auf das Link, um die Anmeldung zu bestätigen."
+
+#: anmeldung/templates/tournament_signup_success.html:25
+msgid ""
+"Both players must confirm the activation link to register the team "
+"successfully."
+msgstr "Beide Spieler müssen es machen, damit das Team erfolgreich angemeldet ist."
+
 #: anmeldung/templates/turnierliste.html:137
 msgid "Sign up"
 msgstr "Anmeldung"
@@ -172,8 +240,3 @@ msgstr "Spanisch"
 #: tournaments/models.py:574
 msgid "PlayerStatistic must be related either to a game or to a tournament."
 msgstr ""
-
-#, fuzzy
-#~| msgid "Tournament sign up"
-#~ msgid "Visit Tournaments sign up"
-#~ msgstr "Zur Turnieranmeldung"
