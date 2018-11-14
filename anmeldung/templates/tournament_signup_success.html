@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
@@ -14,17 +15,17 @@
             <div><img class="col-md-4 message" src="{% static 'images/mail.png' %}">
             </div>
             <div class="col-md-8" style="float: left; margin-top: 20px">
-                <h1>Nur noch ein Schritt!</h1>
+                <h1>{% trans "Just one step more!" %}</h1>
                 <hr>
-                <h2>Wir haben eine E-Mail an {{email_a}} und {{email_b}} versendet<br>
-                    Bitte überprüft Eure E-Mail Postfach bzw. SPAM und klickt auf das Link, um die Anmeldung zu
-                    bestätigen.<br>
+                <h2>{% blocktrans %}We have sent an E-Mail to {{email_a}} and {{email_b}}{% endblocktrans %}<br>
+                    {% trans "Please check your email inbox for the activation email after registration. If you cannot find the email check inside your SPAM." %}
+                    <br>
                 </h2>
                 <hr>
-                <h2>Beide Spieler müssen es machen, damit das Team erfolgreich angemeldet ist.</h2>
+                <h2>{% trans "Both players must confirm the activation link to register the team successfully." %}</h2>
                 <a href=" {% url 'turnierliste' %}">
-                    <button type="button" class="button_message col-xs-12 col-sm-12 btn btn-outline-danger">Zur
-                        Turnierliste
+                    <button type="button" class="button_message col-xs-12 col-sm-12 btn btn-outline-danger">
+                        {% trans "Visit Tournament calendar" %}
                     </button>
                 </a>
             </div>

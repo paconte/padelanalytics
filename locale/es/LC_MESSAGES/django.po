@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-08 19:53+0100\n"
+"POT-Creation-Date: 2018-11-14 16:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,47 @@ msgstr "Volver"
 msgid "Contact us"
 msgstr "Contactanos"
 
+#: anmeldung/templates/acc_active_email.html:3
+#, python-format
+msgid ""
+"\n"
+"Dear %(user.first_name)s,\n"
+"\n"
+"thank you for signing up.\n"
+"\n"
+"To finish the tournament registration please confirm clicking the following "
+"link:\n"
+msgstr
+"\n"
+"EStimado/a %(user.first_name)s,\n"
+"\n"
+"muchas gracias por inscribirte.\n"
+"\n"
+"Para finalizar la inscripción clica en el siguiente link:\n"
+
+
+#: anmeldung/templates/activation_failed.html:19
+msgid "The activation link is not valid"
+msgstr ""
+
+#: anmeldung/templates/activation_failed.html:21
+msgid "Check again your inbox or sign up again."
+msgstr ""
+
+#: anmeldung/templates/activation_failed.html:25
+#: anmeldung/templates/landing.html:284
+#: anmeldung/templates/new_player_success.html:29
+msgid "Sign up into a Tournament"
+msgstr "Inscribite a un torneo"
+
+#: anmeldung/templates/activation_failed.html:30
+#: anmeldung/templates/landing.html:278
+#: anmeldung/templates/new_player_success.html:24
+#: anmeldung/templates/tournament_signup_activation.html:26
+#: anmeldung/templates/tournament_signup_success.html:28
+msgid "Visit Tournament calendar"
+msgstr "Visita el calendario"
+
 #: anmeldung/templates/base.html:70
 msgid "Tournament sign up"
 msgstr "Inscribirse a torneo"
@@ -72,16 +113,6 @@ msgstr ""
 #: anmeldung/templates/landing.html:272
 msgid "Visit Clubs"
 msgstr "Visita los clubs"
-
-#: anmeldung/templates/landing.html:278
-#: anmeldung/templates/new_player_success.html:24
-msgid "Visit Tournament calendar"
-msgstr "Visita el calendario"
-
-#: anmeldung/templates/landing.html:284
-#: anmeldung/templates/new_player_success.html:29
-msgid "Sign up into a Tournament"
-msgstr "Inscribite a un torneo"
 
 #: anmeldung/templates/landing.html:312
 msgid "Statistics"
@@ -108,6 +139,7 @@ msgid "Now you can enjoy all German Padel Series tournaments"
 msgstr "Ahora puedes disfrutar de las German Padel Series"
 
 #: anmeldung/templates/new_player_success.html:21
+#: anmeldung/templates/tournament_signup_activation.html:23
 msgid "HAVE FUN!"
 msgstr "PASATELO BIEN"
 
@@ -130,6 +162,43 @@ msgstr "Jugador 1"
 #: anmeldung/templates/tournament_signup.html:70
 msgid "Player 2"
 msgstr "Jugador 2"
+
+#: anmeldung/templates/tournament_signup_activation.html:19
+msgid "Player confirmed succesfully"
+msgstr "Jugador registrado correctamente"
+
+#: anmeldung/templates/tournament_signup_activation.html:20
+msgid ""
+"Both team members must click on the confirmation link in the e-mail to "
+"complete your sign up"
+msgstr "Ambos jugadores deben clicar en el link de confirmación del e-mail recibido para completar la inscripción"
+
+#: anmeldung/templates/tournament_signup_activation.html:31
+#, fuzzy
+#| msgid "Visit Tournament calendar"
+msgid "Visit the tournament site"
+msgstr "Visita el calendario"
+
+#: anmeldung/templates/tournament_signup_success.html:18
+msgid "Just one step more!"
+msgstr "¡Un último paso!"
+
+#: anmeldung/templates/tournament_signup_success.html:20
+#, python-format
+msgid "We have sent an E-Mail to %(email_a)s and %(email_b)s"
+msgstr "Hemos enviado un email a %(email_a)s and %(email_b)s"
+
+#: anmeldung/templates/tournament_signup_success.html:21
+msgid ""
+"Please check your email inbox for the activation email after registration. "
+"If you cannot find the email check inside your SPAM."
+msgstr "Por favor comprueba tu corre electrónico para confirmar tu inscripción. Si no encuentras el email comprueba tu SPAM."
+
+#: anmeldung/templates/tournament_signup_success.html:25
+msgid ""
+"Both players must confirm the activation link to register the team "
+"successfully."
+msgstr "Ambos jugadores deben confirmar el link para inscribir el equipo."
 
 #: anmeldung/templates/turnierliste.html:137
 msgid "Sign up"
