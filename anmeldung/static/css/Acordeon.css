@@ -1292,6 +1292,9 @@ margin-right: 5px
 display:none;
 }
 
+.col-sm-12 {
+    flex: none;
+}
 }
 
 /* max-width: 576px */
