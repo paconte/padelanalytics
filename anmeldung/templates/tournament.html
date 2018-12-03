@@ -726,7 +726,6 @@
 
     <!-- Reparto de Grupos -->
     <section id="content4">
-        <div class="card col-sm-12" style="padding-bottom:20px">
 
             <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
                 <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
@@ -1497,7 +1496,7 @@
                     {% endif %}
 
                     <!-- Si existe la ronda de semifinales -->
-                    {% if key.round == "KO2" %}
+                    {% if "KO2" == key.round %}
                     <div class="box col-xs-12 col-sm-12 col-md-6" style="float: left">
                         <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
                             HALFINALE</h3>
@@ -1535,17 +1534,16 @@
 
                             </ul>
                         </div>
-                        {% endfor %}
+                        {% endfor %}{% endif %}
                     </div>
-                    {% endif %}{% endfor %}
 
                     <!-- FINAL -->
-
+                    {% if "KO1" == key.round %}
                     <div class="box col-xs-12 col-sm-12 col-md-6" style="float: left">
                         <h3 class="form_title"
                             style="font-weight: 600; color:#DC4C46; text-align:center">FINALE</h3>
                         <hr class="separador_torneo">
-                        {% for k, game in values.items %}
+                                {% for k, game in values.items %}
                         <div class="card" style="max-height:inherit">
                             <ul class="teams" style="height: 25px">
                                 <ul class="th col-xs-2 col-sm-12">
@@ -1576,16 +1574,15 @@
                             </ul>
 
                         </div>
-                        {% endfor %}
+                    {% endfor %}{% endif %}
 
                     <!-- 3. y 4. Puesto -->
-
+                    {% if "POS3" == key.round %}
+                    <div class="box col-xs-12 col-sm-12 col-md-6" style="float: left">
                         <h3 class="form_title"
-                            style="font-weight: 600; color:#DC4C46; text-align:center">SPIEL UM 3.
-                            PLATZ</h3>
+                            style="font-weight: 600; color:#DC4C46; text-align:center">FINALE</h3>
                         <hr class="separador_torneo">
-                        {% for k, game in values.items %}
-
+                                {% for k, game in values.items %}
                         <div class="card" style="max-height:inherit">
                             <ul class="teams" style="height: 25px">
                                 <ul class="th col-xs-2 col-sm-12">
@@ -1616,7 +1613,7 @@
                             </ul>
 
                         </div>
-                        {% endfor %}
+                    {% endfor %}{% endif %}{% endfor %}
 
                     </div>
 
@@ -1639,7 +1636,6 @@
             {% if pool_tables.Pool_B %}
             {{ pool_tables.Pool_B }}
             {% endif %}
-        </div>
 
     </section>
 
@@ -1775,11 +1771,11 @@
 
         <!-- Bucle para título de Ronda 5.08.2018 -->
         {{key.round}}
-        {% if "KO-4" == key.round %}
-        <h1>Viertelfinale</h1>
+
+
+        {% if "KO2" == key.round %}
+        <h1>Halbfinale</h1>
         {% endif %}
-
-
         <div class="separador"></div>
         <!-- Resultados Sets -->
         {% for k, game in values.items %}
@@ -1788,6 +1784,22 @@
         {{game.result_padel.local3}} {{game.result_padel.visitor3}}
         <div class="separador"></div>
         {% endfor %}
+
+        <div class="separador"></div>
+
+        {% if "KO1" == key.round %}
+        <h1>Finale</h1>
+        {% endif %}
+        <div class="separador"></div>
+        {% for k, game in values.items %}
+        {{game.result_padel.local1}} {{game.result_padel.visitor1}}
+        {{game.result_padel.local2}} {{game.result_padel.visitor2}}
+        {{game.result_padel.local3}} {{game.result_padel.visitor3}}
+        <div class="separador"></div>
+        {% endfor %}
+
+
+
         <div class="separador"></div>
         {{row.played}}
         {{row.won}}
