@@ -376,58 +376,25 @@
             <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
                 ERGEBNISSE GRUPPENPHASE</h3>
             <hr class="separador_torneo">
+
+           {% if PoolA == pools %}
             <div class="col-sm-12">
                 <table class="table-big-light col-sm-12">
                     <tr>
                         <th class="group-name">
                             <div><span class="group-vertical">Gruppe</span> A</div>
                         </th>
-
+                        {% for row in pool_tables.PoolA %}
                         <th class="rotate">
                             <div>
                             <span class="group-vertical">
                                 <a href="">
-                                    Ahrens + GOnzález
+                                    {{row.team}}
                                 </a>
                             </span>
                             </div>
                         </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Serrano + Korff
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Revilla + van Dahle
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Gajda + Khalil
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Alsalibe + Quesada
-                                </a>
-                            </span>
-                            </div>
-                        </th>
+                        {% endfor %}
 
                         <th class="rotate">
                             <div><span class="group-vertical">G-V</span></div>
@@ -439,129 +406,45 @@
                             <div><span class="group-vertical">Spiele</span></div>
                         </th>
                     </tr>
+                    {% for column in pool_tables.PoolA %}
+
                     <tr>
                         <td>
                             <a href="">
-                                Ahrens + González
+                                    {{column.team}}
                             </a>
                         </td>
                         <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
                         <td>6-4 7-5</td>
                         <td>6-4 7-5</td>
                         <td>3-0</td>
                         <td>6-0</td>
                         <td>39-27</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Serrano + Korff
-                            </a>
-                        </td>
-                        <td>L</td>
-                        <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>3-0</td>
-                        <td>6-0</td>
-                        <td>39-27</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Revilla + van Dahle
-                            </a>
-                        </td>
-                        <td>L</td>
-                        <td>L</td>
-                        <td class="not-applicable"></td>
-                        <td>6-7 1-6</td>
-                        <td>6-4 7-5</td>
-                        <td>2-1</td>
-                        <td>6-6</td>
-                        <td>37-37</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Gajda + Khalil
-                            </a>
+                    {% endfor %}
 
-                        </td>
-                        <td>L</td>
-                        <td>W</td>
-                        <td>W</td>
-                        <td class="not-applicable"></td>
-                        <td>6-7 1-6</td>
-                        <td>1-2</td>
-                        <td>4-8</td>
-                        <td>32-39</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Alsalibe + Quesada
-                            </a>
-
-                        </td>
-                        <td>L</td>
-                        <td>L</td>
-                        <td>L</td>
-                        <td>W</td>
-                        <td class="not-applicable"></td>
-                        <td>1-2</td>
-                        <td>3-7</td>
-                        <td>27-34</td>
-                    </tr>
                 </table>
             </div>
+           {% endif %}
             <hr class="separador_torneo">
+           {% if PoolB == pools %}
             <div class="col-sm-12">
                 <table class="table-big-light col-sm-12">
                     <tr>
                         <th class="group-name">
                             <div><span class="group-vertical">Gruppe</span> B</div>
                         </th>
-
+                        {% for row in pool_tables.PoolB %}
                         <th class="rotate">
                             <div>
                             <span class="group-vertical">
                                 <a href="">
-                                    Ahrens + GOnzález
+                                    {{row.team}}
                                 </a>
                             </span>
                             </div>
                         </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Revilla + van Dahle
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Gajda + Khalil
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Alsalibe + Quesada
-                                </a>
-                            </span>
-                            </div>
-                        </th>
+                        {% endfor %}
 
                         <th class="rotate">
                             <div><span class="group-vertical">G-V</span></div>
@@ -573,101 +456,45 @@
                             <div><span class="group-vertical">Spiele</span></div>
                         </th>
                     </tr>
+                    {% for column in pool_tables.PoolB %}
+
                     <tr>
                         <td>
                             <a href="">
-                                Ahrens + González
+                                    {{column.team}}
                             </a>
                         </td>
                         <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
                         <td>6-4 7-5</td>
                         <td>6-4 7-5</td>
                         <td>3-0</td>
                         <td>6-0</td>
                         <td>39-27</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Revilla + van Dahle
-                            </a>
-                        </td>
-                        <td>L</td>
-                        <td class="not-applicable"></td>
-                        <td>6-7 1-6</td>
-                        <td>6-4 7-5</td>
-                        <td>2-1</td>
-                        <td>6-6</td>
-                        <td>37-37</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Gajda + Khalil
-                            </a>
+                    {% endfor %}
 
-                        </td>
-                        <td>L</td>
-                        <td>W</td>
-                        <td class="not-applicable"></td>
-                        <td>6-7 1-6</td>
-                        <td>1-2</td>
-                        <td>4-8</td>
-                        <td>32-39</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Alsalibe + Quesada
-                            </a>
-
-                        </td>
-                        <td>L</td>
-                        <td>L</td>
-                        <td>W</td>
-                        <td class="not-applicable"></td>
-                        <td>1-2</td>
-                        <td>3-7</td>
-                        <td>27-34</td>
-                    </tr>
                 </table>
             </div>
-            <hr class="separador_torneo">
+            {% endif %}
+           <hr class="separador_torneo">
+           {% if PoolC == pools %}
             <div class="col-sm-12">
                 <table class="table-big-light col-sm-12">
                     <tr>
                         <th class="group-name">
                             <div><span class="group-vertical">Gruppe</span> C</div>
                         </th>
-
+                        {% for row in pool_tables.PoolC %}
                         <th class="rotate">
                             <div>
                             <span class="group-vertical">
                                 <a href="">
-                                    Ahrens + GOnzález
+                                    {{row.team}}
                                 </a>
                             </span>
                             </div>
                         </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Revilla + van Dahle
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    Gajda + Khalil
-                                </a>
-                            </span>
-                            </div>
-                        </th>
+                        {% endfor %}
 
                         <th class="rotate">
                             <div><span class="group-vertical">G-V</span></div>
@@ -679,10 +506,12 @@
                             <div><span class="group-vertical">Spiele</span></div>
                         </th>
                     </tr>
+                    {% for column in pool_tables.PoolC %}
+
                     <tr>
                         <td>
                             <a href="">
-                                Ahrens + González
+                                    {{column.team}}
                             </a>
                         </td>
                         <td class="not-applicable"></td>
@@ -692,36 +521,77 @@
                         <td>6-0</td>
                         <td>39-27</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Revilla + van Dahle
-                            </a>
-                        </td>
-                        <td>L</td>
-                        <td class="not-applicable"></td>
-                        <td>6-7 1-6</td>
-                        <td>2-1</td>
-                        <td>6-6</td>
-                        <td>37-37</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">
-                                Gajda + Khalil
-                            </a>
+                    {% endfor %}
 
-                        </td>
-                        <td>L</td>
-                        <td>W</td>
-                        <td class="not-applicable"></td>
-                        <td>1-2</td>
-                        <td>4-8</td>
-                        <td>32-39</td>
-                    </tr>
                 </table>
             </div>
+            {% endif %}
+           <hr class="separador_torneo">
+           {% if PoolD == pools %}
+            <div class="col-sm-12">
+                <table class="table-big-light col-sm-12">
+                    <tr>
+                        <th class="group-name">
+                            <div><span class="group-vertical">Gruppe</span> D</div>
+                        </th>
+                        {% for row in pool_tables.PoolD %}
+                        <th class="rotate">
+                            <div>
+                            <span class="group-vertical">
+                                <a href="">
+                                    {{row.team}}
+                                </a>
+                            </span>
+                            </div>
+                        </th>
+                        {% endfor %}
+
+                        <th class="rotate">
+                            <div><span class="group-vertical">G-V</span></div>
+                        </th>
+                        <th class="rotate">
+                            <div><span class="group-vertical">Sätze</span></div>
+                        </th>
+                        <th class="rotate">
+                            <div><span class="group-vertical">Spiele</span></div>
+                        </th>
+                    </tr>
+                    {% for column in pool_tables.PoolD %}
+
+                    <tr>
+                        <td>
+                            <a href="">
+                                    {{column.team}}
+                            </a>
+                        </td>
+                        <td class="not-applicable"></td>
+                        <td>6-4 7-5</td>
+                        <td>6-4 7-5</td>
+                        <td>3-0</td>
+                        <td>6-0</td>
+                        <td>39-27</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+            {% endif %}
         </div>
+
+
+        <div class="separador"></div>
+        {% if "PoolA" in pool_tables %}
+        <h3>Pool A</h3>{{ pool_tables.PoolA }}{% endif %}
+        {% if "PoolB" in pool_tables %}
+        <h3>Pool B</h3>{{ pool_tables.PoolB }}{% endif %}
+        {% if "PoolC" in pool_tables %}
+        <h3>Pool C</h3>{{ pool_tables.PoolC }}{% endif %}
+        {% if "PoolD" in pool_tables %}
+        <h3>Pool D</h3>{{ pool_tables.PoolD }}{% endif %}
+        {% if "PoolE" in pool_tables %}
+        <h3>Pool E</h3>{{ pool_tables.PoolE }}{% endif %}
+
+
     </section>
 
     <!-- Fase K.O. -->
@@ -741,7 +611,7 @@
 
                 {% for key, values in ko_games.Gold.items %}
                 {% if "KO4" in key.round %}
-                <div class="col-xs-12 col-sm-12 col-md-4" style="float: left">
+                    <div class="col-xs-12 col-sm-12 col-md-4" style="float: left">
                     <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
                         Viertelfinale
                     </h3>
@@ -781,88 +651,88 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% if "KO2" in key.round %}
-                <div class="col-xs-12 col-sm-12 col-md-4" style="float: left">
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                        Halbfinale
-                    </h3>
-                    <hr class="separador_torneo">
-                    {% for k, game in values.items %}
-                    <div class="card" style="max-height:inherit">
-                        <ul class="teams" style="height: 25px">
+                    {% if "KO2" in key.round %}
+                    <div class="col-xs-12 col-sm-12 col-md-4" style="float: left">
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            Halbfinale
+                        </h3>
+                        <hr class="separador_torneo">
+                        {% for k, game in values.items %}
+                        <div class="card" style="max-height:inherit">
+                            <ul class="teams" style="height: 25px">
+                                <ul class="th col-xs-2 col-sm-12">
+                                    <i style="border= none; float:left; position: relative; margin-top:8px"
+                                       class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                        {{game.local}}
+                                    </a>
+                                </ul>
+                            </ul>
+                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
                             <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-top:8px"
-                                   class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                 <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {{game.local}}
+                                   style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
+                                    {{game.result_padel.local1}} {{game.result_padel.visitor1}} /
+                                    {{game.result_padel.local2}} {{game.result_padel.visitor2}} /
+                                    {{game.result_padel.local3}} {{game.result_padel.visitor3}}
                                 </a>
                             </ul>
-                        </ul>
-                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                        <ul class="th col-xs-2 col-sm-12">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
-                                {{game.result_padel.local1}} {{game.result_padel.visitor1}} /
-                                {{game.result_padel.local2}} {{game.result_padel.visitor2}} /
-                                {{game.result_padel.local3}} {{game.result_padel.visitor3}}
-                            </a>
-                        </ul>
-                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                        <ul class="teams" style="height: 25px">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-top:8px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
-                                </a>
+                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                            <ul class="teams" style="height: 25px">
+                                <ul class="th col-xs-2 col-sm-12">
+                                    <i style="border= none; float:left; position: relative; margin-top:8px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    <a class="text_club"
+                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                    </a>
+                                </ul>
                             </ul>
-                        </ul>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                {% if "KO1" in key.round %}
-                <div class="col-xs-12 col-sm-12 col-md-4" style="float: left; top: 0px">
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                        Finale
-                    </h3>
-                    <hr class="separador_torneo">
-                    {% for k, game in values.items %}
-                    <div class="card" style="max-height:inherit">
-                        <ul class="teams" style="height: 25px">
+                    {% endif %}
+                    {% if "KO1" in key.round %}
+                    <div class="col-xs-12 col-sm-12 col-md-4" style="float: left; top: 0px">
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            Finale
+                        </h3>
+                        <hr class="separador_torneo">
+                        {% for k, game in values.items %}
+                        <div class="card" style="max-height:inherit">
+                            <ul class="teams" style="height: 25px">
+                                <ul class="th col-xs-2 col-sm-12">
+                                    <i style="border= none; float:left; position: relative; margin-top:8px"
+                                       class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                        {{game.local}}
+                                    </a>
+                                </ul>
+                            </ul>
+                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
                             <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-top:8px"
-                                   class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                 <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {{game.local}}
+                                   style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
+                                    {{game.result_padel.local1}} {{game.result_padel.visitor1}} /
+                                    {{game.result_padel.local2}} {{game.result_padel.visitor2}} /
+                                    {{game.result_padel.local3}} {{game.result_padel.visitor3}}
                                 </a>
                             </ul>
-                        </ul>
-                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                        <ul class="th col-xs-2 col-sm-12">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
-                                {{game.result_padel.local1}} {{game.result_padel.visitor1}} /
-                                {{game.result_padel.local2}} {{game.result_padel.visitor2}} /
-                                {{game.result_padel.local3}} {{game.result_padel.visitor3}}
-                            </a>
-                        </ul>
-                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                        <ul class="teams" style="height: 25px">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-top:8px"
-                                   class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
-                                </a>
+                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                            <ul class="teams" style="height: 25px">
+                                <ul class="th col-xs-2 col-sm-12">
+                                    <i style="border= none; float:left; position: relative; margin-top:8px"
+                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    <a class="text_club"
+                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                    </a>
+                                </ul>
                             </ul>
-                        </ul>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
 
                 {% for key, values in ko_games.Gold.items %}
