@@ -100,17 +100,18 @@
         <div class="col-sm-2" style="padding-left: 0px; float: left"><input id="tab4" type="radio" name="tabs">
             <label for="tab4">K.O. Phase</label></div> -->
 
+    {% if not real_teams %}
     <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
     <label for="tab1">Teams</label>
+    {% endif %}
 
+    {% if real_teams %}
     <input id="tab2" type="radio" name="tabs">
-    <label for="tab2">Auslosung</label>
+    <label for="tab2">Gruppen</label>
 
     <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">Gruppen</label>
-
-    <input id="tab4" type="radio" name="tabs">
-    <label for="tab4">K.O.</label>
+    <label for="tab3">K.O.</label>
+    {% endif %}
 
     <!-- Jugadores Inscritos -->
     <section id="content1" style="height: 70%; margin-bottom: -97.5px">
@@ -253,349 +254,151 @@
 
     </section>
 
-    <!-- Reparto de Grupos -->
-    <section id="content2" style="height: 70%; margin-bottom: -97.5px">
+    <!-- Resultados Grupos -->
+    <section id="content2" class="group-standings">
         <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
             <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                AUSLOSUNG</h3>
+                gruppenphase</h3>
             <hr class="separador_torneo">
-            <div class="col-xs-12 col-sm-12">
-                <!-- Lista de equipos apuntados -->
-                <div class="box col-sm-3" style="float: left">
-                    <!-- Lista de equipos apuntados -->
-                    {% if signed_up_teams %}
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE A</h3>
-                    <div class="panel" style="max-height:inherit">
-                        {% for team in signed_up_teams %}
-                        <ul class="teams" style="height: 62px">
-                            <hr class="hr">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
-                            </ul>
-                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
-                            </ul>
-                        </ul>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="box col-sm-3" style="float: left">
-                    <!-- Lista de equipos apuntados -->
-                    {% if signed_up_teams %}
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE B</h3>
-                    <div class="panel" style="max-height:inherit">
-                        {% for team in signed_up_teams %}
-                        <ul class="teams" style="height: 62px">
-                            <hr class="hr">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
-                            </ul>
-                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
-                            </ul>
-                        </ul>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="box col-sm-3" style="float: left">
-                    <!-- Lista de equipos apuntados -->
-                    {% if signed_up_teams %}
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE C</h3>
-                    <div class="panel" style="max-height:inherit">
-                        {% for team in signed_up_teams %}
-                        <ul class="teams" style="height: 62px">
-                            <hr class="hr">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
-                            </ul>
-                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
-                            </ul>
-                        </ul>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="box col-sm-3" style="float: left">
-                    <!-- Lista de equipos apuntados -->
-                    {% if signed_up_teams %}
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE D</h3>
-                    <div class="panel" style="max-height:inherit">
-                        {% for team in signed_up_teams %}
-                        <ul class="teams" style="height: 62px">
-                            <hr class="hr">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
-                            </ul>
-                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
-                            <ul class="th col-xs-2 col-sm-12">
-                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
-                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                                <a class="text_club"
-                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
-                            </ul>
-                        </ul>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
+            <div class="col-sm-12">
+            {% if "PoolA" in pool_tables %}
+                <table class="table-big-light col-sm-12">
+                    <tr>
+
+                        <th class="group-name"><div><span>Gruppe</span> A</div></th>
+                        <th><div><a>Gespielt</a></div></th>
+                        <th><div><a>Gewonnen</a></div></th>
+                        <th><div><a>Verloren</a></div></th>
+                        <th><div><a>+ Sätze</a></div></th>
+                        <th><div><a>- Sätze</a></div></th>
+                        <th><div><a>+ Spiele</a></div></th>
+                        <th><div><a>- Spiele</a></div></th>
+                        <th class="not-applicable"><div><a>Position</a></div></th>
+                    </tr>
+                {% for row in pool_tables.PoolA %}
+                    <tr>
+                        <td style="text-align: left">
+                            <a href="">{{row.team}}</a>
+                        </td>
+                        <td>{{row.played}}</td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        <td></td>
+                        <td></td>
+                        <td class="not-applicable">X</td>
+                   </tr>
+                {% endfor %}
+            {% endif %}
+                </table>
             </div>
-        </div> <!-- end card-container -->
-    </section>
-
-
-    <!-- Resultados Grupos -->
-    <section id="content3" class="group-standings">
-        <div class="card col-sm-12" style="padding-top:12px">
-            <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                ERGEBNISSE GRUPPENPHASE</h3>
             <hr class="separador_torneo">
-
-           {% if PoolA == pools %}
             <div class="col-sm-12">
+            {% if "PoolB" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-                        <th class="group-name">
-                            <div><span class="group-vertical">Gruppe</span> A</div>
-                        </th>
-                        {% for row in pool_tables.PoolA %}
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    {{row.team}}
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        {% endfor %}
 
-                        <th class="rotate">
-                            <div><span class="group-vertical">G-V</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Sätze</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Spiele</span></div>
-                        </th>
+                        <th class="group-name"><div><span>Gruppe</span> B</div></th>
+                        <th><div><a>Gespielt</a></div></th>
+                        <th><div><a>Gewonnen</a></div></th>
+                        <th><div><a>Verloren</a></div></th>
+                        <th><div><a>+ Sätze</a></div></th>
+                        <th><div><a>- Sätze</a></div></th>
+                        <th><div><a>+ Spiele</a></div></th>
+                        <th><div><a>- Spiele</a></div></th>
+                        <th class="not-applicable"><div><a>Position</a></div></th>
                     </tr>
-                    {% for column in pool_tables.PoolA %}
-
+                {% for row in pool_tables.PoolB %}
                     <tr>
-                        <td>
-                            <a href="">
-                                    {{column.team}}
-                            </a>
+                        <td style="text-align: left">
+                            <a href="">{{row.team}}</a>
                         </td>
-                        <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>3-0</td>
-                        <td>6-0</td>
-                        <td>39-27</td>
-                    </tr>
-                    {% endfor %}
-
+                        <td>{{row.played}}</td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        <td></td>
+                        <td></td>
+                        <td class="not-applicable">X</td>
+                   </tr>
+                {% endfor %}
+            {% endif %}
                 </table>
             </div>
-           {% endif %}
             <hr class="separador_torneo">
-           {% if PoolB == pools %}
             <div class="col-sm-12">
+            {% if "PoolC" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-                        <th class="group-name">
-                            <div><span class="group-vertical">Gruppe</span> B</div>
-                        </th>
-                        {% for row in pool_tables.PoolB %}
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    {{row.team}}
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        {% endfor %}
 
-                        <th class="rotate">
-                            <div><span class="group-vertical">G-V</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Sätze</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Spiele</span></div>
-                        </th>
+                        <th class="group-name"><div><span>Gruppe</span> C</div></th>
+                        <th><div><a>Gespielt</a></div></th>
+                        <th><div><a>Gewonnen</a></div></th>
+                        <th><div><a>Verloren</a></div></th>
+                        <th><div><a>+ Sätze</a></div></th>
+                        <th><div><a>- Sätze</a></div></th>
+                        <th><div><a>+ Spiele</a></div></th>
+                        <th><div><a>- Spiele</a></div></th>
+                        <th class="not-applicable"><div><a>Position</a></div></th>
                     </tr>
-                    {% for column in pool_tables.PoolB %}
-
+                {% for row in pool_tables.PoolC %}
                     <tr>
-                        <td>
-                            <a href="">
-                                    {{column.team}}
-                            </a>
+                        <td style="text-align: left">
+                            <a href="">{{row.team}}</a>
                         </td>
-                        <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>3-0</td>
-                        <td>6-0</td>
-                        <td>39-27</td>
-                    </tr>
-                    {% endfor %}
-
+                        <td>{{row.played}}</td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        <td></td>
+                        <td></td>
+                        <td class="not-applicable">X</td>
+                   </tr>
+                {% endfor %}
+            {% endif %}
                 </table>
             </div>
-            {% endif %}
-           <hr class="separador_torneo">
-           {% if PoolC == pools %}
+            <hr class="separador_torneo">
             <div class="col-sm-12">
+            {% if "PoolD" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-                        <th class="group-name">
-                            <div><span class="group-vertical">Gruppe</span> C</div>
-                        </th>
-                        {% for row in pool_tables.PoolC %}
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    {{row.team}}
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        {% endfor %}
-
-                        <th class="rotate">
-                            <div><span class="group-vertical">G-V</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Sätze</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Spiele</span></div>
-                        </th>
+                        <th class="group-name"><div><span>Gruppe</span> D</div></th>
+                        <th><div><a>Gespielt</a></div></th>
+                        <th><div><a>Gewonnen</a></div></th>
+                        <th><div><a>Verloren</a></div></th>
+                        <th><div><a>+ Sätze</a></div></th>
+                        <th><div><a>- Sätze</a></div></th>
+                        <th><div><a>+ Spiele</a></div></th>
+                        <th><div><a>- Spiele</a></div></th>
+                        <th class="not-applicable"><div><a>Position</a></div></th>
                     </tr>
-                    {% for column in pool_tables.PoolC %}
-
+                {% for row in pool_tables.PoolD %}
                     <tr>
-                        <td>
-                            <a href="">
-                                    {{column.team}}
-                            </a>
+                        <td style="text-align: left">
+                            <a href="" >{{row.team}}</a>
                         </td>
-                        <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>3-0</td>
-                        <td>6-0</td>
-                        <td>39-27</td>
-                    </tr>
-                    {% endfor %}
-
+                        <td>{{row.played}}</td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        <td></td>
+                        <td></td>
+                        <td class="not-applicable">X</td>
+                   </tr>
+                {% endfor %}
+            {% endif %}
                 </table>
             </div>
-            {% endif %}
-           <hr class="separador_torneo">
-           {% if PoolD == pools %}
-            <div class="col-sm-12">
-                <table class="table-big-light col-sm-12">
-                    <tr>
-                        <th class="group-name">
-                            <div><span class="group-vertical">Gruppe</span> D</div>
-                        </th>
-                        {% for row in pool_tables.PoolD %}
-                        <th class="rotate">
-                            <div>
-                            <span class="group-vertical">
-                                <a href="">
-                                    {{row.team}}
-                                </a>
-                            </span>
-                            </div>
-                        </th>
-                        {% endfor %}
-
-                        <th class="rotate">
-                            <div><span class="group-vertical">G-V</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Sätze</span></div>
-                        </th>
-                        <th class="rotate">
-                            <div><span class="group-vertical">Spiele</span></div>
-                        </th>
-                    </tr>
-                    {% for column in pool_tables.PoolD %}
-
-                    <tr>
-                        <td>
-                            <a href="">
-                                    {{column.team}}
-                            </a>
-                        </td>
-                        <td class="not-applicable"></td>
-                        <td>6-4 7-5</td>
-                        <td>6-4 7-5</td>
-                        <td>3-0</td>
-                        <td>6-0</td>
-                        <td>39-27</td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
             </div>
-            {% endif %}
-        </div>
-
-
-        <div class="separador"></div>
-        {% if "PoolA" in pool_tables %}
-        <h3>Pool A</h3>{{ pool_tables.PoolA }}{% endif %}
-        {% if "PoolB" in pool_tables %}
-        <h3>Pool B</h3>{{ pool_tables.PoolB }}{% endif %}
-        {% if "PoolC" in pool_tables %}
-        <h3>Pool C</h3>{{ pool_tables.PoolC }}{% endif %}
-        {% if "PoolD" in pool_tables %}
-        <h3>Pool D</h3>{{ pool_tables.PoolD }}{% endif %}
-        {% if "PoolE" in pool_tables %}
-        <h3>Pool E</h3>{{ pool_tables.PoolE }}{% endif %}
-
-
     </section>
 
     <!-- Fase K.O. -->
-    <section id="content4">
+    <section id="content3">
 
         <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
             <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
@@ -782,6 +585,123 @@
 
             </div>
     </section>
+
+        <!-- Reparto de Grupos -->
+    <section id="content6" style="height: 70%; margin-bottom: -97.5px">
+        <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
+            <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
+                AUSLOSUNG</h3>
+            <hr class="separador_torneo">
+            <div class="col-xs-12 col-sm-12">
+                <!-- Lista de equipos apuntados -->
+                <div class="box col-sm-3" style="float: left">
+                    <!-- Lista de equipos apuntados -->
+                    {% if signed_up_teams %}
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE A</h3>
+                    <div class="panel" style="max-height:inherit">
+                        {% for team in signed_up_teams %}
+                        <ul class="teams" style="height: 62px">
+                            <hr class="hr">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
+                            </ul>
+                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
+                            </ul>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="box col-sm-3" style="float: left">
+                    <!-- Lista de equipos apuntados -->
+                    {% if signed_up_teams %}
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE B</h3>
+                    <div class="panel" style="max-height:inherit">
+                        {% for team in signed_up_teams %}
+                        <ul class="teams" style="height: 62px">
+                            <hr class="hr">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
+                            </ul>
+                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
+                            </ul>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="box col-sm-3" style="float: left">
+                    <!-- Lista de equipos apuntados -->
+                    {% if signed_up_teams %}
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE C</h3>
+                    <div class="panel" style="max-height:inherit">
+                        {% for team in signed_up_teams %}
+                        <ul class="teams" style="height: 62px">
+                            <hr class="hr">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
+                            </ul>
+                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
+                            </ul>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="box col-sm-3" style="float: left">
+                    <!-- Lista de equipos apuntados -->
+                    {% if signed_up_teams %}
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">GRUPPE D</h3>
+                    <div class="panel" style="max-height:inherit">
+                        {% for team in signed_up_teams %}
+                        <ul class="teams" style="height: 62px">
+                            <hr class="hr">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_a.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_a}}</a>
+                            </ul>
+                            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.0);">
+                            <ul class="th col-xs-2 col-sm-12">
+                                <i style="border= none; float:left; position: relative; margin-left:0px; margin-top:8px"
+                                   class="flag {{ team.0.player_b.country.flag_css }}"></i>
+                                <a class="text_club"
+                                   style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-left:10px; margin-top:-5px">{{team.0.player_b}}</a>
+                            </ul>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div> <!-- end card-container -->
+    </section>
+
 
 
 </div>

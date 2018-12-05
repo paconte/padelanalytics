@@ -97,7 +97,7 @@ class Team(models.Model):
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
 
     def __str__(self):
-        return self.division + ' - ' + self.name
+        return self.name
 
 
 class Tournament(models.Model):
