@@ -114,7 +114,8 @@ def tournament(request, id):
     all_games = get_tournament_games(tournament.tournament_ptr)
     real_teams = get_padel_tournament_teams(tournament.tournament_ptr)
     fixtures = Fixtures(all_games)
-    pool_games = fixtures.sorted_pools
+    pool_games = fixtures.pool_games
+    pool_tables = fixtures.sorted_pools
     ko_games = fixtures.get_phased_finals({})
 
     return render(
@@ -125,7 +126,8 @@ def tournament(request, id):
             'similar_tournaments': similar_tournaments,
             'signed_up_teams': signed_up_teams,
             'real_teams': real_teams,
-            'pool_tables': pool_games,
+            'pool_tables': pool_tables,
+            'pool_games': pool_games,
             'ko_games': ko_games
         })
 
