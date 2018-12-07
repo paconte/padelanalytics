@@ -264,23 +264,20 @@
             {% if "PoolA" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-
                         <th class="group-name"><div><span>Gruppe</span> A</div></th>
-                        <th><div><a>Gespielt</a></div></th>
-                        <th><div><a>Gewonnen</a></div></th>
-                        <th><div><a>Verloren</a></div></th>
-                        <th><div><a>+ Sätze</a></div></th>
-                        <th><div><a>- Sätze</a></div></th>
-                        <th><div><a>+ Spiele</a></div></th>
-                        <th><div><a>- Spiele</a></div></th>
-                        <th class="not-applicable"><div><a>Position</a></div></th>
+                        <th class="col-sm-1"><div><a>Gewonnen</a></div></th>
+                        <th class="col-sm-1"><div><a>Verloren</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>- Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>- Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>Pos.</a></div></th>
                     </tr>
                 {% for row in pool_tables.PoolA %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
                         </td>
-                        <td>{{row.played}}</td>
                         <td>{{row.won}}</td>
                         <td>{{row.lost}}</td>
                         <td>{{row.plus}}</td>
@@ -298,23 +295,20 @@
             {% if "PoolB" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-
                         <th class="group-name"><div><span>Gruppe</span> B</div></th>
-                        <th><div><a>Gespielt</a></div></th>
-                        <th><div><a>Gewonnen</a></div></th>
-                        <th><div><a>Verloren</a></div></th>
-                        <th><div><a>+ Sätze</a></div></th>
-                        <th><div><a>- Sätze</a></div></th>
-                        <th><div><a>+ Spiele</a></div></th>
-                        <th><div><a>- Spiele</a></div></th>
-                        <th class="not-applicable"><div><a>Position</a></div></th>
+                        <th class="col-sm-1"><div><a>Gewonnen</a></div></th>
+                        <th class="col-sm-1"><div><a>Verloren</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>- Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>- Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>Pos.</a></div></th>
                     </tr>
                 {% for row in pool_tables.PoolB %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
                         </td>
-                        <td>{{row.played}}</td>
                         <td>{{row.won}}</td>
                         <td>{{row.lost}}</td>
                         <td>{{row.plus}}</td>
@@ -332,23 +326,20 @@
             {% if "PoolC" in pool_tables %}
                 <table class="table-big-light col-sm-12">
                     <tr>
-
                         <th class="group-name"><div><span>Gruppe</span> C</div></th>
-                        <th><div><a>Gespielt</a></div></th>
-                        <th><div><a>Gewonnen</a></div></th>
-                        <th><div><a>Verloren</a></div></th>
-                        <th><div><a>+ Sätze</a></div></th>
-                        <th><div><a>- Sätze</a></div></th>
-                        <th><div><a>+ Spiele</a></div></th>
-                        <th><div><a>- Spiele</a></div></th>
-                        <th class="not-applicable"><div><a>Position</a></div></th>
+                        <th class="col-sm-1"><div><a>Gewonnen</a></div></th>
+                        <th class="col-sm-1"><div><a>Verloren</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>- Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>- Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>Pos.</a></div></th>
                     </tr>
                 {% for row in pool_tables.PoolC %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
                         </td>
-                        <td>{{row.played}}</td>
                         <td>{{row.won}}</td>
                         <td>{{row.lost}}</td>
                         <td>{{row.plus}}</td>
@@ -367,21 +358,19 @@
                 <table class="table-big-light col-sm-12">
                     <tr>
                         <th class="group-name"><div><span>Gruppe</span> D</div></th>
-                        <th><div><a>Gespielt</a></div></th>
-                        <th><div><a>Gewonnen</a></div></th>
-                        <th><div><a>Verloren</a></div></th>
-                        <th><div><a>+ Sätze</a></div></th>
-                        <th><div><a>- Sätze</a></div></th>
-                        <th><div><a>+ Spiele</a></div></th>
-                        <th><div><a>- Spiele</a></div></th>
-                        <th class="not-applicable"><div><a>Position</a></div></th>
+                        <th class="col-sm-1"><div><a>Gewonnen</a></div></th>
+                        <th class="col-sm-1"><div><a>Verloren</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>- Sätze</a></div></th>
+                        <th class="col-sm-1"><div><a>+ Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>- Spiele</a></div></th>
+                        <th class="col-sm-1"><div><a>Pos.</a></div></th>
                     </tr>
                 {% for row in pool_tables.PoolD %}
                     <tr>
                         <td style="text-align: left">
                             <a href="" >{{row.team}}</a>
                         </td>
-                        <td>{{row.played}}</td>
                         <td>{{row.won}}</td>
                         <td>{{row.lost}}</td>
                         <td>{{row.plus}}</td>
