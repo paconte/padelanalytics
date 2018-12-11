@@ -6,6 +6,15 @@ from anmeldung.models import Registration
 from tournaments.models import Person
 
 
+class TournamentsForm(forms.Form):
+    YEAR_CHOICES = (('ALL', 'ALL'), ('2016', '2016'), ('2017', '2017'), ('2018', '2018'))
+    DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', 'MO'), ('WO', 'WO'), ('MXO', 'MXO'), ('M45', 'M45'), ('W40', 'W40'))
+    year = forms.ChoiceField(choices=YEAR_CHOICES, initial='ALL',
+                             widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
+    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='ALL',
+                                 widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
+
+
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registration
