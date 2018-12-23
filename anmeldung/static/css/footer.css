@@ -7,13 +7,14 @@ position: relative;
 
 body {
 margin: 0;
-/*margin-bottom: 80px;*/
+margin-bottom: 80px;
 }
 
 .page-footer {
-    /*position: absolute;*/
+    position: absolute;
     /*bottom: 0;*/
     width: 100%;
+    z-index: -1;
     /*height: 70px;*/
     /*position: fixed;*/
 }
