@@ -25,6 +25,20 @@
 }
 
 
+.card .foot {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    padding: 10px 0 0;
+    text-align: center;
+    float: center;
+}
+
+.h2h:hover {
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+z-index: 5;
+
+}
+
 .card-container.static:hover .card,
 .card-container.static.hover .card {
 	-webkit-transform: none;
@@ -147,8 +161,9 @@
 .card .profession{
     color: #999999;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 	position: relative;
+	font-size: 12px;
 }
 .card .footer {	
     border-top: 1px solid #EEEEEE;

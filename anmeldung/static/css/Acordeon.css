@@ -101,7 +101,9 @@ table {
     margin-left: -100px;
 }
 
-
+.btn {
+font-size: 12px;
+}
 
 
 .group-standings .group-name .group-vertical, .group-standings .rotate .group-vertical {
