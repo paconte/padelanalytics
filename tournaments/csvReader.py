@@ -3,10 +3,10 @@ import logging
 
 import itertools
 
+from tournaments.models import PadelRanking
 from tournaments import games
 from tournaments import csvdata
 from tournaments.models import Game
-from tournaments.models import Person
 from tournaments.models import PadelResult
 from tournaments.models import GameField
 from tournaments.models import GameRound
@@ -185,6 +185,32 @@ class DjangoSimpleFetcher:
             result = PlayerStadistic.objects.get_or_create(
                 tournament=tournament, player=player, played=played, points=scores, mvp=mvp)
         return result
+
+    @staticmethod
+    def get_or_create_padel_ranking(ranking):
+        try:
+            obj = PadelRanking.objects.get(
+                first_name=ranking.first_name, last_name=ranking.last_name, date=ranking.date, circuit=ranking.circuit)
+            obj.points = ranking.points
+            obj.save()
+            return obj, True
+        except PadelRanking.DoesNotExist:
+            pr, b = PadelRanking.objects.get_or_create(
+                first_name=ranking.first_name, last_name=ranking.last_name, date=ranking.date, circuit=ranking.circuit,
+                points=ranking.points)
+
+        try:
+            person = Person.objects.get(
+                first_name=ranking.first_name, last_name=ranking.last_name, gender=get_player_gender(ranking.division))
+            if person:
+                pr.person = person
+                pr.save()
+        except MultipleObjectsReturned:
+            pass
+        except Person.DoesNotExist:
+            pass
+
+        return pr, b
 
 
 class DjangoCsvFetcher:
@@ -426,10 +452,11 @@ def printCF(obj, created):
 
 
 class CsvReader:
-    (PHASE, TOURNAMENT, NTS_STATISTIC, FIT_STATISTIC, PADEL_GAME, PERSON) = (0, 1, 2, 3, 4, 5)
+    (PHASE, TOURNAMENT, NTS_STATISTIC, FIT_STATISTIC, PADEL_GAME, PERSON, PADEL_RANKING) = (0, 1, 2, 3, 4, 5, 6)
 
     def __init__(self, type):
-        if type in [self.PHASE, self.TOURNAMENT, self.NTS_STATISTIC, self.FIT_STATISTIC, self.PADEL_GAME, self.PERSON]:
+        if type in [self.PHASE, self.TOURNAMENT, self.NTS_STATISTIC, self.FIT_STATISTIC, self.PADEL_GAME, self.PERSON,
+                    self.PADEL_RANKING]:
             self._fexit = '####'
             self._exit_text = '\n Force exit #### :)\n'
             self._type = type
@@ -462,6 +489,8 @@ class CsvReader:
             result = games.Game.padel_from_csv_list(row)
         elif self._type == self.PERSON:
             result = csvdata.create_person(row)
+        elif self._type == self.PADEL_RANKING:
+            result = csvdata.create_padel_ranking(row)
         else:
             assert 0, "Wrong object to read: " + self._type
         return result
@@ -480,9 +509,11 @@ class CsvReader:
         elif self._type == self.PADEL_GAME and isinstance(csv_object, games.Game):
             DjangoCsvFetcher.create_padel_csv_game(csv_object)
         elif self._type == self.PERSON and isinstance(csv_object, Person):
-            print(csv_object)
             DjangoSimpleFetcher.get_or_create_person(
                 csv_object.first_name, csv_object.last_name, csv_object.gender, csv_object.nationality, csv_object.born)
+        elif self._type == self.PADEL_RANKING and isinstance(csv_object, PadelRanking):
+            DjangoSimpleFetcher.get_or_create_padel_ranking(csv_object)
+
         else:
             assert 0, "Wrong object to read: " + self._type
 

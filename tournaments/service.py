@@ -1,9 +1,19 @@
 from tournaments.models import GameRound
 
 import collections
+import datetime
 import logging
 
 logger = logging.getLogger(__name__)
+
+
+def all_mondays_since(year):
+    current_year = datetime.datetime.now().year
+    d = datetime.date(year, 1, 1)                      # First January
+    d += datetime.timedelta(days=(7-d.weekday()) % 7)  # First Monday
+    while year <= d.year <= current_year:
+        yield (d, d)
+        d += datetime.timedelta(days=7)
 
 
 class StructuresUtils:

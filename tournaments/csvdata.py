@@ -796,6 +796,18 @@ def create_person(row):
     return person
 
 
+def create_padel_ranking(row):
+    from tournaments.models import PadelRanking
+    ranking = PadelRanking(
+        country=row[0],
+        circuit=row[1],
+        division=row[2],
+        first_name=row[3],
+        last_name=row[4],
+        date=row[5],
+        points=row[6])
+    return ranking
+
 # PHASES_INDEXES
 PH_PHASE_ROUND_INDEX = 0
 PH_CATEGORY_INDEX = 1

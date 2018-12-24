@@ -111,22 +111,6 @@ class Registration(models.Model):
         return self.is_active_a and self.is_active_b
 
 
-class PadelRanking(models.Model):
-    OFFICIAL = 'Official'
-    AUDI_PLAYDAYS = 'Audi PlayDays'
-    CIRCUIT = ((OFFICIAL, OFFICIAL), (AUDI_PLAYDAYS, AUDI_PLAYDAYS))
-
-    date = models.DateTimeField()
-    points = models.PositiveIntegerField(default=0, null=False)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    country = CountryField()
-    circuit = models.CharField(max_length=30, default="oficial", choices=CIRCUIT)
-    player = models.ForeignKey(PadelPerson, related_name="player", on_delete=models.DO_NOTHING,
-                               null=True, blank=True, default=None)
-    club = models.ForeignKey(Club, on_delete=models.DO_NOTHING, default=None, null=True, blank=True)
-
-
 def get_clubs():
     return Club.objects.all()
 

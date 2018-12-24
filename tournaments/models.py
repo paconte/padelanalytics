@@ -3,6 +3,8 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import smart_str
+from django_countries.fields import CountryField
+
 
 DATA_FILES = './data_files/'
 
@@ -585,6 +587,38 @@ class PlayerStadistic(models.Model):
         else:
             return '{} - {} - touchdowns: {} - played: {} - mvp: {}'.format(
                     self.tournament, self.player, self.points, self.played, self.mvp)
+
+
+class PadelRanking(models.Model):
+    OFFICIAL = 'Official'
+    AUDI_PLAYDAYS = 'Audi PlayDays'
+    CIRCUIT = ((OFFICIAL, OFFICIAL), (AUDI_PLAYDAYS, AUDI_PLAYDAYS))
+
+    date = models.DateField()
+    points = models.PositiveIntegerField(default=0, null=False)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    country = CountryField()
+    division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
+    circuit = models.CharField(max_length=30, default="oficial", choices=CIRCUIT)
+    person = models.ForeignKey(Person, related_name="person", on_delete=models.DO_NOTHING,
+                               null=True, blank=True, default=None)
+
+
+def _last_monday():
+    from datetime import datetime, timedelta
+    d = datetime.now()
+    d -= timedelta(days=d.weekday())
+    return d
+
+
+def get_padel_ranking(date=None, division=None):
+    return PadelRanking.objects.order_by('points')
+    if division is None:
+        division = MO
+    if date is None:
+        date = _last_monday()
+    return PadelRanking.objects.order_by('points').filter(division=division).filter(date=date)
 
 
 def get_tournament_games(tournament):
