@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container_12" style="height:100%; ">
+    <div class="card roll">
+        <h1>{% trans "Player's Statistic" %}</h1>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="cover">
+                        <img src="static/images/news/03.jpg">
+                    </div>
+                    <div class="user" style="background-color:white">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                    </div>
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+    <div class="col-md-8 col-sm-8 col-lg-9" style="float: right; padding-right:0px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+</div>
+
+<div class="container_12" style="height:100%; ">
+    <div class="card roll">
+        <h1>{% trans "Head to Head" %}</h1>
+    </div>
+
+    <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: left; padding:0px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="cover">
+                        <img src="static/images/news/03.jpg">
+                    </div>
+                    <div class="user" style="background-color:white">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                    </div>
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: left; padding:0px; margin-left:-75px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="cover">
+                        <img src="static/images/news/03.jpg">
+                    </div>
+                    <div class="user" style="background-color:white">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                    </div>
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: right; padding:0px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="cover">
+                        <img src="static/images/news/03.jpg">
+                    </div>
+                    <div class="user" style="background-color:white">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                    </div>
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: right; padding:0px; margin-right:-75px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <div class="cover">
+                        <img src="static/images/news/03.jpg">
+                    </div>
+                    <div class="user" style="background-color:white">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                    </div>
+                    <div class="content">
+                        <div class="main" style="min-height:100px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+</div>
+
+
+<div class="container_12" style="height:100%; ">
+    <div class="card roll">
+        <h1>{% trans "Team's Statistic" %}</h1>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px">
+        <div class="col-md-12 h2h" style="float: left; padding:0px">
+            <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="static/images/news/03.jpg">
+                        </div>
+                        <div class="user" style="background-color:white">
+                            <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                        </div>
+                        <div class="content">
+                            <div class="main" style="min-height:100px">
+                                <h1 class="name">Fran González
+                                    <h1>
+                                        <p class="profession">Padel Club Berlin International e.V.</p>
+                            </div>
+                            <div class="foot">
+                                <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                    <i class="fa fa-map-marker"></i> Berlin, Germany
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div>
+        <div class="col-md-12 h2h" style="float: left; padding:0px;  margin-top:-100px; z-index:2">
+            <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="static/images/news/03.jpg">
+                        </div>
+                        <div class="user" style="background-color:white">
+                            <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+                        </div>
+                        <div class="content">
+                            <div class="main" style="min-height:100px">
+                                <h1 class="name">Fran González
+                                    <h1>
+                                        <p class="profession">Padel Club Berlin International e.V.</p>
+                            </div>
+                            <div class="foot">
+                                <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                    <i class="fa fa-map-marker"></i> Berlin, Germany
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div>
+
+    </div>
+    <div class="col-md-8 col-sm-8 col-lg-9" style="min-height: 500px; float: right; padding-right:0px">
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front" style="min-height: 500px;" >
+                    <div class="content">
+                        <div class="main" style="min-height:150px">
+                            <h1 class="name">Fran González
+                                <h1>
+                                    <p class="profession">Padel Club Berlin International e.V.</p>
+                        </div>
+                        <div class="foot">
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end front panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+
+</div>
+
+{% endblock %}
