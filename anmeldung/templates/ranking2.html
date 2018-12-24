@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+
+    <!-- Título Página -->
+    <div class="card roll">
+        <h1>German Padel Series</h1>
+        <h2>Ranglisten</h2>
+    </div>
+
+
+    <form class="form-inline" method="post" style="align: right">
+        {% csrf_token %}
+        <div class="col-xs-12 col-sm-3">
+            <h3 class="form_title">{% trans "Year" %}</h3>
+            <div class="input-group input-group-icon">
+                <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                {{form.date}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <h3 class="form_title">{% trans "Division" %}</h3>
+            <div class="input-group input-group-icon">
+                <div class="input-icon"><i class="fa fa-users"></i></div>
+                {{form.division}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <button input type="submit" class="col-xs-12 col-sm-4 btn btn-danger"
+                    style="float: left; margin-top: 25px"><div class="input-icon"><i class="fa fa-search"></i>
+            </div>
+                Submit
+            </button>
+        </div>
+    </form>
+
+
+    <ol>
+        {% for rk in ranking %}
+        <li>{{rk.first_name}} {{rk.last_name}} {{rk.points}}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}

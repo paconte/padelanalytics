@@ -605,6 +605,22 @@ class PadelRanking(models.Model):
                                null=True, blank=True, default=None)
 
 
+def _last_monday():
+    from datetime import datetime, timedelta
+    d = datetime.now()
+    d -= timedelta(days=d.weekday())
+    return d
+
+
+def get_padel_ranking(date=None, division=None):
+    return PadelRanking.objects.order_by('points')
+    if division is None:
+        division = MO
+    if date is None:
+        date = _last_monday()
+    return PadelRanking.objects.order_by('points').filter(division=division).filter(date=date)
+
+
 def get_tournament_games(tournament):
     return Game.objects.filter(tournament=tournament)
 

@@ -20,12 +20,12 @@ from anmeldung.models import get_tournament_teams_by_ranking
 from anmeldung.models import get_clubs
 from anmeldung.models import get_similar_tournaments
 from anmeldung.models import get_all_registrations
-from anmeldung.forms import TournamentsForm
+from anmeldung.forms import TournamentsForm, RankingForm
 from anmeldung.forms import RegistrationForm
 from anmeldung.forms import get_new_player_form
 from anmeldung.tokens import account_activation_token
 
-from tournaments.models import Person
+from tournaments.models import Person, get_padel_ranking
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
 from tournaments.service import Fixtures
@@ -175,7 +175,17 @@ def new_player(request):
 
 
 def ranking(request):
-    return render(request, 'ranking.html')
+    if request.method == 'POST':
+        form = RankingForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data['date']
+            division = form.cleaned_data['division']
+            ranking = get_padel_ranking(date, division)
+    else:
+        form = RankingForm()
+        ranking = get_padel_ranking()
+    print(ranking)
+    return render(request, 'ranking2.html', {'form': form, 'ranking': ranking})
 
 
 def cardplayer(request):
