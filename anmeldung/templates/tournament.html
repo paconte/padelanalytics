@@ -342,12 +342,9 @@
                                     </table>
 
             </div>
-
-            {% if "PoolB" in pool_tables %}
             <hr class="separador_torneo">
             <div class="col-sm-12">
                 {% if "PoolB" in pool_tables %}
-                <div class="col-sm-1"></div>
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
@@ -378,7 +375,7 @@
                             <div><a>Pos.</a></div>
                         </th> -->
                     </tr>
-                    {% for row in pool_tables.PoolA %}
+                    {% for row in pool_tables.PoolB %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
@@ -399,60 +396,37 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-                <div class="col-sm-1"></div>
-
             </div>
             <div class="col-xs-12 col-sm-12" style="margin-top: 10px">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                    ERGEBNISSE</h3>
-                <hr class="separador_torneo" style="margin-top: 0px">
-            </div>
-            <div class="col-sm-12">
+                <div>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        ERGEBNISSE</h3>
+                    <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                </div>
+
+                <table class="table-big-light col-sm-12" style="float: left">
                 {% for key, game in pool_games.items %}
                 {% if "PoolB" in game.phase.round %}
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: right">
-                            {{game.local}}
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-color: black; font-weight: bold; font-size: 10px; text-align: center">
-                            {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
-                            {% if game.result_padel.local2 %}
-                            / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
-                            {% endif %}
-                            {% if game.result_padel.local3 %}
-                            / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
-                            {% endif %}
-
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: left">
-                            {{game.visitor}}
-                        </a>
-                    </ul>
-                </ul>
-                <hr class="separador_torneo" style="margin-top: 0px">
-                <hr class="separador_torneo">
-                <hr class="separador_torneo">
+                    <tr>
+                        <td class="result"  style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.local}}</td>
+                        <td class="result" style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}</td>
+                        <td class="result " style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.visitor}}</td>
+                    </tr>
                 {% endif %}
                 {% endfor %}
+                                    </table>
+
             </div>
-            {% endif %}
-            {% if "PoolC" in pool_tables %}
             <hr class="separador_torneo">
             <div class="col-sm-12">
                 {% if "PoolC" in pool_tables %}
-                <div class="col-sm-1"></div>
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
@@ -483,7 +457,7 @@
                             <div><a>Pos.</a></div>
                         </th> -->
                     </tr>
-                    {% for row in pool_tables.PoolA %}
+                    {% for row in pool_tables.PoolC %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
@@ -504,59 +478,37 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-                <div class="col-sm-1"></div>
-
             </div>
             <div class="col-xs-12 col-sm-12" style="margin-top: 10px">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                    ERGEBNISSE</h3>
-                <hr class="separador_torneo" style="margin-top: 0px">
-            </div>
-            <div class="col-sm-12">
+                <div>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        ERGEBNISSE</h3>
+                    <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                </div>
+
+                <table class="table-big-light col-sm-12" style="float: left">
                 {% for key, game in pool_games.items %}
                 {% if "PoolC" in game.phase.round %}
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: right">
-                            {{game.local}}
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-color: black; font-weight: bold; font-size: 10px; text-align: center">
-                            {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
-                            {% if game.result_padel.local2 %}
-                            / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
-                            {% endif %}
-                            {% if game.result_padel.local3 %}
-                            / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
-                            {% endif %}
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: left">
-                            {{game.visitor}}
-                        </a>
-                    </ul>
-                </ul>
-                <hr class="separador_torneo" style="margin-top: 0px">
-                <hr class="separador_torneo">
-                <hr class="separador_torneo">
+                    <tr>
+                        <td class="result"  style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.local}}</td>
+                        <td class="result" style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}</td>
+                        <td class="result " style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.visitor}}</td>
+                    </tr>
                 {% endif %}
                 {% endfor %}
+                                    </table>
+
             </div>
-            {% endif %}
-            {% if "PoolD" in pool_tables %}
             <hr class="separador_torneo">
             <div class="col-sm-12">
                 {% if "PoolD" in pool_tables %}
-                <div class="col-sm-1"></div>
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
@@ -587,7 +539,7 @@
                             <div><a>Pos.</a></div>
                         </th> -->
                     </tr>
-                    {% for row in pool_tables.PoolA %}
+                    {% for row in pool_tables.PoolD %}
                     <tr>
                         <td style="text-align: left">
                             <a href="">{{row.team}}</a>
@@ -608,53 +560,33 @@
                     {% endfor %}
                     {% endif %}
                 </table>
-                <div class="col-sm-1"></div>
-
             </div>
             <div class="col-xs-12 col-sm-12" style="margin-top: 10px">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                    ERGEBNISSE</h3>
-                <hr class="separador_torneo" style="margin-top: 0px">
-            </div>
-            {% endif %}
-            <div class="col-sm-12">
+                <div>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        ERGEBNISSE</h3>
+                    <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                </div>
+
+                <table class="table-big-light col-sm-12" style="float: left">
                 {% for key, game in pool_games.items %}
                 {% if "PoolD" in game.phase.round %}
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: right">
-                            {{game.local}}
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-color: black; font-weight: bold; font-size: 10px; text-align: center">
-                            {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
-                            {% if game.result_padel.local2 %}
-                            / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
-                            {% endif %}
-                            {% if game.result_padel.local3 %}
-                            / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
-                            {% endif %}
-                        </a>
-                    </ul>
-                </ul>
-                <ul class="teams col-sm-4" style="height: 25px">
-                    <ul class="th col-xs-12 col-sm-12">
-                        <a class="text_club col-sm-12"
-                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; text-align: left">
-                            {{game.visitor}}
-                        </a>
-                    </ul>
-                </ul>
-                <hr class="separador_torneo" style="margin-top: 0px">
-                <hr class="separador_torneo">
-                <hr class="separador_torneo">
+                    <tr>
+                        <td class="result"  style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.local}}</td>
+                        <td class="result" style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}</td>
+                        <td class="result " style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">{{game.visitor}}</td>
+                    </tr>
                 {% endif %}
                 {% endfor %}
+                                    </table>
+
             </div>
 
     </section>
