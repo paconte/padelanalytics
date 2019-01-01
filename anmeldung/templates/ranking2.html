@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container_12">
+<div class="container_12" style="height:100%">
 
     <!-- Título Página -->
     <div class="card roll">
@@ -19,10 +19,10 @@
         <h2>Ranglisten</h2>
     </div>
 
-    <div class="card" style="height:inherit">
+    <div class="card" >
 
-        <div class="search-bar flex grow">
-            <input class="search flex grow" placeholder="Namen, Standort, Rolle suchen..."/>
+        <div class="search-bar flex">
+            <input class="search flex" placeholder="Namen, Standort, Rolle suchen..."/>
         </div>
 
 
@@ -52,7 +52,7 @@
             </div>
         </form>
 
-        <table id="dtMaterialDesignExample" class="col-sm-12 table table-striped" cellspacing="0">
+        <table id="dtMaterialDesignExample" class="col-sm-12 table table-striped table-hover" cellspacing="0">
             <thead>
             <tr>
                 <th class="th-sm">Position
@@ -67,7 +67,7 @@
             </thead>
             <tbody>
             {% for rk in ranking %}
-            <tr>
+            <tr class="table-hover">
                 <td class="col-xs-1 col-sm-1">1.</td>
                 <td class="col-xs-4 col-sm-4">{{rk.first_name}}</td>
                 <td class="col-xs-5 col-sm-5">{{rk.last_name}}</td>
