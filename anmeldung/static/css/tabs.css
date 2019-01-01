@@ -71,7 +71,7 @@ input[type="radio"] + label, select {
     padding-right: 0;
     border-radius: 0px;
     margin-top: 10px;
-    width: 12%;
+    width: 19%;
 }
 
 @media screen and (max-width: 650px) {

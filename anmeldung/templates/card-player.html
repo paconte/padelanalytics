@@ -5,6 +5,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabs.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
 
 {% endblock %}
@@ -12,59 +13,284 @@
 {% block content %}
 
 
-<div class="container_12" style="height:100%; ">
+<div class="container_12">
     <div class="card roll">
         <h1>{% trans "Player's Statistic" %}</h1>
     </div>
 
     <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px">
-        <div class="card-container manual-flip">
-            <div class="card">
-                <div class="front">
-                    <div class="cover">
-                        <img src="static/images/news/03.jpg">
-                    </div>
-                    <div class="user" style="background-color:white">
-                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
-                    </div>
-                    <div class="content">
-                        <div class="main" style="min-height:100px">
-                            <h1 class="name">Fran González
-                                <h1>
-                                    <p class="profession">Padel Club Berlin International e.V.</p>
-                        </div>
-                        <div class="foot">
+        <div class="card card-player">
+            <div class="cover">
+                <img src="static/images/news/03.jpg">
+            </div>
+            <div class="user" style="background-color:white">
+                <img class="img-circle" src="static/images/players/Cool-Male-Avatars-06.png">
+            </div>
+            <div class="content">
+                <div class="main" style="min-height:80px">
+                    <h1 class="name">Fran González
+                        <h1>
+                            <p class="profession">Padel Club Berlin International e.V.</p>
                             <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
                                 <i class="fa fa-map-marker"></i> Berlin, Germany
                             </div>
-                        </div>
+                </div>
+                <div class="foot">
+
+                    <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                        <i class="fa fa-home"></i> Córdoba, Spain
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div>
+            </div>
+        </div> <!-- end card -->
+
+        <div class="card">
+            <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
+                RANKINGS</h3>
+            <hr>
+            <table class="table-big-light col-sm-12" style="float: left">
+                <tr>
+                    <th class="col-sm-6 col-md-6 profession" style="text-align:center">
+                        <div><span>Turnierserie</span></div>
+                    </th>
+                    <th class="col-sm-6 col-md-6 profession" style="text-align:center">
+                        <div><a>Position</a></div>
+                    </th>
+                </tr>
+            </table>
+            <hr>
+            <table class="table-big-light col-sm-12" style="float: left">
+                <tr>
+                    <td class="col-sm-6 col-md-6 profession">
+                        <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px">
+                            <img src="{% static 'images/federations/germany_lines.png' %}"
+                                 alt="Deutscher Padel Verband">
+                        </a>
+                    </td>
+                    <td class="col-sm-6 col-md-6 profession">
+                        <div><a>45</a></div>
+                    </td>
+                </tr>
+            </table>
+            <hr class="separador_torneo">
+            <table class="table-big-light col-sm-12" style="float: left">
+                <tr>
+                    <td class="col-sm-6 col-md-6 profession">
+                        <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px">
+                            <img src="{% static 'images/federations/germany_lines.png' %}"
+                                 alt="Deutscher Padel Verband">
+                        </a>
+                    </td>
+                    <td class="col-sm-6 col-md-6 profession">
+                        <div><a>45</a></div>
+                    </td>
+                </tr>
+            </table>
+            <hr class="separador_torneo">
+        </div> <!-- end card -->
     </div>
     <div class="col-md-8 col-sm-8 col-lg-9" style="float: right; padding-right:0px">
-        <div class="card-container manual-flip">
+        <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
+        <label for="tab1">Activity</label>
+        <input id="tab2" type="radio" name="tabs" style="padding-left: 0px; float: left">
+        <label for="tab2">Titles & Finals</label>
+        <input id="tab3" type="radio" name="tabs" style="padding-left: 0px; float: left">
+        <label for="tab3">Ranking History</label>
+        <input id="tab4" type="radio" name="tabs" style="padding-left: 0px; float: left">
+        <label for="tab4">Statistic</label>
+        <input id="tab5" type="radio" name="tabs" style="padding-left: 0px; float: left">
+        <label for="tab5">Head2Head</label>
+
+        <section id="content1" style="">
             <div class="card">
-                <div class="front">
-                    <div class="content">
-                        <div class="main" style="min-height:100px">
-                            <h1 class="name">Fran González
-                                <h1>
-                                    <p class="profession">Padel Club Berlin International e.V.</p>
-                        </div>
-                        <div class="foot">
-                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
-                                <i class="fa fa-map-marker"></i> Berlin, Germany
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
+                    RESULTS</h3>
+                <hr>
+
+                <table id="" class="col-sm-12 table table-hover" cellspacing="0">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="col-sm-1 col-md-1 profession">
+                            <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px; float: left">
+                                <img src="{% static 'images/federations/germany_lines.png' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                            <a href="X" class="logo-fed card fed-rank"
+                               style="margin-left: 10px; background-color: none; height:50px; width:50px; float: left">
+                                <img src="{% static 'images/kategorien/gps500.jpg' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                        </th>
+                        </th>
+                        <th scope="col">Regionalmeisterschaft Ost <br>
+                            Füchse Berlin Reinickendorf e.V. <br>
+                            6 de Octubre de 2018
+                        </th>
+                        <th scope="col">Partner:
+                        </th>
+                        <th>Francisco Revilla
+                        </th>
+                    </tr>
+                    </thead>
+                    <thead class="">
+                    <tr>
+                        <th scope="col">Round
+                        </th>
+                        <th scope="col">Opponents
+                        </th>
+                        <th scope="col">W-L
+                        </th>
+                        <th scope="col">Score
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Final</td>
+                        <td class="col-xs-5 col-sm-5">Gutiérrez Soria + Thavisin</td>
+                        <td class="col-xs-1 col-sm-1">L</td>
+                        <td class="col-xs-2 col-sm-2">5-7 3-6</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Semifinal</td>
+                        <td class="col-xs-5 col-sm-5">Mann + Knobloch</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-3 6-1</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Quarterfinals</td>
+                        <td class="col-xs-5 col-sm-5">Ströhl + Strecker</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-0 6-0</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <table id="" class="col-sm-12 table table-hover" cellspacing="0">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="col-sm-1 col-md-1 profession">
+                            <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px; float: left">
+                                <img src="{% static 'images/federations/germany_lines.png' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                            <a href="X" class="logo-fed card fed-rank"
+                               style="margin-left: 10px; background-color: none; height:50px; width:50px; float: left">
+                                <img src="{% static 'images/kategorien/gps500.jpg' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                        </th>
+                        </th>
+                        <th scope="col">Regionalmeisterschaft Ost <br>
+                            Füchse Berlin Reinickendorf e.V. <br>
+                            6 de Octubre de 2018
+                        </th>
+                        <th scope="col">Partner:
+                        </th>
+                        <th>Francisco Revilla
+                        </th>
+                    </tr>
+                    </thead>
+                    <thead class="">
+                    <tr>
+                        <th scope="col">Round
+                        </th>
+                        <th scope="col">Opponents
+                        </th>
+                        <th scope="col">W-L
+                        </th>
+                        <th scope="col">Score
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Final</td>
+                        <td class="col-xs-5 col-sm-5">Gutiérrez Soria + Thavisin</td>
+                        <td class="col-xs-1 col-sm-1">L</td>
+                        <td class="col-xs-2 col-sm-2">5-7 3-6</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Semifinal</td>
+                        <td class="col-xs-5 col-sm-5">Mann + Knobloch</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-3 6-1</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Quarterfinals</td>
+                        <td class="col-xs-5 col-sm-5">Ströhl + Strecker</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-0 6-0</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <table id="" class="col-sm-12 table table-hover" cellspacing="0">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="col-sm-1 col-md-1 profession">
+                            <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px; float: left">
+                                <img src="{% static 'images/federations/germany_lines.png' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                            <a href="X" class="logo-fed card fed-rank"
+                               style="margin-left: 10px; background-color: none; height:50px; width:50px; float: left">
+                                <img src="{% static 'images/kategorien/gps500.jpg' %}"
+                                     alt="Deutscher Padel Verband">
+                            </a>
+                        </th>
+                        </th>
+                        <th scope="col">Regionalmeisterschaft Ost <br>
+                            Füchse Berlin Reinickendorf e.V. <br>
+                            6 de Octubre de 2018
+                        </th>
+                        <th scope="col">Partner:
+                        </th>
+                        <th>Francisco Revilla
+                        </th>
+                    </tr>
+                    </thead>
+                    <thead class="">
+                    <tr>
+                        <th scope="col">Round
+                        </th>
+                        <th scope="col">Opponents
+                        </th>
+                        <th scope="col">W-L
+                        </th>
+                        <th scope="col">Score
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Final</td>
+                        <td class="col-xs-5 col-sm-5">Gutiérrez Soria + Thavisin</td>
+                        <td class="col-xs-1 col-sm-1">L</td>
+                        <td class="col-xs-2 col-sm-2">5-7 3-6</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Semifinal</td>
+                        <td class="col-xs-5 col-sm-5">Mann + Knobloch</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-3 6-1</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2 col-sm-2">Quarterfinals</td>
+                        <td class="col-xs-5 col-sm-5">Ströhl + Strecker</td>
+                        <td class="col-xs-1 col-sm-1">W</td>
+                        <td class="col-xs-2 col-sm-2">6-0 6-0</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+
+            </div>
+        </section>
     </div>
 </div>
 
+<!--
 <div class="container_12" style="height:100%; ">
     <div class="card roll">
         <h1>{% trans "Head to Head" %}</h1>
@@ -92,9 +318,9 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div> <!-- end front panel
+            </div> <!-- end card --
+        </div> <!-- end card-container --
     </div>
     <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: left; padding:0px; margin-left:-75px">
         <div class="card-container manual-flip">
@@ -118,9 +344,9 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div> <!-- end front panel --
+            </div> <!-- end card -
+        </div> <!-- end card-container --
     </div>
     <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: right; padding:0px">
         <div class="card-container manual-flip">
@@ -144,9 +370,9 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div> <!-- end front panel --
+            </div> <!-- end card --
+        </div> <!-- end card-container --
     </div>
     <div class="col-md-3 col-sm-3 col-lg-3 h2h" style="float: right; padding:0px; margin-right:-75px">
         <div class="card-container manual-flip">
@@ -170,17 +396,16 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div> <!-- end front panel --
+            </div> <!-- end card --
+        </div> <!-- end card-container --
     </div>
 </div>
-
-
 <div class="container_12" style="height:100%; ">
     <div class="card roll">
         <h1>{% trans "Team's Statistic" %}</h1>
     </div>
+
 
     <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px">
         <div class="col-md-12 h2h" style="float: left; padding:0px">
@@ -198,16 +423,20 @@
                                 <h1 class="name">Fran González
                                     <h1>
                                         <p class="profession">Padel Club Berlin International e.V.</p>
+                                        <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                            <i class="fa fa-map-marker"></i> Berlin, Germany
+                                        </div>
                             </div>
                             <div class="foot">
+
                                 <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
-                                    <i class="fa fa-map-marker"></i> Berlin, Germany
+                                    <i class="fa fa-home"></i> Córdoba, Spain
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- end front panel -->
-                </div> <!-- end card -->
-            </div> <!-- end card-container -->
+                    </div> <!-- end front panel --
+                </div> <!-- end card --
+            </div> <!-- end card-container --
         </div>
         <div class="col-md-12 h2h" style="float: left; padding:0px;  margin-top:-100px; z-index:2">
             <div class="card-container manual-flip">
@@ -231,33 +460,36 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- end front panel -->
-                </div> <!-- end card -->
-            </div> <!-- end card-container -->
+                    </div> <!-- end front panel --
+                </div> <!-- end card --
+            </div> <!-- end card-container --
         </div>
 
     </div>
     <div class="col-md-8 col-sm-8 col-lg-9" style="min-height: 500px; float: right; padding-right:0px">
         <div class="card-container manual-flip">
             <div class="card">
-                <div class="front" style="min-height: 500px;" >
+                <div class="front" style="min-height: 500px;">
                     <div class="content">
                         <div class="main" style="min-height:150px">
                             <h1 class="name">Fran González
                                 <h1>
                                     <p class="profession">Padel Club Berlin International e.V.</p>
+                                    <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                        <i class="fa fa-map-marker"></i> Berlin, Germany
+                                    </div>
                         </div>
                         <div class="foot">
                             <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
-                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                                <i class="fa fa-home"></i> Córdoba, Spain
                             </div>
                         </div>
                     </div>
-                </div> <!-- end front panel -->
-            </div> <!-- end card -->
-        </div> <!-- end card-container -->
+                </div> <!-- end front panel --
+            </div> <!-- end card --
+        </div> <!-- end card-container --
     </div>
 
-</div>
+</div>-->
 
 {% endblock %}

@@ -71,6 +71,16 @@ z-index: 5;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
 }
 
+.card-player {
+	top: 0;
+	left: 0;
+	background-color: #FFF;
+	padding: 0;
+}
+
+
+
+
 /* front pane, placed above back */
 .front {
 	z-index: 2;
@@ -120,11 +130,34 @@ z-index: 5;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
 }
 
+.card .fed-rank{
+    position: relative;
+    height: 100px;
+    margin: 0 auto 0 auto;
+    overflow: hidden;
+    width: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+}
+
 .card .user img{
     position: absolute;
     background: none repeat scroll 0 0 #FFFFFF;
     max-width: 85%;
     padding: 10px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+}
+
+.card .fed-rank img{
+    position: absolute;
+    background: none repeat scroll 0 0 #FFFFFF;
+    max-width: 85%;
+    padding: 0px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -161,7 +194,7 @@ z-index: 5;
 .card .profession{
     color: #999999;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 	position: relative;
 	font-size: 12px;
 }
