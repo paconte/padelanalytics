@@ -15,11 +15,11 @@
 
 <div class="container_12">
     <div class="card roll">
-        <h1>{% trans "Player-Card" %}</h1>
+        <h1>{% trans "Team-Card" %}</h1>
     </div>
 
     <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px">
-        <div class="card card-player">
+        <div class="card card-player h2h">
             <div class="cover">
                 <img src="static/images/news/03.jpg">
             </div>
@@ -43,50 +43,29 @@
                 </div>
             </div>
         </div> <!-- end card -->
+        <div class="card card-player h2h" style="margin-top: -125px">
+            <div class="cover">
+                <img src="static/images/news/03.jpg">
+            </div>
+            <div class="user" style="background-color:white">
+                <img class="img-circle" src="static/images/players/Cool-Male-Avatars-05.png">
+            </div>
+            <div class="content">
+                <div class="main" style="min-height:80px">
+                    <h1 class="name">Francisco Revilla
+                        <h1>
+                            <p class="profession">Padel Club Berlin International e.V.</p>
+                            <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                <i class="fa fa-map-marker"></i> Berlin, Germany
+                            </div>
+                </div>
+                <div class="foot">
 
-        <div class="card">
-            <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                RANKINGS</h3>
-            <hr>
-            <table class="table-big-light col-sm-12" style="float: left">
-                <tr>
-                    <th class="col-sm-6 col-md-6 profession" style="text-align:center">
-                        <div><span>Turnierserie</span></div>
-                    </th>
-                    <th class="col-sm-6 col-md-6 profession" style="text-align:center">
-                        <div><a>Position</a></div>
-                    </th>
-                </tr>
-            </table>
-            <hr>
-            <table class="table-big-light col-sm-12" style="float: left">
-                <tr>
-                    <td class="col-sm-6 col-md-6 profession">
-                        <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px">
-                            <img src="{% static 'images/federations/germany_lines.png' %}"
-                                 alt="Deutscher Padel Verband">
-                        </a>
-                    </td>
-                    <td class="col-sm-6 col-md-6 profession">
-                        <div><a>45</a></div>
-                    </td>
-                </tr>
-            </table>
-            <hr class="separador_torneo">
-            <table class="table-big-light col-sm-12" style="float: left">
-                <tr>
-                    <td class="col-sm-6 col-md-6 profession">
-                        <a href="X" class="logo-fed card fed-rank" style="height:50px; width:50px">
-                            <img src="{% static 'images/federations/germany_lines.png' %}"
-                                 alt="Deutscher Padel Verband">
-                        </a>
-                    </td>
-                    <td class="col-sm-6 col-md-6 profession">
-                        <div><a>45</a></div>
-                    </td>
-                </tr>
-            </table>
-            <hr class="separador_torneo">
+                    <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                        <i class="fa fa-home"></i> Córdoba, Spain
+                    </div>
+                </div>
+            </div>
         </div> <!-- end card -->
     </div>
     <div class="col-md-8 col-sm-8 col-lg-9" style="float: right; padding-right:0px">
@@ -95,11 +74,9 @@
         <input id="tab2" type="radio" name="tabs" style="padding-left: 0px; float: left">
         <label for="tab2">Titles & Finals</label>
         <input id="tab3" type="radio" name="tabs" style="padding-left: 0px; float: left">
-        <label for="tab3">Ranking History</label>
+        <label for="tab3">Statistic</label>
         <input id="tab4" type="radio" name="tabs" style="padding-left: 0px; float: left">
-        <label for="tab4">Statistic</label>
-        <input id="tab5" type="radio" name="tabs" style="padding-left: 0px; float: left">
-        <label for="tab5">Head_Head</label>
+        <label for="tab4">Head2Head</label>
 
         <section id="content1" style="">
             <div class="card">
@@ -315,8 +292,7 @@
                     <tbody>
                     <tr style="padding-left: 0px; padding-right: 0px">
                         <td class="col-xs-2 col-sm-2">4</td>
-                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250
-                            Schwaigern<br></td>
+                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250 Schwaigern<br></td>
                         <td class="col-xs-2 col-sm-1">2</td>
                         <td class="col-xs-4 col-sm-2">Regionalmesiterschaft Ost<br>FIP-100 Geretsried</td>
                     </tr>
@@ -344,8 +320,7 @@
                     <tbody>
                     <tr style="padding-left: 0px; padding-right: 0px">
                         <td class="col-xs-2 col-sm-2">4</td>
-                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250
-                            Schwaigern<br></td>
+                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250 Schwaigern<br></td>
                         <td class="col-xs-2 col-sm-1">2</td>
                         <td class="col-xs-4 col-sm-2">Regionalmesiterschaft Ost<br>FIP-100 Geretsried</td>
                     </tr>
@@ -373,8 +348,7 @@
                     <tbody>
                     <tr style="padding-left: 0px; padding-right: 0px">
                         <td class="col-xs-2 col-sm-2">4</td>
-                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250
-                            Schwaigern<br></td>
+                        <td class="col-xs-4 col-sm-4">GPS-500 München<br>GPS-1000 Karlsruhe<br>GPS-100 Weyhe<br>GPS-250 Schwaigern<br></td>
                         <td class="col-xs-2 col-sm-1">2</td>
                         <td class="col-xs-4 col-sm-2">Regionalmesiterschaft Ost<br>FIP-100 Geretsried</td>
                     </tr>
@@ -387,94 +361,15 @@
         <section id="content3" style="">
             <div class="card">
                 <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                    Ranking History</h3>
-                <hr>
-
-                <table id="" class="col-sm-12 table table-hover" cellspacing="0" style="">
-                    <thead class="thead-light">
-                    <tr>
-                        <th colspan="12" style="text-align:center">2018 <br>
-                        </th>
-                    </tr>
-                    </thead>
-                    <thead style="text-align:center">
-                    <tr>
-                        <th class="col-sm-2">Date
-                        </th>
-                        <th class="col-sm-4">Position
-                        </th>
-                    </thead>
-                    <tbody>
-                    <tr style="text-align:center">
-                        <td class="col-xs-6 col-sm-6">31.12.2018</td>
-                        <td class="col-xs-6 col-sm-6">1</td>
-                    </tr>
-                    <tr style="text-align:center">
-                        <td class="col-xs-6 col-sm-6">24.12.2018</td>
-                        <td class="col-xs-6 col-sm-6">1</td>
-                    </tr>
-                    <tr style="text-align:center">
-                        <td class="col-xs-6 col-sm-6">17.12.2018</td>
-                        <td class="col-xs-6 col-sm-6">1</td>
-                    </tr>
-                    <tr style="text-align:center">
-                        <td class="col-xs-6 col-sm-6">10.12.2018</td>
-                        <td class="col-xs-6 col-sm-6">1</td>
-                    </tr>
-                    <tr style="text-align:center">
-                        <td class="col-xs-6 col-sm-6">3.12.2018</td>
-                        <td class="col-xs-6 col-sm-6">1</td>
-                    </tr>
-                    </tbody>
-                </table>
+                    Statistic</h3>
                 <hr>
 
             </div>
         </section>
         <section id="content4" style="">
-            <div class="card">
-                <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                    Statistic</h3>
-                <hr>
-
-                <table id="" class="col-sm-12 table table-hover" cellspacing="0" style="">
-                    <thead class="thead-light">
-                    <tr>
-                        <th colspan="12" style="text-align:center">Most repeated Partner <br>
-                        </th>
-                    </tr>
-                    </thead>
-                    <thead class="">
-                    <tr>
-                        <th class="col-sm-4">Partner
-                        </th>
-                        <th class="col-sm-4">Tournaments
-                        </th>
-                        <th class="col-sm-2">Titles
-                        </th>
-                        <th class="col-sm-2">Finals
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr style="padding-left: 0px; padding-right: 0px">
-                        <td class="col-xs-4 col-sm-4">Francisco Revilla</td>
-                        <td class="col-xs-4 col-sm-4">12</td>
-                        <td class="col-xs-2 col-sm-2">2</td>
-                        <td class="col-xs-2 col-sm-2">5</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <hr>
-
-            </div>
-        </section>
-        <section id="content5" style="">
             <div class="card col-sm-9" style="float: left">
                 <h3 class="form_title" style="padding-bottom:0px; font-weight: 600; color:#DC4C46; text-align:center">
-                    Head 2 Head</h3>
-                <hr>
-
+                    Head 2 Head</h3> <hr>
                 <table id="" class="col-sm-12 table table-hover" cellspacing="0" style="margin-bottom:40px">
                     <tbody>
                     <tr class="table-hover" style="">
@@ -628,6 +523,21 @@
                                     <i class="fa fa-map-marker"></i> Karlsruhe, Germany
                                 </div>
                         </div>
+
+                    </div>
+                </div> <!-- end card -->
+                <div class="card card-player">
+                    <div class="user-h2h" style="background-color:white; height: 50; width:50px">
+                        <img class="img-circle" src="static/images/players/Cool-Male-Avatars-02.png">
+                    </div>
+                    <div class="content" style="padding-bottom:0px">
+                        <div class="main" style="min-height:80px">
+                            <h1 class="name">Tom Schmidt
+                                <div class="btn btn-simple" style="float: center" onclick="rotateCard(this)">
+                                    <i class="fa fa-map-marker"></i> Heidelberg, Germany
+                                </div>
+                        </div>
+
                     </div>
                 </div> <!-- end card -->
             </div>

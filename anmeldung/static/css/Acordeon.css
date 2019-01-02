@@ -84,6 +84,59 @@ table {
     height: 100%;
 }
 
+dl {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  padding: 20px;
+}
+
+dt {
+  align-self: flex-start;
+  width: 100%;
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-left: 130px;
+}
+
+.text {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 130px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  justify-content: flex-end;
+}
+
+.bargraph {
+	list-style: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	}
+
+	ul.bargraph li {
+    height: 15px;
+    background: #DC4C46;
+    text-align: left;
+    font-style: italic;
+    font-weight:bolder;
+    font-size: 14px;
+    line-height: 35px;
+    margin-bottom: 5px;
+    }
+
+
+
 .result {
 	border-color: #ededed; font-weight: bold; border-right: none; border-left: none; border-top: none; width: 33.33%;
 }

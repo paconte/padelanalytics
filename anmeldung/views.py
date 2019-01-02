@@ -40,12 +40,12 @@ def index(request):
 
 
 def test_view(request):
-    #return render(request, 'tournament_signup_success.html',
-    #            {'email_a': 'paco@gmail.com',
-    #             'email_b': 'fran@gmail.com',
-    #             'from_email': 'info@padelanalytics.com'
-    #             })
-    return render(request, 'tournament_signup_activation.html', {'tournament_id': 5})
+    return render(request, 'tournament_signup_success.html',
+                {'email_a': 'paco@gmail.com',
+                 'email_b': 'fran@gmail.com',
+                 'from_email': 'info@padelanalytics.com'
+                 })
+    #return render(request, 'tournament_signup_activation.html', {'tournament_id': 5})
     #return render(request, 'activation_failed.html')
     #return render(request, '404.html')
     #return render(request, '500.html')
@@ -191,6 +191,8 @@ def ranking(request):
 def cardplayer(request):
     return render(request, 'card-player.html')
 
+def cardteam(request):
+    return render(request, 'card-team.html')
 
 def activate(request, registration_uidb64, player_uidb64, token):
     activated = False
