@@ -14,6 +14,7 @@ WOMEN_OPEN = 'Womens Open'
 SENIOR_MIX = 'Senior Mix Open'
 MEN_30 = 'Mens 30'
 MEN_40 = 'Mens 40'
+MEN_45 = 'Mens 45'
 SENIOR_WOMEN = 'Senior Womes Open'
 WOMEN_27 = 'Women 27'
 MXO = 'MXO'
@@ -23,6 +24,7 @@ SMX = 'SMX'
 W27 = 'W27'
 M30 = 'M30'
 M40 = 'M40'
+M45 = 'M45'
 TOUCH_DIVISION_CHOICES = (
     (MXO, MIXED_OPEN),
     (MO, MEN_OPEN),
@@ -30,6 +32,7 @@ TOUCH_DIVISION_CHOICES = (
     (SMX, SENIOR_MIX),
     (M30, MEN_30),
     (M40, MEN_40),
+    (M45, MEN_45),
     (W27, WOMEN_27)
 )
 
@@ -37,7 +40,7 @@ TOUCH_DIVISION_CHOICES = (
 def get_player_gender(division):
     if division in [WO, W27]:
         result = Person.FEMALE
-    elif division in [MO, M30, M40]:
+    elif division in [MO, M30, M40, M45]:
         result = Person.MALE
     elif division in [MXO, SMX]:
         result = Person.UNKNOWN
