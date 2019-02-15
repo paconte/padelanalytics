@@ -1,8 +1,8 @@
 from django import forms
 
-from anmeldung.models import Club
 from anmeldung.models import PadelPerson
 from anmeldung.models import Registration
+from tournaments.models import Club
 from tournaments.models import Person
 from tournaments.service import all_mondays_since
 

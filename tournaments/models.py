@@ -25,6 +25,7 @@ W27 = 'W27'
 M30 = 'M30'
 M40 = 'M40'
 M45 = 'M45'
+
 TOUCH_DIVISION_CHOICES = (
     (MXO, MIXED_OPEN),
     (MO, MEN_OPEN),
@@ -35,6 +36,9 @@ TOUCH_DIVISION_CHOICES = (
     (M45, MEN_45),
     (W27, WOMEN_27)
 )
+
+SERIE_GERMANY = (('100', '100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'),
+                 ('GPS-1200', 'GPS-1200'), ('GPS-WOMEN', 'GPS-WOMEN'))
 
 
 def get_player_gender(division):
@@ -47,6 +51,10 @@ def get_player_gender(division):
     else:
         raise Exception("Division %s is not supported." % division)
     return result
+
+
+def club_directory_path(instance, filename):
+    return 'club_media/' + normalize(no_german_chars('{0}-{1}'.format(instance.name, filename)))
 
 
 class Person(models.Model):
@@ -62,7 +70,7 @@ class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     born = models.DateField(null=True, blank=True)
-    nationality = models.CharField(max_length=30, null=True, blank=True)
+    country = CountryField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, default=UNKNOWN)
 
     class Meta:
@@ -115,11 +123,18 @@ class Tournament(models.Model):
     date = models.DateField(null=True, blank=True)
     teams = models.ManyToManyField(Team, blank=True)
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES, null=True, blank=True)
+    padel_serie = models.CharField(choices=SERIE_GERMANY, max_length=20, default='GPS-500', null=True, blank=True)
+    signup = models.BooleanField(default=False)
+    finished = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
+        # padel
+        if self.padel_serie and self.city and self.division and self.date:
+            return "  /  ".join([str(self.date), str(self.padel_serie), str(self.city), str(self.division)])
+        # touch
         if self.country and self.city:
             result = '{0} - {1} ({2}, {3})'.format(
                 self.division, self.name, smart_str(self.city), smart_str(self.country))
@@ -137,6 +152,26 @@ class Tournament(models.Model):
         else:
             result = True
         return result
+
+    def turnierliste_key(self):
+        return " ".join([str(self.padel_serie), str(self.city), str(self.date)])
+
+    @property
+    def serie_url(self):
+        if self.padel_serie == 'GPS-100':
+            return 'images/kategorien/gps100.jpg'
+        elif self.padel_serie == 'GPS-250':
+            return 'images/kategorien/gps250.jpg'
+        elif self.padel_serie == 'GPS-500':
+            return 'images/kategorien/gps500.jpg'
+        elif self.padel_serie == 'GPS-1000':
+            return 'images/kategorien/gps1000.jpg'
+        elif self.padel_serie == 'GPS-1200':
+            return 'images/kategorien/gps1200.jpg'
+        elif self.padel_serie == 'GPS-WOMEN':
+            return 'images/kategorien/w-gps.jpg'
+        else:
+            raise TypeError("The serie is not supported.")
 
     def get_division_name(self):
         for x in TOUCH_DIVISION_CHOICES:
@@ -157,6 +192,24 @@ class Tournament(models.Model):
                     return WOMEN_27
 
         assert "A name for the division: %s could not be found." % self.division
+
+
+class Club(models.Model):
+    name = models.CharField(max_length=50)
+    city = models.CharField(max_length=30)
+    province = models.CharField(max_length=30)
+    postcode = models.PositiveIntegerField(validators=[MinValueValidator(99), MaxValueValidator(1000000)])
+    email = models.EmailField()
+    phone = models.CharField(max_length=24)
+    address = models.CharField(max_length=120, blank=True)
+    indoor_courts = models.PositiveIntegerField()
+    outdoor_courts = models.PositiveIntegerField()
+    logo = models.ImageField(upload_to=club_directory_path, default='default.jpg')
+    cover_photo = models.ImageField(upload_to=club_directory_path, default='pista.jpg')
+    tournaments_organized = models.ManyToManyField(Tournament, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Player(models.Model):
@@ -599,10 +652,8 @@ class PadelRanking(models.Model):
 
     date = models.DateField()
     points = models.PositiveIntegerField(default=0, null=False)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    country = CountryField()
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
+    country = CountryField()
     circuit = models.CharField(max_length=30, default="oficial", choices=CIRCUIT)
     person = models.ForeignKey(Person, related_name="person", on_delete=models.DO_NOTHING,
                                null=True, blank=True, default=None)
@@ -613,6 +664,21 @@ def _last_monday():
     d = datetime.now()
     d -= timedelta(days=d.weekday())
     return d
+
+
+def all_mondays_from(d):
+    """Returns all the mondays from the given date d until the last monday of the
+    current year where the operatym system runs"""
+    from datetime import datetime, date, timedelta
+    result = []
+    if d.weekday() != 0:
+        d += timedelta(days=7-d.weekday())
+    current_year = datetime.now().year
+    #print(d, d.weekday(), current_year, d.year, d.year <= current_year)
+    while d.year <= current_year:
+        result.append(d)
+        d += timedelta(days=7)
+    return result
 
 
 def get_padel_ranking(date=None, division=None):
@@ -636,3 +702,48 @@ def get_padel_tournament_teams(tournament):
         team.player_b = players[1]
     return teams
 
+
+def get_clubs():
+    return Club.objects.all()
+
+
+def get_padel_tournament(id):
+    return Tournament.objects.get(pk=id)
+
+
+def get_padel_tournaments(year=None, division=None):
+    if year == 'ALL':
+        year = None
+    if division == 'ALL':
+        division = None
+
+    if year and division is None:
+        return Tournament.objects.order_by('-date', 'city').filter(date__year=year)
+    elif year is None and division:
+        return Tournament.objects.order_by('-date', 'city').filter(division=division)
+    elif year and division:
+        return Tournament.objects.order_by('-date', 'city').filter(date__year=year).filter(division=division)
+    else:
+        return Tournament.objects.order_by('-date', 'city')
+
+
+def get_similar_tournaments(t_id):
+    result = dict()
+    tournament = get_padel_tournament(t_id)
+    similars = Tournament.objects.filter(date=tournament.date, city=tournament.city)
+    print(similars)
+    for t in similars:
+        if t.id != tournament.id:
+            result[t.division] = t.id
+    return result
+
+
+def normalize(filename):
+    return "".join([c for c in filename if c.isalpha() or c.isdigit() or c == ' ']).rstrip()
+
+
+def no_german_chars(string):
+    chars = {'ö': 'oe', 'ä': 'ae', 'ü': 'ue', 'ß': 'ss'}
+    for c in chars:
+        string = string.replace(c, chars[c])
+    return string
