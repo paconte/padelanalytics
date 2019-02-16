@@ -664,7 +664,7 @@ def get_padel_ranking(date=None, division=None):
         division = MO
     if date is None:
         date = last_monday()
-    return PadelRanking.objects.order_by('points').filter(division=division).filter(date=date)
+    return PadelRanking.objects.order_by('-points').filter(division=division).filter(date=date)
 
 
 def get_tournament_games(tournament):
