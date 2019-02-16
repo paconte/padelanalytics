@@ -46,7 +46,7 @@
 
     <ol>
         {% for rk in ranking %}
-        <li>{{rk.first_name}} {{rk.last_name}} {{rk.points}}</li>
+        <li>{{rk.person.first_name}} {{rk.person.last_name}} {{rk.points}}</li>
         {% endfor %}
     </ol>
 </div>

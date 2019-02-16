@@ -4,17 +4,20 @@ from anmeldung.models import PadelPerson
 from anmeldung.models import Registration
 from tournaments.models import Club
 from tournaments.models import Person
-from tournaments.service import all_mondays_since
+from tournaments.service import last_monday
+from tournaments.service import all_mondays_until
 
 
-DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', 'MO'), ('WO', 'WO'), ('MXO', 'MXO'), ('M45', 'M45'), ('W40', 'W40'))
+DIVISION_CHOICES = (('MO', 'MO'), ('WO', 'WO'), ('MXO', 'MXO'), ('M45', 'M45'), ('W40', 'W40'))
 
 
 class RankingForm(forms.Form):
-    from datetime import datetime
-    date = forms.ChoiceField(choices=all_mondays_since(datetime.now().year), initial='ALL',
+    import datetime
+    d = datetime.date(2018, 1, 1)
+    date = forms.ChoiceField(choices=all_mondays_until(d, True), initial=last_monday(),
+    #date = forms.ChoiceField(choices=all_mondays_since(datetime.now().year), initial='ALL',
                              widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
-    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='ALL',
+    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='MO',
                                  widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
 
 

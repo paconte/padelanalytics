@@ -659,34 +659,11 @@ class PadelRanking(models.Model):
                                null=True, blank=True, default=None)
 
 
-def _last_monday():
-    from datetime import datetime, timedelta
-    d = datetime.now()
-    d -= timedelta(days=d.weekday())
-    return d
-
-
-def all_mondays_from(d):
-    """Returns all the mondays from the given date d until the last monday of the
-    current year where the operatym system runs"""
-    from datetime import datetime, date, timedelta
-    result = []
-    if d.weekday() != 0:
-        d += timedelta(days=7-d.weekday())
-    current_year = datetime.now().year
-    #print(d, d.weekday(), current_year, d.year, d.year <= current_year)
-    while d.year <= current_year:
-        result.append(d)
-        d += timedelta(days=7)
-    return result
-
-
 def get_padel_ranking(date=None, division=None):
-    return PadelRanking.objects.order_by('points')
     if division is None:
         division = MO
     if date is None:
-        date = _last_monday()
+        date = last_monday()
     return PadelRanking.objects.order_by('points').filter(division=division).filter(date=date)
 
 
@@ -747,3 +724,10 @@ def no_german_chars(string):
     for c in chars:
         string = string.replace(c, chars[c])
     return string
+
+
+def last_monday():
+    from datetime import datetime, timedelta
+    d = datetime.now().date()
+    d -= timedelta(days=d.weekday())
+    return d
