@@ -16,7 +16,7 @@ from tournaments.models import PlayerStadistic
 from tournaments.models import Team
 from tournaments.models import Tournament
 from tournaments.models import get_player_gender
-from tournaments.models import all_mondays_from
+from tournaments.service import all_mondays_from
 
 
 from django.core.exceptions import MultipleObjectsReturned
