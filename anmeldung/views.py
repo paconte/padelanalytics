@@ -111,9 +111,6 @@ def tournaments(request):
     else:
         form = TournamentsForm()
 
-    for t in tournaments:
-        print(t.id)
-
     return render(request, 'turnierliste.html', {'tournaments': tournaments, 'form': form})
 
 
@@ -130,8 +127,9 @@ def tournament(request, id):
     pool_games = fixtures.pool_games
     pool_tables = fixtures.sorted_pools
     ko_games = fixtures.get_phased_finals({})
-
-    print(ko_games)
+    # get the first round of the ko phase:
+    k, v = next(iter(ko_games.items()))
+    ko_round_start = next(iter(v)).round
 
     return render(
         request,
@@ -143,7 +141,8 @@ def tournament(request, id):
             'real_teams': real_teams,
             'pool_tables': pool_tables,
             'pool_games': pool_games,
-            'ko_games': ko_games
+            'ko_games': ko_games,
+            'ko_round_start': ko_round_start
         })
 
 
