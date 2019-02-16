@@ -76,8 +76,11 @@
             {% endfor %}
             </tbody>
         </table>
-
-    </div>
+    <ol>
+        {% for rk in ranking %}
+        <li>{{rk.person.first_name}} {{rk.person.last_name}} {{rk.points}}</li>
+        {% endfor %}
+    </ol>
 </div>
 
 

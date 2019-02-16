@@ -14,22 +14,22 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from anmeldung.models import PadelPerson
 from anmeldung.models import Registration
-from anmeldung.models import get_padel_tournament
-from anmeldung.models import get_padel_tournaments
 from anmeldung.models import get_tournament_teams_by_ranking
-from anmeldung.models import get_clubs
-from anmeldung.models import get_similar_tournaments
 from anmeldung.models import get_all_registrations
 from anmeldung.forms import TournamentsForm, RankingForm
 from anmeldung.forms import RegistrationForm
 from anmeldung.forms import get_new_player_form
 from anmeldung.tokens import account_activation_token
 
-from tournaments.models import Person, get_padel_ranking
+from tournaments.models import Person
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
+from tournaments.models import get_padel_tournament
+from tournaments.models import get_padel_tournaments
+from tournaments.models import get_padel_ranking
+from tournaments.models import get_clubs
+from tournaments.models import get_similar_tournaments
 from tournaments.service import Fixtures
-
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -111,6 +111,9 @@ def tournaments(request):
     else:
         form = TournamentsForm()
 
+    for t in tournaments:
+        print(t.id)
+
     return render(request, 'turnierliste.html', {'tournaments': tournaments, 'form': form})
 
 
@@ -121,12 +124,14 @@ def tournament(request, id):
     similar_tournaments = get_similar_tournaments(id)
     signed_up_teams = get_tournament_teams_by_ranking(id)
 
-    all_games = get_tournament_games(tournament.tournament_ptr)
-    real_teams = get_padel_tournament_teams(tournament.tournament_ptr)
+    all_games = get_tournament_games(tournament)
+    real_teams = get_padel_tournament_teams(tournament)
     fixtures = Fixtures(all_games)
     pool_games = fixtures.pool_games
     pool_tables = fixtures.sorted_pools
     ko_games = fixtures.get_phased_finals({})
+
+    print(ko_games)
 
     return render(
         request,
@@ -184,7 +189,6 @@ def ranking(request):
     else:
         form = RankingForm()
         ranking = get_padel_ranking()
-    print(ranking)
     return render(request, 'ranking2.html', {'form': form, 'ranking': ranking})
 
 
