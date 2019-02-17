@@ -11,7 +11,11 @@
 
 
 
-
+.navbar-collapse {
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #b7b7b7;
+    }
 
 
 .group-standings table {
@@ -52,6 +56,8 @@ table {
 .group-standings .group-name {
     font-size: 70px;
     vertical-align: bottom;
+    color: white;
+    background-color: #E1CAC9;
 
 }
 
@@ -193,7 +199,7 @@ font-size: 12px;
     font-size: 54px;
     /*padding-left: 32px;*/
     line-height: 1;
-    color: #DC4C46;
+    color: white;
         text-align: center;
 
 }
@@ -1410,6 +1416,57 @@ max-width: 50px;
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
   }
+
+
+
+.card.cuartosK08 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.card.semifinalK08 {
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+
+.card.finalK08 {
+    margin-top:0px;
+
+}
+.card.semifinalK04 {
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+
+.card.finalK04 {
+    margin-top:0px;
+
+}
+
+.card.finalK02 {
+    margin-top:0px;
+
+}
+
+.card.match {
+    margin-bottom: 10px;
+}
+
+.conector_final_up{
+    display: none;
+}
+
+.conector_final_down{
+    display: none;
+}
+
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+
+
+
 
 
 
