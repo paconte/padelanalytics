@@ -1417,6 +1417,10 @@ max-width: 50px;
     float: right;
   }
 
+.nopadding{
+padding-left: 0px;
+padding-right: 0px;
+}
 
 
 .card.cuartosK08 {
