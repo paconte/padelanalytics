@@ -158,6 +158,11 @@ dt {
 	background: #fafafa;
 }
 
+.clip {
+   clip-path: inset(-60px -350px 90px 0px);
+   z-index: 5;
+}
+
 .group-standings .rotate span {
     width: 200px;
     margin-bottom: 12px;

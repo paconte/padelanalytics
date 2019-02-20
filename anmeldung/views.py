@@ -128,8 +128,10 @@ def tournament(request, id):
     pool_tables = fixtures.sorted_pools
     ko_games = fixtures.get_phased_finals({})
     # get the first round of the ko phase:
-    k, v = next(iter(ko_games.items()))
-    ko_round_start = next(iter(v)).round
+    ko_round_start = None
+    if len(ko_games) > 0:
+        k, v = next(iter(ko_games.items()))
+        ko_round_start = next(iter(v)).round
 
     return render(
         request,
