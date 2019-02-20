@@ -141,7 +141,14 @@ dt {
     margin-bottom: 5px;
     }
 
+.page-item.active .page-link {
+    background-color: #DC4C46;
+    border-color: #DC4C46;
+}
 
+.page-link {
+    color: #DC4C46;
+}
 
 .result {
 	border-color: #ededed; font-weight: bold; border-right: none; border-left: none; border-top: none; width: 33.33%;

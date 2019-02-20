@@ -18,36 +18,36 @@
         <h1>Ranglisten</h1>
     </div>
 
-        <form class="form-inline" method="post" style="align: right">
-            {% csrf_token %}
-            <div class="col-xs-6 col-sm-3">
-                <h3 class="form_title">{% trans "Year" %}</h3>
-                <div class="input-group input-group-icon">
-                    <div class="input-icon"><i class="fa fa-calendar"></i></div>
-                    {{form.date}}
+    <form class="form-inline" method="post" style="align: right">
+        {% csrf_token %}
+        <div class="col-xs-6 col-sm-3">
+            <h3 class="form_title">{% trans "Year" %}</h3>
+            <div class="input-group input-group-icon">
+                <div class="input-icon"><i class="fa fa-calendar"></i></div>
+                {{form.date}}
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <h3 class="form_title">{% trans "Division" %}</h3>
+            <div class="input-group input-group-icon">
+                <div class="input-icon"><i class="fa fa-users"></i></div>
+                {{form.division}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <button input type="submit" class="col-xs-12 col-sm-6 btn btn-danger"
+                    style="float: right; margin: 30px 0px 16px 0px">
+                <div class="input-icon"><i class="fa fa-search"></i>
                 </div>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <h3 class="form_title">{% trans "Division" %}</h3>
-                <div class="input-group input-group-icon">
-                    <div class="input-icon"><i class="fa fa-users"></i></div>
-                    {{form.division}}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <button input type="submit" class="col-xs-12 col-sm-6 btn btn-danger"
-                        style="float: right; margin: 30px 0px 16px 0px">
-                    <div class="input-icon"><i class="fa fa-search"></i>
-                    </div>
-                    Submit
-                </button>
-            </div>
-        </form>
+                Submit
+            </button>
+        </div>
+    </form>
 
-    <div class="card"  style="min-height:600px">
+    <div class="card" style="min-height:600px">
 
         <div class="search-bar flex">
-            <input class="search flex" placeholder="Namen, Standort, Rolle suchen..."/>
+            <input class="search justify-content-center page-link" placeholder="Namen, Standort, Rolle suchen..."/>
         </div>
 
         <table id="" class="col-sm-12 table table-striped table-hover" cellspacing="0">
@@ -76,9 +76,23 @@
             </tr>
             {% endfor %}</ol>
             </tbody>
+
+            <nav aria-label="Page navigation example" style="margin-bottom: 20px">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </table>
 
-</div>
+    </div>
 </div>
 
 
