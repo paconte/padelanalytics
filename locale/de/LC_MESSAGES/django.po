@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-14 16:35+0100\n"
+"POT-Creation-Date: 2019-02-20 18:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,13 @@ msgid "Are you looking for a club or tournament?"
 msgstr "Was für ein Standort oder Turnier suchts du genau?"
 
 #: anmeldung/templates/404.html:23 anmeldung/templates/base.html:65
-#: anmeldung/templates/landing.html:347
-#: anmeldung/templates/turnierliste.html:16
+#: anmeldung/templates/landing.html:343
+#: anmeldung/templates/turnierliste.html:17
 msgid "Tournaments"
 msgstr "Turnierliste"
 
 #: anmeldung/templates/404.html:28 anmeldung/templates/base.html:61
-#: anmeldung/templates/landing.html:324
+#: anmeldung/templates/landing.html:320
 msgid "Clubs"
 msgstr "Standorte"
 
@@ -63,7 +63,7 @@ msgid ""
 "\n"
 "To finish the tournament registration please confirm clicking the following "
 "link:\n"
-msgstr
+msgstr ""
 "\n"
 "Guten Tag %(user.first_name)s,\n"
 "\n"
@@ -80,13 +80,13 @@ msgid "Check again your inbox or sign up again."
 msgstr ""
 
 #: anmeldung/templates/activation_failed.html:25
-#: anmeldung/templates/landing.html:284
+#: anmeldung/templates/landing.html:279
 #: anmeldung/templates/new_player_success.html:29
 msgid "Sign up into a Tournament"
 msgstr "Zur Turnieranmeldung"
 
 #: anmeldung/templates/activation_failed.html:30
-#: anmeldung/templates/landing.html:278
+#: anmeldung/templates/landing.html:273
 #: anmeldung/templates/new_player_success.html:24
 #: anmeldung/templates/tournament_signup_activation.html:26
 #: anmeldung/templates/tournament_signup_success.html:28
@@ -99,39 +99,43 @@ msgstr "Zum Turnierkalender"
 msgid "Tournament sign up"
 msgstr "Anmeldung"
 
-#: anmeldung/templates/base.html:111
-msgid "Discover a new way to enjoy Padel!"
-msgstr "Entdecke einen neuen Weg, Padel zu genießen!"
+#: anmeldung/templates/base.html:75
+msgid "Ranking"
+msgstr ""
+
+#: anmeldung/templates/base.html:80
+msgid "License"
+msgstr "Lizenz"
+
+#: anmeldung/templates/card-player.html:18
+#, fuzzy
+#| msgid "Players"
+msgid "Player-Card"
+msgstr "Spieler"
+
+#: anmeldung/templates/card-team.html:18
+msgid "Team-Card"
+msgstr ""
 
 #: anmeldung/templates/clubs.html:16
 msgid "Germany"
 msgstr "Deutschland"
 
-#: anmeldung/templates/landing.html:34
-#, fuzzy
-#| msgid "Tournaments"
-msgid "Next Tournaments"
-msgstr "Nächste Tourniere"
-
-#: anmeldung/templates/landing.html:272
+#: anmeldung/templates/landing.html:267
 #, fuzzy
 #| msgid "Clubs"
 msgid "Visit Clubs"
 msgstr "Zu den Standorte"
 
-#: anmeldung/templates/landing.html:312
-msgid "Statistics"
-msgstr "Statistik"
-
-#: anmeldung/templates/landing.html:336
+#: anmeldung/templates/landing.html:332
 msgid "Courts"
 msgstr "Plätze"
 
-#: anmeldung/templates/landing.html:358
+#: anmeldung/templates/landing.html:354
 msgid "Players"
 msgstr "Spieler"
 
-#: anmeldung/templates/landing.html:369
+#: anmeldung/templates/landing.html:365
 msgid "Rankings"
 msgstr ""
 
@@ -147,6 +151,158 @@ msgstr "Jetzt kannst du alle Turniere der German Padel Series genießen"
 #: anmeldung/templates/tournament_signup_activation.html:23
 msgid "HAVE FUN!"
 msgstr "VIEL SPASS!"
+
+#: anmeldung/templates/ranking2.html:24
+#: anmeldung/templates/turnierliste.html:23
+msgid "Year"
+msgstr "Jahr"
+
+#: anmeldung/templates/ranking2.html:31
+#: anmeldung/templates/turnierliste.html:31
+msgid "Division"
+msgstr "Spielklasse"
+
+#: anmeldung/templates/tournament.html:23
+#, fuzzy
+#| msgid "Tournament sign up"
+msgid "Tournament Information"
+msgstr "Turnierinfo"
+
+#: anmeldung/templates/tournament.html:42
+msgid "Change Division"
+msgstr "Spielklasse Ändern"
+
+#: anmeldung/templates/tournament.html:81
+#: anmeldung/templates/tournament.html:178
+msgid "Registration"
+msgstr "Anmeldung"
+
+#: anmeldung/templates/tournament.html:92
+msgid "Teams"
+msgstr ""
+
+#: anmeldung/templates/tournament.html:97
+msgid "Groups"
+msgstr "Gruppen"
+
+#: anmeldung/templates/tournament.html:100
+msgid "K.O."
+msgstr ""
+
+#: anmeldung/templates/tournament.html:112
+msgid "TEAMS"
+msgstr ""
+
+#: anmeldung/templates/tournament.html:117
+#: anmeldung/templates/tournament.html:120
+#, fuzzy
+#| msgid "Players"
+msgid "Player"
+msgstr "Spieler"
+
+#: anmeldung/templates/tournament.html:118
+#: anmeldung/templates/tournament.html:121
+#, fuzzy
+#| msgid "Clubs"
+msgid "Club"
+msgstr "Standorte"
+
+#: anmeldung/templates/tournament.html:177
+msgid "There are no teams yet."
+msgstr "Kein Team hat scg für das Turnier angemeldet."
+
+#: anmeldung/templates/tournament.html:178
+msgid "Be the first one"
+msgstr "Sei der erste und klick auf"
+
+#: anmeldung/templates/tournament.html:192
+#: anmeldung/templates/tournament.html:257
+#: anmeldung/templates/tournament.html:322
+#: anmeldung/templates/tournament.html:387
+#: anmeldung/templates/tournament.html:452
+#: anmeldung/templates/tournament.html:517
+msgid "Group"
+msgstr "Gruppe"
+
+#: anmeldung/templates/tournament.html:193
+#: anmeldung/templates/tournament.html:258
+#: anmeldung/templates/tournament.html:323
+#: anmeldung/templates/tournament.html:388
+#: anmeldung/templates/tournament.html:453
+#: anmeldung/templates/tournament.html:518
+msgid "Won"
+msgstr "Gewonnen"
+
+#: anmeldung/templates/tournament.html:194
+#: anmeldung/templates/tournament.html:259
+#: anmeldung/templates/tournament.html:324
+#: anmeldung/templates/tournament.html:389
+#: anmeldung/templates/tournament.html:454
+#: anmeldung/templates/tournament.html:519
+msgid "Lost"
+msgstr "Verloren"
+
+#: anmeldung/templates/tournament.html:195
+#: anmeldung/templates/tournament.html:260
+#: anmeldung/templates/tournament.html:325
+#: anmeldung/templates/tournament.html:390
+#: anmeldung/templates/tournament.html:455
+#: anmeldung/templates/tournament.html:520
+msgid "+ Sets"
+msgstr "+ Sätze"
+
+#: anmeldung/templates/tournament.html:196
+#: anmeldung/templates/tournament.html:261
+#: anmeldung/templates/tournament.html:326
+#: anmeldung/templates/tournament.html:391
+#: anmeldung/templates/tournament.html:456
+#: anmeldung/templates/tournament.html:521
+msgid "- Sets"
+msgstr "- Sätze"
+
+#: anmeldung/templates/tournament.html:197
+#: anmeldung/templates/tournament.html:262
+#: anmeldung/templates/tournament.html:327
+#: anmeldung/templates/tournament.html:392
+#: anmeldung/templates/tournament.html:457
+#: anmeldung/templates/tournament.html:522
+msgid "Diff"
+msgstr ""
+
+#: anmeldung/templates/tournament.html:221
+#: anmeldung/templates/tournament.html:286
+#: anmeldung/templates/tournament.html:351
+#: anmeldung/templates/tournament.html:416
+#: anmeldung/templates/tournament.html:481
+#: anmeldung/templates/tournament.html:546
+msgid "RESULTS"
+msgstr "ERGEBNISSE"
+
+#: anmeldung/templates/tournament.html:637
+#: anmeldung/templates/tournament.html:778
+msgid "Sixteen"
+msgstr "Achtelfinale"
+
+#: anmeldung/templates/tournament.html:682
+#: anmeldung/templates/tournament.html:823
+#: anmeldung/templates/tournament.html:970
+msgid "Quarterfinal"
+msgstr "Viertelfinale"
+
+#: anmeldung/templates/tournament.html:727
+#: anmeldung/templates/tournament.html:870
+#: anmeldung/templates/tournament.html:1015
+#: anmeldung/templates/tournament.html:1063
+#: anmeldung/templates/tournament.html:1116
+msgid "Semifinal"
+msgstr "Halbfinale"
+
+#: anmeldung/templates/tournament.html:917
+#: anmeldung/templates/tournament.html:1162
+#: anmeldung/templates/tournament.html:1216
+#: anmeldung/templates/tournament.html:1262
+msgid "Final"
+msgstr "Finale"
 
 #: anmeldung/templates/tournament_signup.html:16
 #, fuzzy
@@ -186,7 +342,10 @@ msgstr "Spieler erfolgreich bestätigt"
 msgid ""
 "Both team members must click on the confirmation link in the e-mail to "
 "complete your sign up"
-msgstr "Für eine vollständige Anmeldung müssen beide Spieler den Bestätigungslink anklicken. Sobald das Prozess abgeschloßen ist, wird das Team auf der Turnierseite angezeigt."
+msgstr ""
+"Für eine vollständige Anmeldung müssen beide Spieler den Bestätigungslink "
+"anklicken. Sobald das Prozess abgeschloßen ist, wird das Team auf der "
+"Turnierseite angezeigt."
 
 #: anmeldung/templates/tournament_signup_activation.html:31
 #, fuzzy
@@ -207,19 +366,22 @@ msgstr "Wir haben eine E-Mail an %(email_a)s und %(email_b)s versendet"
 msgid ""
 "Please check your email inbox for the activation email after registration. "
 "If you cannot find the email check inside your SPAM."
-msgstr "Bitte überprüft Eure E-Mail Postfach bzw. SPAM und klickt auf das Link, um die Anmeldung zu bestätigen."
+msgstr ""
+"Bitte überprüft Eure E-Mail Postfach bzw. SPAM und klickt auf das Link, um "
+"die Anmeldung zu bestätigen."
 
 #: anmeldung/templates/tournament_signup_success.html:25
 msgid ""
 "Both players must confirm the activation link to register the team "
 "successfully."
-msgstr "Beide Spieler müssen es machen, damit das Team erfolgreich angemeldet ist."
+msgstr ""
+"Beide Spieler müssen es machen, damit das Team erfolgreich angemeldet ist."
 
-#: anmeldung/templates/turnierliste.html:137
+#: anmeldung/templates/turnierliste.html:133
 msgid "Sign up"
 msgstr "Anmeldung"
 
-#: anmeldung/templates/turnierliste.html:144
+#: anmeldung/templates/turnierliste.html:140
 msgid "Results"
 msgstr "Ergebnisse"
 
@@ -237,6 +399,17 @@ msgstr "Englisch"
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: tournaments/models.py:574
+#: tournaments/models.py:632
 msgid "PlayerStatistic must be related either to a game or to a tournament."
 msgstr ""
+
+#~ msgid "Discover a new way to enjoy Padel!"
+#~ msgstr "Entdecke einen neuen Weg, Padel zu genießen!"
+
+#, fuzzy
+#~| msgid "Tournaments"
+#~ msgid "Next Tournaments"
+#~ msgstr "Nächste Tourniere"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistik"

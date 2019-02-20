@@ -712,7 +712,6 @@ def get_similar_tournaments(t_id):
     result = dict()
     tournament = get_padel_tournament(t_id)
     similars = Tournament.objects.filter(date=tournament.date, city=tournament.city)
-    print(similars)
     for t in similars:
         if t.id != tournament.id:
             result[t.division] = t.id
