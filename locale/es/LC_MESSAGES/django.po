@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-20 18:57+0000\n"
+"POT-Creation-Date: 2019-02-20 19:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,13 @@ msgid "Are you looking for a club or tournament?"
 msgstr "¿Estas buscando un club o torneo?"
 
 #: anmeldung/templates/404.html:23 anmeldung/templates/base.html:65
-#: anmeldung/templates/landing.html:343
+#: anmeldung/templates/landing.html:333
 #: anmeldung/templates/turnierliste.html:17
 msgid "Tournaments"
 msgstr "Torneos"
 
 #: anmeldung/templates/404.html:28 anmeldung/templates/base.html:61
-#: anmeldung/templates/landing.html:320
+#: anmeldung/templates/landing.html:310
 msgid "Clubs"
 msgstr ""
 
@@ -80,13 +80,13 @@ msgid "Check again your inbox or sign up again."
 msgstr "Comprueba tu correo electrónico o vuelve a apuntarte."
 
 #: anmeldung/templates/activation_failed.html:25
-#: anmeldung/templates/landing.html:279
+#: anmeldung/templates/landing.html:280
 #: anmeldung/templates/new_player_success.html:29
 msgid "Sign up into a Tournament"
 msgstr "Inscribete a un torneo"
 
 #: anmeldung/templates/activation_failed.html:30
-#: anmeldung/templates/landing.html:273
+#: anmeldung/templates/landing.html:274
 #: anmeldung/templates/new_player_success.html:24
 #: anmeldung/templates/tournament_signup_activation.html:26
 #: anmeldung/templates/tournament_signup_success.html:28
@@ -119,19 +119,29 @@ msgstr ""
 msgid "Germany"
 msgstr "Alemania"
 
-#: anmeldung/templates/landing.html:267
+#: anmeldung/templates/landing.html:35
+#, fuzzy
+#| msgid "Tournaments"
+msgid "Next Tournaments"
+msgstr "Torneos"
+
+#: anmeldung/templates/landing.html:268
 msgid "Visit Clubs"
 msgstr "Visita los clubs"
 
-#: anmeldung/templates/landing.html:332
+#: anmeldung/templates/landing.html:298
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: anmeldung/templates/landing.html:322
 msgid "Courts"
 msgstr "Pistas"
 
-#: anmeldung/templates/landing.html:354
+#: anmeldung/templates/landing.html:344
 msgid "Players"
 msgstr "Jugadores"
 
-#: anmeldung/templates/landing.html:365
+#: anmeldung/templates/landing.html:355
 msgid "Rankings"
 msgstr ""
 
@@ -385,6 +395,3 @@ msgstr ""
 
 #~ msgid "Discover a new way to enjoy Padel!"
 #~ msgstr "¡Disfruta del padel de una nueva manera!"
-
-#~ msgid "Statistics"
-#~ msgstr "Estadísticas"

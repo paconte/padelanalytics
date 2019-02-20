@@ -31,8 +31,9 @@
             <div class="col-sm-12">
 
                 <hr class="separador_torneo">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans "Next
-                    Tournaments" %} </h3>
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
+                    {% trans "Next Tournaments" %}
+                </h3>
                 <hr class="separador_torneo">
                 <h2>{% get_available_languages as LANGUAGES %}</h2>
                 <h2>{% get_current_language as LANGUAGE_CODE %}</h2>
@@ -280,17 +281,6 @@
                     </div>
                 </div>
             </div>
-            <!--
-                <a class="col-xs-12 col-sm-12" href="{% url 'tournaments' %}">
-                    <button type="button" class="btn btn-outline-danger hidden-sm-down"
-                            style="padding: 5; margin: 10 0 0 0; width: 100%">Zum Turnierkalender der GPS 2018
-                    </button>
-                </a>
-                <a class="col-xs-12 col-sm-12" href="{% url 'tournament_signup' %}">
-                    <button type="button" class="btn btn-outline-danger hidden-sm-down"
-                            style="padding: 5; margin: 10 0 0 0; width: 100%">Zur Anmeldung für die GPS 2018
-                    </button>
-                </a>-->
         </div>
 
     </div>
@@ -304,8 +294,8 @@
             <div class="stats1">
                 <div class="col-sm-12" style="flex: none">
                     <hr class="separador_torneo">
-                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans
-                        "Statistics" %}</h3>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
+                        {% trans "Statistics" %}</h3>
                     <hr class="separador_torneo">
                 </div>
 
@@ -429,176 +419,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- Últimos partidos
-            <div class="col-sm-12" style="margin-top: 20px">
-                <hr class="separador_torneo">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Letzte
-                    Spiele</h3>
-                <hr class="separador_torneo">
-            </div>
-
-            <!-- Rangliste
-            <div class="col-sm-12">
-                <hr class="separador_torneo">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Rangliste</h3>
-                <hr class="separador_torneo">
-
-                <select id="cd-dropdown" class="cd-select select">
-                    <option value="-1" selected>Wähl eine Kategorie aus</option>
-                    <option value="1">Damen</option>
-                    <option value="2">Herren</option>
-                    <option value="3">Junioren U20</option>
-                    <option value="4">Senioren Ü45</option>
-                    <option value="5">Senioren Ü50</option>
-                    <option value="6">Senioren Ü55</option>
-                    <option value="8">Nord-Deutschland</option>
-                    <option value="9">Süd-Deutschland</option>
-                    <option value="10">West-Deutschland</option>
-                    <option value="11">Ost-Deutschland</option>
-
-                </select>
-                <div class="col-sm-12">
-                    <ul class="teams">
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: red; font-weight: 600">01.</a>
-                        </ul>
-                        <div class="th col-sm-1">
-                            <img class="flag" style="margin: 10 0 0 -12; width: 80%"
-                                 src="{% static 'images/flags/32/Germany.png' %}">
-                            <!--<i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                        <ul class="th col-sm-7">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">F. González</a>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">1000</a>
-                        </ul>
-
-                    </ul>
-                    <ul class="teams">
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: red; font-weight: 600">01.</a>
-                        </ul>
-                        <div class="th col-sm-1">
-                            <img class="flag" style="margin: 10 0 0 -12; width: 80%"
-                                 src="{% static 'images/flags/32/Germany.png' %}">
-                            <!--<i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                        <ul class="th col-sm-7">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">F. González</a>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">1000</a>
-                        </ul>
-
-                    </ul>
-                    <ul class="teams">
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: red; font-weight: 600">01.</a>
-                        </ul>
-                        <div class="th col-sm-1">
-                            <img class="flag" style="margin: 10 0 0 -12; width: 80%"
-                                 src="{% static 'images/flags/32/Germany.png' %}">
-                            <!--<i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                        <ul class="th col-sm-7">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">F. González</a>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">1000</a>
-                        </ul>
-
-                    </ul>
-                    <ul class="teams">
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: red; font-weight: 600">01.</a>
-                        </ul>
-                        <div class="th col-sm-1">
-                            <img class="flag" style="margin: 10 0 0 -12; width: 80%"
-                                 src="{% static 'images/flags/32/Germany.png' %}">
-                            <!--<i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                        <ul class="th col-sm-7">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">F. González</a>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">1000</a>
-                        </ul>
-
-                    </ul>
-                    <ul class="teams">
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: red; font-weight: 600">01.</a>
-                        </ul>
-                        <div class="th col-sm-1">
-                            <img class="flag" style="margin: 10 0 0 -12; width: 80%"
-                                 src="{% static 'images/flags/32/Germany.png' %}">
-                            <!--<i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
-                        </div>
-                        <ul class="th col-sm-7">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">F. González</a>
-                        </ul>
-                        <ul class="th col-sm-2">
-                            <a class="text_club"
-                               style="text-transform: uppercase; color: black; font-weight: 400">1000</a>
-                        </ul>
-
-                    </ul>
-                </div>
-                <button type="button"
-                        class="col-xs-12 col-sm-12 btn btn-danger"
-                        style="padding: 0; margin-top:15px">Zu den Ranglisten
-                </button>
-
-            </div>
-
-
-            <!-- Último Club
-
-            <div class="col-sm-12">
-                <hr class="separador_torneo">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">Letzter
-                    Standort</h3>
-                <hr class="separador_torneo">
-                <div class="col-sm-12">
-                    <img class="picture_club" src="{% static 'images/germany/clubs/hahn.png' %}">
-                </div>
-                <div class="th col-sm-12" style="margin-top:10px; text-align:center">
-                    <div><a class="news-title"
-                            style="width: 100%; text-transform: uppercase; font-weight: bold">Sportcenter Hahn -
-                        Padel Geretsried</a>
-                    </div>
-                    <div><a class="news-title"
-                            style="width: 100%; text-transform: uppercase; font-weight: 100">Geretsried, Bayern</a>
-                    </div>
-                    <div><a class="news-title"
-                            style="width: 100%; text-transform: uppercase; font-weight: 100">Eröffnung: April
-                        2018</a>
-                    </div>
-                </div>
-                <button type="button"
-                        class="col-xs-12 col-sm-12 btn btn-danger"
-                        style="padding: 0; margin-top:15px; margin-bottom: 15px">Zu den Standorten
-                </button>
-            </div> -->
-
-
         </div>
     </div>
 </div>
