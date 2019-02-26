@@ -22,6 +22,7 @@ from anmeldung.forms import get_new_player_form
 from anmeldung.tokens import account_activation_token
 
 from tournaments.models import Person
+from tournaments.models import Tournament
 from tournaments.models import get_tournament_games
 from tournaments.models import get_padel_tournament_teams
 from tournaments.models import get_padel_tournament
@@ -53,11 +54,18 @@ def test_view(request):
 
 
 def tournament_signup(request, id=None):
+    return render(request, '404.html')
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         if registration_form.is_valid():
             player_a = registration_form.cleaned_data['player_a']
             player_b = registration_form.cleaned_data['player_b']
+            tournament = registration_form.cleaned_data['tournament']
+
+            # check tournament signup is on
+            if tournament.signup == False:
+                registration_form.add_error('tournament', 'This tournament is not open to registrations.')
+                return render(request, 'tournament_signup.html', {'form': registration_form})
 
             # check player is not twice in the team
             if player_a.id == player_b.id:
@@ -97,6 +105,7 @@ def tournament_signup(request, id=None):
             form = RegistrationForm(initial={'tournament': id})
         else:
             form = RegistrationForm()
+        form.fields['tournament'].queryset = Tournament.objects.filter(signup=True)
         return render(request, 'tournament_signup.html', {'form': form})
 
 
@@ -154,6 +163,7 @@ def clubs(request):
 
 
 def new_player(request):
+    return render(request, '404.html')
     new_player_form = get_new_player_form()
     if request.method == 'POST':
         new_player_form = new_player_form(request.POST)
@@ -181,6 +191,7 @@ def new_player(request):
 
 
 def ranking(request):
+    return render(request, '404.html')
     if request.method == 'POST':
         form = RankingForm(request.POST)
         if form.is_valid():
@@ -196,8 +207,10 @@ def ranking(request):
 def cardplayer(request):
     return render(request, 'card-player.html')
 
+
 def cardteam(request):
     return render(request, 'card-team.html')
+
 
 def activate(request, registration_uidb64, player_uidb64, token):
     activated = False
