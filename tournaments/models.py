@@ -734,3 +734,24 @@ def last_monday():
     d = datetime.now().date()
     d -= timedelta(days=d.weekday())
     return d
+
+
+def total_tournaments():
+    return Tournament.objects.all().count()
+
+
+def total_clubs():
+    return Club.objects.all().count()
+
+
+def total_persons():
+    return Person.objects.all().count()
+
+
+def total_rankings():
+    return PadelRanking.objects.values('division').distinct().count()
+
+
+def total_courts():
+    from django.db.models import Sum, F
+    return Club.objects.all().aggregate(total=Sum(F('indoor_courts') + F('outdoor_courts')))['total']
