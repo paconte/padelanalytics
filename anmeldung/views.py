@@ -30,6 +30,11 @@ from tournaments.models import get_padel_tournaments
 from tournaments.models import get_padel_ranking
 from tournaments.models import get_clubs
 from tournaments.models import get_similar_tournaments
+from tournaments.models import total_clubs
+from tournaments.models import total_tournaments
+from tournaments.models import total_rankings
+from tournaments.models import total_persons
+from tournaments.models import total_courts
 from tournaments.service import Fixtures
 
 # Get an instance of a logger
@@ -37,7 +42,12 @@ logger = logging.getLogger(__name__)
 
 
 def index(request):
-    return render(request, 'landing.html')
+    return render(request, 'landing.html',
+                  {'total_clubs': total_clubs(),
+                   'total_tournaments': total_tournaments(),
+                   'total_rankings': total_rankings(),
+                   'total_persons': total_persons(),
+                   'total_courts': total_courts()})
 
 
 def test_view(request):

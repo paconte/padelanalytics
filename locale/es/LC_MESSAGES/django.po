@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-20 19:17+0000\n"
+"POT-Creation-Date: 2019-03-01 17:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: anmeldung/forms.py:13
+msgid "Men's Open"
+msgstr ""
+
+#: anmeldung/forms.py:13
+msgid "Women's Open"
+msgstr ""
+
+#: anmeldung/forms.py:13
+msgid "Mixed Open"
+msgstr ""
+
+#: anmeldung/forms.py:14
+msgid "Men's 45"
+msgstr ""
+
+#: anmeldung/forms.py:14
+msgid "Women's 40"
+msgstr ""
+
+#: anmeldung/forms.py:14
+msgid "Mixed 40"
+msgstr ""
 
 #: anmeldung/templates/404.html:17
 msgid "Site not found!"
@@ -27,13 +51,13 @@ msgid "Are you looking for a club or tournament?"
 msgstr "¿Estas buscando un club o torneo?"
 
 #: anmeldung/templates/404.html:23 anmeldung/templates/base.html:65
-#: anmeldung/templates/landing.html:333
+#: anmeldung/templates/landing.html:333 anmeldung/templates/landing.html:394
 #: anmeldung/templates/turnierliste.html:17
 msgid "Tournaments"
 msgstr "Torneos"
 
 #: anmeldung/templates/404.html:28 anmeldung/templates/base.html:61
-#: anmeldung/templates/landing.html:310
+#: anmeldung/templates/landing.html:310 anmeldung/templates/landing.html:370
 msgid "Clubs"
 msgstr ""
 
@@ -97,7 +121,7 @@ msgstr "Visita el calendario"
 msgid "Tournament sign up"
 msgstr "Inscribirse a torneo"
 
-#: anmeldung/templates/base.html:75
+#: anmeldung/templates/base.html:75 anmeldung/templates/ranking2.html:18
 msgid "Ranking"
 msgstr ""
 
@@ -133,16 +157,32 @@ msgstr "Visita los clubs"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: anmeldung/templates/landing.html:322
+#: anmeldung/templates/landing.html:322 anmeldung/templates/landing.html:382
 msgid "Courts"
 msgstr "Pistas"
 
-#: anmeldung/templates/landing.html:344
+#: anmeldung/templates/landing.html:344 anmeldung/templates/landing.html:405
 msgid "Players"
 msgstr "Jugadores"
 
-#: anmeldung/templates/landing.html:355
+#: anmeldung/templates/landing.html:355 anmeldung/templates/landing.html:416
 msgid "Rankings"
+msgstr ""
+
+#: anmeldung/templates/landing.html:429
+msgid "Find Padel-clubs close to your place"
+msgstr ""
+
+#: anmeldung/templates/landing.html:434
+msgid "FIND THEM NOW!"
+msgstr ""
+
+#: anmeldung/templates/landing.html:442
+msgid "Check the Tournament Calendar, all Results..."
+msgstr ""
+
+#: anmeldung/templates/landing.html:449
+msgid "...and the Ranking of the different Circuits and Statistics"
 msgstr ""
 
 #: anmeldung/templates/new_player_success.html:18
