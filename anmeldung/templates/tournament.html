@@ -43,7 +43,7 @@
                 </button>
                 <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
                     {% for category, id in similar_tournaments.items %}
-                    <a class="dropdown-item" href="{% url 'tournament' id %}">{{category}}</a>
+                    <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{{category}}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -102,7 +102,7 @@
 
     <!-- Jugadores Inscritos -->
     <section id="content1" style="height: 100%">
-        <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px">
+        <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; z-index:-1">
             <div class="box">
                 <!-- Fecha Abajo -->
                 <div class="col-xs-12 col-sm-4" style="left: 0px">
@@ -184,7 +184,7 @@
 
     <!-- Resultados Grupos -->
     <section id="content2" class="group-standings" style="min-height: 100%">
-        <div class="nopadding card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
+        <div class="nopadding card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex; z-index:-1">
             <div class="col-sm-12">
                 {% if "PoolA" in pool_tables %}
                 <table class="table-big-light col-sm-12" style="float: left">
@@ -579,8 +579,8 @@
     </section>
 
     <!-- Fase K.O. -->
-    <section id="content3" style="sheight: 100%">
-        <div class="nopadding card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex">
+    <section id="content3" style="height: 100%">
+        <div class="nopadding card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex; z-index:-1">
             <div class="nopadding col-xs-12 col-sm-12">
                 {% for key, values in ko_games.Gold.items %}
     <!-- A partir de 1/16 de final -->
@@ -1060,7 +1060,7 @@
                     {% if "KO1" in key.round %}
                 <div class="col-xs-12 col-sm-12 col-md-4" style="float: left">
                     <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                        {% trans "Semifinal" %}
+                        {% trans "Final" %}
                     </h3>
                     <hr class="separador_torneo">
                     {% for k, game in values.items %}
