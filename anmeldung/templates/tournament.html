@@ -93,11 +93,18 @@
     {% endif %}
 
     {% if real_teams %}
-    <input id="tab2" type="radio" name="tabs" checked>
-    <label for="tab2">{% trans "Groups" %}</label>
-
-    <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">{% trans "K.O." %}</label>
+        {% if pool_games %}
+            <input id="tab2" type="radio" name="tabs" checked>
+            <label for="tab2">{% trans "Groups" %}</label>
+        {% endif %}
+        {% if ko_games %}
+        {% if not pool_games %}
+            <input id="tab3" type="radio" name="tabs" checked>
+        {% else %}
+            <input id="tab3" type="radio" name="tabs">
+        {% endif %}
+            <label for="tab3">{% trans "K.O." %}</label>
+        {% endif %}
     {% endif %}
 
     <!-- Jugadores Inscritos -->
