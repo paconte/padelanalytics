@@ -20,31 +20,31 @@ msgstr ""
 
 #: anmeldung/forms.py:13
 msgid "Men's Open"
-msgstr ""
+msgstr "Masculino"
 
 #: anmeldung/forms.py:13
 msgid "Women's Open"
-msgstr ""
+msgstr "Femenino"
 
 #: anmeldung/forms.py:13
 msgid "Mixed Open"
-msgstr ""
+msgstr "Mixto"
 
 #: anmeldung/forms.py:14
 msgid "Men's 45"
-msgstr ""
+msgstr "Masculino 45"
 
 #: anmeldung/forms.py:14
 msgid "Women's 40"
-msgstr ""
+msgstr "Femenino 40"
 
 #: anmeldung/forms.py:14
 msgid "Mixed 40"
-msgstr ""
+msgstr "Mixto 40"
 
 #: anmeldung/templates/404.html:17
 msgid "Site not found!"
-msgstr ""
+msgstr "Página no encontrada."
 
 #: anmeldung/templates/404.html:18
 msgid "Are you looking for a club or tournament?"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: anmeldung/templates/activation_failed.html:19
 msgid "The activation link is not valid"
-msgstr ""
+msgstr "El link de verificación no es válido."
 
 #: anmeldung/templates/activation_failed.html:21
 msgid "Check again your inbox or sign up again."
@@ -171,19 +171,19 @@ msgstr ""
 
 #: anmeldung/templates/landing.html:429
 msgid "Find Padel-clubs close to your place"
-msgstr ""
+msgstr "Encuentra clubs de padel cerca de ti"
 
 #: anmeldung/templates/landing.html:434
 msgid "FIND THEM NOW!"
-msgstr ""
+msgstr "ENCUENTRALOS AHORA"
 
 #: anmeldung/templates/landing.html:442
 msgid "Check the Tournament Calendar, all Results..."
-msgstr ""
+msgstr "Visita el calendaria de torneos, los resultados..."
 
 #: anmeldung/templates/landing.html:449
 msgid "...and the Ranking of the different Circuits and Statistics"
-msgstr ""
+msgstr "...y el ranking de los distintos circuitos y sus estadisticas"
 
 #: anmeldung/templates/new_player_success.html:18
 msgid "New player successfully saved"

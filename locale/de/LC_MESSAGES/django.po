@@ -20,27 +20,27 @@ msgstr ""
 
 #: anmeldung/forms.py:13
 msgid "Men's Open"
-msgstr ""
+msgstr "Herren"
 
 #: anmeldung/forms.py:13
 msgid "Women's Open"
-msgstr ""
+msgstr "Damen"
 
 #: anmeldung/forms.py:13
 msgid "Mixed Open"
-msgstr ""
+msgstr "Mix"
 
 #: anmeldung/forms.py:14
 msgid "Men's 45"
-msgstr ""
+msgstr "Herren 45"
 
 #: anmeldung/forms.py:14
 msgid "Women's 40"
-msgstr ""
+msgstr "Damen 40"
 
 #: anmeldung/forms.py:14
 msgid "Mixed 40"
-msgstr ""
+msgstr "Mix 40"
 
 #: anmeldung/templates/404.html:17
 msgid "Site not found!"
@@ -97,11 +97,11 @@ msgstr ""
 
 #: anmeldung/templates/activation_failed.html:19
 msgid "The activation link is not valid"
-msgstr ""
+msgstr "Der Aktivierungslink ist nicht gültig."
 
 #: anmeldung/templates/activation_failed.html:21
 msgid "Check again your inbox or sign up again."
-msgstr ""
+msgstr "Überprüfen Sie erneut Ihren Posteingang oder melden Sie sich erneut an."
 
 #: anmeldung/templates/activation_failed.html:25
 #: anmeldung/templates/landing.html:280
@@ -179,15 +179,15 @@ msgstr ""
 
 #: anmeldung/templates/landing.html:434
 msgid "FIND THEM NOW!"
-msgstr ""
+msgstr "FINDE SIE JETZT"
 
 #: anmeldung/templates/landing.html:442
 msgid "Check the Tournament Calendar, all Results..."
-msgstr ""
+msgstr "Siehe Turnierkalender, alle Ergebnisse"
 
 #: anmeldung/templates/landing.html:449
 msgid "...and the Ranking of the different Circuits and Statistics"
-msgstr ""
+msgstr "...und die Ranglisten aller Turnierserien und ihre Statistiken"
 
 #: anmeldung/templates/new_player_success.html:18
 msgid "New player successfully saved"
