@@ -113,6 +113,23 @@ class Team(models.Model):
         return self.name
 
 
+class Club(models.Model):
+    name = models.CharField(max_length=50)
+    city = models.CharField(max_length=30)
+    province = models.CharField(max_length=30)
+    postcode = models.PositiveIntegerField(validators=[MinValueValidator(99), MaxValueValidator(1000000)])
+    email = models.EmailField()
+    phone = models.CharField(max_length=24)
+    address = models.CharField(max_length=120, blank=True)
+    indoor_courts = models.PositiveIntegerField()
+    outdoor_courts = models.PositiveIntegerField()
+    logo = models.ImageField(upload_to=club_directory_path, default='default.jpg')
+    cover_photo = models.ImageField(upload_to=club_directory_path, default='pista.jpg')
+
+    def __str__(self):
+        return self.name
+
+
 class Tournament(models.Model):
     TOURNAMENT_CHOICES = (("PADEL", "PADEL"), ("TOUCH", "TOUCH"))
     type = models.CharField(max_length=10, choices=TOURNAMENT_CHOICES, default="PADEL")
@@ -126,6 +143,7 @@ class Tournament(models.Model):
     padel_serie = models.CharField(choices=SERIE_GERMANY, max_length=20, default='GPS-500', null=True, blank=True)
     signup = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
+    club = models.ForeignKey(Club, on_delete=models.SET_NULL, blank=True, null=True, default=None)
 
     class Meta:
         ordering = ['name']
@@ -192,24 +210,6 @@ class Tournament(models.Model):
                     return WOMEN_27
 
         assert "A name for the division: %s could not be found." % self.division
-
-
-class Club(models.Model):
-    name = models.CharField(max_length=50)
-    city = models.CharField(max_length=30)
-    province = models.CharField(max_length=30)
-    postcode = models.PositiveIntegerField(validators=[MinValueValidator(99), MaxValueValidator(1000000)])
-    email = models.EmailField()
-    phone = models.CharField(max_length=24)
-    address = models.CharField(max_length=120, blank=True)
-    indoor_courts = models.PositiveIntegerField()
-    outdoor_courts = models.PositiveIntegerField()
-    logo = models.ImageField(upload_to=club_directory_path, default='default.jpg')
-    cover_photo = models.ImageField(upload_to=club_directory_path, default='pista.jpg')
-    tournaments_organized = models.ManyToManyField(Tournament, blank=True)
-
-    def __str__(self):
-        return self.name
 
 
 class Player(models.Model):
