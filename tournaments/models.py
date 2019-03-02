@@ -321,13 +321,13 @@ class GameRound(models.Model):
             if self.round == other.round:
                 result = self.number_teams.__lt__(other.number_teams)
             else:
-                if self.round == self.FINAL:
-                    result = False
-                elif other.round == self.FINAL:
-                    result = True
-                elif self.round == self.THIRD_POSITION:
+                if self.round == self.THIRD_POSITION:
                     result = False
                 elif other.round == self.THIRD_POSITION:
+                    result = True
+                elif self.round == self.FINAL:
+                    result = False
+                elif other.round == self.FINAL:
                     result = True
                 elif self.round == self.SEMI:
                     result = False
@@ -428,13 +428,13 @@ class GameRound(models.Model):
             if self.round == other.round:
                 result = self.number_teams.__cmp__(other.number_teams)
             else:
-                if self.round == self.FINAL:
-                    result = 1
-                elif other.round == self.FINAL:
-                    result = -1
-                elif self.round == self.THIRD_POSITION:
+                if self.round == self.THIRD_POSITION:
                     result = 1
                 elif other.round == self.THIRD_POSITION:
+                    result = -1
+                elif self.round == self.FINAL:
+                    result = 1
+                elif other.round == self.FINAL:
                     result = -1
                 elif self.round == self.SEMI:
                     result = 1
