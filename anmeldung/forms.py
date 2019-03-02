@@ -10,10 +10,10 @@ from tournaments.service import all_mondays_until
 from django.utils.translation import gettext as _
 
 
-DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', _('Men\'s Open')), ('WO', _('Women\'s Open')), ('XO', _('Mixed Open')),
+DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', _('Men\'s')), ('WO', _('Women\'s')), ('XO', _('Mixed')),
                     ('M45', _('Men\'s 45')), ('W40', _('Women\'s 40')), ('X40', _('Mixed 40')))
 
-#DIVISION_CHOICES = (('MO', _('Mens Open')), ('WO', _('Womens Open')))
+#DIVISION_CHOICES = (('MO', _('Mens')), ('WO', _('Womens')))
 
 
 
