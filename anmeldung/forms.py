@@ -10,7 +10,7 @@ from tournaments.service import all_mondays_until
 from django.utils.translation import gettext as _
 
 
-DIVISION_CHOICES = (('MO', _('Men\'s Open')), ('WO', _('Women\'s Open')), ('XO', _('Mixed Open')),
+DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', _('Men\'s Open')), ('WO', _('Women\'s Open')), ('XO', _('Mixed Open')),
                     ('M45', _('Men\'s 45')), ('W40', _('Women\'s 40')), ('X40', _('Mixed 40')))
 
 #DIVISION_CHOICES = (('MO', _('Mens Open')), ('WO', _('Womens Open')))
@@ -23,7 +23,7 @@ class RankingForm(forms.Form):
     date = forms.ChoiceField(choices=all_mondays_until(d, True), initial=last_monday(),
     #date = forms.ChoiceField(choices=all_mondays_since(datetime.now().year), initial='ALL',
                              widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
-    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='MO',
+    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='ALL',
                                  widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
 
 
