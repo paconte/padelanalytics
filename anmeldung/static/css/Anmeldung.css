@@ -24,7 +24,7 @@ text-transform: uppercase;
 
 .card:hover 				{box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);}
 
-.card button 				{float: left; height: 50px;}
+.card button 				{float: left; height: 45px;}
 .card button ul 			{text-align: center}
 
 .card .category	{

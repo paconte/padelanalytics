@@ -1421,6 +1421,8 @@ max-width: 50px;
 
 }
 
+
+
 /* max-width: 768px */
 
 @media (max-width: 768px) {
@@ -1517,6 +1519,8 @@ margin-top: 10px;
     top:25px;
 }
 
+
+
 .card-container {
     margin: 0;
     padding: 0;
@@ -1596,6 +1600,8 @@ margin: 0px 0px 0px 0px;
 
 .margen {top:-3px;}
 
+.cat {top:-3px;}
+
 .message_text{
 margin-top: 40px;
 }
@@ -1620,6 +1626,10 @@ font-size: 1rem;
     margin: 0 3px;
   }
 
+.card button {
+    height:36px;
+}
+
 .picture{margin-right: 8px;}
 
 input,
@@ -1641,6 +1651,8 @@ font-size: 14px;
     max-height:25px;
     margin: 0px;
   }
+
+
 
 btnanmeldung {
 margin-top: 15px;
