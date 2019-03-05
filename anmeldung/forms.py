@@ -10,11 +10,8 @@ from tournaments.service import all_mondays_until
 from django.utils.translation import gettext as _
 
 
-DIVISION_CHOICES = (('ALL', 'ALL'), ('MO', _('Men\'s')), ('WO', _('Women\'s')), ('XO', _('Mixed')),
-                    ('M45', _('Men\'s 45')), ('W40', _('Women\'s 40')), ('X40', _('Mixed 40')))
-
-#DIVISION_CHOICES = (('MO', _('Mens')), ('WO', _('Womens')))
-
+DIVISION_CHOICES = (('ALL', _('ALL')), ('MO', _('Men')), ('WO', _('Women')), ('XO', _('Mixed')),
+                    ('M45', _('Men 45')), ('W40', _('Women 40')), ('X40', _('Mixed 40')))
 
 
 class RankingForm(forms.Form):
@@ -28,11 +25,11 @@ class RankingForm(forms.Form):
 
 
 class TournamentsForm(forms.Form):
-    YEAR_CHOICES = (('ALL', 'ALL'), ('2018', '2018'))
+    YEAR_CHOICES = (('ALL', _('ALL')), ('2018', '2018'), ('2019', '2019'))
 
-    year = forms.ChoiceField(choices=YEAR_CHOICES, initial='ALL',
+    year = forms.ChoiceField(choices=YEAR_CHOICES, initial=_('ALL'),
                              widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
-    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial='ALL',
+    division = forms.ChoiceField(choices=DIVISION_CHOICES, initial=_('ALL'),
                                  widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
 
 

@@ -42,7 +42,7 @@
                 </button>
                 <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
                     {% for division, id in similar_tournaments.items %}
-                    <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{{division}}</a>
+                    <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{% trans division %}</a>
                     {% endfor %}
                 </div>
             </div>
