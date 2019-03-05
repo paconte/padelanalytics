@@ -228,7 +228,7 @@ msgstr "Categoría"
 #, fuzzy
 #| msgid "Tournament sign up"
 msgid "Tournament Information"
-msgstr "Inscribirse a torneo"
+msgstr "Información del torneo"
 
 #: anmeldung/templates/tournament.html:41
 msgid "Change Division"

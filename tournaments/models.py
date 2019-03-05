@@ -684,6 +684,7 @@ def get_padel_tournament_teams(tournament):
     for team in teams:
         players = team.players.all()
         team.player_a = players[0]
+        print('--- #####################', players)
         # case bye player:
         if len(players) == 1 and team.player_a.first_name.lower() == "bye":
             team.player_b = players[0]
@@ -718,18 +719,18 @@ def get_padel_tournaments(year=None, division=None):
 
 def translate_division(division):
     translations = {'MO': _('Men'), 'WO': _('Women'), 'XO': _('Mixed'), 'MXO': _('Mixed'),
-                    'M45': _('Men 45'), 'W40': _('Women 40'), 'X40': _('Mixed 40')}
+                    'M45': _('Men 45'), 'W40': _('Women 40'), 'X40': _('Mixed 40'), 'SMX': _('Senior Mixed')}
     return translations[division]
 
 
 def get_similar_tournaments(t_id):
     result = dict()
     tournament = get_padel_tournament(t_id)
-    similars = Tournament.objects.filter(date=tournament.date, city=tournament.city)
-    for t in similars:
-        if t.id != tournament.id:
-            print(t.division)
-            result[translate_division(t.division)] = t.id
+    if tournament.date:
+        similars = Tournament.objects.filter(date=tournament.date, city=tournament.city)
+        for t in similars:
+            if t.id != tournament.id:
+                result[str(t.padel_serie) + ' ' + str(translate_division(t.division))] = t.id
     print(result)
     return result
 
