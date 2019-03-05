@@ -8,15 +8,15 @@ from django_countries.fields import CountryField
 
 DATA_FILES = './data_files/'
 
-MIXED_OPEN = 'Mixed Open'
-MEN_OPEN = 'Mens Open'
-WOMEN_OPEN = 'Womens Open'
-SENIOR_MIX = 'Senior Mix Open'
-MEN_30 = 'Mens 30'
-MEN_40 = 'Mens 40'
-MEN_45 = 'Mens 45'
-SENIOR_WOMEN = 'Senior Womes Open'
-WOMEN_27 = 'Women 27'
+MIXED_OPEN = _('Mixed')
+MEN_OPEN = _('Men')
+WOMEN_OPEN = _('Women')
+SENIOR_MIX = _('Senior Mix Open')
+MEN_30 = _('Men 30')
+MEN_40 = _('Men 40')
+MEN_45 = _('Men 45')
+SENIOR_WOMEN = _('Senior Womes Open')
+WOMEN_27 = _('Women 27')
 MXO = 'MXO'
 MO = 'MO'
 WO = 'WO'
@@ -259,7 +259,7 @@ class GameRound(models.Model):
 
     ordered_rounds = [FINAL, THIRD_POSITION, SEMI, FIFTH_POSITION, QUARTER, SIXTH_POSITION,
                       SEVENTH_POSITION, EIGHTH_POSITION, EIGHTH, NINTH_POSITION, TENTH_POSITION,
-                      ELEVENTH_POSITION, TWELFTH_POSITION, THIRTEENTH_POSITION, FOURTEENTH_POSITION,
+                      ELEVENTH_POSITION, TWELFTH_POSITION, SIXTEENTH, THIRTEENTH_POSITION, FOURTEENTH_POSITION,
                       FIFTEENTH_POSITION, SIXTEENTH_POSITION, EIGHTEENTH_POSITION, TWENTIETH_POSITION]
 
     GAME_ROUND_CHOICES = (
@@ -345,13 +345,17 @@ class GameRound(models.Model):
                     result = False
                 elif other.round == self.SEVENTH_POSITION:
                     result = True
-                elif self.round == self.EIGHTH_POSITION:
-                    result = False
-                elif other.round == self.EIGHTH_POSITION:
-                    result = True
                 elif self.round == self.QUARTER:
                     result = False
                 elif other.round == self.QUARTER:
+                    result = True
+                elif self.round == self.EIGHTH:
+                    result = False
+                elif other.round == self.EIGHTH:
+                    result = True
+                elif self.round == self.EIGHTH_POSITION:
+                    result = False
+                elif other.round == self.EIGHTH_POSITION:
                     result = True
                 elif self.round == self.NINTH_POSITION:
                     result = False
@@ -455,6 +459,10 @@ class GameRound(models.Model):
                 elif self.round == self.QUARTER:
                     result = 1
                 elif other.round == self.QUARTER:
+                    result = -1
+                elif self.round == self.EIGHTH:
+                    result = 1
+                elif other.round == self.EIGHTH:
                     result = -1
                 elif self.round == self.NINTH_POSITION:
                     result = 1
@@ -708,13 +716,21 @@ def get_padel_tournaments(year=None, division=None):
         return Tournament.objects.order_by('-date', 'city')
 
 
+def translate_division(division):
+    translations = {'MO': _('Men'), 'WO': _('Women'), 'XO': _('Mixed'), 'MXO': _('Mixed'),
+                    'M45': _('Men 45'), 'W40': _('Women 40'), 'X40': _('Mixed 40')}
+    return translations[division]
+
+
 def get_similar_tournaments(t_id):
     result = dict()
     tournament = get_padel_tournament(t_id)
     similars = Tournament.objects.filter(date=tournament.date, city=tournament.city)
     for t in similars:
         if t.id != tournament.id:
-            result[t.division] = t.id
+            print(t.division)
+            result[translate_division(t.division)] = t.id
+    print(result)
     return result
 
 
