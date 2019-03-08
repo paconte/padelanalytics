@@ -670,6 +670,7 @@ class PadelRanking(models.Model):
 
     date = models.DateField()
     points = models.PositiveIntegerField(default=0, null=False)
+    variation = models.SmallIntegerField(default=None, null=True, blank=True)
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
     country = CountryField()
     circuit = models.CharField(max_length=30, default="oficial", choices=CIRCUIT)
@@ -682,7 +683,7 @@ def get_padel_ranking(date=None, division=None):
         division = MO
     if date is None:
         date = last_monday()
-    return PadelRanking.objects.order_by('-points').filter(division=division).filter(date=date)
+    return PadelRanking.objects.filter(division=division).filter(date=date).order_by('-points')
 
 
 def get_tournament_games(tournament):
