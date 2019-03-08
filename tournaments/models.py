@@ -11,12 +11,22 @@ DATA_FILES = './data_files/'
 MIXED_OPEN = _('Mixed')
 MEN_OPEN = _('Men')
 WOMEN_OPEN = _('Women')
+
 SENIOR_MIX = _('Senior Mix Open')
+MIX_40 = _('Mixed 40')
+
 MEN_30 = _('Men 30')
 MEN_40 = _('Men 40')
 MEN_45 = _('Men 45')
+<<<<<<< HEAD
 SENIOR_WOMEN = _('Senior Women Open')
+=======
+
+SENIOR_WOMEN = _('Senior Womes Open')
+>>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
 WOMEN_27 = _('Women 27')
+WOMEN_40 = _('Women 40')
+
 MXO = 'MXO'
 MO = 'MO'
 WO = 'WO'
@@ -25,6 +35,10 @@ W27 = 'W27'
 M30 = 'M30'
 M40 = 'M40'
 M45 = 'M45'
+
+
+PADEL_DIVISION_CHOICES = (('ALL', _('ALL')), ('MO', _('Men')), ('WO', _('Women')), ('XO', _('Mixed')),
+                    ('M45', _('Men 45')), ('W40', _('Women 40')), ('X40', _('Mixed 40')))
 
 TOUCH_DIVISION_CHOICES = (
     (MXO, MIXED_OPEN),
@@ -684,7 +698,6 @@ def get_padel_tournament_teams(tournament):
     for team in teams:
         players = team.players.all()
         team.player_a = players[0]
-        print('--- #####################', players)
         # case bye player:
         if len(players) == 1 and team.player_a.first_name.lower() == "bye":
             team.player_b = players[0]
