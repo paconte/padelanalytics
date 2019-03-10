@@ -13,11 +13,12 @@ from django.utils.translation import gettext as _
 
 class RankingForm(forms.Form):
     import datetime
-    d = datetime.date(2018, 1, 1)
-    date = forms.ChoiceField(choices=all_mondays_until(d, True), initial=last_monday(),
+    d1 = datetime.date(2018, 1, 1)
+    d2 = datetime.date(2018, 12, 31)
+    date = forms.ChoiceField(choices=all_mondays_until(d1, True), initial=last_monday(d2),
     #date = forms.ChoiceField(choices=all_mondays_since(datetime.now().year), initial='ALL',
                              widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
-    division = forms.ChoiceField(choices=PADEL_DIVISION_CHOICES, initial=_('ALL'),
+    division = forms.ChoiceField(choices=PADEL_DIVISION_CHOICES, initial=_('MO'),
                                  widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
 
 
