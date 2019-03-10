@@ -44,7 +44,7 @@
                 <div class="carousel-inner" role="listbox">
                     <!--First slide-->
                     <div class="carousel-item active" style="flex-wrap: wrap">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -6px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters" style
@@ -65,7 +65,7 @@
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -89,7 +89,7 @@
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -112,7 +112,7 @@
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -184,10 +184,10 @@
 
                 <div>
                     <div style="margin: 0 8 0 8"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
+                        <div class="col-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
                         </div>
-                        <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info" style="">
+                        <button type="button" class="col-8 col-sm-8 btn btn-danger stats_vertical_info" style="">
                             {{total_clubs}}<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">{% trans "Clubs" %}</h2>
@@ -195,11 +195,11 @@
                     </a>
                     </div>
                     <div style="margin: 5 8 0 8"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
+                        <div class="col-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
                             </div>
                         </div>
-                        <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
+                        <button type="button" class="col-8 col-sm-8 btn btn-danger stats_vertical_info">
                             {{total_courts}}<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
@@ -207,10 +207,10 @@
                     </a>
                     </div>
                     <div style="margin: 5 8 0 8"><a href="{% url 'tournaments' %}">
-                        <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
+                        <div class="col-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-trophy"></i></div>
                         </div>
-                        <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
+                        <button type="button" class="col-8 col-sm-8 btn btn-danger stats_vertical_info">
                             {{total_tournaments}}<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
@@ -218,10 +218,10 @@
                     </a>
                     </div>
                     <div style="margin: 5 8 0 8"><a href="X">
-                        <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
+                        <div class="col-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-user"></i></div>
                         </div>
-                        <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
+                        <button type="button" class="col-8 col-sm-8 btn btn-danger stats_vertical_info">
                             {{total_persons}}<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">{% trans "Players" %}</h2>
@@ -229,10 +229,10 @@
                     </a>
                     </div>
                     <div style="margin: 0 8 0 8"><a href="X">
-                        <div class="col-xs-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
+                        <div class="col-4 col-sm-4 btn btn-danger stats_vertical_logo" style="float:left">
                             <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
                         </div>
-                        <button type="button" class="col-xs-8 col-sm-8 btn btn-danger stats_vertical_info">
+                        <button type="button" class="col-8 col-sm-8 btn btn-danger stats_vertical_info">
                             {{total_rankings}}<br>
                             <h2 style="font-size: 12px;
                     font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
@@ -243,59 +243,59 @@
             </div>
             <div class="stats2" style="margin-top: 15px">
                 <div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
                         </div>
                         <button type="button"
-                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_clubs}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Clubs" %}</h2>
                         </button>
                     </a>
                     </div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
                             </div>
                         </div>
                         <button type="button"
-                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_courts}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
                         </button>
                     </a>
                     </div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a
                             href="{% url 'tournaments' %}">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-trophy"></i></div>
                         </div>
                         <button type="button"
-                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_tournaments}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Tournaments"
                                 %}</h2>
                         </button>
                     </a>
                     </div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-user"></i></div>
                         </div>
                         <button type="button"
-                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_players}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Players" %}</h2>
                         </button>
                     </a>
                     </div>
-                    <div class="datos col-xs-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-xs-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
                             <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
                         </div>
                         <button type="button"
-                                class="dato_numerico col-xs-12 col-sm-12 btn btn-danger stats_vertical_info">
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_rankings}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
                         </button>
@@ -309,6 +309,16 @@
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
     <div class="container_12">
+<<<<<<< HEAD
+        <div class="col-6 col-sm-5 col-md-4" style="float:left"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002germany.png' %}" alt=""></div>
+        <h1 class="col-6 col-sm-7 col-md-8"  style="float:left; color:white;  margin-top:30px"">{% trans "Find Padel-clubs close to your place" %}</h1>
+                            <br>
+<div><a href="{% url 'clubs' %}">
+        <button type="button" class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7;
+        float:left; left:8.33%; margin-top:50px; max-height: 150px">
+                           {% trans "FIND THEM NOW!" %}<br>
+        </button></a></div>
+=======
         <div class="col-xs-6 col-sm-5 col-md-4" style="float:left">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002germany.png' %}" alt="">
         </div>
@@ -323,11 +333,22 @@
                 </button>
             </a>
         </div>
+>>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
     </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; height:400px; margin-bottom: 0px">
     <div class="container_12">
+<<<<<<< HEAD
+        <div class="col-6 col-sm-4" style="float:right"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002b.png' %}" alt=""></div>
+        <h1 class="col-6 col-sm-8"  style="float:right; color:#DC4C46">{% trans "Check the Tournament Calendar, all Results..." %}</h1>
+                            <br>
+        <div><a href="{% url 'tournaments' %}">
+        <button type="button" class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:dc4c46; color:white;
+        float:left; left:8.33%; margin-top:50px; max-height: 150px">
+                           {% trans "GO AND CHECK THAT!" %}<br>
+        </button></a></div>
+=======
         <div class="col-xs-6 col-sm-4" style="float:right">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002b.png' %}" alt="">
         </div>
@@ -341,11 +362,21 @@
             </button>
             </a>
         </div>
+>>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
     </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
     <div class="container_12">
+<<<<<<< HEAD
+        <div class="col-6 col-sm-4" style="float:left"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/003b.png' %}" alt=""></div>
+        <h1 class="col-6 col-sm-8"  style="float:left; color:white">{% trans "...and the Ranking of the different Circuits and Statistics" %}</h1>
+                            <br>
+<div>
+        <div class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7;
+        float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
+                           {% trans "COMING SOON" %}<br>
+=======
         <div class="col-xs-6 col-sm-4" style="float:left">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/003b.png' %}" alt="">
         </div>
@@ -357,6 +388,7 @@
             <div class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
                 {% trans "COMING SOON" %}<br>
             </div>
+>>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
         </div>
     </div>
 </div>

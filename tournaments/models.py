@@ -18,8 +18,12 @@ MIX_40 = _('Mixed 40')
 MEN_30 = _('Men 30')
 MEN_40 = _('Men 40')
 MEN_45 = _('Men 45')
+<<<<<<< HEAD
+SENIOR_WOMEN = _('Senior Women Open')
+=======
 
 SENIOR_WOMEN = _('Senior Womes Open')
+>>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
 WOMEN_27 = _('Women 27')
 WOMEN_40 = _('Women 40')
 

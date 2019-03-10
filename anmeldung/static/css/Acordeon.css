@@ -1439,6 +1439,22 @@ padding-right: 0px;
 }
 
 
+.card.semifinalK016 {
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+
+.finalKO16title {
+    margin-top: -160px;
+    z-index: 20;
+    right: 0;
+}
+
+.card.finalKO16 {
+    margin-top:30px;
+    border-color: #c7c7c7;
+}
+
 .card.cuartosK08 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -1480,13 +1496,28 @@ padding-right: 0px;
     display: none;
 }
 
+.conector_up{
+    display: none;
+}
+
+.conector_down{
+    display: none;
+}
+
+separador_final {
+margin: 20px 100px 0 100px;
+thick:20px;
+}
+
   .col-half {
     width: 100%;
     padding-right: 0;
   }
 
 
-
+.conector_semifinal_down{
+    display: none;
+}
 
 
 
@@ -1604,6 +1635,10 @@ margin: 0px 0px 0px 0px;
 
 .message_text{
 margin-top: 40px;
+}
+
+separador_final {
+display: none;
 }
 
 .newplayer {
