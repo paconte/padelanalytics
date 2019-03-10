@@ -211,8 +211,6 @@ def ranking(request):
     else:
         form = RankingForm()
         ranking = get_padel_ranking()
-
-    print(len(ranking))
     return render(request, 'ranking2.html', {'form': form, 'ranking': ranking})
 
 
