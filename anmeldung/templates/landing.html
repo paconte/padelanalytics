@@ -52,15 +52,39 @@
                                                                             alt="">
                                 </div>
                                 <div class="back" style="height: 100%">
-                                    <div class="user" style="background-color: white; margin-top:20px">
+                                    <div class="user-h2h" style="background-color: white; margin-top:20px">
                                         <img class="img" src="{% static 'images/germany/clubs/rheinmain.png' %}">
                                     </div>
                                     <div class="content">
                                         <div class="main">
                                             <h2 class="name">Padel Rheinmain</h2>
-                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Hofheim am Taunus
-                                                (Hessen)</h3>
-                                        </div>
+                                            <h3 class="name" style="font-size:12px; margin-top:-5px">Hofheim am
+                                                Taunus</h3>
+                                            <a href="#" id="imagemodal">
+
+                                            <button onclick="document.getElementById('id01').style.display='block'"
+                                                    class="col-xs-12 col-sm-12 btn btn-outline-success"
+                                                    style="height: 30px; margin-top: 5px">{% trans "Show Poster" %}
+                                            </button></a>
+                                             <!-- Creates the bootstrap modal where the image will appear -->
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'images/germany/clubs/rheinmain.png' %}" id="imagepreview" style="width: 400px; height: 264px;" >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                                    </div>
                                     </div>
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
@@ -152,14 +176,14 @@
 
             <div style="margin-top: 35px">
                 <div class="col-sm-12 col-md-6" style="float: left; margin-top: 10px">
-                    <div><a href="{% url 'clubs' %}" class="col-sm-12 btn btn-outline-danger"
-                            style="display: block; /*! height: 40px;*/ padding:8px; ">
+                    <div><a href="{% url 'clubs' %}" class="col-sm-12 btn btn-outline-danger botones_landing"
+                            style="display: block;">
                         {% trans "Visit Clubs" %}</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6" style="float: left; margin-top: 10px">
-                    <div><a href="{% url 'tournaments' %}" class="col-sm-12 btn btn-outline-danger"
-                            style="display: block; /*! height: 40px;*/ padding:8px; ">
+                    <div><a href="{% url 'tournaments' %}" class="col-sm-12 btn btn-outline-danger  botones_landing"
+                            style="display: block;">
                         {% trans "Visit Tournament calendar" %}</a>
                     </div>
                 </div>
@@ -309,16 +333,6 @@
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
     <div class="container_12">
-<<<<<<< HEAD
-        <div class="col-6 col-sm-5 col-md-4" style="float:left"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002germany.png' %}" alt=""></div>
-        <h1 class="col-6 col-sm-7 col-md-8"  style="float:left; color:white;  margin-top:30px"">{% trans "Find Padel-clubs close to your place" %}</h1>
-                            <br>
-<div><a href="{% url 'clubs' %}">
-        <button type="button" class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7;
-        float:left; left:8.33%; margin-top:50px; max-height: 150px">
-                           {% trans "FIND THEM NOW!" %}<br>
-        </button></a></div>
-=======
         <div class="col-xs-6 col-sm-5 col-md-4" style="float:left">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002germany.png' %}" alt="">
         </div>
@@ -328,27 +342,18 @@
         <br>
         <div>
             <a href="{% url 'clubs' %}">
-                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px; max-height: 150px">
+                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                        style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px; max-height: 150px">
                     {% trans "FIND THEM NOW!" %}<br>
                 </button>
             </a>
         </div>
->>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
     </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; height:400px; margin-bottom: 0px">
     <div class="container_12">
-<<<<<<< HEAD
-        <div class="col-6 col-sm-4" style="float:right"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002b.png' %}" alt=""></div>
-        <h1 class="col-6 col-sm-8"  style="float:right; color:#DC4C46">{% trans "Check the Tournament Calendar, all Results..." %}</h1>
-                            <br>
-        <div><a href="{% url 'tournaments' %}">
-        <button type="button" class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:dc4c46; color:white;
-        float:left; left:8.33%; margin-top:50px; max-height: 150px">
-                           {% trans "GO AND CHECK THAT!" %}<br>
-        </button></a></div>
-=======
+
         <div class="col-xs-6 col-sm-4" style="float:right">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002b.png' %}" alt="">
         </div>
@@ -357,26 +362,17 @@
         <br>
         <div>
             <a href="{% url 'tournaments' %}">
-                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; max-height: 150px">
+                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                        style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; max-height: 150px">
                     {% trans "GO AND CHECK THAT!" %}<br>
-            </button>
+                </button>
             </a>
         </div>
->>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
     </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
     <div class="container_12">
-<<<<<<< HEAD
-        <div class="col-6 col-sm-4" style="float:left"><img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/003b.png' %}" alt=""></div>
-        <h1 class="col-6 col-sm-8"  style="float:left; color:white">{% trans "...and the Ranking of the different Circuits and Statistics" %}</h1>
-                            <br>
-<div>
-        <div class="col-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7;
-        float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
-                           {% trans "COMING SOON" %}<br>
-=======
         <div class="col-xs-6 col-sm-4" style="float:left">
             <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/003b.png' %}" alt="">
         </div>
@@ -385,12 +381,29 @@
         </h1>
         <br>
         <div>
-            <div class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info" style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
+            <div class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                 style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
                 {% trans "COMING SOON" %}<br>
             </div>
->>>>>>> 9a38210a4bac5f2a0a6742fb1bf64595e42ae226
         </div>
     </div>
 </div>
+
+<script js>
+    (function($) {
+    "use strict";
+
+    // manual carousel controls
+    $('.next').click(function(){ $('.carousel').carousel('next');return false; });
+    $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
+
+})(jQuery);
+
+$("#pop").on("click", function() {
+   $('#imagepreview').attr('src', $('#imageresource').attr('src')); // here asign the image to the modal when the user click the enlarge link
+   $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+});
+</script>
+
 
 {% endblock %}

@@ -20,7 +20,7 @@ text-transform: uppercase;
 }
 
 .card 						{box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.14); transition: 0.1s; margin-top: 10px; padding: 8px; border-radius: 0.0rem;}
-.card.poster 						{padding: 2px; margin-top: 0px; }
+.card.poster 						{padding: 3px; margin-top: 5px; }
 
 .card:hover 				{box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);}
 
@@ -51,7 +51,16 @@ text-transform: uppercase;
     margin-bottom: 820px;
 }
 
-
+.card .user-landing{
+    position: relative;
+    border-radius: 50%;
+    height: 120px;
+    margin: -10px auto 0;
+    overflow: hidden;
+    width: 120px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+}
 
 .card.finalKO16 {
     margin-top:-1420px;
