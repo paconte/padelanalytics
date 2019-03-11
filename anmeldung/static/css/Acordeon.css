@@ -9,7 +9,13 @@
     border: none;
 }
 
+.img_landing{
+max-width: 240px; margin-top:-30px
+}
 
+.img_landing_r{
+max-width: 240px; margin-top:-30px
+}
 
 .navbar-collapse {
     border-style: none none solid none;
@@ -417,6 +423,10 @@ ul { padding: 0; margin: 0; list-style: none;
 
 .teams:hover{
 	background: #fafafa;
+}
+
+.jumbotron {
+height: 400px
 }
 
 .hr{
@@ -1397,6 +1407,18 @@ margin-right: 0px;
 margin-top: 0px;
 }
 
+.img_landing{
+max-width: 180px;
+margin-top:0px;
+margin-left: 30px;
+}
+
+.img_landing_r{
+max-width: 180px;
+margin-top:0px;
+margin-left: -30px;
+}
+
 .hidden {
 display: none;
 }
@@ -1427,6 +1449,24 @@ max-width: 50px;
 
 .picture {margin-right: 0};
 
+
+.img_landing_r{
+max-width: 180px;
+margin-left: 0px;
+}
+
+
+.img_landing{
+max-width: 180px;
+margin-top:-30px;
+margin-left: 30px;
+}
+
+.img_landing_r{
+max-width: 180px;
+margin-top:-30px;
+margin-left: -30px;
+}
 }
 
 
@@ -1440,6 +1480,8 @@ max-width: 50px;
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
     float: right;
   }
+
+
 
 .nopadding{
 padding-left: 0px;
@@ -1640,6 +1682,10 @@ margin: 0px 0px 0px 0px;
   display: none;
   }
 
+.franja {
+margin-left: 8px;
+}
+
 .margen {top:-3px;}
 
 .cat {top:-3px;}
@@ -1667,7 +1713,10 @@ font-size: 1rem;
     float: left;
 }
 
-
+.img_landing_r{
+max-width: 180px;
+margin-left: 30px;
+}
 
 .category_turnierliste{
   max-width: 30px;
@@ -1700,7 +1749,16 @@ font-size: 14px;
     margin: 0px;
   }
 
+.img_landing{
+max-width: 180px;
+margin-left: 30px;
+}
 
+
+
+.jumbotron {
+height: 300px
+}
 
 btnanmeldung {
 margin-top: 15px;

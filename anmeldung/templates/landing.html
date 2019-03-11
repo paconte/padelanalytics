@@ -175,7 +175,7 @@
 
 
     <!-- Franja Vertical -->
-    <div class="col-md-3" style="float:left; margin-left:8px; margin-right:-16px; padding-left:0px; padding-right: 0px">
+    <div class="col-md-3 franja" style="float:left; margin-right:-16px; padding-left:0px; padding-right: 0px">
         <div class="news_bar" style="height:inherit; -webkit-filter: grayscale(0%)">
 
             <!-- Estadística -->
@@ -312,18 +312,18 @@
     </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
+<div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; margin-bottom: 0px">
     <div class="container_12">
-        <div class="col-xs-6 col-sm-5 col-md-4" style="float:left">
-            <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002germany.png' %}" alt="">
+        <div class="col-xs-5 col-sm-5 col-md-4" style="float:left">
+            <img class="img_landing" style="" src="{% static 'images/news/002germany.png' %}" alt="">
         </div>
-        <h1 class="col-xs-6 col-sm-7 col-md-8" style="float:left; color:white;  margin-top:30px">
+        <h1 class="col-xs-7 col-sm-7 col-md-8" style="float:left; color:white;  margin-top:30px">
             {% trans "Find Padel-clubs close to your place" %}
         </h1>
         <br>
         <div>
             <a href="{% url 'clubs' %}">
-                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
                         style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px; max-height: 150px">
                     {% trans "FIND THEM NOW!" %}<br>
                 </button>
@@ -332,18 +332,18 @@
     </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; height:400px; margin-bottom: 0px">
+<div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; margin-bottom: 0px">
     <div class="container_12">
 
-        <div class="col-xs-6 col-sm-4" style="float:right">
-            <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/002b.png' %}" alt="">
+        <div class="col-xs-5 col-sm-4" style="float:right">
+            <img class="img_landing_r" src="{% static 'images/news/002b.png' %}" alt="">
         </div>
-        <h1 class="col-xs-6 col-sm-8" style="float:right; color:#DC4C46">
+        <h1 class="col-xs-7 col-sm-8" style="float:right; color:#DC4C46">
             {% trans "Check the Tournament Calendar, all Results..." %}</h1>
         <br>
         <div>
             <a href="{% url 'tournaments' %}">
-                <button type="button" class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
                         style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; max-height: 150px">
                     {% trans "GO AND CHECK THAT!" %}<br>
                 </button>
@@ -352,17 +352,17 @@
     </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46; height:400px; margin-bottom: 0px">
+<div class="jumbotron jumbotron-fluid" style="background-color: #DC4C46;  margin-bottom: 0px">
     <div class="container_12">
-        <div class="col-xs-6 col-sm-4" style="float:left">
-            <img style="max-width: 240px; margin-top:-30px" src="{% static 'images/news/003b.png' %}" alt="">
+        <div class="col-xs-5 col-sm-4" style="float:left">
+            <img class="img_landing" src="{% static 'images/news/003b.png' %}" alt="">
         </div>
-        <h1 class="col-xs-6 col-sm-8" style="float:left; color:white">
+        <h1 class="col-xs-7 col-sm-8" style="float:left; color:white">
             {% trans "...and the Ranking of the different Circuits and Statistics" %}
         </h1>
         <br>
         <div>
-            <div class="col-xs-8 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+            <div class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
                  style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
                 {% trans "COMING SOON" %}<br>
             </div>
