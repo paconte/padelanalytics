@@ -20,7 +20,7 @@
     <div class="box roll">
 
         <!-- Franja Principal -->
-        <div class="col-md-9" style="float:left; padding-left: 0px; padding-right: 0px">
+        <div class="col-xs-12 col-sm-12 col-md-9" style="float:left; padding-left: 0px; padding-right: 0px">
 
             <!-- Próximos Torneos -->
             <div class="col-sm-12">
@@ -47,7 +47,7 @@
                         <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -6px; float: left">
                             <div class="card poster mb-2">
-                                <div class="content" style="padding:0"><img class="news_posters" style
+                                <div class="content" style="padding:0"><img class="news_posters"
                                                                             src="{% static 'images/posters/2019_local_03_hofheim.jpeg' %}"
                                                                             alt="">
                                 </div>
@@ -60,34 +60,12 @@
                                             <h2 class="name">Padel Rheinmain</h2>
                                             <h3 class="name" style="font-size:12px; margin-top:-5px">Hofheim am
                                                 Taunus</h3>
-                                            <a href="#" id="imagemodal">
-
-                                            <button onclick="document.getElementById('id01').style.display='block'"
-                                                    class="col-xs-12 col-sm-12 btn btn-outline-success"
-                                                    style="height: 30px; margin-top: 5px">{% trans "Show Poster" %}
-                                            </button></a>
-                                             <!-- Creates the bootstrap modal where the image will appear -->
-<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
-      </div>
-      <div class="modal-body">
-        <img src="{% static 'images/germany/clubs/rheinmain.png' %}" id="imagepreview" style="width: 400px; height: 264px;" >
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                                    </div>
+                                        </div>
                                     </div>
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
+
+
                         </div> <!-- end card-container -->
                         <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
@@ -174,17 +152,20 @@
             </div>
             <!--/.Carousel Wrapper-->
 
-            <div style="margin-top: 35px">
-                <div class="col-sm-12 col-md-6" style="float: left; margin-top: 10px">
-                    <div><a href="{% url 'clubs' %}" class="col-sm-12 btn btn-outline-danger botones_landing"
-                            style="display: block;">
-                        {% trans "Visit Clubs" %}</a>
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <img class="news_posters" src="{% static 'images/posters/2019_local_03_hofheim.jpeg' %}" alt="">
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6" style="float: left; margin-top: 10px">
-                    <div><a href="{% url 'tournaments' %}" class="col-sm-12 btn btn-outline-danger  botones_landing"
+            </div>
+
+            <div style="margin-top: 35px">
+                <div class="col-xs-3 col-sm-3 col-md-3" style="float: left; margin-top: 10px">
+                    <div><a href="#popup1" class="col-sm-12 btn btn-outline-danger botones_landing"
                             style="display: block;">
-                        {% trans "Visit Tournament calendar" %}</a>
+                        {% trans "Show Poster" %}</a>
                     </div>
                 </div>
             </div>
@@ -399,10 +380,6 @@
 
 })(jQuery);
 
-$("#pop").on("click", function() {
-   $('#imagepreview').attr('src', $('#imageresource').attr('src')); // here asign the image to the modal when the user click the enlarge link
-   $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-});
 </script>
 
 
