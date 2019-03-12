@@ -5,6 +5,7 @@ from anmeldung.models import Registration
 from tournaments.models import Club
 from tournaments.models import Person
 from tournaments.models import PADEL_DIVISION_CHOICES
+from tournaments.models import PADEL_DIVISION_CHOICES_ALL
 from tournaments.service import last_monday
 from tournaments.service import all_mondays_until
 
@@ -27,7 +28,7 @@ class TournamentsForm(forms.Form):
 
     year = forms.ChoiceField(choices=YEAR_CHOICES, initial=_('ALL'),
                              widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
-    division = forms.ChoiceField(choices=PADEL_DIVISION_CHOICES, initial=_('ALL'),
+    division = forms.ChoiceField(choices=PADEL_DIVISION_CHOICES_ALL, initial=_('ALL'),
                                  widget=forms.Select(attrs={'onchange': 'actionform.submit();'}))
 
 
