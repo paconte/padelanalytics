@@ -1162,6 +1162,12 @@ font-size: 14px;
   display: none;
   }
 
+.navbar-nav {
+  padding-left: 8px;
+  margin-bottom: 25px;
+  padding-right: 8px;
+}
+
 .franja {
 margin-left: 8px;
 }
