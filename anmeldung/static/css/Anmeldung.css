@@ -935,7 +935,9 @@ text-size: 30px;
 
 @media (max-width: 576px) {
 
-
+.card .category_turnierliste{
+    margin-left: -20px;
+}
 
 .sm-hidden {
 display: none;
