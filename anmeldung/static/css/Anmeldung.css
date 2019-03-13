@@ -1,7 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
-body 						{background-color: #ededed; font-family: Arial Narrow, Helvetica, sans-serif;
+body {
+background-color: #ededed;
+font-family: Arial Narrow, Helvetica, sans-serif;
+height: fit-content;
 }
 
 
