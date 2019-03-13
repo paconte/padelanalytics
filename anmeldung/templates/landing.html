@@ -279,8 +279,7 @@
                         <button type="button"
                                 class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
                             {{total_tournaments}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Tournaments"
-                                %}</h2>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
                         </button>
                     </a>
                     </div>
@@ -290,7 +289,7 @@
                         </div>
                         <button type="button"
                                 class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_players}}<br>
+                            {{total_persons}}<br>
                             <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Players" %}</h2>
                         </button>
                     </a>
@@ -345,7 +344,7 @@
             <a href="{% url 'tournaments' %}">
                 <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
                         style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; max-height: 150px">
-                    {% trans "GO AND CHECK THAT!" %}<br>
+                    {% trans "CHECK IT OUT" %}<br>
                 </button>
             </a>
         </div>
@@ -362,10 +361,12 @@
         </h1>
         <br>
         <div>
-            <div class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
-                 style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
-                {% trans "COMING SOON" %}<br>
-            </div>
+            <a href="{% url 'ranking' %}">
+                <button class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info"
+                     style="background-color:e7e7e7; float:left; left:8.33%; padding-top:15px ; margin-top:50px; max-height: 150px">
+                    {% trans "HAVE A LOOK" %}<br>
+                </button>
+            </a>>
         </div>
     </div>
 </div>
