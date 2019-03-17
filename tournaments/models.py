@@ -26,6 +26,7 @@ MXO = 'MXO'
 MO = 'MO'
 WO = 'WO'
 SMX = 'SMX'
+X40 = 'X40'
 W27 = 'W27'
 M30 = 'M30'
 M40 = 'M40'
@@ -64,7 +65,7 @@ def get_player_gender(division):
         result = Person.FEMALE
     elif division in [MO, M30, M40, M45]:
         result = Person.MALE
-    elif division in [MXO, SMX]:
+    elif division in [MXO, SMX, X40]:
         result = Person.UNKNOWN
     else:
         raise Exception("Division %s is not supported." % division)
@@ -570,6 +571,8 @@ class PadelResult(models.Model):
     visitor4 = models.SmallIntegerField(null=True, blank=True)
     visitor5 = models.SmallIntegerField(null=True, blank=True)
 
+    winner = models.SmallIntegerField(default=0)
+
     @classmethod
     def create(cls, scores):
         while scores[len(scores)-1] == '':
@@ -586,6 +589,24 @@ class PadelResult(models.Model):
             result.visitor5 = scores[9]
         except IndexError:
             pass
+
+        # calculate the winner player (1 = local, 2 = visitor, 0 = draw)
+        sets = (0, 0)
+        local_scores = scores[0::2]
+        visitor_scores = scores[1::2]
+        for index in range(len(local_scores)):
+            if local_scores[index] > visitor_scores[index]:
+                sets[0] = sets[0] + 1
+            elif local_scores[index] < visitor_scores[index]:
+                sets[1] = sets[1] + 1
+
+        if sets[0] > sets[1]:
+            sets.winner = 1
+        elif sets[0] < sets[1]:
+            sets.winner = 2
+        else:
+            sets.winner = 0
+
         return result
 
     def _get_local_scores(self):
@@ -749,7 +770,6 @@ def get_similar_tournaments(t_id):
         for t in similars:
             if t.id != tournament.id:
                 result[str(t.padel_serie) + ' ' + str(translate_division(t.division))] = t.id
-    print(result)
     return result
 
 
