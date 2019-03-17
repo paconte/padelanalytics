@@ -57,13 +57,14 @@ class DjangoSimpleFetcher:
         return result
 
     @staticmethod
-    def get_or_create_person(first_name, last_name, gender=None, nationality=None, born=None):
+    def get_or_create_person(first_name, last_name, gender=Person.UNKNOWN, nationality=None, born=None):
         try:
             result = Person.objects.get(first_name=first_name, last_name=last_name)
             update = False
-            if gender and result.gender is None:
+            if gender != Person.UNKNOWN and result.gender == Person.UNKNOWN:
                 result.gender = gender
-                Person.objects.get(first_name=first_name, last_name=last_name).update(gender=gender)
+                result.save()
+                #Person.objects.get(first_name=first_name, last_name=last_name).update(gender=gender)
                 update = True
             if nationality and result.nationality is None:
                 result.nationality = nationality
@@ -75,14 +76,10 @@ class DjangoSimpleFetcher:
                 update = True
             result = result, update
         except MultipleObjectsReturned:
-            if gender:
-                result = Person.objects.get(first_name=first_name, last_name=last_name, gender=gender)
-                result = result, False
+            result = Person.objects.get(first_name=first_name, last_name=last_name, gender=gender)
+            result = result, False
         except ObjectDoesNotExist:
-            if gender:
-                result = Person.objects.get_or_create(first_name=first_name, last_name=last_name, gender=gender)
-            else:
-                result = Person.objects.get_or_create(first_name=first_name, last_name=last_name)
+            result = Person.objects.get_or_create(first_name=first_name, last_name=last_name, gender=gender)
         return result
 
     @staticmethod
@@ -203,13 +200,12 @@ class DjangoSimpleFetcher:
                 points=ranking.points, variation=ranking.variation)
         return obj
 
-
     @staticmethod
     def create_padel_ranking(ranking):
         from datetime import datetime
         # date_format = "%Y-%m-%d"
-        # date_format = "%d.%m.%Y"
-        date_format = "%d/%m/%Y"
+        date_format = "%d.%m.%Y"
+        # date_format = "%d/%m/%Y"
         person, b = DjangoCsvFetcher.create_padel_person(ranking)
         mondays = all_mondays_from(datetime.strptime(ranking.date, date_format))
         for monday in mondays:
