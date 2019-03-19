@@ -272,9 +272,10 @@ class GameRound(models.Model):
     POOL_D = 'PoolD'
     POOL_E = 'PoolE'
     POOL_F = 'PoolF'
+    POOL_Z = 'PoolZ'
     LIGA = 'Liga'
 
-    pools = [POOL_A, POOL_B, POOL_C, POOL_D, POOL_E, POOL_F]
+    pools = [POOL_A, POOL_B, POOL_C, POOL_D, POOL_E, POOL_F, POOL_Z]
 
     ordered_rounds = [FINAL, THIRD_POSITION, SEMI, FIFTH_POSITION, QUARTER, SIXTH_POSITION,
                       SEVENTH_POSITION, EIGHTH_POSITION, EIGHTH, NINTH_POSITION, TENTH_POSITION,
@@ -308,6 +309,7 @@ class GameRound(models.Model):
         (POOL_D, POOL_D),
         (POOL_E, POOL_E),
         (POOL_F, POOL_F),
+        (POOL_Z, POOL_Z),
         (LIGA, LIGA),
     )
 
@@ -332,7 +334,8 @@ class GameRound(models.Model):
 
     def is_pool(self):
         return self.round == self.POOL_A or self.round == self.POOL_B or self.round == self.POOL_C or \
-               self.round == self.POOL_D or self.round == self.POOL_E or self.round == self.POOL_F
+               self.round == self.POOL_D or self.round == self.POOL_E or self.round == self.POOL_F or \
+               self.round == self.POOL_Z
 
     def __lt__(self, other):
         #        print('self = %s, other = %s' %(self, other))
@@ -420,9 +423,9 @@ class GameRound(models.Model):
                     result = False
                 elif other.round == self.DIVISION:
                     result = True
-                elif self.round in {self.POOL_A, self.POOL_B, self.POOL_C, self.POOL_D, self.POOL_E, self.POOL_F}:
+                elif self.round in {self.POOL_A, self.POOL_B, self.POOL_C, self.POOL_D, self.POOL_E, self.POOL_F, self.POOL_Z}:
                     result = False
-                elif other.round in {self.POOL_A, self.POOL_B, self.POOL_C, self.POOL_D, self.POOL_E, self.POOL_F}:
+                elif other.round in {self.POOL_A, self.POOL_B, self.POOL_C, self.POOL_D, self.POOL_E, self.POOL_F, self.POOL_Z}:
                     result = True
                 else:
                     raise Exception('Problem comparing values: %s and  %s' % (self.round, other.round))
@@ -591,7 +594,7 @@ class PadelResult(models.Model):
             pass
 
         # calculate the winner player (1 = local, 2 = visitor, 0 = draw)
-        sets = (0, 0)
+        sets = [0, 0]
         local_scores = scores[0::2]
         visitor_scores = scores[1::2]
         for index in range(len(local_scores)):
@@ -601,11 +604,11 @@ class PadelResult(models.Model):
                 sets[1] = sets[1] + 1
 
         if sets[0] > sets[1]:
-            sets.winner = 1
+            result.winner = 1
         elif sets[0] < sets[1]:
-            sets.winner = 2
+            result.winner = 2
         else:
-            sets.winner = 0
+            result.winner = 0
 
         return result
 
