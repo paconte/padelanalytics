@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabs.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/rotating-card.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="container_12">
+
+    <!-- Título Página -->
+    <div class="card roll">
+        <h1>{% trans "Team Card" %}</h1>
+    </div>
+
+    <h2>{% trans "Players" %}</h2>
+
+    <table class="col-sm-12 table table-striped table-hover">
+        <tbody>
+        {% for p in players %}
+        <tr><td class="col-xs-1 col-sm-2 uno dos">{{p.person}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>{% trans "Tournaments" %}</h2>
+
+    <table class="col-sm-12 table table-striped table-hover">
+        <tbody>
+        {% for t in tournaments %}
+        <tr>
+            <td class="col-xs-1 col-sm-2 uno dos"><a href="{% url 'tournament' t.id %}">{{t}}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>{% trans "Games" %}</h2>
+
+    <table class="col-sm-12 table table-striped table-hover">
+        <tbody>
+        {% for g in games %}
+        <tr><td class="col-xs-1 col-sm-2 uno dos">{{g}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>{% trans "Stats" %}</h2>
+    <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th>{% trans "Tournaments" %}</th>
+           <th>{% trans "Games" %}</th>
+           <th>{% trans "Win" %}</th>
+           <th>{% trans "Lost" %}</th>
+           <th>{% trans "Ratio" %}</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr>
+           <td>{{total_tournaments}}</td>
+           <td>{{total_games}}</td>
+           <td>{{total_wins}}</td>
+           <td>{{total_lost}}</td>
+           <td>{{ratio}}</td>
+       </tr>
+       </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
