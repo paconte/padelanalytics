@@ -220,11 +220,14 @@ def ranking(request):
 
 
 def player_detail(request, id):
+    total_wins = 0
     parnerts = set()
     teams = list()
     tournaments = list()
     games = list()
     players = list(Player.objects.filter(person=id))
+    print('##########################')
+    print(players)
     for p in players:
         teams.append(p.team)
         tournaments = tournaments + list(p.tournaments_played.all())
@@ -232,11 +235,16 @@ def player_detail(request, id):
         games = games + list(Game.objects.filter(Q(local=t.id) | Q(visitor=t.id)).order_by('tournament'))
         for p in t.players.all().exclude(id=id):
             parnerts.add(p)
+    for g in games:
+        print(g.local.id, g.visitor.id, id, g.result_padel.winner)
+        print(g.local.id, g.visitor.id, id, g.result_padel.winner)
+        if (g.local.id == id and g.result_padel.winner == 1) or (g.visitor.id == id and g.result_padel.winner == 2):
+            total_wins += 1
 
     total_games = len(games)
     total_tournaments = len(tournaments)
-    total_wins = 3
-    total_lost = total_games - 3
+
+    total_lost = total_games - total_wins
     ratio = total_wins / total_games
 
     print(parnerts)
