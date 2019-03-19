@@ -101,7 +101,7 @@ class PadelTeamNames:
         self.visitor_second_last_name = csv[6]
 
         # order alphabetically by surname to avoid duplicates teams
-        if self.local_first_first_name <= self.local_second_last_name:
+        if self.local_first_last_name <= self.local_second_last_name:
             self.local = self.local_first_last_name + " - " + self.local_second_last_name
         else:
             self.local = self.local_second_last_name + " - " + self.local_first_last_name
