@@ -204,6 +204,7 @@ def new_player(request):
         return render(request, 'new_player.html', {'formset': new_player_form})
     """
 
+
 def ranking(request):
     
     if request.method == 'POST':
@@ -223,11 +224,10 @@ def player_detail(request, id):
     total_wins = 0
     parnerts = set()
     teams = list()
+    teams_ids = list()
     tournaments = list()
     games = list()
     players = list(Player.objects.filter(person=id))
-    print('##########################')
-    print(players)
     for p in players:
         teams.append(p.team)
         tournaments = tournaments + list(p.tournaments_played.all())
@@ -235,22 +235,21 @@ def player_detail(request, id):
         games = games + list(Game.objects.filter(Q(local=t.id) | Q(visitor=t.id)).order_by('tournament'))
         for p in t.players.all().exclude(id=id):
             parnerts.add(p)
+    for t in teams:
+        teams_ids.append(t.id)
     for g in games:
-        print(g.local.id, g.visitor.id, id, g.result_padel.winner)
-        print(g.local.id, g.visitor.id, id, g.result_padel.winner)
-        if (g.local.id == id and g.result_padel.winner == 1) or (g.visitor.id == id and g.result_padel.winner == 2):
+        if (g.local.id in teams_ids and g.result_padel.winner == 1) or \
+                (g.visitor.id in teams_ids and g.result_padel.winner == 2):
             total_wins += 1
 
     total_games = len(games)
     total_tournaments = len(tournaments)
-
     total_lost = total_games - total_wins
-    ratio = total_wins / total_games
+    if total_games != 0:
+        ratio = total_wins / total_games
+    else:
+        ratio = 0
 
-    print(parnerts)
-    print(tournaments)
-    print(teams)
-    print(games)
     return render(request, 'person.html',
                   {'parnerts': parnerts, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
                    'total_tournaments': total_tournaments, 'total_wins': total_wins, 'total_lost': total_lost,
@@ -261,12 +260,17 @@ def team_detail(request, id):
     games = Game.objects.filter(Q(local=id) | Q(visitor=id)).order_by('tournament')
     played_tournaments = Tournament.objects.filter(teams__id=id).order_by('-date', '-name')
     players = Player.objects.filter(team=id)
+    total_wins = 0
+    for g in games:
+        if (g.local.id == id and g.result_padel.winner == 1) or (g.visitor.id == id and g.result_padel.winner == 2):
+            total_wins += 1
     total_games = len(games)
     total_tournaments = len(played_tournaments)
-    total_wins = 3
-    total_lost = total_games - 3
-    ratio = total_wins / total_games
-
+    total_lost = total_games - total_wins
+    if total_games != 0:
+        ratio = total_wins / total_games
+    else:
+        ratio = 0
     print(total_games, total_wins, total_lost, ratio)
 
     return render(request, 'team.html',
