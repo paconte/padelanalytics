@@ -19,10 +19,10 @@
     </div>
 
 
-    <h2>{% trans "Parnerts" %}</h2>
+    <h2>{% trans "Partners" %}</h2>
     <table class="col-sm-12 table table-striped table-hover">
         <tbody>
-        {% for p in parnerts %}
+        {% for p in partners %}
         <tr>
             <td class="col-xs-1 col-sm-2 uno dos"><a href="{% url 'player' p.id %}">{{p}}</a></td>
         </tr>
