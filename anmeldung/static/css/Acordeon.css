@@ -292,6 +292,17 @@ padding-top: 5px;
 padding-bottom: 5px;
 }
 
+.card_team {
+float: left;
+padding:0px;
+margin-top: 53px;
+}
+
+.card_info {
+float: right;
+padding-right: 0px;
+}
+
 ul.bargraph li {
 height: 15px;
 background: #DC4C46;
@@ -1007,7 +1018,7 @@ padding: 8px;
 
 .card .user-tournamentlist{
     height: 30px;
-    width: 50px;
+    width: 30px;
 }
 
 .card .user-tournament{
@@ -1203,14 +1214,14 @@ margin-top: -10px
 }
 
 .card .user-tournamentlist{
-height: 45px;
+height: 50px;
 max-width: 40px;
 top: -5px;
 }
 
 .card .user-tournamentlist img {
-max-width: 60px;
-margin-top: -12px;
+max-width: 50px;
+margin-top: 0px;
 }
 
 .card.semifinalK016 {
@@ -1257,6 +1268,15 @@ margin-bottom: 10px;
 .card-container {
 margin: 0;
 padding: 0;
+}
+
+.card_team {
+display: inline block;
+margin-top: 0px;
+}
+
+.card_info {
+padding-left:0px;
 }
 
 .cat {

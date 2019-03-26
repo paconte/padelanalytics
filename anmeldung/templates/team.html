@@ -18,9 +18,9 @@
         <h1>{% trans "Team Card" %}</h1>
     </div>
 
-    <div class="col-md-4 col-sm-4 col-lg-3" style="float: left; padding:0px; margin-top: 53px;">
+    <div class="card_team col-xs-12 col-md-3 col-lg-3" >
         {% for p in players %}
-        <div class="card card-player h2h">
+        <div class="card card-player h2h col-xs-6 col-sm-6 col-md-12" style="float:left">
             <div class="content">
                 <div class="main" style="min-height:50px">
                     <h1 class="name">{{p.person.first_name}} {{p.person.last_name}}</h1>
@@ -30,7 +30,7 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-8 col-sm-8 col-lg-9" style="float: right; padding-right:0px">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card_info" style="">
         <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
         <label for="tab1">{% trans "Activity" %}</label>
 
@@ -89,8 +89,8 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="col-sm-12" style="position: relative; float: right">
-                    <div class="single-chart" style="float: right">
+                <div class="col-xs-12 col-sm-12" style="position: relative; float: right">
+                    <div class="single-chart" style="float: right; height: 50px">
                         <svg viewBox="0 0 36 36" class="circular-chart red">
                             <path class="circle-bg"
                                   d="M18 2.0845
@@ -127,7 +127,7 @@
                     <tr>
                         <td class="col-xs-12" style="float: left; padding-top: 10px;">
                             <!-- Logo Serie -->
-                            <div class="col-xs-2 col-sm-2 col-md-1 hidden-sm-down "
+                            <div class="col-xs-1 col-sm-1 col-md-1 hidden-sm-down "
                                  style="float: left; padding-left: 0px">
                                 <div style="float: left">
                                     <img class="category_turnierliste"
@@ -210,7 +210,7 @@
                                 <a class="text_tournament_title"
                                    style="width: 100%; color:black">{{g.tournament.date}}</a>
                             </div>
-                            <div class="col-xs-4 col-sm-2 text_tournament_title" style="float: left">
+                            <div class="col-xs-2 col-sm-2 text_tournament_title" style="float: left">
                                 <a class="text_tournament_title" style="width: 100%; color:black">
                                     {% if "PoolA" in g.phase.round %}
                                         {% trans "Group" %} A
@@ -247,7 +247,7 @@
                                 <a class="text_tournament_title" style="width: 100%; color:black">{{g.local}}</a><br>
                                 <a class="text_tournament_title" style="width: 100%; color:black">{{g.visitor}}</a><br>
                             </div>
-                            <div class="col-xs-4 col-sm-1 text_tournament_title" style="float: left; padding: 0">
+                            <div class="col-xs-1 col-sm-1 text_tournament_title" style="float: left; padding: 0">
                                 <a class="text_tournament_title" style="width: 100%; color:black">{{g.result_padel.local1}}
                                     {% if g.result_padel.local2 >= 0 %}
                                     {{g.result_padel.local2}}
