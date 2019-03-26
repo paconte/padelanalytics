@@ -555,6 +555,18 @@ margin-top: 0px;
 	text-transform: none;
 	top: 15px;
 }
+
+.text_player_played{
+	color: grey;
+	font-weight: 200;
+	font-size-adjust: auto;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	font-size: 11px;
+	text-transform: none;
+	top: 12px;
+	position: absolute;
+}
+
 .line1 {
 	position:absolute;
 	background:pink;
@@ -1030,6 +1042,12 @@ font-size: 1rem;
     font-size: 0.6rem;
     margin-top: -5px;
   }
+
+  .text_player_played{
+	top: 15px;
+	left: 10px;
+	font-size: 0.6rem;
+}
 
 .flag {
     width: 20px;
