@@ -192,20 +192,21 @@ class DjangoSimpleFetcher:
             obj = PadelRanking.objects.get(country=ranking.country, date=monday, circuit=ranking.circuit,
                                            division=ranking.division, person=person.id)
             obj.points = ranking.points
-            obj.variation = ranking.variation
+            obj.plus = ranking.plus
+            obj.minus = ranking.minus
             obj.save(force_update=True)
         except PadelRanking.DoesNotExist:
             obj = PadelRanking.objects.create(
                 country=ranking.country, date=monday, circuit=ranking.circuit, division=ranking.division, person=person,
-                points=ranking.points, variation=ranking.variation)
+                points=ranking.points, plus=ranking.plus, minus=ranking.minus)
         return obj
 
     @staticmethod
     def create_padel_ranking(ranking):
         from datetime import datetime
         # date_format = "%Y-%m-%d"
-        date_format = "%d.%m.%Y"
-        # date_format = "%d/%m/%Y"
+        #date_format = "%d.%m.%Y"
+        date_format = "%d/%m/%Y"
         person, b = DjangoCsvFetcher.create_padel_person(ranking)
         mondays = all_mondays_from(datetime.strptime(ranking.date, date_format))
         for monday in mondays:

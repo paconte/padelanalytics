@@ -702,7 +702,8 @@ class PadelRanking(models.Model):
 
     date = models.DateField()
     points = models.PositiveIntegerField(default=0, null=False)
-    variation = models.SmallIntegerField(default=None, null=True, blank=True)
+    plus = models.SmallIntegerField(default=None, null=True, blank=True)
+    minus = models.SmallIntegerField(default=None, null=True, blank=True)
     division = models.CharField(max_length=3, choices=TOUCH_DIVISION_CHOICES)
     country = CountryField()
     circuit = models.CharField(max_length=30, default="oficial", choices=CIRCUIT)
