@@ -273,6 +273,17 @@
 
             </div>
         </section>
+
+
+        {% for key, values in sorted_games.items %}
+        {{key}} <br>
+        {% for g in values %}
+        {{g}} <br>
+        {% endfor %}
+        <br>
+        <br>
+        {% endfor %}
+
     </div>
 </div>
 
