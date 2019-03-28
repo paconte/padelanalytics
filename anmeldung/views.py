@@ -227,6 +227,7 @@ def player_detail(request, id):
     tournaments = list()
     games = list()
     players = list(Player.objects.filter(person=id))
+    person = Person.objects.filter(pk=id)
     for p in players:
         teams.append(p.team)
         tournaments = tournaments + list(p.tournaments_played.all())
@@ -237,21 +238,21 @@ def player_detail(request, id):
     for t in teams:
         teams_ids.append(t.id)
 
-    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games)
+    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games, teams_ids)
 
     return render(request, 'person.html',
                   {'partners': partners, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
-                   'total_tournaments': total_tournaments, 'total_wins': total_wins, 'total_lost': total_lost,
-                   'ratio': round(ratio * 100, 2)})
+                   'total_tournaments': len(tournaments), 'total_wins': total_wins, 'total_lost': total_lost,
+                   'ratio': round(ratio * 100, 2), 'player': person})
 
 
-def _calc_team_player_detail(games, id):
+def _calc_team_player_detail(games, ids):
     total_wins = 0
     sorted_games = dict()
     total_games = len(games)
     for g in games:
         sorted_games.setdefault(g.tournament, []).append(g)
-        if (g.local.id == id and g.result_padel.winner == 1) or (g.visitor.id == id and g.result_padel.winner == 2):
+        if (g.local.id in ids and g.result_padel.winner == 1) or (g.visitor.id in ids and g.result_padel.winner == 2):
             total_wins += 1
     total_lost = total_games - total_wins
     ratio = total_wins / total_games if total_games != 0 else 0
@@ -263,7 +264,7 @@ def team_detail(request, id):
     games = Game.objects.filter(Q(local=id) | Q(visitor=id)).order_by('tournament')
     played_tournaments = Tournament.objects.filter(teams__id=id).order_by('-date', '-name')
     players = Player.objects.filter(team=id)
-    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games, id)
+    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games, [id])
     total_tournaments = len(played_tournaments)
     
     return render(request, 'team.html',
