@@ -222,7 +222,7 @@ def ranking(request):
 
 def player_detail(request, id):
     total_wins = 0
-    parnerts = set()
+    partners = set()
     teams = list()
     teams_ids = list()
     tournaments = list()
@@ -234,7 +234,7 @@ def player_detail(request, id):
     for t in teams:
         games = games + list(Game.objects.filter(Q(local=t.id) | Q(visitor=t.id)).order_by('tournament'))
         for p in t.players.all().exclude(id=id):
-            parnerts.add(p)
+            partners.add(p)
     for t in teams:
         teams_ids.append(t.id)
     for g in games:
@@ -251,7 +251,7 @@ def player_detail(request, id):
         ratio = 0
 
     return render(request, 'person.html',
-                  {'parnerts': parnerts, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
+                  {'partners': partners, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
                    'total_tournaments': total_tournaments, 'total_wins': total_wins, 'total_lost': total_lost,
                    'ratio': round(ratio, 2)})
 
