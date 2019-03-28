@@ -221,7 +221,6 @@ def ranking(request):
 
 
 def player_detail(request, id):
-    total_wins = 0
     partners = set()
     teams = list()
     teams_ids = list()
@@ -237,26 +236,16 @@ def player_detail(request, id):
             partners.add(p)
     for t in teams:
         teams_ids.append(t.id)
-    for g in games:
-        if (g.local.id in teams_ids and g.result_padel.winner == 1) or \
-                (g.visitor.id in teams_ids and g.result_padel.winner == 2):
-            total_wins += 1
 
-    total_games = len(games)
-    total_tournaments = len(tournaments)
-    total_lost = total_games - total_wins
-    if total_games != 0:
-        ratio = total_wins / total_games * 100
-    else:
-        ratio = 0
+    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games)
 
     return render(request, 'person.html',
                   {'partners': partners, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
                    'total_tournaments': total_tournaments, 'total_wins': total_wins, 'total_lost': total_lost,
-                   'ratio': round(ratio, 2)})
+                   'ratio': round(ratio * 100, 2)})
 
 
-def _calc_team_player_detail(games):
+def _calc_team_player_detail(games, id):
     total_wins = 0
     sorted_games = dict()
     total_games = len(games)
@@ -274,13 +263,13 @@ def team_detail(request, id):
     games = Game.objects.filter(Q(local=id) | Q(visitor=id)).order_by('tournament')
     played_tournaments = Tournament.objects.filter(teams__id=id).order_by('-date', '-name')
     players = Player.objects.filter(team=id)
-    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games)
+    total_games, total_wins, total_lost, ratio, sorted_games = _calc_team_player_detail(games, id)
     total_tournaments = len(played_tournaments)
-
+    
     return render(request, 'team.html',
                   {'players': players, 'tournaments': played_tournaments, 'games': games, 'total_games': total_games,
                    'total_tournaments': total_tournaments, 'total_wins': total_wins, 'total_lost': total_lost,
-                   'ratio': ratio, 'sorted_games': sorted_games})
+                   'ratio': round(ratio * 100, 2), 'sorted_games': sorted_games})
 
 
 def activate(request, registration_uidb64, player_uidb64, token):
