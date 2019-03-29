@@ -387,6 +387,9 @@ class Fixtures:
                 result[key] = self.games[key]
                 # result.update({key:self.games[key]})
                 # return sorted(result.values(), reverse=True)
+        for k1, v1 in result.items():
+            result[k1] = collections.OrderedDict(sorted(v1.items()))
+
         return collections.OrderedDict(sorted(result.items()))
 
     def get_phased_finals(self, result):
