@@ -86,6 +86,10 @@ width: 16.67%;
 width: 25%;
 }
 
+.quinto {
+width: 20%;
+}
+
 
 /* -------------------- Header -------------------- */
 
@@ -337,7 +341,7 @@ justify-content: center;
 
 .card .user-tournamentlist img{
     position: absolute;
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none;
     max-width: 85%;
     padding: 5px;
     top: 0;
@@ -361,7 +365,6 @@ justify-content: center;
 
 
 .single-chart {
-width: 49%;
 justify-content: space-around;
 margin-top: -95px;}
 
@@ -375,18 +378,18 @@ width: 100%;
 .circle-bg {
   fill: none;
   stroke: #eee;
-  stroke-width: 5;
+  stroke-width: 2;
 }
 
 .circle-sm {
   fill: #DC4C46;
   stroke: #eee;
-  stroke-width: 5;
+  stroke-width: 2;
 }
 
 .circle {
   fill: none;
-  stroke-width: 4;
+  stroke-width: 1;
   stroke-linecap: round;
   animation: progress 1s ease-out forwards;
 }
@@ -1462,6 +1465,11 @@ margin-top: 0px;
 .card .button_message.left {
 margin-left: 0px;
 margin-right: 0px;
+}
+
+.single-chart {
+max-width: 49%;
+margin-top: -95px;
 }
 
 form-content {

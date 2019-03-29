@@ -19,18 +19,18 @@
     </div>
 
     <div class="card_team col-xs-12 col-md-3 col-lg-3">
-        {% for p in players %}
+        {% for p in player %}
         <div class="card card-player h2h col-xs-6 col-sm-6 col-md-12" style="float:left">
             <div class="content">
                 <div class="main" style="min-height:50px">
-                    <h1 class="name">{{p.person.first_name}} {{p.person.last_name}}</h1>
+                    <h1 class="name">{{p.first_name}} {{p.last_name}}</h1>
                 </div>
             </div>
         </div> <!-- end card -->
         {% endfor %}
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card_info" style="">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card_info">
         <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
         <label for="tab1">{% trans "Activity" %}</label>
 
@@ -44,10 +44,11 @@
                 <table class="table" style="text-align: center">
                     <thead>
                     <tr>
-                        <th class="col-sm-3 tres">{% trans "Tournaments" %}</th>
-                        <th class="col-sm-3 tres">{% trans "Games" %}</th>
-                        <th class="col-sm-3 tres">{% trans "Win" %}</th>
-                        <th class="col-sm-3 tres">{% trans "Lost" %}</th>
+                        <th class="quinto">{% trans "Tournaments" %}</th>
+                        <th class="quinto">{% trans "Games" %}</th>
+                        <th class="quinto">{% trans "Win" %}</th>
+                        <th class="quinto">{% trans "Lost" %}</th>
+                        <th class="quinto">{% trans "Average" %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,35 +85,57 @@
                                 <text x="18" y="20.35" class="percentage">{{total_games}}</text>
                             </svg>
                         </td>
-                        <td style="margin-top: 50px">{{total_wins}}</td>
-                        <td>{{total_lost}}</td>
+                        <td>
+                            <svg viewBox="0 0 36 36" class="circular-chart red col-sm-3">
+                                <path class="circle-bg"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle"
+                                      stroke-dasharray="100, 100"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <text x="18" y="20.35" class="percentage">{{total_wins}}</text>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg viewBox="0 0 36 36" class="circular-chart red col-sm-3" style="stroke-width: 3">
+                                <path class="circle-bg"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle"
+                                      stroke-dasharray="100, 100"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <text x="18" y="20.35" class="percentage">{{total_lost}}</text>
+                            </svg>
+                        </td>
+                        <td>
+                            <svg viewBox="0 0 36 36" class="circular-chart red col-sm-3">
+                                <path class="circle-bg"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle"
+                                      stroke-dasharray="{{ratio}}, 100"
+                                      d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <text x="18" y="20.35" class="percentage">{{ratio}}%</text>
+                            </svg>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="col-xs-12 col-sm-12" style="position: relative; float: right">
-                    <div class="single-chart" style="float: right; height: 50px">
-                        <svg viewBox="0 0 36 36" class="circular-chart red">
-                            <path class="circle-bg"
-                                  d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                                  stroke-dasharray="40, 100"
-                                  d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle" style="stroke: pink"
-                                  stroke-dasharray="60, 100"
-                                  d="M18 2.0845
-          a 15.9155 15.9155 0 1 0 0 31.831
-          a 15.9155 15.9155 0 1 0 0 -31.831"
-                            />
-                            <text x="18" y="20.35" class="percentage">{% widthratio 0.523 1 100 %}%</text>
-                        </svg>
-                    </div>
-                </div>
 
                 <!--Partners-->
 
@@ -140,9 +163,11 @@
                     {% trans "Competitions" %}
                 </h3>
                 <hr class="separador_torneo" style="margin-top: 0px">
+
+                {% for key, values in sorted_games.items %}
                 <table class="col-sm-12 table table-striped table-hover">
                     <tbody>
-                    {% for t in tournaments %}
+
                     <tr>
                         <td class="col-xs-12" style="float: left; padding-top: 10px;">
                             <!-- Logo Serie -->
@@ -150,27 +175,27 @@
                                  style="float: left; padding-left: 0px">
                                 <div style="float: left">
                                     <img class="category_turnierliste"
-                                         src="{% static t.serie_url %}" alt="GPS-500">
+                                         src="{% static key.serie_url %}" alt="GPS-500">
                                 </div>
                             </div>
 
                             <!-- Categoría -->
                             <button type="button" class="col-xs-1 col-sm-1 col-bg-1 btn cat"
                                     style="margin: 0 0 0 10; border-color: #d7d7d7">
-                                {{t.division}}
+                                {{key.division}}
                             </button>
 
 
                             <!-- Serie, Ciudad y Fecha -->
                             <div class="col-xs-4 col-sm-5 text_tournament_title" style="float: left; margin: 0 0 0 20">
-                                <a href="{% url 'tournament' t.id %}" class="text_tournament_title"
+                                <a href="{% url 'tournament' key.id %}" class="text_tournament_title"
                                    style="width: 50%; text-transform: uppercase; font-weight: 600;">
-                                    {{t.padel_serie}} // {{t.city}}</a><br>
-                                {% if t.date %}
+                                    {{key.padel_serie}} // {{key.city}}</a><br>
+                                {% if key.date %}
                                 <a class="text_tournament_title"
-                                   style="width: 100%; color:black">{{t.name}}</a><br>
+                                   style="width: 100%; color:black">{{key.name}}</a><br>
                                 <a class="text_tournament_title"
-                                   style="width: 100%; color:black">{{t.date}}</a>
+                                   style="width: 100%; color:black">{{key.date}}</a>
 
                                 {% else %}
                                 <a class="text_tournament_title"
@@ -178,15 +203,15 @@
                                 {% endif %}
                             </div>
 
-
                             <!-- Club -->
                             <div class="col-xs-1 col-sm-1 " style="float: left; margin: 0 0 0 -20">
 
                                 <div class="user-tournamentlist" style="background-color: none">
                                     {% if tournament.club.logo.url %}
-                                    <img class="img" src="{{ t.club.logo.url }}">
+                                    <img class="img" style="max-width: 100%" src="{{ key.club.logo.url }}">
                                     {% else %}
-                                    <img class="img" src="{% static 'images/germany/clubs/_logo.png' %}">
+                                    <img class="img" style="max-width: 100%"
+                                         src="{% static 'images/germany/clubs/_logo.png' %}">
                                     {% endif %}
                                 </div>
                             </div>
@@ -194,8 +219,8 @@
                             <div class="col-xs-4 col-sm-4" style="float: left; width: 30%">
                                 <a class="text_club"
                                    style="padding-left:10px; text-transform: uppercase; color:black">
-                                    {% if t.club %}
-                                    {{t.club}}
+                                    {% if key.club %}
+                                    {{key.club}}
                                     {% else %}
                                     Unknown
                                     {% endif %}
@@ -203,20 +228,14 @@
                             </div>
                         </td>
                     </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
 
                 <!--Games-->
 
-                <hr class="separador_torneo" style="margin-bottom: 0px">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
-                    {% trans "Games" %}
-                </h3>
-                <hr class="separador_torneo" style="margin-top: 0px">
-                <table class="col-sm-12 table table-striped table-hover">
+                <table class="col-sm-12 table table-hover">
                     <tbody>
-                    {% for g in games %}
+                    {% for g in values %}
                     <tr>
                         <td class="col-xs-12" style="float: left; padding-top: 10px;">
                             <!-- Serie, Ciudad y Fecha -->
@@ -289,6 +308,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                {% endfor %}
 
             </div>
         </section>
