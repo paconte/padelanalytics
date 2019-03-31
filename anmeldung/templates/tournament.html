@@ -77,20 +77,22 @@
 
             {% endif %}
 
-                        <!-- Menú desplegable Categorias -->
+            <!-- Menú desplegable Categorias -->
             {% if similar_tournaments|length != 0 %}
             <div class="col-xs-12 col-sm-12" style="float: right; margin-bottom: -35px; margin-right: -5px">
-            <div class="dropdown col-xs-5 col-sm-3" style="float: right; opacity: 0,5">
-                <button class="btn btn-outline-danger dropdown-toggle col-sm-12" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 6px; ">
-                    {% trans "Change Division" %}
-                </button>
-                <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
-                    {% for division, id in similar_tournaments.items %}
-                    <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{% trans division %}</a>
-                    {% endfor %}
+                <div class="dropdown col-xs-5 col-sm-3" style="float: right; opacity: 0,5">
+                    <button class="btn btn-outline-danger dropdown-toggle col-sm-12" type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 6px; ">
+                        {% trans "Change Division" %}
+                    </button>
+                    <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
+                        {% for division, id in similar_tournaments.items %}
+                        <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{% trans division
+                            %}</a>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
             </div>
             {% endif %}
 
@@ -113,7 +115,7 @@
     {% endif %}
 
     {% if pool_games %}
-     {% if 'PoolZ' in pool_tables %}
+    {% if 'PoolZ' in pool_tables %}
 
     <input id="tab3" type="radio" name="tabs">
     <label for="tab3">{% trans "Repechage" %}</label>
@@ -130,8 +132,8 @@
     {% endif %}
     {% endif %}
 
-        {% if ko_games %}
-                    {% if "Silver" in ko_games %}
+    {% if ko_games %}
+    {% if "Silver" in ko_games %}
     <input id="tab5" type="radio" name="tabs" checked>
     <label for="tab5">{% trans "Consolation" %}</label>
     {% endif %}
@@ -145,15 +147,15 @@
                 <div class="col-xs-12 col-sm-4" style="left: 0px">
                 </div>
                 <!-- Lista de equipos que han jugado */-->
-                   {% if real_teams %}
+                {% if real_teams %}
                 <hr class="separador_torneo  hidden">
                 <div class="panel" style="max-height:inherit">
                     <div class="teams_title">
                         <div class="th col-xs-2 col-sm-1 hidden"></div>
-                        <div class="th col-xs-4 col-sm-2 hidden"  style="color: red"> {% trans "Player" %} 1</div>
+                        <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 1</div>
                         <div class="th col-xs-5 col-sm-3 hidden"> {% trans "" %}</div>
                         <div class="th col-xs-1 col-sm-1 hidden"></div>
-                        <div class="th col-xs-4 col-sm-2 hidden"  style="color: red"> {% trans "Player" %} 2</div>
+                        <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 2</div>
                         <!--<div class="th col-xs-5 col-sm-3 hidden"> {% trans "Club" %}</div>-->
 
                         <!--<div class="th col-sm-1"> KOPF</div>
@@ -173,7 +175,8 @@
                         </ul>
                         <ul class="th col-xs-4 col-sm-4">
                             <div><a class="text_player_played"
-                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}} {{team.player_a.last_name}}</a>
+                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}}
+                                {{team.player_a.last_name}}</a>
                             </div>
                         </ul>
                         <ul class="th col-xs-5 col-sm-1">
@@ -188,7 +191,8 @@
                         </ul>
                         <ul class="th col-xs-4 col-sm-4">
                             <div><a class="text_player_played"
-                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_b.first_name}} {{team.player_b.last_name}}</a>
+                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_b.first_name}}
+                                {{team.player_b.last_name}}</a>
                             </div>
                         </ul>
                         <ul class="th col-xs-5 col-sm-1">
@@ -209,7 +213,8 @@
 
                 <!-- Lista de equipos apuntados */-->
                 {% elif signed_up_teams %}
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans "TEAMS" %}</h3>
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">{% trans "TEAMS"
+                    %}</h3>
                 <hr class="separador_torneo">
                 <div class="panel" style="max-height:inherit">
                     <div class="teams_title">
@@ -339,8 +344,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolA" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -353,8 +363,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -416,8 +431,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolB" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -430,8 +450,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -493,8 +518,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolC" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -507,8 +537,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -570,8 +605,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolD" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -584,8 +624,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -647,8 +692,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolE" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -661,8 +711,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -724,8 +779,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolF" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -738,8 +798,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -807,8 +872,13 @@
                     {% for key, game in pool_games.items %}
                     {% if "PoolZ" in game.phase.round %}
                     <tr>
+                        {% if game.result_padel.winner == 1 %}
                         <td class="result"
                             style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.local}}
                         </td>
                         <td class="result"
@@ -821,8 +891,13 @@
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
                         </td>
-                        <td class="result "
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
                             style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
                             {{game.visitor}}
                         </td>
                     </tr>
@@ -855,8 +930,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -879,8 +959,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -900,8 +986,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -924,8 +1015,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -947,8 +1044,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -971,8 +1073,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -994,8 +1102,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1018,8 +1131,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+{{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1039,8 +1158,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1063,8 +1187,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+{{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1075,7 +1205,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-1" style="float: right; z-index: 10">
                         <div class="separador_final"></div>
-                        <h3 class="form_title finalKO16title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        <h3 class="form_title finalKO16title"
+                            style="font-weight: 600; color:#DC4C46; text-align:center;">
                             {% trans "Final" %}
                         </h3>
                     </div>
@@ -1099,8 +1230,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1123,8 +1259,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1144,8 +1286,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1168,8 +1315,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1191,8 +1344,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1215,8 +1373,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1238,8 +1402,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1262,8 +1431,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1290,8 +1465,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1314,8 +1494,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1341,8 +1527,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1365,8 +1556,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1386,8 +1583,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1410,8 +1612,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1434,8 +1642,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1458,8 +1671,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1484,8 +1703,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1508,8 +1732,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1535,8 +1765,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1559,8 +1794,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1581,8 +1822,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1605,8 +1851,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1616,58 +1868,70 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                <div style="width: 100%; bottom: 0">
+                    <div style="width: 100%; bottom: 0">
 
-                    {% if "POS3" in key.round %}
-                    <div class="col-xs-12 col-sm-12 col-md-12 pos3" style="float: right; margin-top: 36px">
-                        <hr class="separador_torneo">
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6" style="float: right">
-                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                            {% trans "Match for 3rd Place" %}
-                        </h3>
-                        <hr class="separador_torneo">
-                        {% for k, game in values.items %}
-                        <div class="card" style="max-height:inherit">
-                            <ul class="teams" style="height: 25px">
-                                <ul class="th col-xs-12 col-sm-12">
-                                    <i style="border= none; float:left; position: relative; margin-top:8px"
-                                       class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                        {% if "POS3" in key.round %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 pos3" style="float: right; margin-top: 36px">
+                            <hr class="separador_torneo">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="float: right">
+                            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                                {% trans "Match for 3rd Place" %}
+                            </h3>
+                            <hr class="separador_torneo">
+                            {% for k, game in values.items %}
+                            <div class="card" style="max-height:inherit">
+                                <ul class="teams" style="height: 25px">
+                                    <ul class="th col-xs-12 col-sm-12">
+                                        <i style="border= none; float:left; position: relative; margin-top:8px"
+                                           class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                        {{game.local}}
-                                    </a>
-                                </ul>
-                            </ul>
-                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                            <ul class="th col-xs-12 col-sm-12">
-                                <a class="text_club"
-                                   style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
-                                    {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
-                                    {% if game.result_padel.local2 >= 0 %}
-                                    / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
-                                    {% endif %}
-                                    {% if game.result_padel.local3 >= 0 %}
-                                    / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
-                                    {% endif %}
-                                </a>
-                            </ul>
-                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                            <ul class="teams" style="height: 25px">
-                                <ul class="th col-xs-12 col-sm-12">
-                                    <i style="border= none; float:left; position: relative; margin-top:8px"
-                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% else %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                            {{game.local}}
+                                        </a>
+                                    </ul>
+                                </ul>
+                                <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                                <ul class="th col-xs-12 col-sm-12">
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
+                                        {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                        {% if game.result_padel.local2 >= 0 %}
+                                        / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                        {% endif %}
+                                        {% if game.result_padel.local3 >= 0 %}
+                                        / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                        {% endif %}
                                     </a>
                                 </ul>
-                            </ul>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
+                                <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                                <ul class="teams" style="height: 25px">
+                                    <ul class="th col-xs-12 col-sm-12">
+                                        <i style="border= none; float:left; position: relative; margin-top:8px"
+                                           class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
 
-                </div>
+                                            {{game.visitor}}
+                                        </a>
+                                    </ul>
+                                </ul>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                    </div>
                     {% endif %}
                 </div>
 
@@ -1688,8 +1952,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1712,8 +1981,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1740,8 +2015,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1764,8 +2044,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1786,8 +2072,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1810,8 +2101,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1827,7 +2124,7 @@
                 {% endfor %}
     </section>
 
-        <!-- Fase K.O. -->
+    <!-- Fase K.O. -->
     <section id="content5" style="min-height: 100%; max-height: 100%">
         <div class="nopadding card col-sm-12" style="padding-bottom:18px; padding-top:12px; display: flex; z-index:-1">
             <div class="nopadding col-xs-12 col-sm-12">
@@ -1847,8 +2144,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1871,8 +2173,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1892,8 +2200,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1916,8 +2229,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1939,8 +2258,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -1963,8 +2287,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -1986,8 +2316,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2010,8 +2345,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2031,8 +2372,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2055,8 +2401,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2067,7 +2419,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-1" style="float: right; z-index: 10">
                         <div class="separador_final"></div>
-                        <h3 class="form_title finalKO16title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        <h3 class="form_title finalKO16title"
+                            style="font-weight: 600; color:#DC4C46; text-align:center;">
                             {% trans "Final" %}
                         </h3>
                     </div>
@@ -2091,8 +2444,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2115,8 +2473,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2136,8 +2500,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2160,8 +2529,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2183,8 +2558,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2207,8 +2587,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2230,8 +2616,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2254,8 +2645,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2282,8 +2679,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2306,8 +2708,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2333,8 +2741,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2357,8 +2770,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2378,8 +2797,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2402,8 +2826,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2426,8 +2856,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2450,8 +2885,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2476,8 +2917,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2500,8 +2946,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2527,8 +2979,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2551,8 +3008,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2573,8 +3036,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2597,8 +3065,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2608,58 +3082,69 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                <div style="width: 100%; bottom: 0">
+                    <div style="width: 100%; bottom: 0">
 
-                    {% if "POS3" in key.round %}
-                    <div class="col-xs-12 col-sm-12 col-md-12 pos3" style="float: right; margin-top: 36px">
-                        <hr class="separador_torneo">
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6" style="float: right">
-                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
-                            {% trans "Match for 3rd Place" %}
-                        </h3>
-                        <hr class="separador_torneo">
-                        {% for k, game in values.items %}
-                        <div class="card" style="max-height:inherit">
-                            <ul class="teams" style="height: 25px">
-                                <ul class="th col-xs-12 col-sm-12">
-                                    <i style="border= none; float:left; position: relative; margin-top:8px"
-                                       class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                        {% if "POS3" in key.round %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 pos3" style="float: right; margin-top: 36px">
+                            <hr class="separador_torneo">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6" style="float: right">
+                            <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                                {% trans "Match for 3rd Place" %}
+                            </h3>
+                            <hr class="separador_torneo">
+                            {% for k, game in values.items %}
+                            <div class="card" style="max-height:inherit">
+                                <ul class="teams" style="height: 25px">
+                                    <ul class="th col-xs-12 col-sm-12">
+                                        <i style="border= none; float:left; position: relative; margin-top:8px"
+                                           class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                        {{game.local}}
-                                    </a>
-                                </ul>
-                            </ul>
-                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                            <ul class="th col-xs-12 col-sm-12">
-                                <a class="text_club"
-                                   style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
-                                    {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
-                                    {% if game.result_padel.local2 >= 0 %}
-                                    / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
-                                    {% endif %}
-                                    {% if game.result_padel.local3 >= 0 %}
-                                    / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
-                                    {% endif %}
-                                </a>
-                            </ul>
-                            <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
-                            <ul class="teams" style="height: 25px">
-                                <ul class="th col-xs-12 col-sm-12">
-                                    <i style="border= none; float:left; position: relative; margin-top:8px"
-                                       class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% else %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                            {{game.local}}
+                                        </a>
+                                    </ul>
+                                </ul>
+                                <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                                <ul class="th col-xs-12 col-sm-12">
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; color: black; font-weight: 600; font-size: 10px; float:right; top: 0px; position:relative">
+                                        {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                        {% if game.result_padel.local2 >= 0 %}
+                                        / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                        {% endif %}
+                                        {% if game.result_padel.local3 >= 0 %}
+                                        / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                        {% endif %}
                                     </a>
                                 </ul>
-                            </ul>
+                                <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
+                                <ul class="teams" style="height: 25px">
+                                    <ul class="th col-xs-12 col-sm-12">
+                                        <i style="border= none; float:left; position: relative; margin-top:8px"
+                                           class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                            {{game.visitor}}
+                                        </a>
+                                    </ul>
+                                </ul>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
+                        {% endif %}
 
-                </div>
+                    </div>
                     {% endif %}
                 </div>
 
@@ -2680,8 +3165,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2704,8 +3194,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2732,8 +3228,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2756,8 +3257,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
@@ -2778,8 +3285,13 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
                                         {{game.local}}
                                     </a>
                                 </ul>
@@ -2802,8 +3314,14 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="width: 90%; text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">{{game.visitor}}
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                    {% else %}
+                                    <a class="text_club"
+                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                    {% endif %}
+                                        {{game.visitor}}
                                     </a>
                                 </ul>
                             </ul>
