@@ -161,27 +161,28 @@
                         <!--<div class="th col-sm-1"> KOPF</div>
                         <div class="th col-sm-1" style="float: right; right: 0px"> Punkte DPV</div>-->
                     </div>
+
                     {% for team in real_teams %}
                     <ul class="teams">
-
                         <hr class="hr">
                         <ul class="th col-xs-2 col-sm-1">
                             <!--<img class="flag" src="{% static 'images/flags/32/Germany.png' %}">-->
                             <i style="border= none" class="flag {{ team.player_a.country.flag_css }}"></i>
-
                             <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-03.png' %}">
-
-
                         </ul>
+
                         <ul class="th col-xs-4 col-sm-4">
-                            <div><a class="text_player_played"
-                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}}
-                                {{team.player_a.last_name}}</a>
+                            <div>
+                                <a href="{% url 'team' team.id %}">
+                                    {{team.player_a.first_name}} {{team.player_a.last_name}}
+                                </a>
                             </div>
                         </ul>
+
                         <ul class="th col-xs-5 col-sm-1">
                             <div><a class="text_player_played">{{team.player_a.club}}</a></div>
                         </ul>
+
                         <br class="hidden576">
                         <br class="hidden576">
                         <ul class="th col-xs-2 col-sm-1">

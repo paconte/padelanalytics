@@ -23,7 +23,9 @@
         <div class="card card-player h2h col-xs-6 col-sm-6 col-md-12" style="float:left">
             <div class="content">
                 <div class="main" style="min-height:50px">
-                    <h1 class="name">{{p.person.first_name}} {{p.person.last_name}}</h1>
+                    <a href="{% url 'player' p.person.id %}">
+                        <h1 class="name">{{p.person.first_name}} {{p.person.last_name}}</h1>
+                    </a>
                 </div>
             </div>
         </div> <!-- end card -->
