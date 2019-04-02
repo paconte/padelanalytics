@@ -243,7 +243,7 @@ def player_detail(request, id):
     return render(request, 'person.html',
                   {'partners': partners, 'tournaments': tournaments, 'games': games, 'total_games': total_games,
                    'total_tournaments': len(tournaments), 'total_wins': total_wins, 'total_lost': total_lost,
-                   'ratio': round(ratio * 100, 2), 'player': person, 'sorted_games': sorted_games})
+                   'ratio': round(ratio * 100, 2), 'player': person, 'sorted_games': sorted_games, 'teams': teams})
 
 
 def _calc_team_player_detail(games, ids):
