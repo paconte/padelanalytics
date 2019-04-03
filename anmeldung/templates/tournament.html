@@ -153,7 +153,7 @@
                     <div class="teams_title">
                         <div class="th col-xs-2 col-sm-1 hidden"></div>
                         <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 1</div>
-                        <div class="th col-xs-5 col-sm-3 hidden"> {% trans "" %}</div>
+                        <div class="th col-xs-5 col-sm-2 hidden"> {% trans "" %}</div>
                         <div class="th col-xs-1 col-sm-1 hidden"></div>
                         <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 2</div>
                         <!--<div class="th col-xs-5 col-sm-3 hidden"> {% trans "Club" %}</div>-->
@@ -170,15 +170,12 @@
                             <i style="border= none" class="flag {{ team.player_a.country.flag_css }}"></i>
                             <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-03.png' %}">
                         </ul>
+                        <ul class="th col-xs-4 col-sm-3">
+                            <a href="{% url 'team' team.id %}" class="text_player_played"
+                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}}
+                                {{team.player_a.last_name}}</a>
 
-                        <ul class="th col-xs-4 col-sm-4">
-                            <div>
-                                <a href="{% url 'team' team.id %}">
-                                    {{team.player_a.first_name}} {{team.player_a.last_name}}
-                                </a>
-                            </div>
                         </ul>
-
                         <ul class="th col-xs-5 col-sm-1">
                             <div><a class="text_player_played">{{team.player_a.club}}</a></div>
                         </ul>
@@ -190,7 +187,7 @@
                             <i style="border= none" class="flag {{ team.0.player_b.country.flag_css }}"></i>
                             <img class="picture" src="{% static 'images/players/Cool-Male-Avatars-01.png' %}">
                         </ul>
-                        <ul class="th col-xs-4 col-sm-4">
+                        <ul class="th col-xs-4 col-sm-3">
                             <div><a class="text_player_played"
                                     style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_b.first_name}}
                                 {{team.player_b.last_name}}</a>
@@ -208,6 +205,13 @@
                         <ul class="th col-sm-2">
                             <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
                         </ul>-->
+                            <a href="{% url 'team' team.id %}">
+                        <button type="button" class="col-xs-6 col-sm-1  btn btn-danger"
+                                style="float: left; font-size: 12px; height: 32px">
+                            {% trans "Go to Team" %}
+                        </button>
+                    </a>
+
                     </ul>
                     {% endfor %}
                 </div>
