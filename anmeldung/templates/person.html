@@ -22,7 +22,7 @@
         {% for p in player %}
         <div class="card card-player h2h col-xs-6 col-sm-6 col-md-12" style="float:left">
             <div class="content">
-                <div class="main" style="min-height:50px">
+                <div class="main text_tournament_title" style="min-height:50px">
                     <h1 class="name">{{p.first_name}} {{p.last_name}}</h1>
                 </div>
             </div>
@@ -33,6 +33,8 @@
     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card_info">
         <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
         <label for="tab1">{% trans "Activity" %}</label>
+        <input id="tab2" type="radio" name="tabs" style="padding-left: 0px; float: left">
+        <label for="tab2">{% trans "Teams" %}</label>
 
         <section id="content1" style="">
             <div class="card">
@@ -46,7 +48,7 @@
                     <tr>
                         <th class="quinto">{% trans "Tournaments" %}</th>
                         <th class="quinto">{% trans "Games" %}</th>
-                        <th class="quinto">{% trans "Win" %}</th>
+                        <th class="quinto">{% trans "Won" %}</th>
                         <th class="quinto">{% trans "Lost" %}</th>
                         <th class="quinto">{% trans "Average" %}</th>
                     </tr>
@@ -55,17 +57,8 @@
                     <tr>
                         <td>
                             <svg viewBox="0 0 36 36" class="circular-chart red col-sm-3">
-                                <path class="circle-bg"
-                                      d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                                />
-                                <path class="circle"
-                                      stroke-dasharray="100, 100"
-                                      d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                                />
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                                 <text x="18" y="20.35" class="percentage">{{total_tournaments}}</text>
                             </svg>
                         </td>
@@ -137,24 +130,6 @@
                     </tbody>
                 </table>
 
-                <!--Partners-->
-
-                <hr class="separador_torneo" style="margin-bottom: 0px">
-                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
-                    {% trans "Partners" %}
-                </h3>
-                <hr class="separador_torneo" style="margin-top: 0px">
-                <table class="col-sm-12 table table-striped table-hover">
-                    <tbody>
-                    {% for p in partners %}
-                    <tr>
-                        <td class="col-xs-1 col-sm-2 uno dos"><h12 href="{% url 'player' p.id %}">{{p.first_name}} {{p.last_name}}</h12></td>
-
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
 
                 <!--Competitions-->
 
@@ -207,12 +182,7 @@
                             <div class="col-xs-1 col-sm-1 " style="float: left; margin: 0 0 0 -20">
 
                                 <div class="user-tournamentlist" style="background-color: none">
-                                    {% if tournament.club.logo.url %}
                                     <img class="img" style="max-width: 100%" src="{{ key.club.logo.url }}">
-                                    {% else %}
-                                    <img class="img" style="max-width: 100%"
-                                         src="{% static 'images/germany/clubs/_logo.png' %}">
-                                    {% endif %}
                                 </div>
                             </div>
 
@@ -313,6 +283,29 @@
             </div>
         </section>
 
+                        <!--Partners-->
+        <section id="content2" style="">
+            <div class="card">
+                <hr class="separador_torneo" style="margin-bottom: 0px">
+                <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
+                    {% trans "Teams" %}
+                </h3>
+                <hr class="separador_torneo" style="margin-top: 0px">
+                <table class="col-sm-12 table table-striped table-hover">
+                    <tbody>
+                    {% for t in teams %}
+                    <tr>
+                        <td>
+
+                            <a class="col-xs-2 col-sm-2 dos text_tournament_title" style="font-weight: 600"
+                                                                                   href="{% url 'team' t.id %}">{{t}}</a>
+                       </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 
 

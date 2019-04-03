@@ -23,7 +23,7 @@
         <div class="card card-player h2h col-xs-6 col-sm-6 col-md-12" style="float:left">
             <div class="content">
                 <div class="main" style="min-height:50px">
-                    <a href="{% url 'player' p.person.id %}">
+                    <a href="{% url 'player' p.person.id %}" class="text_tournament_title">
                         <h1 class="name">{{p.person.first_name}} {{p.person.last_name}}</h1>
                     </a>
                 </div>
@@ -48,7 +48,7 @@
                     <tr>
                         <th class="quinto">{% trans "Tournaments" %}</th>
                         <th class="quinto">{% trans "Games" %}</th>
-                        <th class="quinto">{% trans "Win" %}</th>
+                        <th class="quinto">{% trans "Won" %}</th>
                         <th class="quinto">{% trans "Lost" %}</th>
                         <th class="quinto">{% trans "Average" %}</th>
                     </tr>
