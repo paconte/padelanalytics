@@ -40,7 +40,7 @@ box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.2);
       flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  /*background-color: #fff;*/
   background-clip: border-box;
     transition: 0.1s;
 border-radius: 0.0rem;
@@ -478,26 +478,33 @@ border: none;
 }
 
 .stats_vertical_logo:hover {
-background-color: #dc3545;
 border: none;
 border-right: 0px solid #dc3545;
+}
+
+.contorno:hover {
+color: black;
+}
+
+.contorno .stats_vertical_info:hover {
+/*border: 1px solid #dc3545;*/
+color: black;
 }
 
 .stats_vertical_info {
 text-transform: uppercase;
 font-weight: 600px;
 border-radius: 0px;
-height: 60px;
-font-size: 20px;
+height: 80px;
+font-size: 30px;
 font-weight: 600;
 float:right;
-margin: 0 0 5 0;
-background-color:rgba(180, 180, 180, 0.5);
+margin: 0;
+background-color: #ededed;
 border: none;
-color: grey;}
+color: #DC4C46}
 
 .stats_vertical_info:hover {
-background-color: #dc3545;
 border: none;
 }
 

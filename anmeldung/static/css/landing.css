@@ -8,6 +8,15 @@ bottom: -30px;
 background-color: #dc3545;
 }
 
+.stats_icon {
+color: #DC4C46;
+font-size: 36px;
+}
+
+.stats_icon:hover{
+color: black;
+}
+
 
 @media (min-width: 768px) and (max-width: 992px) {
 
@@ -21,7 +30,7 @@ font-size: 14px;
 }
 
 .stats_icon {
-    font-size: 14px;
+    font-size: 30px;
     margin-top: 10px;
 }
 }
