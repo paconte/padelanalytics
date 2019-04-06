@@ -9,19 +9,160 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}"/>
+
 {% endblock %}
 
 {% block content %}
 
+<div id="particles-js" class="background" style=" z-index: -2">
+      <div style="width: 100%; float: center; position: absolute; margin: 200px auto 0 auto; ">
+          <div style="display: block; ">
+              <img style="display: block; margin: 0 auto 0 auto; width: 20%" src="{% static 'images/logo01.png' %}"  alt="Padel Analytics">
+          </div>
+          <br><br>
+            <div style="display: block">
+              <h1 style="font-size: 30px; display: block; margin: 0 auto 0 auto; width: 50%">
+                  {% trans " - Your Padel Portal with all your favourite statistics - " %}
+              </h1>
+          </div>
+        <div class="news_bar" style="height:inherit; -webkit-filter: grayscale(0%); width: 70%; margin: 100 auto 0 auto">
+
+            <!-- Estadística -->
+            <div>
+                <div class="col-sm-12" style="flex: none; ">
+                </div>
+
+                <div>
+                    <div class="quinto contorno" style="float:left; background-color: rgba(255,255,255,0.7);
+"><a href="{% url 'clubs' %}">
+                        <div class="col-12 btn stats_vertical_logo" style="float:left">
+                            <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
+                        </div>
+                        <button type="button" class="col-12 btn stats_vertical_info" style="font-weight: 600">
+                            {{total_clubs}}<br>
+                            <h2 style="font-weight: 200; border-left: none;">{% trans "Clubs" %}</h2>
+                        </button></a>
+                    </div>
+
+                    <div class="quinto contorno" style="float:left; background-color: rgba(255,255,255,0.7);"><a href="{% url 'clubs' %}">
+                        <div class="col-12 btn stats_vertical_logo" style="float:left">
+                            <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i></div>
+                        </div>
+                        <button type="button" class="col-12 btn stats_vertical_info" style="font-weight: 600">
+                            {{total_courts}}<br>
+                            <h2 style="font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
+                        </button></a>
+                    </div>
+
+                    <div class="quinto contorno" style="float:left; background-color: rgba(255,255,255,0.7)"><a href="{% url 'tournaments' %}">
+                        <div class="col-12 btn stats_vertical_logo" style="float:left">
+                            <div class="stats_icon"><i class="fa fa-trophy"></i></div>
+                        </div>
+                        <button type="button" class="col-12 btn stats_vertical_info" style="">
+                            {{total_tournaments}}<br>
+                            <h2 style="font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
+                        </button></a>
+                    </div>
+
+                    <div class="quinto contorno" style="float:left; background-color: rgba(255,255,255,0.7)"><a href="">
+                        <div class="col-12 btn stats_vertical_logo" style="float:left">
+                            <div class="stats_icon"><i class="fa fa-user"></i></div>
+                        </div>
+                        <button type="button" class="col-12 btn stats_vertical_info" style="">
+                            {{total_persons}}<br>
+                            <h2 style="font-weight: 200; border-left: none">{% trans "Players" %}</h2>
+                        </button></a>
+                    </div>
+
+                    <div class="quinto contorno" style="float:left; background-color: rgba(255,255,255,0.7)"><a href="{% url 'ranking' %}">
+                        <div class="col-12 btn stats_vertical_logo" style="float:left">
+                            <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
+                        </div>
+                        <button type="button" class="col-12 btn stats_vertical_info" style="">
+                            {{total_rankings}}<br>
+                            <h2 style="font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
+                        </button></a>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--<div class="stats2" style="margin-top: 15px">
+                <div>
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                            <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
+                        </div>
+                        <button type="button"
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
+                            {{total_clubs}}<br>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Clubs" %}</h2>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                            <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
+                            </div>
+                        </div>
+                        <button type="button"
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
+                            {{total_courts}}<br>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a
+                            href="{% url 'tournaments' %}">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                            <div class="stats_icon"><i class="fa fa-trophy"></i></div>
+                        </div>
+                        <button type="button"
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
+                            {{total_tournaments}}<br>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                            <div class="stats_icon"><i class="fa fa-user"></i></div>
+                        </div>
+                        <button type="button"
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
+                            {{total_persons}}<br>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Players" %}</h2>
+                        </button>
+                    </a>
+                    </div>
+                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
+                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
+                            <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
+                        </div>
+                        <button type="button"
+                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
+                            {{total_rankings}}<br>
+                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
+                        </button>
+                    </a>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+
+      </div>
+</div>
+
 {% trans "Next Tournaments" as next_tournaments %}
+<div class="container_12" style="">
 
-<div class="container_12" style="margin-bottom:20px">
-
-    <div class="box roll">
-
+    <div class="box roll" style="margin-top: 15px">
 
         <!-- Franja Principal -->
-        <div class="col-xs-12 col-sm-12 col-md-12" style="float:left; padding-left: 0px; padding-right: 0px">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:50px; float:left; padding-left: 0px; padding-right: 0px">
 
             <!-- Próximos Torneos -->
             <div class="col-sm-12">
@@ -175,134 +316,6 @@
     </div>
 
 
-    <div class="col-md-12" style="float:left; margin-right:-16px; padding-left:0px; padding-right: 0px">
-        <div class="news_bar" style="height:inherit; -webkit-filter: grayscale(0%)">
-
-            <!-- Estadística -->
-            <div>
-                <div class="col-sm-12" style="flex: none; margin: 20 0 20 0; border-top: 3px solid white">
-                    <!--<h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center">
-                        {% trans "Statistics" %}</h3>
-                    <hr class="separador_torneo"> -->
-                </div>
-
-                <div>
-                    <div class="quinto contorno" style="float:left"><a href="{% url 'clubs' %}">
-                        <div class="col-12 btn stats_vertical_logo" style="float:left">
-                            <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
-                        </div>
-                        <button type="button" class="col-12 btn stats_vertical_info" style="font-weight: 600">
-                            {{total_clubs}}<br>
-                            <h2 style="font-weight: 200; border-left: none;">{% trans "Clubs" %}</h2>
-                        </button></a>
-                    </div>
-
-                    <div class="quinto contorno" style="float:left"><a href="{% url 'clubs' %}">
-                        <div class="col-12 btn stats_vertical_logo" style="float:left">
-                            <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i></div>
-                        </div>
-                        <button type="button" class="col-12 btn stats_vertical_info" style="font-weight: 600">
-                            {{total_courts}}<br>
-                            <h2 style="font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
-                        </button></a>
-                    </div>
-
-                    <div class="quinto contorno" style="float:left"><a href="{% url 'tournaments' %}">
-                        <div class="col-12 btn stats_vertical_logo" style="float:left">
-                            <div class="stats_icon"><i class="fa fa-trophy"></i></div>
-                        </div>
-                        <button type="button" class="col-12 btn stats_vertical_info" style="">
-                            {{total_tournaments}}<br>
-                            <h2 style="font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
-                        </button></a>
-                    </div>
-
-                    <div class="quinto contorno" style="float:left"><a href="">
-                        <div class="col-12 btn stats_vertical_logo" style="float:left">
-                            <div class="stats_icon"><i class="fa fa-user"></i></div>
-                        </div>
-                        <button type="button" class="col-12 btn stats_vertical_info" style="">
-                            {{total_persons}}<br>
-                            <h2 style="font-weight: 200; border-left: none">{% trans "Players" %}</h2>
-                        </button></a>
-                    </div>
-
-                    <div class="quinto contorno" style="float:left"><a href="{% url 'ranking' %}">
-                        <div class="col-12 btn stats_vertical_logo" style="float:left">
-                            <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
-                        </div>
-                        <button type="button" class="col-12 btn stats_vertical_info" style="">
-                            {{total_rankings}}<br>
-                            <h2 style="font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
-                        </button></a>
-                    </div>
-
-                </div>
-
-            </div>
-            <!--<div class="stats2" style="margin-top: 15px">
-                <div>
-                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
-                            <div class="stats_icon"><i class="fa fa-map-marker"></i></div>
-                        </div>
-                        <button type="button"
-                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_clubs}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Clubs" %}</h2>
-                        </button>
-                    </a>
-                    </div>
-                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="{% url 'clubs' %}">
-                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
-                            <div class="stats_icon"><i class="fa fa-windows" style="transform: rotate(90deg)"></i>
-                            </div>
-                        </div>
-                        <button type="button"
-                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_courts}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Courts" %}</h2>
-                        </button>
-                    </a>
-                    </div>
-                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a
-                            href="{% url 'tournaments' %}">
-                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
-                            <div class="stats_icon"><i class="fa fa-trophy"></i></div>
-                        </div>
-                        <button type="button"
-                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_tournaments}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Tournaments" %}</h2>
-                        </button>
-                    </a>
-                    </div>
-                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
-                            <div class="stats_icon"><i class="fa fa-user"></i></div>
-                        </div>
-                        <button type="button"
-                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_persons}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Players" %}</h2>
-                        </button>
-                    </a>
-                    </div>
-                    <div class="datos col-12 col-sm-12" style="float:left; width: 20%"><a href="X">
-                        <div class="col-12 col-sm-12 btn btn-danger stats_vertical_logo">
-                            <div class="stats_icon"><i class="fa fa-list-ol"></i></div>
-                        </div>
-                        <button type="button"
-                                class="dato_numerico col-12 col-sm-12 btn btn-danger stats_vertical_info">
-                            {{total_rankings}}<br>
-                            <h2 style="font-size: 10px; font-weight: 200; border-left: none">{% trans "Rankings" %}</h2>
-                        </button>
-                    </a>
-                    </div>
-                </div>
-            </div>-->
-        </div>
-    </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7; margin-bottom: 0px">
@@ -390,17 +403,9 @@
     </div>
 </div>
 
-<script js>
-    (function($) {
-    "use strict";
+<script src="{% static 'js/particles.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 
-    // manual carousel controls
-    $('.next').click(function(){ $('.carousel').carousel('next');return false; });
-    $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
-
-})(jQuery);
-
-</script>
 
 
 {% endblock %}

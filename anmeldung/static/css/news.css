@@ -489,6 +489,8 @@ color: black;
 .contorno .stats_vertical_info:hover {
 /*border: 1px solid #dc3545;*/
 color: black;
+background-color: rgba(255,255,255,0.7);
+
 }
 
 .stats_vertical_info {
@@ -500,7 +502,7 @@ font-size: 30px;
 font-weight: 600;
 float:right;
 margin: 0;
-background-color: #ededed;
+background-color: rgba(255,255,255,0.7);
 border: none;
 color: #DC4C46}
 
