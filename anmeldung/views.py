@@ -220,6 +220,11 @@ def ranking(request):
     return render(request, 'ranking2.html', {'form': form, 'ranking': ranking})
 
 
+def about (request):
+
+    return render(request, 'about.html')
+
+
 def player_detail(request, id):
     partners = set()
     teams = list()
