@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-07 15:54+0000\n"
+"POT-Creation-Date: 2019-04-07 16:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,18 +64,21 @@ msgstr "Zurück zur letzten Seite"
 msgid "Contact us"
 msgstr "Kontaktiere uns"
 
-#: anmeldung/templates/about.html:26
-msgid " - About us - "
+#: anmeldung/templates/about.html:27
+#, fuzzy
+#| msgid "About"
+msgid "About us"
+msgstr "Über uns"
+
+#: anmeldung/templates/about.html:44
+msgid "For Padeleros, By Padeleros"
 msgstr ""
 
-#: anmeldung/templates/about.html:38 anmeldung/templates/landing.html:159
-#, fuzzy
-#| msgid "Tournaments"
-msgid "Next Tournaments"
-msgstr "Nächste Tourniere"
+#: anmeldung/templates/about.html:50
+msgid "Our Mission"
+msgstr ""
 
-#: anmeldung/templates/about.html:42 anmeldung/templates/about.html:50
-#: anmeldung/templates/about.html:59 anmeldung/templates/about.html:67
+#: anmeldung/templates/about.html:63
 msgid "Our mission"
 msgstr ""
 
@@ -153,8 +156,8 @@ msgid "Germany"
 msgstr "Deutschland"
 
 #: anmeldung/templates/landing.html:26
-msgid " - Your Padel Portal with all your favourite statistics - "
-msgstr ""
+msgid "Your Padel Portal with all your favourite statistics"
+msgstr "Dein Padel-Platform mit deinen lieblings Statistiken"
 
 #: anmeldung/templates/landing.html:54 anmeldung/templates/landing.html:112
 msgid "Courts"
@@ -167,6 +170,12 @@ msgstr "Spieler"
 #: anmeldung/templates/landing.html:84 anmeldung/templates/landing.html:146
 msgid "Rankings"
 msgstr ""
+
+#: anmeldung/templates/landing.html:159
+#, fuzzy
+#| msgid "Tournaments"
+msgid "Next Tournaments"
+msgstr "Nächste Tourniere"
 
 #: anmeldung/templates/landing.html:172
 msgid "Upcoming Competitions"
