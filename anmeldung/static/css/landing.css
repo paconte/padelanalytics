@@ -1,5 +1,37 @@
 @charset "utf-8";
 
+.demo a {
+
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+.demo a:hover {
+  opacity: .5;
+}
+
+#sectionA a {
+  padding-top: 60px;
+}
+#sectionA a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+
 .carousel-indicators {
 bottom: -30px;
 }
@@ -51,6 +83,8 @@ font-size: 36px;
 .stats_icon:hover{
 color: black;
 }
+
+
 
 .stats_vertical_info {
 text-transform: uppercase;
