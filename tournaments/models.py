@@ -205,10 +205,14 @@ class Tournament(models.Model):
             return 'images/kategorien/gps1000.jpg'
         elif self.padel_serie == 'GPS-1200':
             return 'images/kategorien/gps1200.jpg'
+        elif self.padel_serie == 'GPS-2000':
+            return 'images/kategorien/gps1200.jpg'
         elif self.padel_serie == 'GPS-WOMEN':
             return 'images/kategorien/w-gps.jpg'
+        elif self.padel_serie is None:
+            return 'images/kategorien/w-gps.jpg'            
         else:
-            raise TypeError("The serie is not supported.")
+            raise TypeError("The serie: " + self.padel_serie + " is not supported.")
 
     def get_division_name(self):
         for x in TOUCH_DIVISION_CHOICES:
