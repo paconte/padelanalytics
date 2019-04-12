@@ -88,8 +88,7 @@
                     </button>
                     <div class="dropdown-menu" aria-label_matchesledby="dropdownMenuButton">
                         {% for division, id in similar_tournaments.items %}
-                        <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{% trans division
-                            %}</a>
+                        <a class="dropdown-item" href="{% url 'tournament' id %}" style="z-index: 5">{{division}}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -101,7 +100,7 @@
 
     <!-- Tabs -->
     {% if not real_teams %}
-    <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left" checked>
+    <input id="tab1" type="radio" name="tabs" style="padding-left: 0px; float: left">
     <label for="tab1">{% trans "Teams" %}</label>
     {% endif %}
 
@@ -134,7 +133,7 @@
 
     {% if ko_games %}
     {% if "Silver" in ko_games %}
-    <input id="tab5" type="radio" name="tabs" checked>
+    <input id="tab5" type="radio" name="tabs">
     <label for="tab5">{% trans "Consolation" %}</label>
     {% endif %}
     {% endif %}
@@ -153,7 +152,7 @@
                     <div class="teams_title">
                         <div class="th col-xs-2 col-sm-1 hidden"></div>
                         <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 1</div>
-                        <div class="th col-xs-5 col-sm-2 hidden"> </div>
+                        <div class="th col-xs-5 col-sm-2 hidden"></div>
                         <div class="th col-xs-1 col-sm-1 hidden"></div>
                         <div class="th col-xs-4 col-sm-2 hidden" style="color: red"> {% trans "Player" %} 2</div>
                         <!--<div class="th col-xs-5 col-sm-3 hidden"> {% trans "Club" %}</div>-->
@@ -172,7 +171,7 @@
                         </ul>
                         <ul class="th col-xs-4 col-sm-3">
                             <a href="{% url 'team' team.id %}" class="text_player_played"
-                                    style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}}
+                               style="width: 90%; text-transform: uppercase; font-weight: bold;">{{team.player_a.first_name}}
                                 {{team.player_a.last_name}}</a>
 
                         </ul>
@@ -205,12 +204,12 @@
                         <ul class="th col-sm-2">
                             <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
                         </ul>-->
-                            <a href="{% url 'team' team.id %}">
-                        <button type="button" class="dos col-sm-1  btn btn-danger"
-                                style="float: right; font-size: 12px; height: 32px; margin-right: 20px; margin-top: 8px">
-                            {% trans "Go to Team" %}
-                        </button>
-                    </a>
+                        <a href="{% url 'team' team.id %}">
+                            <button type="button" class="dos col-sm-1  btn btn-danger"
+                                    style="float: right; font-size: 12px; height: 32px; margin-right: 20px; margin-top: 8px">
+                                {% trans "Go to Team" %}
+                            </button>
+                        </a>
 
                     </ul>
                     {% endfor %}
@@ -322,7 +321,11 @@
                     {% for row in pool_tables.PoolA %}
                     <tr>
                         <td style="text-align: left">
-                            <a href="">{{row.team}}</a>
+                            {% if row.team in ko_games %}
+                            <a>{{row.team}}</a><i class="fa fa-trophy" style="color: orange; float: left"></i>
+                            {% else %}
+                            <a>{{row.team}}</a>
+                            {% endif %}
                         </td>
                         <td>{{row.won}}</td>
                         <td>{{row.lost}}</td>
@@ -367,6 +370,12 @@
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
                         <td class="result"
@@ -388,7 +397,7 @@
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
-                            <div><span>{% trans "Group" %}</span> A</div>
+                            <div><span>{% trans "Group" %}</span> B</div>
                         </th>
                         <th class="col-sm-1 col-md-1 uno">
                             <div><a>{% trans "Won" %}</a></div>
@@ -454,6 +463,12 @@
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
                         <td class="result"
@@ -475,7 +490,7 @@
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
-                            <div><span>{% trans "Group" %}</span> A</div>
+                            <div><span>{% trans "Group" %}</span> C</div>
                         </th>
                         <th class="col-sm-1 col-md-1 uno">
                             <div><a>{% trans "Won" %}</a></div>
@@ -541,6 +556,12 @@
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
                         <td class="result"
@@ -562,7 +583,7 @@
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
-                            <div><span>{% trans "Group" %}</span> A</div>
+                            <div><span>{% trans "Group" %}</span> D</div>
                         </th>
                         <th class="col-sm-1 col-md-1 uno">
                             <div><a>{% trans "Won" %}</a></div>
@@ -628,6 +649,12 @@
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
                         <td class="result"
@@ -649,7 +676,7 @@
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
-                            <div><span>{% trans "Group" %}</span> A</div>
+                            <div><span>{% trans "Group" %}</span> E</div>
                         </th>
                         <th class="col-sm-1 col-md-1 uno">
                             <div><a>{% trans "Won" %}</a></div>
@@ -715,6 +742,12 @@
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                             {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
                         <td class="result"
@@ -736,7 +769,7 @@
                 <table class="table-big-light col-sm-12" style="float: left">
                     <tr>
                         <th class="col-sm-6 col-md-6 group-name">
-                            <div><span>{% trans "Group" %}</span> A</div>
+                            <div><span>{% trans "Group" %}</span> F</div>
                         </th>
                         <th class="col-sm-1 col-md-1 uno">
                             <div><a>{% trans "Won" %}</a></div>
@@ -801,6 +834,192 @@
                             {% endif %}
                             {% if game.result_padel.local3 >= 0 %}
                             / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                            {% endif %}
+                        </td>
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
+                            style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
+                            {{game.visitor}}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-sm-12">
+                {% if "PoolG" in pool_tables %}
+                <table class="table-big-light col-sm-12" style="float: left">
+                    <tr>
+                        <th class="col-sm-6 col-md-6 group-name">
+                            <div><span>{% trans "Group" %}</span> G</div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Won" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Lost" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "+ Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "- Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Diff" %}</a></div>
+                        </th>
+                    </tr>
+                    {% for row in pool_tables.PoolG %}
+                    <tr>
+                        <td style="text-align: left">
+                            <a href="">{{row.team}}</a>
+                        </td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        {% if row.plus_minus > 0 %}
+                        <td>( +{{row.plus_minus}} )</td>
+                        {% else %}
+                        <td>( {{row.plus_minus}} )</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                <div>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        {% trans "RESULTS" %}</h3>
+                    <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                </div>
+                {% endif %}
+                <table class="table-big-light col-sm-12" style="float: left">
+                    {% for key, game in pool_games.items %}
+                    {% if "PoolG" in game.phase.round %}
+                    <tr>
+                        {% if game.result_padel.winner == 1 %}
+                        <td class="result"
+                            style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
+                            {{game.local}}
+                        </td>
+                        <td class="result"
+                            style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                            {% if game.result_padel.local2 >= 0 %}
+                            / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                            {% endif %}
+                            {% if game.result_padel.local3 >= 0 %}
+                            / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                            {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                            {% endif %}
+                        </td>
+                        {% if game.result_padel.winner == 2 %}
+                        <td class="result"
+                            style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
+                            {{game.visitor}}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-sm-12">
+                {% if "PoolH" in pool_tables %}
+                <table class="table-big-light col-sm-12" style="float: left">
+                    <tr>
+                        <th class="col-sm-6 col-md-6 group-name">
+                            <div><span>{% trans "Group" %}</span> H</div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Won" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Lost" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "+ Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "- Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Diff" %}</a></div>
+                        </th>
+                    </tr>
+                    {% for row in pool_tables.PoolH %}
+                    <tr>
+                        <td style="text-align: left">
+                            <a href="">{{row.team}}</a>
+                        </td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        {% if row.plus_minus > 0 %}
+                        <td>( +{{row.plus_minus}} )</td>
+                        {% else %}
+                        <td>( {{row.plus_minus}} )</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                <div>
+                    <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                        {% trans "RESULTS" %}</h3>
+                    <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                </div>
+                {% endif %}
+                <table class="table-big-light col-sm-12" style="float: left">
+                    {% for key, game in pool_games.items %}
+                    {% if "PoolH" in game.phase.round %}
+                    <tr>
+                        {% if game.result_padel.winner == 1 %}
+                        <td class="result"
+                            style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% else %}
+                        <td class="result"
+                            style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {% endif %}
+                            {{game.local}}
+                        </td>
+                        <td class="result"
+                            style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                            {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                            {% if game.result_padel.local2 >= 0 %}
+                            / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                            {% endif %}
+                            {% if game.result_padel.local3 >= 0 %}
+                            / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                            {% endif %}
+                            {% if game.result_padel.local4 >= 0 %}
+                            / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                            {% endif %}
+                            {% if game.result_padel.local5 >= 0 %}
+                            / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
                             {% endif %}
                         </td>
                         {% if game.result_padel.winner == 2 %}
@@ -937,13 +1156,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -966,13 +1185,14 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -993,13 +1213,14 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1022,13 +1243,14 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1051,13 +1273,14 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1071,6 +1294,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1078,15 +1307,16 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                     {% if game.result_padel.winner == 2 %}
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1109,13 +1339,14 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1129,6 +1360,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1136,15 +1373,16 @@
                                 <ul class="th col-xs-12 col-sm-12">
                                     <i style="border= none; float:left; position: relative; margin-top:8px"
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                     {% if game.result_padel.winner == 2 %}
+                                    {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-{{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1165,13 +1403,14 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1185,6 +1424,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1194,13 +1439,14 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-{{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy" style="color: orange; float: left"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1237,13 +1483,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1257,6 +1503,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1266,13 +1518,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1293,13 +1545,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1322,13 +1574,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1351,13 +1603,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1380,13 +1632,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1409,13 +1661,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1438,13 +1690,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1472,13 +1724,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1501,13 +1753,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1534,13 +1786,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1563,13 +1815,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1590,13 +1842,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1619,13 +1871,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1649,13 +1901,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1678,13 +1930,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1710,13 +1962,13 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1739,13 +1991,13 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i class="fa fa-trophy" style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1772,13 +2024,15 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1801,13 +2055,15 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1829,13 +2085,15 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1858,13 +2116,15 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -1890,15 +2150,17 @@
                                     <ul class="th col-xs-12 col-sm-12">
                                         <i style="border= none; float:left; position: relative; margin-top:8px"
                                            class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
-                                    {% if game.result_padel.winner == 1 %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                            {{game.local}}
-                                        </a>
+                                        {% if game.result_padel.winner == 1 %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                                class="fa fa-trophy"
+                                                style="color: orange; float: left; padding-right: 5px"></i>
+                                            {% else %}
+                                            <a class="text_club"
+                                               style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                                {% endif %}
+                                                {{game.local}}
+                                            </a>
                                     </ul>
                                 </ul>
                                 <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1919,16 +2181,18 @@
                                     <ul class="th col-xs-12 col-sm-12">
                                         <i style="border= none; float:left; position: relative; margin-top:8px"
                                            class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                    {% if game.result_padel.winner == 2 %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
+                                        {% if game.result_padel.winner == 2 %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                                class="fa fa-trophy"
+                                                style="color: orange; float: left; padding-right: 5px"></i>
+                                            {% else %}
+                                            <a class="text_club"
+                                               style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                                {% endif %}
 
-                                            {{game.visitor}}
-                                        </a>
+                                                {{game.visitor}}
+                                            </a>
                                     </ul>
                                 </ul>
                             </div>
@@ -1959,13 +2223,15 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -1988,13 +2254,15 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2022,13 +2290,15 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2051,13 +2321,15 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2079,13 +2351,15 @@
                                        class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2108,13 +2382,15 @@
                                        class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px"><i
+                                            class="fa fa-trophy"
+                                            style="color: orange; float: left; padding-right: 5px"></i>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2152,12 +2428,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2171,6 +2447,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2181,12 +2463,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2208,12 +2490,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2227,6 +2509,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2237,12 +2525,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2266,12 +2554,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2285,6 +2573,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2295,12 +2589,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2324,12 +2618,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2343,6 +2637,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2353,12 +2653,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2380,12 +2680,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2399,6 +2699,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2409,12 +2715,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2452,12 +2758,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2471,6 +2777,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2481,12 +2793,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2508,12 +2820,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2527,6 +2839,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2537,12 +2855,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2566,12 +2884,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2585,6 +2903,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2595,12 +2919,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2624,12 +2948,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2643,6 +2967,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2653,12 +2983,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2687,12 +3017,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2706,6 +3036,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2716,12 +3052,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2749,12 +3085,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2768,6 +3104,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2778,12 +3120,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2805,12 +3147,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2824,6 +3166,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2834,12 +3182,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2864,12 +3212,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2883,6 +3231,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2893,12 +3247,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2925,12 +3279,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2944,6 +3298,12 @@
                                     {% if game.result_padel.local3 >= 0 %}
                                     / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
                                     {% endif %}
+                                    {% if game.result_padel.local4 >= 0 %}
+                                    / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                    {% endif %}
+                                    {% if game.result_padel.local5 >= 0 %}
+                                    / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                    {% endif %}
                                 </a>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -2954,12 +3314,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -2987,12 +3347,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3016,12 +3376,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -3044,12 +3404,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3073,12 +3433,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -3104,15 +3464,15 @@
                                     <ul class="th col-xs-12 col-sm-12">
                                         <i style="border= none; float:left; position: relative; margin-top:8px"
                                            class="flag2 {{ team.0.player_a.country.flag_css }}"></i>
-                                    {% if game.result_padel.winner == 1 %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                            {{game.local}}
-                                        </a>
+                                        {% if game.result_padel.winner == 1 %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                            {% else %}
+                                            <a class="text_club"
+                                               style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                                {% endif %}
+                                                {{game.local}}
+                                            </a>
                                     </ul>
                                 </ul>
                                 <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3133,15 +3493,15 @@
                                     <ul class="th col-xs-12 col-sm-12">
                                         <i style="border= none; float:left; position: relative; margin-top:8px"
                                            class="flag2 {{ team.0.player_b.country.flag_css }}"></i>
-                                    {% if game.result_padel.winner == 2 %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                            {{game.visitor}}
-                                        </a>
+                                        {% if game.result_padel.winner == 2 %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
+                                            {% else %}
+                                            <a class="text_club"
+                                               style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                                {% endif %}
+                                                {{game.visitor}}
+                                            </a>
                                     </ul>
                                 </ul>
                             </div>
@@ -3173,12 +3533,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3202,12 +3562,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -3236,12 +3596,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3265,12 +3625,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
@@ -3293,12 +3653,12 @@
                                     {% if game.result_padel.winner == 1 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.local}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.local}}
+                                        </a>
                                 </ul>
                             </ul>
                             <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 5px">
@@ -3322,12 +3682,12 @@
                                     {% if game.result_padel.winner == 2 %}
                                     <a class="text_club"
                                        style="text-transform: uppercase; font-weight: bold; font-size: 10px; float:left; margin-top:-5px">
-                                    {% else %}
-                                    <a class="text_club"
-                                       style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
-                                    {% endif %}
-                                        {{game.visitor}}
-                                    </a>
+                                        {% else %}
+                                        <a class="text_club"
+                                           style="text-transform: uppercase; font-weight: 400; font-size: 10px; float:left; margin-top:-5px">
+                                            {% endif %}
+                                            {{game.visitor}}
+                                        </a>
                                 </ul>
                             </ul>
                         </div>
