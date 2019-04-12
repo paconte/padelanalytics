@@ -141,6 +141,13 @@
 
     <!-- Jugadores Inscritos -->
     <section id="content1" style="">
+        
+        {% for team in real_teams %}
+        <a href="{% url 'team' team.id %}">{{team.player_a.first_name}} - {{team.player_b.first_name}}</a><br>
+        <a href="{% url 'player' team.player_a.id %}">{{team.player_a.first_name}}</a><br>
+        <a href="{% url 'player' team.player_b.id %}">{{team.player_a.first_name}}</a><br>
+        {% endfor %}
+
         <div class="card col-sm-12" style="padding-bottom:18px; padding-top:12px; z-index:-1">
             <div class="box">
                 <!-- Fecha Abajo -->
@@ -197,21 +204,7 @@
                             <div><a class="text_player_played">{{team.player_b.club}}</a></div>
                         </ul>
 
-                        <!--<ul class="th col-sm-1">
-                            <div><a class="text_club"
-                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                        </ul>
-
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
-                        </ul>-->
-                            <a href="{% url 'team' team.id %}">
-                        <button type="button" class="dos col-sm-1  btn btn-danger"
-                                style="float: right; font-size: 12px; height: 32px; margin-right: 20px; margin-top: 8px">
-                            {% trans "Go to Team" %}
-                        </button>
-                    </a>
-
+                        <a href="{% url 'team' team.id %}">{% trans "Go to Team" %}</a>
                     </ul>
                     {% endfor %}
                 </div>
@@ -268,15 +261,6 @@
                         <ul class="th col-xs-5 col-sm-3">
                             <div><a class="text_club">{{team.0.player_b.club}}</a></div>
                         </ul>
-
-                        <!--<ul class="th col-sm-1">
-                            <div><a class="text_club"
-                                    style="width: 200%; text-transform: uppercase; font-weight: bold;">(1)</a></div>
-                        </ul>
-
-                        <ul class="th col-sm-2">
-                            <div><a class="text_club" style="float: right; right: 25px">{{team.1}} Pkt.</a></div>
-                        </ul>-->
                     </ul>
 
                     {% endfor %}
