@@ -207,6 +207,8 @@ class Tournament(models.Model):
             return 'images/kategorien/gps1200.jpg'
         elif self.padel_serie == 'GPS-WOMEN':
             return 'images/kategorien/w-gps.jpg'
+        elif self.padel_serie == 'GPS-2000':
+            return 'images/kategorien/gps2000.jpg'
         else:
             raise TypeError("The serie is not supported.")
 
