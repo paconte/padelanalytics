@@ -57,7 +57,7 @@ TOUCH_DIVISION_CHOICES = (
 )
 
 SERIE_GERMANY = (('GPS-100', 'GPS-100'), ('GPS-250', 'GPS-250'), ('GPS-500', 'GPS-500'), ('GPS-1000', 'GPS-1000'),
-                 ('GPS-1200', 'GPS-1200'), ('GPS-WOMEN', 'GPS-WOMEN'))
+                 ('GPS-1200', 'GPS-1200'), ('GPS-2000', 'GPS-2000'), ('GPS-WOMEN', 'GPS-WOMEN'))
 
 
 def get_player_gender(division):
