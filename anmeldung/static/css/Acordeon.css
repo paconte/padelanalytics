@@ -96,6 +96,10 @@ width: 41,67%;
 width: 20%;
 }
 
+.quinto_circle {
+width:20%
+}
+
 .see_team {
 margin: 5 20 0 0;
 float: right;
@@ -1072,10 +1076,6 @@ margin: 5 20 0 0;
 padding: 5 5 0 5;
 }
 
- .text_club {
-    font-size: 0.6rem;
-    margin-top: -5px;
-  }
 
   .text_player_played{
 	top: 12px;
@@ -1396,8 +1396,8 @@ margin-top: 10px;
 }
 
 .text_club {
-font-size: 0.5rem;
-margin-top: -10px;
+font-size: 0.7rem;
+margin-top: -5px;
 }
 
 .tournament-list {
@@ -1491,6 +1491,14 @@ margin-top: 0px;
 .card .button_message.left {
 margin-left: 0px;
 margin-right: 0px;
+}
+
+.quinto_circle {
+height: 50px;
+}
+
+.quinto {
+font-size: 10px;
 }
 
 .single-chart {
