@@ -1011,6 +1011,8 @@ font-size: 1rem;
 
 @media (max-width: 992px) {
 
+.fit992 {
+display:none}
 
 .btn-outline-primary, .btn-outline-secondary, .btn-outline-warning, .btn-outline-light, .btn-outline-dark{
 max-height:25px;
