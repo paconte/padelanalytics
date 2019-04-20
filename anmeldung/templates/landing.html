@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load i18n %}
 
+
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/Anmeldung.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/Acordeon.css' %}"/>
@@ -10,10 +11,18 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}"/>
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}"/>
-
 {% endblock %}
 
+{% block js %}
+<script src="{% static 'js/particles.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+{% endblock %}
+
+
 {% block content %}
+
+
 <div id="landing01" class="demo">
     <div id="particles-js" class="background" style=" z-index: -2">
         <div style="width: 100%; float: center; position: absolute; pointer-events: none">
@@ -93,20 +102,20 @@
             </div>
         </div>
     </div>
-  <a href="#landing02" class="scroll"><span></span>Scroll</a>
+    <a href="#landing02" class="scroll"><span></span>Scroll</a>
 </div>
 
 {% trans "Next Tournaments" as next_tournaments %}
 <div id="landing02" class="demo">
-<div class="jumbotron jumbotron-fluid posters" style="background-color: #e7e7e7; margin: 0; ">
-<div class="container_12" style="">
-        <div class="col-sm-12 news_landing">
+    <div class="jumbotron jumbotron-fluid posters" style="background-color: #e7e7e7; margin: 0; ">
+        <div class="container_12" style="">
+            <div class="col-sm-12 news_landing">
 
-            <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
-                {% trans "Upcoming Competitions" %}
-            </h1>
-            <hr class="separador_torneo">
-        </div>
+                <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
+                    {% trans "Upcoming Competitions" %}
+                </h1>
+                <hr class="separador_torneo">
+            </div>
 
 
             <!--Carousel Wrapper-->
@@ -242,104 +251,102 @@
                 </div>
             </div>
 
-</div></div>
-      <a href="#landing03" class="scroll"><span></span>Scroll</a>
+        </div>
+    </div>
+    <a data-scroll href="#landing03" class="scroll"><span></span>Scroll</a>
 </div>
 
 <div id="landing03" class="demo">
-<div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7; margin-bottom: 0px">
-    <div class="container_12">
-        <div class="col-sm-12 news_landing">
+    <div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7; margin-bottom: 0px">
+        <div class="container_12">
+            <div class="col-sm-12 news_landing">
 
-            <h1 class="form_title" style="font-weight: 600; color:white; margin-top: 20px; text-align:center">
-                {% trans "Clubs" %}
+                <h1 class="form_title" style="font-weight: 600; color:white; margin-top: 20px; text-align:center">
+                    {% trans "Clubs" %}
+                </h1>
+                <hr class="separador_torneo">
+            </div>
+
+
+            <div class="col-xs-5 col-sm-5 col-md-4" style="float:left">
+                <img class="img_map" style="" src="{% static 'images/news/002germany.png' %}" alt="">
+            </div>
+            <h1 class="col-xs-7 col-sm-7 col-md-8" style="float:left; color:white;  margin-top:10px">
+                {% trans "Find Padel-clubs close to your place" %}
             </h1>
-            <hr class="separador_torneo">
-        </div>
-
-
-        <div class="col-xs-5 col-sm-5 col-md-4" style="float:left">
-            <img class="img_map" style="" src="{% static 'images/news/002germany.png' %}" alt="">
-        </div>
-        <h1 class="col-xs-7 col-sm-7 col-md-8" style="float:left; color:white;  margin-top:10px">
-            {% trans "Find Padel-clubs close to your place" %}
-        </h1>
-        <br>
-        <div>
-            <a href="{% url 'clubs' %}">
-                <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                        style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px">
-                    {% trans "FIND THEM NOW!" %}<br>
-                </button>
-            </a>
+            <br>
+            <div>
+                <a href="{% url 'clubs' %}">
+                    <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px">
+                        {% trans "FIND THEM NOW!" %}<br>
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
-</div>
-      <a href="#landing04"  class="scroll"><span></span>Scroll</a>
+    <a data-scroll href="#landing04" class="scroll"><span></span>Scroll</a>
 </div>
 
 <div id="landing04" class="demo">
-<div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; margin-bottom: 0px">
-    <div class="container_12">
-        <div class="col-sm-12 news_landing">
+    <div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; margin-bottom: 0px">
+        <div class="container_12">
+            <div class="col-sm-12 news_landing">
 
-            <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
-                {% trans "Competitions" %}
-            </h1>
-            <hr class="separador_torneo" style="color:white">
-        </div>
-        <div class="col-xs-5 col-sm-4" style="float:right">
-            <img class="img_landing_r" src="{% static 'images/news/002b.png' %}">
-        </div>
-        <h1 class="col-xs-7 col-sm-8" style="float:right; color:#DC4C46">
-            {% trans "Check the Tournament Calendar, all Results..." %}</h1>
-        <br>
-        <div>
-            <a href="{% url 'tournaments' %}">
-                <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                        style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; ">
-                    {% trans "CHECK IT OUT" %}<br>
-                </button>
-            </a>
+                <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
+                    {% trans "Competitions" %}
+                </h1>
+                <hr class="separador_torneo" style="color:white">
+            </div>
+            <div class="col-xs-5 col-sm-4" style="float:right">
+                <img class="img_landing_r" src="{% static 'images/news/002b.png' %}">
+            </div>
+            <h1 class="col-xs-7 col-sm-8" style="float:right; color:#DC4C46">
+                {% trans "Check the Tournament Calendar, all Results..." %}</h1>
+            <br>
+            <div>
+                <a href="{% url 'tournaments' %}">
+                    <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; ">
+                        {% trans "CHECK IT OUT" %}<br>
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
-</div>
-      <a href="#landing05" class="scroll"><span></span>Scroll</a>
+    <a data-scroll href="#landing05" class="scroll"><span></span>Scroll</a>
 </div>
 
 <div id="landing05" class="demo">
-<div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7;  margin-bottom: 0px">
-    <div class="container_12">
-        <div class="col-sm-12 news_landing">
+    <div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7;  margin-bottom: 0px">
+        <div class="container_12">
+            <div class="col-sm-12 news_landing">
 
-            <h1 class="form_title" style="font-weight: 600; color:white; margin-top: 20px; text-align:center">
-                {% trans "Statistics" %}
+                <h1 class="form_title" style="font-weight: 600; color:white; margin-top: 20px; text-align:center">
+                    {% trans "Statistics" %}
+                </h1>
+                <hr class="separador_torneo">
+            </div>
+            <div class="col-xs-5 col-sm-4" style="float:left">
+                <img class="img_landing" src="{% static 'images/news/003b.png' %}">
+            </div>
+            <h1 class="col-xs-7 col-sm-8" style="float:left; color:white">
+                {% trans "...and the Ranking of the different Circuits and Statistics" %}
             </h1>
-            <hr class="separador_torneo">
-        </div>
-        <div class="col-xs-5 col-sm-4" style="float:left">
-            <img class="img_landing" src="{% static 'images/news/003b.png' %}">
-        </div>
-        <h1 class="col-xs-7 col-sm-8" style="float:left; color:white">
-            {% trans "...and the Ranking of the different Circuits and Statistics" %}
-        </h1>
-        <br>
-        <div>
-            <a href="{% url 'ranking' %}">
-                <button class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                        style="background-color:e7e7e7; float:left; left:8.33%;  margin-top:50px; ">
-                    {% trans "HAVE A LOOK" %}<br>
-                </button>
-            </a>
+            <br>
+            <div>
+                <a href="{% url 'ranking' %}">
+                    <button class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:e7e7e7; float:left; left:8.33%;  margin-top:50px; ">
+                        {% trans "HAVE A LOOK" %}<br>
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
+    <a data-scroll href="#landing01" class="scroll2"><span></span></a>
 </div>
-      <a href="#landing01" class="scroll2"><span></span></a>
-</div>
-
-<script src="{% static 'js/particles.js' %}"></script>
-<script src="{% static 'js/app.js' %}"></script>
-
 
 
 {% endblock %}
+

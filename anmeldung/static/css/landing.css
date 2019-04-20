@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-section {
-  position: relative;
-  width: 100%;
+html, body {
+  height: 100%;
 }
+
 
 #landing01 a {
 margin-top: -40px;
