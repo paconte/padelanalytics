@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-
+<div id="landing01" class="demo">
     <div id="particles-js" class="background" style=" z-index: -2">
         <div style="width: 100%; float: center; position: absolute; pointer-events: none">
             <div style="display: block">
@@ -93,28 +93,20 @@
             </div>
         </div>
     </div>
+  <a href="#landing02" class="scroll"><span></span>Scroll</a>
+</div>
 
 {% trans "Next Tournaments" as next_tournaments %}
+<div id="landing02" class="demo">
+<div class="jumbotron jumbotron-fluid posters" style="background-color: #e7e7e7; margin: 0; ">
 <div class="container_12" style="">
+        <div class="col-sm-12 news_landing">
 
-    <div class="box roll" style="margin: 15px 5 0 5">
-
-        <!-- Franja Principal -->
-        <div class="col-xs-12 col-sm-12 col-md-12"
-             style="margin-bottom:50px; float:left; padding-left: 0px; padding-right: 0px">
-
-            <!-- Próximos Torneos -->
-            <div class="col-sm-12">
-
-                <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
-                    {% trans "Upcoming Competitions" %}
-                </h1>
-                <hr class="separador_torneo" style="margin-bottom: 40px;">
-                <!--
-                <h2>{% get_available_languages as LANGUAGES %}</h2>
-                <h2>{% get_current_language as LANGUAGE_CODE %}</h2>
-                -->
-            </div>
+            <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
+                {% trans "Upcoming Competitions" %}
+            </h1>
+            <hr class="separador_torneo">
+        </div>
 
 
             <!--Carousel Wrapper-->
@@ -241,20 +233,20 @@
                 </div>
             </div>
 
-            <div style="margin-top: 35px">
-                <div class="col-xs-3 col-sm-3 col-md-3" style="float: left; margin-top: 10px">
+            <div>
+                <div class="col-xs-3 col-sm-3 col-md-3" style="float: left; margin-top: 30px">
                     <div><a href="#popup1" class="col-sm-12 btn btn-outline-danger botones_landing"
                             style="display: block;">
                         {% trans "Show Poster" %}</a>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-
-
+</div></div>
+      <a href="#landing03" class="scroll"><span></span>Scroll</a>
 </div>
+
+<div id="landing03" class="demo">
 <div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7; margin-bottom: 0px">
     <div class="container_12">
         <div class="col-sm-12 news_landing">
@@ -283,7 +275,10 @@
         </div>
     </div>
 </div>
+      <a href="#landing04"  class="scroll"><span></span>Scroll</a>
+</div>
 
+<div id="landing04" class="demo">
 <div class="jumbotron jumbotron-fluid" style="background-color: #e7e7e7; margin-bottom: 0px">
     <div class="container_12">
         <div class="col-sm-12 news_landing">
@@ -309,7 +304,10 @@
         </div>
     </div>
 </div>
+      <a href="#landing05" class="scroll"><span></span>Scroll</a>
+</div>
 
+<div id="landing05" class="demo">
 <div class="jumbotron jumbotron-fluid" style="background-color: #d7d7d7;  margin-bottom: 0px">
     <div class="container_12">
         <div class="col-sm-12 news_landing">
@@ -333,17 +331,15 @@
                     {% trans "HAVE A LOOK" %}<br>
                 </button>
             </a>
-            </a>
         </div>
     </div>
+</div>
+      <a href="#landing01" class="scroll2"><span></span></a>
 </div>
 
 <script src="{% static 'js/particles.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/graph.js' %}">
 
-    <script src="{% static 'js/app.js' %}"></script>
 
-</script>
 
 {% endblock %}
