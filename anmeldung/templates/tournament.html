@@ -136,6 +136,7 @@
     <input id="tab5" type="radio" name="tabs">
     <label for="tab5">{% trans "Consolation" %}</label>
     {% endif %}
+    {% endif %}
 
     {% if pool_games %}
     {% if "Silver" in pool_tables %}
@@ -3920,12 +3921,384 @@
 
                     {% endif %}
                 </div>
+                {% endfor %}
 
+                {% for key, values in pool_tables.Silver.items %}
+                <div class="col-sm-12">
+                {% if "PoolA" in pool_tables %}
+                <table class="table-big-light col-sm-12" style="float: left">
+                    <tr>
+                        <th class="col-sm-6 col-md-6 group-name">
+                            <div><span>{% trans "Group" %}</span> A</div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Won" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Lost" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "+ Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "- Sets" %}</a></div>
+                        </th>
+                        <th class="col-sm-1 col-md-1 uno">
+                            <div><a>{% trans "Diff" %}</a></div>
+                        </th>
+                    </tr>
+                    {% for row in pool_tables.PoolA %}
+                    <tr>
+                        <td style="text-align: left">
+                            <a href="{% url 'team' row.team.id %}">{{row.team}}</a>
+                            {% if "row.team" in ko_games %}
+                            <i class="fa fa-trophy" style="color: orange; float: left; margin-right: 5px"></i>
+                            {% endif %}
+                        </td>
+                        <td>{{row.won}}</td>
+                        <td>{{row.lost}}</td>
+                        <td>{{row.plus}}</td>
+                        <td>{{row.minus}}</td>
+                        {% if row.plus_minus > 0 %}
+                        <td>( +{{row.plus_minus}} )</td>
+                        {% else %}
+                        <td>( {{row.plus_minus}} )</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
 
+            </div>
+                <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                    <div>
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            {% trans "RESULTS" %}</h3>
+                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                    </div>
+                    {% endif %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        {% for key, game in pool_games.items %}
+                        {% if "PoolA" in game.phase.round %}
+                        <tr>
+                            {% if game.result_padel.winner == 1 %}
+                            <td class="result"
+                                style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.local}}
+                            </td>
+                            <td class="result"
+                                style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 >= 0 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 >= 0 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}
+                                {% if game.result_padel.local4 >= 0 %}
+                                / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                {% endif %}
+                                {% if game.result_padel.local5 >= 0 %}
+                                / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                {% endif %}
+                            </td>
+                            {% if game.result_padel.winner == 2 %}
+                            <td class="result"
+                                style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.visitor}}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="col-sm-12">
+                    {% if "PoolB" in pool_tables %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        <tr>
+                            <th class="col-sm-6 col-md-6 group-name">
+                                <div><span>{% trans "Group" %}</span> B</div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Won" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Lost" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "+ Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "- Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Diff" %}</a></div>
+                            </th>
+                        </tr>
+                        {% for row in pool_tables.PoolB %}
+                        <tr>
+                            <td style="text-align: left">
+                                <a href="{% url 'team' row.team.id %}">{{row.team}}</a>
+                            </td>
+                            <td>{{row.won}}</td>
+                            <td>{{row.lost}}</td>
+                            <td>{{row.plus}}</td>
+                            <td>{{row.minus}}</td>
+                            {% if row.plus_minus > 0 %}
+                            <td>( +{{row.plus_minus}} )</td>
+                            {% else %}
+                            <td>( {{row.plus_minus}} )</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+                <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                    <div>
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            {% trans "RESULTS" %}</h3>
+                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                    </div>
+                    {% endif %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        {% for key, game in pool_games.items %}
+                        {% if "PoolB" in game.phase.round %}
+                        <tr>
+                            {% if game.result_padel.winner == 1 %}
+                            <td class="result"
+                                style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.local}}
+                            </td>
+                            <td class="result"
+                                style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 >= 0 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 >= 0 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}
+                                {% if game.result_padel.local4 >= 0 %}
+                                / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                {% endif %}
+                                {% if game.result_padel.local5 >= 0 %}
+                                / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                {% endif %}
+                            </td>
+                            {% if game.result_padel.winner == 2 %}
+                            <td class="result"
+                                style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.visitor}}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="col-sm-12">
+                    {% if "PoolC" in pool_tables %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        <tr>
+                            <th class="col-sm-6 col-md-6 group-name">
+                                <div><span>{% trans "Group" %}</span> C</div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Won" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Lost" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "+ Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "- Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Diff" %}</a></div>
+                            </th>
+                        </tr>
+                        {% for row in pool_tables.PoolC %}
+                        <tr>
+                            <td style="text-align: left">
+                                <a href="{% url 'team' row.team.id %}">{{row.team}}</a>
+                            </td>
+                            <td>{{row.won}}</td>
+                            <td>{{row.lost}}</td>
+                            <td>{{row.plus}}</td>
+                            <td>{{row.minus}}</td>
+                            {% if row.plus_minus > 0 %}
+                            <td>( +{{row.plus_minus}} )</td>
+                            {% else %}
+                            <td>( {{row.plus_minus}} )</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+                <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                    <div>
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            {% trans "RESULTS" %}</h3>
+                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                    </div>
+                    {% endif %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        {% for key, game in pool_games.items %}
+                        {% if "PoolC" in game.phase.round %}
+                        <tr>
+                            {% if game.result_padel.winner == 1 %}
+                            <td class="result"
+                                style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.local}}
+                            </td>
+                            <td class="result"
+                                style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 >= 0 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 >= 0 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}
+                                {% if game.result_padel.local4 >= 0 %}
+                                / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                {% endif %}
+                                {% if game.result_padel.local5 >= 0 %}
+                                / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                {% endif %}
+                            </td>
+                            {% if game.result_padel.winner == 2 %}
+                            <td class="result"
+                                style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.visitor}}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="col-sm-12">
+                    {% if "PoolD" in pool_tables %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        <tr>
+                            <th class="col-sm-6 col-md-6 group-name">
+                                <div><span>{% trans "Group" %}</span> D</div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Won" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Lost" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "+ Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "- Sets" %}</a></div>
+                            </th>
+                            <th class="col-sm-1 col-md-1 uno">
+                                <div><a>{% trans "Diff" %}</a></div>
+                            </th>
+                        </tr>
+                        {% for row in pool_tables.PoolD %}
+                        <tr>
+                            <td style="text-align: left">
+                                <a href="{% url 'team' row.team.id %}">{{row.team}}</a>
+                            </td>
+                            <td>{{row.won}}</td>
+                            <td>{{row.lost}}</td>
+                            <td>{{row.plus}}</td>
+                            <td>{{row.minus}}</td>
+                            {% if row.plus_minus > 0 %}
+                            <td>( +{{row.plus_minus}} )</td>
+                            {% else %}
+                            <td>( {{row.plus_minus}} )</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+                <div class="col-xs-12 col-sm-12" style="margin-top: 10px; margin-bottom:20px">
+                    <div>
+                        <h3 class="form_title" style="font-weight: 600; color:#DC4C46; text-align:center;">
+                            {% trans "RESULTS" %}</h3>
+                        <hr class="separador_torneo" style="margin-top: 5px; margin-bottom: 0px">
+                    </div>
+                    {% endif %}
+                    <table class="table-big-light col-sm-12" style="float: left">
+                        {% for key, game in pool_games.items %}
+                        {% if "PoolD" in game.phase.round %}
+                        <tr>
+                            {% if game.result_padel.winner == 1 %}
+                            <td class="result"
+                                style="color: grey; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: right; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.local}}
+                            </td>
+                            <td class="result"
+                                style="color: black; text-align: center; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {{game.result_padel.local1}}-{{game.result_padel.visitor1}}
+                                {% if game.result_padel.local2 >= 0 %}
+                                / {{game.result_padel.local2}}-{{game.result_padel.visitor2}}
+                                {% endif %}
+                                {% if game.result_padel.local3 >= 0 %}
+                                / {{game.result_padel.local3}}-{{game.result_padel.visitor3}}
+                                {% endif %}
+                                {% if game.result_padel.local4 >= 0 %}
+                                / {{game.result_padel.local4}}-{{game.result_padel.visitor4}}
+                                {% endif %}
+                                {% if game.result_padel.local5 >= 0 %}
+                                / {{game.result_padel.local5}}-{{game.result_padel.visitor5}}
+                                {% endif %}
+                            </td>
+                            {% if game.result_padel.winner == 2 %}
+                            <td class="result"
+                                style="color: grey; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% else %}
+                            <td class="result"
+                                style="color: grey; font-weight: 100; text-align: left; border-color: #ddd; border-right: none; border-left: none; border-top: none">
+                                {% endif %}
+                                {{game.visitor}}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
                 {% endfor %}
     </section>
-
 </div>
-
-
 {% endblock %}
