@@ -176,7 +176,9 @@ dt {
 
 .group-standings td:first-child, .group-standings td:first-child {
     width: 120px;
+/*
     white-space: normal;
+*/
 }
 
 .group-standings td:first-child, .group-standings td:first-child a:hover{
