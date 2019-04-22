@@ -9,6 +9,13 @@ html, body {
 margin-top: -40px;
 }
 
+.country_news{
+max-width: 150px;
+border-right: 1px solid #ededed;
+left: 50%;
+margin-left: -75px;
+}
+
 .demo a {
     z-index: 2;
     -webkit-transform: translate(0, -50%);
@@ -75,7 +82,33 @@ height: 650px;
     box-sizing: border-box;
     }
 
-#landing05 a span {
+    #landing05 a span {
+    position: absolute;
+    top: -40px;
+    width: 24px;
+    height: 24px;
+    left: 8px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+    }
+
+        #landing06 a span {
+    position: absolute;
+    top: -40px;
+    width: 24px;
+    height: 24px;
+    left: 8px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+    }
+
+#landing07 a span {
     position: absolute;
     top: -40px;
     width: 24px;
