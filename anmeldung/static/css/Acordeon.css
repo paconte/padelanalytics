@@ -904,6 +904,39 @@ height: 100%;
     margin-top: 16px;
 }
 
+.country-list {
+    border-right: thick solid #fff;
+    min-height: 150px;
+    padding:0px;
+}
+.country-list:hover {
+    background: white;
+}
+
+.country-list .title {
+    margin-top: 16px;
+}
+
+.country{
+max-width: 150px;
+border-right: 1px solid #ededed
+}
+
+.text_country{
+	color: grey;
+	font-weight: 200;
+	font-size-adjust: auto;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	font-size: 16px;
+	margin: auto;
+	vertical: middle;
+	margin-top: 5px;
+}
+
+.circuit {
+margin-top: 10px;
+}
+
 .cuadro {
     width:100%;
     margin:0 0;
