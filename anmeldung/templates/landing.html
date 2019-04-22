@@ -100,7 +100,7 @@
             </div>
         </div>
     </div>
-    <a data-scroll href="#landing02" class="scroll"><span></span>Scroll</a>
+    <a data-scroll href="#landing02" class="scroll2"><span></span>Scroll</a>
 </div>
 
 {% trans "Next Tournaments" as next_tournaments %}
@@ -123,7 +123,7 @@
                 <div class="carousel-inner" role="listbox">
                     <!--First slide-->
                     <div class="carousel-item active" style="flex-wrap: wrap">
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -6px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -146,7 +146,8 @@
 
 
                         </div> <!-- end card-container -->
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -170,7 +171,7 @@
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -193,7 +194,7 @@
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
-                        <div class="col-3 col-sm-3 col-md-3 col-lg-3 card-container"
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 card-container"
                              style="margin-top: -5px; float: left">
                             <div class="card poster mb-2">
                                 <div class="content" style="padding:0"><img class="news_posters"
@@ -213,6 +214,7 @@
                                             <h3 class="name" style="font-size:12px; margin-top:-5px">-,-</h3>
                                         </div>
                                     </div>
+
                                 </div> <!-- end back panel -->
                             </div> <!-- end card -->
                         </div> <!-- end card-container -->
@@ -241,7 +243,7 @@
             </div>
 
             <div>
-                <div class="col-xs-3 col-sm-3 col-md-3" style="float: left; margin-top: 30px">
+                <div class="col-xs-3 col-sm-3 col-md-3 see" style="float: left; margin-top: 30px">
                     <div><a href="#popup1" class="col-sm-12 btn btn-outline-danger botones_landing"
                             style="display: block;">
                         {% trans "Show Poster" %}</a>
@@ -266,17 +268,17 @@
             </div>
 
 
-            <div class="col-xs-5 col-sm-5 col-md-4" style="float:left">
-                <img class="img_map" style="" src="{% static 'images/news/002germany.png' %}" alt="">
+            <div class="col-xs-12 col-sm-12 col-md-4" style="float:left">
+                <img class="col-xs-12 col-sm-12 img_map" style="" src="{% static 'images/news/002germany.png' %}" alt="">
             </div>
-            <h1 class="col-xs-7 col-sm-7 col-md-8" style="float:left; color:white;  margin-top:10px">
+            <h1 class="col-xs-12 col-sm-12 col-md-8" style="float:left; color:white;  margin-top:10px">
                 {% trans "Find Padel-clubs close to your place" %}
             </h1>
             <br>
-            <div>
+            <div  class="col-xs-12 col-sm-12" >
                 <a href="{% url 'clubs' %}">
-                    <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                            style="background-color:e7e7e7; float:left; left:8.33%; margin-top:50px">
+                    <button type="button" class="col-xs-12 col-sm-12 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:e7e7e7; float:left; margin-top:50px">
                         {% trans "FIND THEM NOW!" %}<br>
                     </button>
                 </a>
@@ -296,16 +298,16 @@
                 </h1>
                 <hr class="separador_torneo" style="color:white">
             </div>
-            <div class="col-xs-5 col-sm-4" style="float:right">
-                <img class="img_landing_r" src="{% static 'images/news/002b.png' %}">
+            <div class="col-xs-12 col-sm-12 col-md-4" style="float:right">
+                <img class="col-xs-12 col-sm-12 col-md-8 img_landing_r" src="{% static 'images/news/002b.png' %}">
             </div>
-            <h1 class="col-xs-7 col-sm-8" style="float:right; color:#DC4C46">
+            <h1 class="col-xs-12 col-sm-12 col-md-8" style="float:right; color:#DC4C46">
                 {% trans "Check the Tournament Calendar, all Results..." %}</h1>
             <br>
-            <div>
+            <div class="col-xs-12 col-sm-12">
                 <a href="{% url 'tournaments' %}">
-                    <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                            style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; ">
+                    <button type="button" class="col-xs-12 col-sm-12 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:dc4c46; color:white; float:left; margin-top:50px; ">
                         {% trans "CHECK IT OUT" %}<br>
                     </button>
                 </a>
@@ -325,17 +327,17 @@
                 </h1>
                 <hr class="separador_torneo">
             </div>
-            <div class="col-xs-5 col-sm-4" style="float:left">
-                <img class="img_landing" src="{% static 'images/news/003b.png' %}">
+            <div class="col-xs-12 col-sm-12 col-md-4" style="float:left">
+                <img class="col-xs-12 col-sm-12 img_landing" src="{% static 'images/news/003b.png' %}">
             </div>
-            <h1 class="col-xs-7 col-sm-8" style="float:left; color:white">
+            <h1 class="col-xs-12 col-sm-12 col-md-8" style="float:left; color:white">
                 {% trans "...and the Ranking of the different Circuits and Statistics" %}
             </h1>
             <br>
-            <div>
+            <div class="col-xs-12 col-sm-12">
                 <a href="{% url 'ranking' %}">
-                    <button class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                            style="background-color:e7e7e7; float:left; left:8.33%;  margin-top:50px; ">
+                    <button type="button" class="col-xs-12 col-sm-12 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:e7e7e7; float:left;  margin-top:50px; ">
                         {% trans "HAVE A LOOK" %}<br>
                     </button>
                 </a>
@@ -354,27 +356,27 @@
                 </h1>
                 <hr class="separador_torneo" style="color:white">
             </div>
-            <div class="col-xs-5 col-sm-4" style="float:right">
-                <img class="img_master" src="{% static 'images/news/master.png' %}">
+            <div class="col-xs-12 col-sm-12 col-md-4" style="float:right">
+                <img class="col-xs-12 col-sm-12 img_master" src="{% static 'images/news/master.png' %}">
             </div>
-            <h1 class="col-xs-7 col-sm-8" style="float:right; color:#DC4C46">
+            <h1 class="col-xs-12 col-sm-12 col-md-8" style="float:right; color:#DC4C46">
                 {% trans "Played tournaments, results, stats, rankings..." %}</h1>
             <br>
-            <div>
+            <div class="col-xs-12 col-sm-12">
                 <a href="{% url 'tournaments' %}">
-                    <button type="button" class="col-xs-5 col-sm-5 col-md-6 btn btn-danger stats_vertical_info_btn"
-                            style="background-color:dc4c46; color:white; float:left; left:8.33%; margin-top:50px; ">
+                    <button type="button" class="col-xs-12 col-sm-12 col-md-6 btn btn-danger stats_vertical_info_btn"
+                            style="background-color:dc4c46; color:white; float:left; margin-top:50px; ">
                         {% trans "ENJOY THEM" %}<br>
                     </button>
                 </a>
             </div>
         </div>
     </div>
-    <a data-scroll href="#landing01" class="scroll"><span></span></a>
+    <a data-scroll href="#landing07" class="scroll"><span></span></a>
 </div>
 
 <div id="landing07" class="demo">
-    <div class="jumbotron jumbotron-fluid" style="background-color: #ededed; margin-bottom: 0px">
+    <div class="jumbotron jumbotron-fluid" style="height: auto; background-color: #ededed; margin-bottom: 0px">
         <div class="container_12">
             <div class="col-sm-12 news_landing">
                 <h1 class="form_title" style="font-weight: 600; color:#DC4C46; margin-top: 20px; text-align:center">
@@ -382,8 +384,9 @@
                 </h1>
                 <hr class="separador_torneo" style="color:white">
             </div>
+            <div class="col-sm-12" style="padding:0; height: 380px">
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "Germany" %}
@@ -397,7 +400,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "Egypt" %}
@@ -411,7 +414,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "Sweden" %}
@@ -425,7 +428,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "Switzerland" %}
@@ -439,7 +442,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "Thailand" %}
@@ -453,7 +456,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="col-xs-2 col-sm-4 col-md-3" style="float: left; padding-left: 0px">
+                <div class="col-xs-4 col-sm-4 col-md-3 country_panel" style="float: left; padding-left: 0px">
              <div class="col-sm-12" style="text-align:center">
                            <a href="" class="text_country"
                                style="width: 50%; text-transform: uppercase; font-weight: 600;">{% trans "United States of America" %}
@@ -465,11 +468,11 @@
                         <img class="col-md-12 country_news"
                              src="{% static 'images/flags/USA_panel.png' %}">
                 </div>
-            </div>
-           <div class="col-xs-5 col-sm-12 col-md-12">
+            </div></div><br>
+           <div class="col-xs-12 col-sm-12 col-md-12">
                 <a href="{% url 'tournaments' %}">
-                    <button type="button" class="btn btn-danger stats_vertical_info_btn col-md-12"
-                            style="background-color:d7d7d7; color:white; float:left; margin-top:50px; ">
+                    <button type="button" class="col-xs-12 col-sm-12 col-md-12 btn btn-danger stats_vertical_info_btn country_btn"
+                            style="background-color:d7d7d7; color:#dc4c46; margin-top:50px; ">
                         {% trans "DISCOVER MORE" %}<br>
                     </button>
                 </a>

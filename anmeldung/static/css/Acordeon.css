@@ -136,7 +136,7 @@ margin: -45px 0 60px 0
 }
 
 .img_map{
-max-width: 500px; margin-top:-30px; margin-left: -80px;
+width: 500px; margin-left: 0px;
 }
 
 .img_landing_r{
@@ -144,8 +144,8 @@ max-width: 240px; margin-top:-30px
 }
 
 .img_master{
-max-width: 450px;
-margin:-30px 0 0 -75px;
+width: 550px;
+margin:-10px 0 20px -25px;
 }
 
 .img_landing{
@@ -1069,9 +1069,8 @@ max-height: 40px;
 /*margin-top: -5px;*/
   }
 
-.botones_landing {
-padding: 8px;
-}
+
+
 
   .btn-t {
     padding: 0.1rem 0.1rem;
@@ -1146,6 +1145,9 @@ padding: 5 5 0 5;
     float: left;
 }
 
+.popup{
+width: 80%}
+
 .text_tournament_title {
     margin-top: 10px
   }
@@ -1158,6 +1160,11 @@ margin-top: 0px;
 .img_landing_r{
 max-width: 180px;
 margin-left: 30px;
+}
+
+.img_master{
+max-width: 300px;
+margin: 0px 0 30px -30px;
 }
 
 .img_landing{
@@ -1253,6 +1260,20 @@ display: none;
 /* ----------------------------- max-width: 768px ----------------------------- */
 
 @media (max-width: 768px) {
+
+.see {display: none}
+
+.botones_landing {
+display: none
+}
+
+.popup{
+display: none}
+
+.cancel{
+display: none}
+
+.overlay{display:none}
 
 input,
 input[type="radio"] + label,
@@ -1472,23 +1493,27 @@ flex: none;
 @media (min-width: 576px) and (max-width: 768px) {
 
 .img_map{
-max-width: 350px; margin-left: -50px; margin-top: -50px;
+max-width: 400px;
+margin: 0 0 30px -200px;
+left: 50%;
 }
 
-
-
-
-
 .img_landing{
-max-width: 150px;
-margin-top:-30px;
-margin-left: 30px;
+max-width: 220px;
+margin: 0 0 30px -110px;
+left: 50%;
 }
 
 .img_landing_r{
-max-width: 150px;
-margin-top:-30px;
-margin-left: 20px;
+max-width: 220px;
+margin: 0 0 30px -110px;
+left: 50%;
+}
+
+.img_master{
+max-width: 350px;
+margin: 0 0 30px -175px;
+left: 50%;
 }
 
 
@@ -1500,6 +1525,8 @@ height: 64px;
 font-size: 0.7rem;
 margin-top: 10px
 }
+
+
 }
 
 
@@ -1555,22 +1582,28 @@ padding-left:0.5em;
 }
 
 .img_map{
-max-width: 250px; margin-left: -45px; margin-top: 15px;
+max-width: 400px;
+margin: 20px 0 30px -200px;
+left: 50%;
 }
 
 .img_landing{
-max-width: 150px;
-margin-top:-15px;
-margin-left: 0px;
+max-width: 250px;
+margin: 20px 0 30px -125px;
+left: 50%;
 }
 
 .img_landing_r{
-max-width: 150px;
-margin-top:-15px;
-margin-left: 20px;
-float: left;
+max-width: 250px;
+margin: 20px 0 30px -125px;
+left: 50%;
 }
 
+.img_master{
+max-width: 350px;
+margin: 20px 0 30px -175px;
+left: 50%;
+}
 
 .news_landing{
 margin: -30px 0 0px 0

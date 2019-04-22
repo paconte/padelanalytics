@@ -124,14 +124,15 @@ height: 650px;
     .scroll {
     position: absolute;
     margin-left: -20px;
-    margin-top: -20px;
+    margin-top: -10px;
     left: 50%;
     }
 
     .scroll2 {
     position: absolute;
-    right: 10%;
-    margin-top: -20px;
+    margin-left: -20px;
+    margin-top: -10px;
+    left: 50%;
     }
 
     .scroll:hover {
@@ -220,6 +221,7 @@ background-color: rgba(255,255,255,0.7);
 border: none;
 color: #DC4C46;
 max-height: 150px;
+left: 8.33%;
 }
 
 
@@ -258,7 +260,6 @@ height: 540px;
 }
 
 
-
 .stats_vertical_logo {
 background-color: rgba(255,255,255,0.7);
 max-height: 50px;
@@ -276,7 +277,16 @@ max-height: 50px;
 @media (min-width: 768px) {
 .stats2 {
     display: none
-}}
+}
+
+.country_btn {
+left: 0;
+width: 60%;
+float: none;
+left: 50%;
+margin-left: -30%;
+}
+}
 
 @media (min-width: 700px) and (max-width: 768px) {
 .jumbotron {
@@ -294,8 +304,7 @@ height: 620px;
 }
 
 .jumbotron {
-margin-top: -35px;
-height: 480px;
+height: auto;
 }
 
 .posters {
@@ -303,8 +312,7 @@ height: 620px;
 }
 
 .scroll{
-margin-top: -75px;
-}
+display: none;}
 
 .scroll2{
 left: 50%;
@@ -356,7 +364,10 @@ max-height: none;
 .stats_vertical_info_btn {
 font-size: 14px;
 max-height: 100px;
-}
+width: 60%;
+left: 50%;
+margin-left: -30%;
+float: left; }
 
 }
 
@@ -371,6 +382,12 @@ height: 550px;
 .cover_title{
 font-size: 18px;
 }
+
+.stats_vertical_info_btn {
+font-size: 14px;
+max-height: 100px;
+float: left; }
+
 .cover_logo{
 margin: 15% auto 0 auto;
 }
@@ -379,19 +396,23 @@ font-size: 12px
 }
 
 .jumbotron {
-height: 400px;
+height: auto;
+}
+
+
+.country_panel {
+margin-top: 40px;
 }
 
 .scroll{
-margin-top: -60px;
+display:none;
 }
 
 .scroll2{
-margin-top: -20px;
-}
+margin-top: -60px}
 
 .posters {
-height: 450px;
+height: auto;
 }
 
 
